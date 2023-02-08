@@ -381,11 +381,6 @@
       <!-- partial -->
 
       <div class="page-content">
-<<<<<<< HEAD
-      
-=======
-          tests
->>>>>>> f5585c0cc670544f1df8629ffc8bdbf46ce0e792
       </div>
 
 
