@@ -1,5 +1,7 @@
 <?php
 
+
+
 class UsersModel{
 
     use Model;
@@ -9,7 +11,7 @@ class UsersModel{
 
     public function renderView(){
         
-        $query = "select * from $this->view_table";
+        $query = "select * from $this->view_table order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
 
 		return $this->query($query);
     }
@@ -54,13 +56,10 @@ class UsersModel{
 		
 		$query = trim($query," && ");
 
+		$query .= " order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+
 		$data = array_merge($data, $data_not);
 
 		return $this->query($query, $data);
     }
-
-
-
-
-
 }   

@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html lang="en">
 
 <head>
@@ -18,7 +10,7 @@ License: For each use you must have a valid license purchased only from above li
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+  <title>Accounts</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +23,6 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <!-- End plugin css for this page -->
 
@@ -42,9 +33,13 @@ License: For each use you must have a valid license purchased only from above li
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
   <!-- End layout styles -->
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
+
 </head>
 
 <body>
@@ -66,16 +61,28 @@ License: For each use you must have a valid license purchased only from above li
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/dashboard" class="nav-link">
+            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Compose</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
+              <i class="link-icon" data-feather="more-horizontal"></i>
+              <span class="link-title">Pending</span>
             </a>
           </li>
           <li class="nav-item">
@@ -85,15 +92,96 @@ License: For each use you must have a valid license purchased only from above li
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
+              <i class="link-icon" data-feather="search"></i>
+              <span class="link-title">On Hold</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
+              <i class="link-icon" data-feather="archive"></i>
+              <span class="link-title">Archived</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
+              <i class="link-icon" data-feather="slash"></i>
+              <span class="link-title">Declined</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Shared with me</span>
             </a>
           </li>
+          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/activity_log" class="nav-link">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Activity Log</span>
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Reservations</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="user"></i>
+              <span class="link-title">Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="calendar"></i>
+              <span class="link-title">Schedules</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="flag"></i>
+              <span class="link-title">Reports</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">VENDOR PORTAL</li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="hash"></i>
+              <span class="link-title">Feed</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Buying</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="tag"></i>
+              <span class="link-title">Selling</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Contracts</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Vendors</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">My Orders</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Team</span>
             </a>
           </li>
 
@@ -356,193 +444,120 @@ License: For each use you must have a valid license purchased only from above li
       <!-- partial -->
 
       <div class="page-content">
-        <div class="row">
-          <div class="col-md-9 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <form id="editDocument">
-                  <h4 class="card-title">Edit Document</h4>
-                  <p class="text-muted mb-3">Read the <a href="https://simplemde.com/" target="_blank"> Official SimpleMDE Documentation </a>for a full list of instructions and other options.</p>
-                  <div class="mb-3">
-                    <input class="form-control" type="text" name="" id="" value="<?=$document->document_name?>" disabled>
-                  </div>
-                  <div class="mb-3">
-                    <select class="js-example-basic-single form-select" data-width="100%" disabled>
-                      <option value="<?=$document->type_id?>" selected><?=ucwords($document->document_type_name)?></option>
-                      <option value="TX">Contract</option>
-                      <option value="NY">Proposal</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <textarea class="form-control" name="tinymce" id="editFile" rows="10"></textarea>
-                  </div>
-                  <div class="float-end">
-                    <button button="submit" class="btn btn-primary btn-icon-text">
-                      <i class="btn-icon-prepend" data-feather="save"></i>
-                      Save Document
-                    </button>
-                  </div>
-                </form>
+        <div class="card">
+          <div class="card-body">
+            <div class="text-center">
+              <button class="btn btn-outline-primary btn-icon-text mb-3">
+                <i class="btn-icon-prepend" data-feather="search"></i>
+                Track another document
+              </button>
+              <div>
+                <h3>DELIVERED</h3>
+                <p class="text-muted">03 January 2023 — 11:28 PM</p>
               </div>
             </div>
-          </div>
+            <div class="my-5 d-flex align-items-center gap-2">
+              <div class="ht-10 w-100 bg-primary rounded-pill"></div>
+              <div class="ht-10 w-100 bg-primary rounded-pill"></div>
+              <div class="ht-10 w-100 bg-primary rounded-pill"></div>
+            </div>
 
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-body">
-                <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="details-line-tab" data-bs-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="activity-line-tab" data-bs-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Activity</a>
-                  </li>
-                </ul>
-                <div class="tab-content mt-3" id="lineTabContent">
-                  <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-line-tab">
-                    <div class="mb-3 border-bottom py-3">
-                      <div class="d-flex align-items-center">
-                        <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                        <div>
-                          <p><?=ucwords($document->author_name)?></p>
-                          <small class="text-muted">Owner</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="py-3">
-                      <h6 class="mb-3">FOLDER DETAILS</h6>
-                      <div class="mb-3">
-                        <h6 class="mb-2">Type</h6>
-                        <?=ucwords($document->document_type_name)?>
-                      </div>
-
-                      <div class="mb-3">
-                        <h6 class="mb-2">Origin</h6>
-                        <div class="d-flex align-items-center">
-                          <i class="icon-lg me-2" color="<?=$document->folder_color?>" fill="currentColor" data-feather="folder"></i>
-                          <div>
-                            <p><?=ucwords($document->folder_name)?></p>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="mb-3">
-                        <h6 class="mb-2">Created</h6>
-                        <div>
-                          <p><?=date("d M Y" ,strtotime($document->date_created))?></p>
-                          <small class="text-muted"><?=date("h:i A" ,strtotime($document->date_created))?></small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3">
-                        <h6 class="mb-2">Last Modified</h6>
-                        <div>
-                          <p><?=date("d M Y" ,strtotime($document->date_modified))?></p>
-                          <small class="text-muted"><?=date("h:i A" ,strtotime($document->date_modified))?></small>
-                        </div>
-                      </div>
-
-                      <div class="mb-3">
-                        <h6 class="mb-2">Recently Accessed</h6>
-                        <div class="d-flex align-items-center">
-                          <img class="ht-30 wd-30 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                          <div>
-                            <p><?=ucwords($document->modifier_name)?></p>
-                            <small class="text-muted"><?=ucwords($document->modifier_role)?></small>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-line-tab">...</div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="text-center">
+                  <h5 class="tx-12">FROM</h5>
+                  <p class="text-muted">Quezon City, Philippines</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="text-center">
+                  <h5 class="tx-12">TO</h5>
+                  <p class="text-muted">Caloocan City, Philippines</p>
                 </div>
               </div>
             </div>
+
+            <div>
+
+
+              <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Activity</a>
+                </li>
+              </ul>
+              <div class="tab-content mt-3" id="lineTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">...</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                  <div class="table-responsive">
+                    <table id="dataTableExample" class="table">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Recipient</th>
+                          <th>Department</th>
+                          <th>Status</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>
+                            <p class="fw-bold">03 Jan 2023</p>
+                            <small class="text-muted">03:55 PM</small>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                              <div>
+                                <p>Vixen Monroe</p>
+                                <small class="text-muted">vixen@lulan-tnvs.com</small>
+                              </div>
+                            </div>
+                          </td>
+                          <td>Legal Management</td>
+                          <td>
+                            <span class="badge bg-primary">Delivered</span>
+                          </td>
+                          <td>
+                            <a class="link-secondary" href="javascript:;">
+                              <i class="icon-md" data-feather="more-vertical"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
         </div>
 
       </div>
-
-
     </div>
-  </div>
 
-  <!-- core:js -->
-  <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-  <!-- endinject -->
+    <!-- core:js -->
+    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+    <!-- endinject -->
 
-  <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
+    <!-- Plugin js for this page -->
+    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+    <!-- End plugin js for this page -->
 
-  <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+    <script src="<?= ROOT ?>assets/js/template.js"></script>
+    <!-- endinject -->
 
-  <!-- inject:js -->
-  <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-  <script src="<?= ROOT ?>assets/js/template.js"></script>
-  <!-- endinject -->
-
-  <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/js/select2.js"></script>
-  <!-- End custom js for this page -->
-
-  <script>
-    tinymce.init({
-      selector: '#editFile',
-      height: 500,
-      default_text_color: 'red',
-      plugins: [
-        'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-        'searchreplace wordcount visualblocks visualchars code fullscreen',
-      ],
-      toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-      toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
-      image_advtab: true,
-      templates: [{
-          title: 'Test template 1',
-          content: 'Test 1'
-        },
-        {
-          title: 'Test template 2',
-          content: 'Test 2'
-        }
-      ],
-      content_css: []
-    });
-
-    document.getElementById("editFile").innerHTML = "<?=$document->content?>";
-  </script>
-
-<script>
-    $(document).ready(() => {
-      $('#editDocument').submit((e) => {
-        e.preventDefault()
-
-        var editor = tinymce.get('editFile');
-        var content = editor.getContent();
-
-        $.ajax({
-          method: "POST",
-          data: {
-            content: content
-          },
-          success: (response)=>{
-            console.log(response)
-          }
-        })
-
-        
-      })
-    })
-  </script>
-
-  
+    <!-- Custom js for this page -->
+    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+    <!-- End custom js for this page -->
 </body>
 
 </html>

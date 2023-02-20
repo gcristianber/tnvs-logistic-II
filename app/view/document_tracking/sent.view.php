@@ -66,16 +66,28 @@ License: For each use you must have a valid license purchased only from above li
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/dashboard" class="nav-link">
+            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Compose</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
+              <i class="link-icon" data-feather="more-horizontal"></i>
+              <span class="link-title">Pending</span>
             </a>
           </li>
           <li class="nav-item">
@@ -85,15 +97,90 @@ License: For each use you must have a valid license purchased only from above li
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
+              <i class="link-icon" data-feather="search"></i>
+              <span class="link-title">On Hold</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
+              <i class="link-icon" data-feather="archive"></i>
+              <span class="link-title">Archived</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
+              <i class="link-icon" data-feather="slash"></i>
+              <span class="link-title">Declined</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Shared with me</span>
             </a>
           </li>
+          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/activity_log" class="nav-link">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Activity Log</span>
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Reservations</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="user"></i>
+              <span class="link-title">Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="calendar"></i>
+              <span class="link-title">Schedules</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="flag"></i>
+              <span class="link-title">Reports</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">VENDOR PORTAL</li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="hash"></i>
+              <span class="link-title">Feed</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Buying</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="tag"></i>
+              <span class="link-title">Selling</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Proposals</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Vendors</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">My Orders</span>
             </a>
           </li>
 
@@ -357,141 +444,370 @@ License: For each use you must have a valid license purchased only from above li
 
       <div class="page-content">
 
+
+
         <div class="row">
-          <div class="col-md-12 grid-margin stretch-card">
+          <div class="col-sm-12 grid-margin">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">SENT REQUEST</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+                <div class="mb-3">
+                  <div class="d-flex align-items-center">
+                    <i class="me-2 icon-lg text-primary" data-feather="send"></i>
+                    <h5>SENT DOCUMENTS</h5>
+                  </div>
+                  <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
+                </div>
+
                 <div class="table-responsive">
                   <table id="dataTableExample" class="table">
                     <thead>
                       <tr>
                         <th>Control Number</th>
-                        <th>Document Name</th>
-                        <th>Type</th>
-                        <th>Origin</th>
-                        <th>Request date</th>
-                        <th>Access Type</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date Created</th>
+                        <th>Recipient</th>
+                        <th>Priority</th>
                         <th>Status</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      if(!empty($sent_requests)):
-                      foreach($sent_requests as $item):
+                      if (!empty($sent)) :
+                        foreach ($sent as $item) :
                       ?>
-                      <tr class="align-middle">
-                        <td><?= $item->control_number?></td>
-                        <td>
-                          <div class="d-flex">
-                            <i class="icon-lg me-2" data-feather="file"></i>
-                            <p><?= ucwords($item->document_name)?></p>
-                          </div>
-                        </td>
-                        <td>
-                          <p><?= ucwords($item->document_type_name)?></p>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <i class="icon-lg me-2" color="<?=$item->folder_color?>" data-feather="folder" fill="currentColor"></i>
-                            <div>
-                              <p><?= ucwords($item->folder_name)?></p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p><?= date("d F Y", strtotime($item->date_created)) ?></p>
-                          <small class="text-muted"><?= date("h:i:s A", strtotime($item->date_created)) ?></small>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <?php
-                            if($item->access_type == 0){echo '<p> <i class="icon-md me-2" data-feather="eye"></i> Viewer </p>';}
-                            if($item->access_type == 1){echo '<p> <i class="icon-md me-2" data-feather="edit-2"></i> Editor </p>';}
-                            ?>
-                          </div>
-                        </td>
-                        <td>
-                          <?php
-                            if($item->request_status_name == "pending"){echo '<p> <span class="badge bg-warning">Pending</span>';}
-                            if($item->request_status_name == "endorsed"){echo '<p> <span class="badge bg-secondary">Endorsed</span>';}
-                            if($item->request_status_name == "granted"){echo '<p> <span class="badge bg-success">Granted</span>';}
-                            if($item->request_status_name == "declined"){echo '<p> <span class="badge bg-danger">Declined</span>';}
-                            ?>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $item->control_number?>">
-                            <i class="btn-icon-prepend" data-feather="maximize-2"></i>
-                            View Request
-                          </button>
-                          <div class="modal fade" id="<?= $item->control_number?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                          <tr class="align-middle">
+                            <td><?= $item->tracking_id ?></td>
+                            <td><?= $item->title ?></td>
+                            <td><?= $item->category_name ?></td>
+                            <td>
+                              <p><?= date("d M Y", strtotime($item->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($item->date_created)) ?></small>
+                            </td>
+                            <td><?= ucwords($item->category_dept_name) ?></td>
+                            <td>
+                              <?php if ($item->priority_name == 'high') : ?>
+                                <div class="text-danger d-flex align-items-center">
+                                  <i class="icon-md me-2" fill="currentColor" style="transform: rotate(0deg);" data-feather="triangle"></i>
+                                  High
                                 </div>
-                                
-                                <div class="modal-body">
-                                  <?php
-                                  if($item->request_status_name == "pending"){
-                                    echo '
-                                    <div class="alert alert-warning text-wrap" role="alert">
-                                    <i data-feather="alert-circle"></i>
-                                    Your request has been sent successfully! Our team will review and process it as soon as possible.
-                                  </div>';
-                                  }
-                                  
-                                  if($item->request_status_name == "endorsed"){
-                                    echo '
-                                    <div class="alert alert-secondary text-wrap" role="alert">
-                                    <i data-feather="alert-circle"></i>
-                                    Your request has been endorsed for approval!
-                                  </div>';
-                                  }
-
-                                  if($item->request_status_name == "granted"){
-                                    echo '
-                                    <div class="alert alert-success text-wrap" role="alert">
-                                    <i data-feather="alert-circle"></i>
-                                    Your request has been approved!
-                                  </div>';
-                                  }
-      
-                                  ?>
-                                  <div class="p-3 bg-gray-100 rounded-2 text-wrap mb-3">
-                                    <p>
-                                      <?= $item->purpose ?>
-                                    </p>
+                              <?php endif; ?>
+                              <?php if ($item->priority_name == 'medium') : ?>
+                                <div class="text-secondary d-flex align-items-center">
+                                  <i class="icon-md me-2" fill="currentColor" style="transform: rotate(0deg);" data-feather="minus"></i>
+                                  Medium
+                                </div>
+                              <?php endif; ?>
+                              <?php if ($item->priority_name == 'low') : ?>
+                                <div class="text-success d-flex align-items-center">
+                                  <i class="icon-md me-2" fill="currentColor" style="transform: rotate(180deg);" data-feather="triangle"></i>
+                                  Low
+                                </div>
+                              <?php endif; ?>
+                            </td>
+                            <td>
+                              <?php if ($item->status_name == 'pending') : ?>
+                                <span class="badge bg-warning">Pending</span>
+                              <?php endif; ?>
+                              <?php if ($item->status_name == 'received') : ?>
+                                <span class="badge bg-primary">Received</span>
+                              <?php endif; ?>
+                              <?php if ($item->status_name == 'onhold') : ?>
+                                <span class="badge bg-secondary">On Hold</span>
+                              <?php endif; ?>
+                              <?php if ($item->status_name == 'archived') : ?>
+                                <span class="badge bg-success">Archived</span>
+                              <?php endif; ?>
+                              <?php if ($item->status_name == 'declined') : ?>
+                                <span class="badge bg-danger">Declined</span>
+                              <?php endif; ?>
+                            </td>
+                            <form method="POST" id="actionBtns">
+                              <td>
+                                <input type="hidden" id="rowId" value="<?= $item->tracking_id ?>">
+                                <?php if ($item->status_name == 'pending') : ?>
+                                  <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnReceive" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="mail" class="icon-sm me-2"></i> <span class="">Receive</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnDecline" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="slash" class="icon-sm me-2"></i> <span class="">Decline</span></a>
                                   </div>
-                                  <div class="d-flex align-items-center">
-                                
+                                <?php endif; ?>
+                                <?php if ($item->status_name == 'received') : ?>
+                                  <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnWorking" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="activity" class="icon-sm me-2"></i> <span class="">Working</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnArchive" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="archive" class="icon-sm me-2"></i> <span class="">Archive</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnOnHold" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="search" class="icon-sm me-2"></i> <span class="">Hold</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnDecline" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="slash" class="icon-sm me-2"></i> <span class="">Decline</span></a>
                                   </div>
+                                <?php endif; ?>
+                                <?php if ($item->status_name == 'declined') : ?>
+                                  <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                  </div>
+                                <?php endif; ?>
+                                <?php if ($item->status_name == 'onhold') : ?>
+                                  <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:; data-id=" <?= $item->tracking_id ?>" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnArchive" href="javascript:;" data-id="<?= $item->tracking_id ?>"><i data-feather="archive" class="icon-sm me-2"></i> <span class="">Archive</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnEdit" href="javascript:;" data-id="<?= $item->tracking_id ?>"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnDecline" href="javascript:;" data-id="<?= $item->tracking_id ?>"><i data-feather="slash" class="icon-sm me-2"></i> <span class="">Decline</span></a>
+                                  </div>
+                                <?php endif; ?>
+                                <?php if ($item->status_name == 'archived') : ?>
+                                  <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:; data-id=" <?= $item->tracking_id ?>" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                  </div>
+                                <?php endif; ?>
 
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
+                                <div class="modal fade" id="<?= $item->tracking_id ?>" tabindex="-1" aria-labelledby="<?= $item->tracking_id ?>" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title me-2" id="exampleModalLabel"><?= $item->title ?></h5>
+                                        <?php if ($item->priority_name == 'high') : ?>
+                                          <div class="text-danger d-flex align-items-center">
+                                            <i class="icon-md me-2" fill="currentColor" style="transform: rotate(0deg);" data-feather="triangle"></i>
+                                          </div>
+                                        <?php endif; ?>
+                                        <?php if ($item->priority_name == 'medium') : ?>
+                                          <div class="text-secondary d-flex align-items-center">
+                                            <i class="icon-md me-2" fill="currentColor" style="transform: rotate(0deg);" data-feather="minus"></i>
+                                          </div>
+                                        <?php endif; ?>
+                                        <?php if ($item->priority_name == 'low') : ?>
+                                          <div class="text-success d-flex align-items-center">
+                                            <i class="icon-md me-2" fill="currentColor" style="transform: rotate(180deg);" data-feather="triangle"></i>
+                                          </div>
+                                        <?php endif; ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="p-3 bg-gray-100 text-wrap mb-4">
+                                          <?= $item->body ?>
+                                        </div>
 
-                      </tr>
+                                        <div>
+                                          <div>
+                                            <div class="px-3 pb-4">
+                                              <div class="d-flex align-items-center justify-content-between">
+                                                <div>
+                                                  Tracking Number
+                                                </div>
+                                                <div>
+                                                  <div class="d-flex align-items-center">
+                                                    <p class="text-muted me-2"><?= $item->tracking_id ?></p>
+
+                                                    <a href="javascript:;" id="copyClipboard" data-id="<?= $item->tracking_id ?>">
+                                                      <i class="text-primary icon-md" data-feather="copy"></i>
+                                                    </a>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="perfect-scrollbar-example">
+                                              <ul class="list-group list-group-flush ">
+
+
+
+                                                <?php
+                                                foreach ($tracker_status as $status) :
+                                                  if ($status->tracking_id == $item->tracking_id) :
+                                                    if ($status->status_name == 'declined') :
+                                                ?>
+                                                      <li class="list-group-item bg-danger bg-opacity-10 rounded-2">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <div class="d-flex align-items-center">
+                                                            <i class="text-danger icon-md me-3" data-feather="alert-triangle"></i>
+                                                            <div>
+                                                              <p class="text-danger">Declined</p>
+                                                              <small class="text-danger">Your document has been declined.</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="text-end">
+                                                            <h6 class="text-dark tx-14"><?= date("d M", strtotime($status->action_date)) ?></h6>
+                                                            <p class="text-muted tx-12"><?= date("h:i A", strtotime($status->action_date)) ?></p>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                <?php
+                                                    endif;
+                                                  endif;
+                                                endforeach;
+                                                ?>
+
+                                                <?php
+                                                foreach ($tracker_status as $status) :
+                                                  if ($status->tracking_id == $item->tracking_id) :
+                                                    if ($status->status_name == 'archived') :
+                                                ?>
+                                                      <li class="list-group-item bg-success bg-opacity-10 rounded-2">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <div class="d-flex align-items-center">
+                                                            <i class="text-success icon-md me-3" data-feather="check-circle"></i>
+                                                            <div>
+                                                              <p class="text-success">Archived</p>
+                                                              <small class="text-success">Your document has been successfuly archived.</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="text-end">
+                                                            <h6 class="text-dark tx-14"><?= date("d M", strtotime($status->action_date)) ?></h6>
+                                                            <p class="text-muted tx-12"><?= date("h:i A", strtotime($status->action_date)) ?></p>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                <?php
+                                                    endif;
+                                                  endif;
+                                                endforeach;
+                                                ?>
+
+                                                <?php
+                                                foreach ($tracker_status as $status) :
+                                                  if ($status->tracking_id == $item->tracking_id) :
+                                                    if ($status->status_name == 'onhold') :
+                                                ?>
+                                                      <li class="list-group-item">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <div class="d-flex align-items-center">
+                                                            <i class="text-secondary icon-md me-3" data-feather="search"></i>
+                                                            <div>
+                                                              <p>On Hold</p>
+                                                              <small class="text-muted">Document has been hold</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="text-end">
+                                                            <h6 class="text-dark tx-14"><?= date("d M", strtotime($status->action_date)) ?></h6>
+                                                            <p class="text-muted tx-12"><?= date("h:i A", strtotime($status->action_date)) ?></p>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                <?php
+                                                    endif;
+                                                  endif;
+                                                endforeach;
+                                                ?>
+                                                <?php
+                                                foreach ($tracker_status as $status) :
+                                                  if ($status->tracking_id == $item->tracking_id) :
+                                                    if ($status->status_name == 'working') :
+                                                ?>
+                                                      <li class="list-group-item">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <div class="d-flex align-items-center">
+                                                            <i class="text-secondary icon-md me-3" data-feather="activity"></i>
+                                                            <div>
+                                                              <p>Working</p>
+                                                              <small class="text-muted">Your document is on process</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="text-end">
+                                                            <h6 class="text-dark tx-14"><?= date("d M", strtotime($status->action_date)) ?></h6>
+                                                            <p class="text-muted tx-12"><?= date("h:i A", strtotime($status->action_date)) ?></p>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                <?php
+                                                    endif;
+                                                  endif;
+                                                endforeach;
+                                                ?>
+                                                <?php
+                                                foreach ($tracker_status as $status) :
+                                                  if ($status->tracking_id == $item->tracking_id) :
+                                                    if ($status->status_name == 'received') :
+                                                ?>
+                                                      <li class="list-group-item">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <div class="d-flex align-items-center">
+                                                            <i class="text-secondary icon-md me-3" data-feather="mail"></i>
+                                                            <div>
+                                                              <p>Received</p>
+                                                              <small class="text-muted">Document has been received</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="text-end">
+                                                            <h6 class="text-dark tx-14"><?= date("d M", strtotime($status->action_date)) ?></h6>
+                                                            <p class="text-muted tx-12"><?= date("h:i A", strtotime($status->action_date)) ?></p>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                <?php
+                                                    endif;
+                                                  endif;
+                                                endforeach;
+                                                ?>
+                                                <?php
+                                                foreach ($tracker_status as $status) :
+                                                  if ($status->tracking_id == $item->tracking_id) :
+                                                    if ($status->status_name == 'pending') :
+                                                ?>
+                                                      <li class="list-group-item">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                          <div class="d-flex align-items-center">
+                                                            <i class="text-secondary icon-md me-3" data-feather="more-horizontal"></i>
+                                                            <div>
+                                                              <p>Pending</p>
+                                                              <small class="text-muted">Document has been set to pending.</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="text-end">
+                                                            <h6 class="text-dark tx-14"><?= date("d M", strtotime($status->action_date)) ?></h6>
+                                                            <p class="text-muted tx-12"><?= date("h:i A", strtotime($status->action_date)) ?></p>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                <?php
+                                                    endif;
+                                                  endif;
+                                                endforeach;
+                                                ?>
+
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </td>
+                            </form>
+                          </tr>
                       <?php
-                      endforeach;
+                        endforeach;
                       endif;
                       ?>
-
                     </tbody>
                   </table>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
+
 
       </div>
 

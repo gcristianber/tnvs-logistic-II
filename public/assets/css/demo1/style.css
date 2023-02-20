@@ -22400,7 +22400,7 @@ body {
 }
 .example .perfect-scrollbar-example {
   position: relative;
-  max-height: 250px;
+  height: 100%;
   background: #fff;
 }
 .example .scrollspy-example {

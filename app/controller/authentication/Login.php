@@ -20,7 +20,7 @@ class Login{
             if($row){
                 if($row->password == $_POST["password"]){
                     $_SESSION["user"] = $row;
-                    redirect("document_tracking/dashboard");
+                    redirect("general/dashboard");
                 }
             }
             

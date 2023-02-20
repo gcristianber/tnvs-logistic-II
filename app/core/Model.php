@@ -94,7 +94,6 @@ Trait Model
 
 	public function update($id, $data, $id_column = '')
 	{
-
 		/** remove unwanted data **/
 		if(!empty($this->allowedColumns))
 		{
@@ -120,6 +119,8 @@ Trait Model
 
 		$data[$id_column] = $id;
 
+
+
 		$this->query($query, $data);
 		return false;
 
@@ -134,6 +135,12 @@ Trait Model
 
 		return false;
 
+	}
+
+	public function countAll()
+	{
+		$query = "select count(*) as count from $this->table";
+		return $this->query($query);
 	}
 
 	

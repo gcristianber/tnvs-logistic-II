@@ -9,17 +9,15 @@ class Sent{
     public function index(){
 
         $data = [];
-
-        $documentAccessModel = new DocumentAccessModel;
-        $arr = ["accessor_id" => $_SESSION["user"]->user_id];
-       
-        $data["sent_requests"] = $documentAccessModel->renderViewByCriteria($arr);
-        // print_r($data["sent_requests"]);
+        $documentTrackerModel = new DocumentTrackerModel;
+        $trackerFeedbackModel = new TrackerFeedbackModel;
+        $arr = [
+            "author_name" => $_SESSION["user"]->fullname
+        ];
+        $data["tracker_status"] = $trackerFeedbackModel->renderView();
+        $data["sent"] = $documentTrackerModel->renderViewByCriteria($arr);
 
         $this->view("document_tracking/sent", $data);
-    }
-
-    public function getAccessType($data){
     }
 
 }

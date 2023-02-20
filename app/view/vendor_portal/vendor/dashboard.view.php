@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html lang="en">
 
 <head>
@@ -18,7 +10,7 @@ License: For each use you must have a valid license purchased only from above li
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+  <title>Vendor Dashboard</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +23,6 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -63,36 +54,42 @@ License: For each use you must have a valid license purchased only from above li
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
+          <li class="nav-item nav-category">VENDOR PORTAL</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="hash"></i>
+              <span class="link-title">Feed</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Received</span>
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Buying</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="tag"></i>
+              <span class="link-title">Selling</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Proposals</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Shared with me</span>
+              <span class="link-title">Vendors</span>
             </a>
           </li>
+          
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/activity_log" class="nav-link">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Activity Log</span>
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">My Orders</span>
             </a>
           </li>
 
@@ -356,149 +353,6 @@ License: For each use you must have a valid license purchased only from above li
 
       <div class="page-content">
 
-        <div class="row">
-          <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title d-flex align-items">
-                  <i class="icon-lg me-2" color="<?= $folder_info->folder_color ?>" fill="currentColor" data-feather="folder"></i>
-                  <?= ucwords($folder_info->folder_name) ?>
-                </div>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-                <div class="table-responsive">
-                  <table id="dataTableExample" class="table">
-                    <thead>
-                      <tr>
-                        <th>Document Name</th>
-                        <th>Type</th>
-                        <th>Author</th>
-                        <th>Date Created</th>
-                        <th>Last modified by</th>
-                        <th>Date Modified</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($documents)) :
-                        foreach ($documents as $item) :
-                      ?>
-                          <tr class="align-middle">
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <i class="icon-lg me-2" data-feather="file"></i>
-                                <p><?= ucwords($item->document_name) ?></p>
-                              </div>
-                            </td>
-                            <td>
-                              <p><?= ucwords($item->document_type_name) ?></p>
-                            </td>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p><?= ucwords($item->author_name) ?></p>
-                                  <small class="text-muted"><?= ucwords($item->author_role) ?></small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p><?= date("d F Y", strtotime($item->date_created)) ?></p>
-                              <small class="text-muted"><?= date("h:i:s A", strtotime($item->date_created)) ?></small>
-                            </td>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p><?= ucwords($item->modifier_name) ?></p>
-                                  <small class="text-muted"><?= ucwords($item->modifier_role) ?></small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p><?= date("d F Y", strtotime($item->date_modified)) ?></p>
-                              <small class="text-muted"><?= date("h:i:s A", strtotime($item->date_created)) ?></small>
-                            </td>
-                            <td>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="btn-icon-prepend" data-feather="send"></i>
-                                Send Request
-                              </button>
-
-                              <form id="createRequest">
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-xl">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="mb-3 p-3">
-                                          <div class="mb-3">
-                                            <h6 class="mb-2">PURPOSE</h6>
-                                            <p class="text-secondary">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, nihil!</p>
-                                          </div>
-                                          <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
-                                        </div>
-                                        <div class="mb-3 p-3">
-                                          <div class="mb-3">
-                                            <h6 class="mb-2">ACCESS TYPE</h6>
-                                            <p class="text-secondary">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, nihil!</p>
-                                          </div>
-
-                                          <input type="hidden" id="document_id" value="<?= $item->document_id ?>">
-                                          <div class="form-check mb-2">
-                                            <div class="d-flex align-items-center">
-                                              <input type="radio" class="form-check-input me-3" name="radioDefault" id="radioDefault" value="1"> <label class="form-check-label" for="radioDefault">
-                                                <div class="d-flex align-items-center">
-                                                  <i class="me-3 icon-lg" data-feather="edit-2"></i>
-                                                  <div>
-                                                    <p>Editor</p>
-                                                    <small class="text-muted">Editors can modify directly.</small>
-                                                  </div>
-                                                </div>
-                                              </label>
-                                            </div>
-                                          </div>
-                                          <div class="form-check mb-2">
-                                            <div class="d-flex align-items-center">
-                                              <input type="radio" class="form-check-input me-3" name="radioDefault" id="radioDefault1" value="0"> <label class="form-check-label" for="radioDefault">
-                                                <div class="d-flex align-items-center">
-                                                  <i class="me-3 icon-lg" data-feather="eye"></i>
-                                                  <div>
-                                                    <p>Viewer</p>
-                                                    <small class="text-muted">Viewers can view or download.</small>
-                                                  </div>
-                                                </div>
-                                              </label>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Send Request</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </form>
-
-                            </td>
-                          </tr>
-                      <?php
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
 
@@ -510,77 +364,15 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
   <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
   <script src="<?= ROOT ?>assets/js/template.js"></script>
-
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(() => {
-      $('#createRequest').submit((e) => {
-        e.preventDefault()
-
-        var editor = tinymce.get('tinymceExample');
-        var content = editor.getContent();
-
-        if (($('#radioDefault').prop('checked'))) {
-          var radioVal = $('#radioDefault').val()
-          var document_id = $('#document_id').val()
-          $.ajax({
-            method: "POST",
-            data: {
-              document_id: document_id,
-              purpose: content,
-              access_type: radioVal
-            },
-            success: (response) => {
-              console.log(response)
-              $(document_id).val('')
-              $(content).val('')
-              $(radioVal).val('')
-            }
-          })
-
-        }
-
-        if (($('#radioDefault1').prop('checked'))) {
-          var radioVal = $('#radioDefault1').val()
-          var document_id = $('#document_id').val()
-          $.ajax({
-            method: "POST",
-            data: {
-              document_id: document_id,
-              purpose: content,
-              access_type: radioVal
-            },
-            success: (response) => {
-              console.log(response)
-              $(document_id).val('')
-              $(content).val('')
-              $(radioVal).val('')
-            }
-          })
-
-        }
-
-
-      })
-    })
-  </script>
-
 </body>
 
 </html>

@@ -10,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Activity Log</title>
+  <title>Users</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,21 +23,26 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
   <!-- End layout styles -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
+
 
 <body>
   <div class="main-wrapper">
@@ -58,16 +63,28 @@
         <ul class="nav">
           <li class="nav-item nav-category">Main</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/dashboard" class="nav-link">
+            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
               <i class="link-icon" data-feather="box"></i>
               <span class="link-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Compose</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
+              <i class="link-icon" data-feather="more-horizontal"></i>
+              <span class="link-title">Pending</span>
             </a>
           </li>
           <li class="nav-item">
@@ -77,15 +94,90 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
+              <i class="link-icon" data-feather="search"></i>
+              <span class="link-title">On Hold</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
+              <i class="link-icon" data-feather="archive"></i>
+              <span class="link-title">Archived</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
+              <i class="link-icon" data-feather="slash"></i>
+              <span class="link-title">Declined</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Shared with me</span>
             </a>
           </li>
+          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/activity_log" class="nav-link">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Activity Log</span>
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Reservations</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="user"></i>
+              <span class="link-title">Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="calendar"></i>
+              <span class="link-title">Schedules</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+              <i class="link-icon" data-feather="flag"></i>
+              <span class="link-title">Reports</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">VENDOR PORTAL</li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="hash"></i>
+              <span class="link-title">Feed</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Buying</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="tag"></i>
+              <span class="link-title">Selling</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Proposals</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Vendors</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">My Orders</span>
             </a>
           </li>
 
@@ -93,7 +185,6 @@
         </ul>
       </div>
     </nav>
-
     <!-- partial -->
 
     <div class="page-wrapper">
@@ -308,7 +399,7 @@
               <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                 <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                   <div class="mb-3">
-                    <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/20x20" alt="">
+                    <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
                   </div>
                   <div class="text-center">
                     <p class="tx-16 fw-bolder">Amiah Burton</p>
@@ -350,87 +441,128 @@
 
       <div class="page-content">
 
-        <div class="list-group">
-          <a href="<?= ROOT ?>document_tracking/activity_log/access_grantees" class="list-group-item list-group-item-action">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex">
-                <div class="ht-40 wd-40 d-flex align-items-center justify-content-center rounded-circle border bg-gray-100 me-2">
-                  <i class="icon-lg text-dark" data-feather="unlock"></i>
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">RENTERS</h6>
+                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+
+
+                <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cars</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Vans</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="change-line-tab" data-bs-toggle="tab" href="#change" role="tab" aria-controls="change" aria-selected="false">Trucks</a>
+                  </li>
+
+                </ul>
+                <div class="tab-content mt-3" id="lineTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                    <div class="table-responsive">
+                      <table id="dataTableExample" class="table">
+                        <thead>
+                          <tr>
+                            <th>Fleet Id</th>
+                            <th>Plate Number</th>
+                            <th>Vehicle Type</th>
+                            <th>Category Type</th>
+                            <th>Location</th>
+                            <th>Renter</th>
+                            <th>Date Reserved</th>
+                            <th>Date End</th>
+                            <th>Status</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="align-middle">
+                            <td>7387663000090010</td>
+                            <td>NBC-1234</td>
+                            <td>Sedan</td>
+                            <td>Cars</td>
+                            <td>WHS-001</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                                <div>
+                                  <p>Vixen Monroe</p>
+                                  <small class="text-muted">HR Staff</small>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div>
+                                <h6 class="text-success">03 Jan 2023</h6>
+                                <small class="text-muted">08:37 PM</small>
+                              </div>
+                            </td>
+                            <td>
+                              <div>
+                                <h6 class="text-danger">10 Jan 2023</h6>
+                                <small class="text-muted">08:37 PM</small>
+                              </div>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">Reserved</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-outline-primary btn-icon-text">
+                                <i class="btn-icon-prepend" data-feather="message-circle"></i> 
+                                View Details
+                              </button>
+                              <a class="link-secondary" href="javascript:;">
+                                <i class="icon-md" data-feather="more-vertical"></i>
+                              </a>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
+                  <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-line-tab">...</div>
                 </div>
-                <div>
-                  <h5>Users that you've grant access</h5>
-                  <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                </div>
+
+
+
               </div>
-              <i class="icon-md" data-feather="chevron-right"></i>
             </div>
-          </a>
-          <a href="<?= ROOT ?>document_tracking/activity_log/accessed_files" class="list-group-item list-group-item-action">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex">
-                <div class="ht-40 wd-40 d-flex align-items-center justify-content-center rounded-circle border bg-gray-100 me-2">
-                  <i class="icon-lg text-dark" data-feather="file"></i>
-                </div>
-                <div>
-                  <h5>Files you've accessed</h5>
-                  <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                </div>
-              </div>
-              <i class="icon-md" data-feather="chevron-right"></i>
-            </div>
-          </a>
-          <a href="<?= ROOT ?>document_tracking/activity_log/issued_requests" class="list-group-item list-group-item-action">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex">
-                <div class="ht-40 wd-40 d-flex align-items-center justify-content-center rounded-circle border bg-gray-100 me-2">
-                  <i class="icon-lg text-dark" data-feather="send"></i>
-                </div>
-                <div>
-                  <h5>Requests you've made</h5>
-                  <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                </div>
-              </div>
-              <i class="icon-md" data-feather="chevron-right"></i>
-            </div>
-          </a>
-          <a href="<?= ROOT ?>document_tracking/activity_log/web_sessions" class="list-group-item list-group-item-action">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex">
-                <div class="ht-40 wd-40 d-flex align-items-center justify-content-center rounded-circle border bg-gray-100 me-2">
-                  <i class="icon-lg text-dark" data-feather="key"></i>
-                </div>
-                <div>
-                  <h5>Web Sessions</h5>
-                  <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
-                </div>
-              </div>
-              <i class="icon-md" data-feather="chevron-right"></i>
-            </div>
-          </a>
+          </div>
         </div>
 
-
-
-
       </div>
-
     </div>
-  </div>
 
-  <!-- core:js -->
-  <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-  <!-- endinject -->
+    <!-- core:js -->
+    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+    <!-- endinject -->
 
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
+    <!-- Plugin js for this page -->
+    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+    <!-- End plugin js for this page -->
 
-  <!-- inject:js -->
-  <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-  <script src="<?= ROOT ?>assets/js/template.js"></script>
-  <!-- endinject -->
+    <!-- inject:js -->
+    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+    <script src="<?= ROOT ?>assets/js/template.js"></script>
+    <!-- endinject -->
 
-  <!-- Custom js for this page -->
-  <!-- End custom js for this page -->
+    <!-- Custom js for this page -->
+    <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+
+
 </body>
 
 </html>

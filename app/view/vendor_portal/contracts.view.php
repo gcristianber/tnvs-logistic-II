@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html lang="en">
 
 <head>
@@ -18,7 +10,7 @@ License: For each use you must have a valid license purchased only from above li
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+  <title>Contracts</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +23,6 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <!-- End plugin css for this page -->
 
@@ -42,10 +33,17 @@ License: For each use you must have a valid license purchased only from above li
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
   <!-- End layout styles -->
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
+
 </head>
+
+
+
 
 <body>
   <div class="main-wrapper">
@@ -64,36 +62,36 @@ License: For each use you must have a valid license purchased only from above li
       </div>
       <div class="sidebar-body">
         <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
+          <li class="nav-item nav-category">VENDOR PORTAL</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="hash"></i>
+              <span class="link-title">Feed</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
+            <a href="javascript:;" class="nav-link">
               <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Received</span>
+              <span class="link-title">Invites</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Proposals</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Shared with me</span>
+              <span class="link-title">Vendors</span>
             </a>
           </li>
+          
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/activity_log" class="nav-link">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Activity Log</span>
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">My Orders</span>
             </a>
           </li>
 
@@ -355,132 +353,143 @@ License: For each use you must have a valid license purchased only from above li
       </nav>
       <!-- partial -->
 
-     
-
       <div class="page-content">
+
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                  <div class="d-flex align-items-center">
-                    <div class="me-2">
-                      <i data-feather="file"></i>
-                    </div>
-                    <div>
-                      <p><?= $document->document_name ?></p>
-                      <small class="text-muted">Last modified <?= date("d M Y", strtotime($document->document_name)) ?></small>
+                <h6 class="card-title">Contracts</h6>
+                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+
+
+                <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Require Action</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Signed</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="change-line-tab" data-bs-toggle="tab" href="#change" role="tab" aria-controls="change" aria-selected="false">Request Changes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="dismiss-line-tab" data-bs-toggle="tab" href="#dismiss" role="tab" aria-controls="dismiss" aria-selected="false">Dismissed</a>
+                  </li>
+
+                </ul>
+                <div class="tab-content mt-3" id="lineTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                    <div class="table-responsive">
+                      <table id="dataTableExample" class="table">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Date Issued</th>
+                            <th>Date End</th>
+                            <th>Counterparty</th>
+                            <th>Status</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="align-middle">
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <i class="icon-lg me-2" data-feather="feather"></i>
+                                <p>Purchase Agreement</p>
+                              </div>
+
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                                <div>
+                                  <p>Lana Rhoades</p>
+                                  <small class="text-muted">lana@lulan-tnvs.com</small>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <p class="fw-bold">03 Jan 2023</p>
+                              <small class="text-muted">07:59 PM</small>
+                            </td>
+                            <td>
+                              <p class="fw-bold text-danger">03 Jan 2023</p>
+                              <small class="text-muted">07:59 PM</small>
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                                <div>
+                                  <p>SM Supermalls</p>
+                                  <small class="text-muted">smvendor@smsupermalls.com</small>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div>
+                                <div class="d-flex align-items-center text-warning">
+                                  <div class="ht-10 wd-10 bg-warning rounded-circle me-2"></div>
+                                  Pending
+                                </div>
+                                <small class="text-muted">03 Jan 2023</small>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="text-center">
+                                <button class="btn btn-outline-primary btn-icon-text">
+                                  <i class="btn-icon-prepend" data-feather="bell"></i>
+                                  Add Reminder
+                                </button>
+                                <a class="link-secondary" href="javascript:;">
+                                  <i class="icon-md" data-feather="more-vertical"></i>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                  <div>
-                    <button type="button" class="btn btn-outline-secondary btn-icon-text">
-                      <i class="btn-icon-prepend" data-feather="code"></i>
-                      Use OCR
-                    </button>
-                    <button type="button" class="btn btn-primary btn-icon-text">
-                      <i class="btn-icon-prepend" data-feather="printer"></i>
-                      Print
-                    </button>
-                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
+                  <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-line-tab">...</div>
+                  <div class="tab-pane fade" id="dismiss" role="tabpanel" aria-labelledby="dismiss-line-tab">...</div>
                 </div>
-                <div>
-                  <div class="p-3 bg-gray-100 rounded-2 d-flex justify-content-center">
-                    <div class="card" style="height:842px; width:595px;">
-                      <div class="card-body">
-                        <div class="p-4 text-wrap">
-                        <?= $document->content ?>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+
+
               </div>
             </div>
           </div>
         </div>
 
-
       </div>
-
-
     </div>
-  </div>
 
-  <!-- core:js -->
-  <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-  <!-- endinject -->
+    <!-- core:js -->
+    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+    <!-- endinject -->
 
-  <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
+    <!-- Plugin js for this page -->
+    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+    <!-- End plugin js for this page -->
 
-  <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+    <script src="<?= ROOT ?>assets/js/template.js"></script>
+    <!-- endinject -->
 
-  <!-- inject:js -->
-  <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-  <script src="<?= ROOT ?>assets/js/template.js"></script>
-  <!-- endinject -->
-
-  <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/js/select2.js"></script>
-  <!-- End custom js for this page -->
-
-  <script>
-    tinymce.init({
-      selector: '#editFile',
-      height: 500,
-      default_text_color: 'red',
-      plugins: [
-        'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-        'searchreplace wordcount visualblocks visualchars code fullscreen',
-      ],
-      toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-      toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
-      image_advtab: true,
-      templates: [{
-          title: 'Test template 1',
-          content: 'Test 1'
-        },
-        {
-          title: 'Test template 2',
-          content: 'Test 2'
-        }
-      ],
-      content_css: []
-    });
-
-    document.getElementById("editFile").innerHTML = "<?= $document->content ?>";
-  </script>
-
-  <script>
-    $(document).ready(() => {
-      $('#editDocument').submit((e) => {
-        e.preventDefault()
-
-        var editor = tinymce.get('editFile');
-        var content = editor.getContent();
-
-        $.ajax({
-          method: "POST",
-          data: {
-            content: content
-          },
-          success: (response) => {
-            console.log(response)
-          }
-        })
-
-
-      })
-    })
-  </script>
-
-
+    <!-- Custom js for this page -->
+    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+    <!-- End custom js for this page -->
 </body>
 
 </html>

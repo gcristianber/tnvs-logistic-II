@@ -1,16 +1,16 @@
 <?php
 
-class FoldersModel{
+class TrackerFeedbackModel{
 
     use Model;
 
-    protected $table = "folders";
-    protected $view_table = 'folders_view';
+    protected $table = "tracker_feedback";
+    protected $view_table = 'tracker_feedback_view';
+
 
     public function renderView(){
         
-        $query = "select * from $this->view_table";
-
+        $query = "select * from $this->view_table order by tracking_id $this->order_type limit $this->limit offset $this->offset";
 		return $this->query($query);
     }
 
@@ -53,14 +53,11 @@ class FoldersModel{
 		}
 		
 		$query = trim($query," && ");
-
+		$query .= " order by tracking_id $this->order_type limit $this->limit offset $this->offset";
+		
 		$data = array_merge($data, $data_not);
 
 		return $this->query($query, $data);
     }
 
-
-
-
-
-}   
+}

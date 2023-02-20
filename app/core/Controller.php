@@ -1,5 +1,7 @@
 <?php
 
+// namespace Controller;
+
 trait Controller{
 
     public function view($view, $data = []){

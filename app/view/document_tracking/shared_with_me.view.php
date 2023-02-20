@@ -73,6 +73,12 @@ License: For each use you must have a valid license purchased only from above li
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Compose</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
@@ -90,13 +96,7 @@ License: For each use you must have a valid license purchased only from above li
               <span class="link-title">Shared with me</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/activity_log" class="nav-link">
-              <i class="link-icon" data-feather="list"></i>
-              <span class="link-title">Activity Log</span>
-            </a>
-          </li>
-
+         
 
         </ul>
       </div>

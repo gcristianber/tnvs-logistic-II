@@ -3,12 +3,14 @@
 class App{
 
     private $systems = [
-        "authentication"        => "authentication",
-        "document_tracking"     => "document_tracking",
-        "audit_management"      => "audit_management",
-        "vehicle_reservation"   => "vehicle_reservation",
-        "vendor_portal"         => "vendor_portal",
-        "fleet_management"      => "fleet_management"
+        "authentication"            => "authentication",
+        "document_tracking"         => "document_tracking",
+        "audit_management"          => "audit_management",
+        "vehicle_reservation"       => "vehicle_reservation",
+        "vendor_portal_admin"       => "vendor_portal_admin",
+        "vendor_portal_vendor"      => "vendor_portal_vendor",
+        "fleet_management"          => "fleet_management",
+        "general"                   => "general"
     ];
 
     protected $system       = "authentication";
@@ -21,6 +23,7 @@ class App{
 
         if(!array_key_exists($url[0], $this->systems)){
             //! Handle error
+            // echo "Hello";
         }
 
         $subDirectory = $this->systems[$url[0]];
@@ -35,7 +38,7 @@ class App{
                 unset($url[1]);
             }
         }
-        
+
         $controller = new $this->controller;
 
         if(isset($url[2])){
@@ -50,6 +53,7 @@ class App{
         }
 
         
+        // var_dump($controller);
         call_user_func_array([$controller, $this->method], $this->params);
 
 
@@ -65,3 +69,4 @@ class App{
 
 
 }
+
