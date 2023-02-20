@@ -10,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Reservations</title>
+  <title>Browse Vehicles</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +24,7 @@
 
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="../../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -468,178 +469,154 @@
       <!-- partial -->
 
       <div class="page-content">
-
         <div class="row">
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">RESERVATIONS</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-
-
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6 class="card-title">Browse Vehicles</h6>
+                    <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+                  </div>
+                </div>
                 <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
+                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cars</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Reserved</a>
+                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Trucks</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="change-line-tab" data-bs-toggle="tab" href="#change" role="tab" aria-controls="change" aria-selected="false">Dispatched</a>
+                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Vans</a>
                   </li>
-
                 </ul>
                 <div class="tab-content mt-3" id="lineTabContent">
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+
                     <div class="table-responsive">
                       <table id="dataTableExample" class="table">
                         <thead>
                           <tr>
-                            <th>Reservation Id</th>
                             <th>Fleet Id</th>
-                            <th>Plate Number</th>
                             <th>Type</th>
+                            <th>Plate Number</th>
+                            <th>Color</th>
                             <th>Location</th>
-                            <th>Renter</th>
-                            <th>Pick Up Date</th>
-                            <th>Return date</th>
-                            <th>Duration</th>
+                            <th>Rating</th>
                             <th>Status</th>
-                            <th data-orderable="false">action</th>
+                            <th>Health</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
+                          
+                          <?php
+                          if(!empty($all_vehicles)):
+                          foreach($all_vehicles as $vehicle):
+                          ?>
                           <tr class="align-middle">
-                            <td>rev63f39df582e47</td>
-                            <td>7387663000090010</td>
-                            <td>NBC-1234</td>
+                            <td><?=$vehicle->fleet_id?></td>
                             <td>
                               <div class="d-flex align-items-center">
                                 <img class="ht-50 wd-50 me-2 rounded-1 me-2" src="https://via.placeholder.com/40x40" alt="">
                                 <div>
-                                  <p>Audi A4 Sedan</p>
-                                  <small class="text-muted">Sedan</small>
+                                  <p><?=ucwords($vehicle->fleet_vehicle_name)?></p>
+                                  <small class="text-muted"><?=ucwords($vehicle->vehicle_category_name)?></small>
                                 </div>
                               </div>
                             </td>
-                            <td>WHS-001</td>
+                            <td><?=$vehicle->fleet_plate_number?></td>
+                            <td><?=ucwords($vehicle->fleet_vehicle_color_name)?></td>
+                            <td><?=ucwords($vehicle->warehouse_name)?></td>
                             <td>
-                              <div class="d-flex align-items-center">
-                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p>Vixen Monroe</p>
-                                  <small class="text-muted">HR Staff</small>
-                                </div>
+                              <div class=" text-warning">
+                                <i class="icon-lg" fill="currentColor" data-feather="star"></i>
+                                x<?=$vehicle->rating?>
                               </div>
                             </td>
                             <td>
-                              <div>
-                                <h6 class="text-success">03 Jan 2023</h6>
-                                <small class="text-muted">08:37 PM</small>
-                              </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-danger">10 Jan 2023</h6>
-                                <small class="text-muted">08:37 PM</small>
-                              </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-dark">1 Day</h6>
-                              </div>
-                            </td>
-                            <td>
+                              <?php if($vehicle->vehicle_status_name == "pending"): ?>
+                              <span class="badge bg-warning">Pending</span>
+                              <?php endif; ?>
+                              <?php if($vehicle->vehicle_status_name == "available"): ?>
+                              <span class="badge bg-success">Available</span>
+                              <?php endif; ?>
+                              <?php if($vehicle->vehicle_status_name == "reserved"): ?>
                               <span class="badge bg-secondary">Reserved</span>
+                              <?php endif; ?>
+                              <?php if($vehicle->vehicle_status_name == "dispatched"): ?>
+                              <span class="badge bg-danger">Dispatched</span>
+                              <?php endif; ?>
                             </td>
                             <td>
-                              <button class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="btn-icon-prepend" data-feather="eye"></i>
-                                View Details
-                              </button>
-
-                              <a class="link-secondary" href="javascript:;">
-                                <i class="icon-md" data-feather="more-vertical"></i>
-                              </a>
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?=$vehicle->fleet_vehicle_health?>%" aria-valuenow="<?=$vehicle->fleet_vehicle_health?>" aria-valuemin="0" aria-valuemax="100"><?=$vehicle->fleet_vehicle_health?>%</div>
+                              </div>
                             </td>
-                          </tr>
+                            <td>
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="btn-icon-prepend" data-feather="send"></i>
+                                Send Request
+                              </button>
+                              <button class="btn btn-outline-primary btn-icon">
+                                <i data-feather="bell"></i>
+                              </button>
+                            </td>
 
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="mb-3">
+                                      <h5>BODY</h5>
+                                      <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                                    </div>
+                                    <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder=""></textarea>
+
+                                    <div class="mb-3 mt-3">
+                                      <h5>RETURN DATE</h5>
+                                      <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                                    </div>
+                                    <div class="input-group date datepicker" id="datePickerExample">
+                                      <input type="text" class="form-control">
+                                      <span class="input-group-text input-group-addon"><i data-feather="calendar"></i></span>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </tr>
+                          <?php
+                          endforeach;
+                          endif;
+                          ?>
                         </tbody>
                       </table>
                     </div>
-                  </div>
 
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center">
-                              <img class="ht-40 wd-40 me-2 rounded-circle" src="https://via.placeholder.com/40x40" alt="">
-                              <div>
-                                <p>Vixen Monroe</p>
-                                <small class="text-muted">HR Staff</small>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <h6 class="text-dark">10 Jan</h6>
-                              <small class="text-muted">08:37 PM</small>
-                            </div>
-                          </div>
-                          <div class="text-wrap text-justify mb-3">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet eveniet explicabo recusandae accusantium rerum aspernatur aperiam quasi eaque iste voluptatibus!
-                          </div>
-                          <div>
-                            <img class="img-fluid w-100 rounded-2 mb-3" src="https://via.placeholder.com/750x250" alt="">
-                            <div class="text-center mb-3">
-                              <div class="d-inline-flex align-items-center">
-                                <h4 class="text-uppercase me-2">Audi A4 Sedan</h4>
-                              </div>
-                              <p class="text-muted">1.4 TFSI DYNAMIC</p>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-around">
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">gas_meter</span>
-                                <p class="text-uppercase fw-bold">DIESEL</p>
-                              </div>
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">chair</span>
-                                <p class="text-uppercase fw-bold">5 SEATER</p>
-                              </div>
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">weight</span>
-                                <p class="text-uppercase fw-bold">1555 kg</p>
-                              </div>
-                            </div>
-
-                          </div>
-
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Approve Request</button>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
                   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
                   <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-line-tab">...</div>
+                  <div class="tab-pane fade" id="dismiss" role="tabpanel" aria-labelledby="dismiss-line-tab">...</div>
                 </div>
-
-
-
               </div>
             </div>
           </div>
         </div>
+
 
       </div>
     </div>
@@ -651,6 +628,7 @@
     <!-- Plugin js for this page -->
     <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+    <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!-- End plugin js for this page -->
 
     <!-- inject:js -->
@@ -661,6 +639,8 @@
     <!-- Custom js for this page -->
     <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
     <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+    <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
+
     <!-- End custom js for this page -->
 
 

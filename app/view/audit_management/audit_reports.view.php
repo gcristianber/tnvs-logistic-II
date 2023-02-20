@@ -10,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Reservations</title>
+  <title>Audit Reports</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -473,22 +473,24 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">RESERVATIONS</h6>
+                <h6 class="card-title">Audit Reports</h6>
                 <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-
 
                 <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
+                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Require Action</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Reserved</a>
+                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Signed</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="change-line-tab" data-bs-toggle="tab" href="#change" role="tab" aria-controls="change" aria-selected="false">Dispatched</a>
+                    <a class="nav-link" id="change-line-tab" data-bs-toggle="tab" href="#change" role="tab" aria-controls="change" aria-selected="false">Request Changes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="dismiss-line-tab" data-bs-toggle="tab" href="#dismiss" role="tab" aria-controls="dismiss" aria-selected="false">Dismissed</a>
                   </li>
 
                 </ul>
@@ -498,72 +500,60 @@
                       <table id="dataTableExample" class="table">
                         <thead>
                           <tr>
-                            <th>Reservation Id</th>
-                            <th>Fleet Id</th>
-                            <th>Plate Number</th>
-                            <th>Type</th>
-                            <th>Location</th>
-                            <th>Renter</th>
-                            <th>Pick Up Date</th>
-                            <th>Return date</th>
-                            <th>Duration</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Warehouse</th>
+                            <th>Section</th>
+                            <th>Date Issued</th>
+                            <th>Accuracy</th>
                             <th>Status</th>
-                            <th data-orderable="false">action</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr class="align-middle">
-                            <td>rev63f39df582e47</td>
-                            <td>7387663000090010</td>
-                            <td>NBC-1234</td>
                             <td>
                               <div class="d-flex align-items-center">
-                                <img class="ht-50 wd-50 me-2 rounded-1 me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p>Audi A4 Sedan</p>
-                                  <small class="text-muted">Sedan</small>
-                                </div>
+                                <i class="icon-lg me-2" data-feather="feather"></i>
+                                <p>Inventory Report Jan — Mar 2023</p>
                               </div>
                             </td>
-                            <td>WHS-001</td>
                             <td>
                               <div class="d-flex align-items-center">
                                 <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
                                 <div>
-                                  <p>Vixen Monroe</p>
-                                  <small class="text-muted">HR Staff</small>
+                                  <p>Lana Rhoades</p>
+                                  <small class="text-muted">lana@lulan-tnvs.com</small>
                                 </div>
                               </div>
                             </td>
+                            <td>WHS-001</td>
+                            <td>A</td>
                             <td>
-                              <div>
-                                <h6 class="text-success">03 Jan 2023</h6>
-                                <small class="text-muted">08:37 PM</small>
+                              <p class="fw-bold">03 Jan 2023</p>
+                              <small class="text-muted">07:59 PM</small>
+                            </td>
+                           
+                            <td>
+                            
+                            <div class="text-success d-flex align-items-center">
+                              <span class="material-symbols-outlined text-success me-2">trending_up</span>
+                              100%
+                            </div>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Signed</span>
+                            </td>
+                            <td>
+                              <div class="text-center">
+                                <button class="btn btn-outline-primary btn-icon-text">
+                                  <i class="btn-icon-prepend" data-feather="eye"></i>
+                                  View Report
+                                </button>
+                                <a class="link-secondary" href="javascript:;">
+                                  <i class="icon-md" data-feather="more-vertical"></i>
+                                </a>
                               </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-danger">10 Jan 2023</h6>
-                                <small class="text-muted">08:37 PM</small>
-                              </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-dark">1 Day</h6>
-                              </div>
-                            </td>
-                            <td>
-                              <span class="badge bg-secondary">Reserved</span>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="btn-icon-prepend" data-feather="eye"></i>
-                                View Details
-                              </button>
-
-                              <a class="link-secondary" href="javascript:;">
-                                <i class="icon-md" data-feather="more-vertical"></i>
-                              </a>
                             </td>
                           </tr>
 
@@ -571,67 +561,10 @@
                       </table>
                     </div>
                   </div>
-
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center">
-                              <img class="ht-40 wd-40 me-2 rounded-circle" src="https://via.placeholder.com/40x40" alt="">
-                              <div>
-                                <p>Vixen Monroe</p>
-                                <small class="text-muted">HR Staff</small>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <h6 class="text-dark">10 Jan</h6>
-                              <small class="text-muted">08:37 PM</small>
-                            </div>
-                          </div>
-                          <div class="text-wrap text-justify mb-3">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet eveniet explicabo recusandae accusantium rerum aspernatur aperiam quasi eaque iste voluptatibus!
-                          </div>
-                          <div>
-                            <img class="img-fluid w-100 rounded-2 mb-3" src="https://via.placeholder.com/750x250" alt="">
-                            <div class="text-center mb-3">
-                              <div class="d-inline-flex align-items-center">
-                                <h4 class="text-uppercase me-2">Audi A4 Sedan</h4>
-                              </div>
-                              <p class="text-muted">1.4 TFSI DYNAMIC</p>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-around">
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">gas_meter</span>
-                                <p class="text-uppercase fw-bold">DIESEL</p>
-                              </div>
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">chair</span>
-                                <p class="text-uppercase fw-bold">5 SEATER</p>
-                              </div>
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">weight</span>
-                                <p class="text-uppercase fw-bold">1555 kg</p>
-                              </div>
-                            </div>
-
-                          </div>
-
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Approve Request</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
                   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
                   <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-line-tab">...</div>
+                  <div class="tab-pane fade" id="dismiss" role="tabpanel" aria-labelledby="dismiss-line-tab">...</div>
                 </div>
 
 
@@ -640,7 +573,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
