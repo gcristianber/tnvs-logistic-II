@@ -13,6 +13,11 @@ class Reservations
     {
         $data = [];
 
+
+        $VRReservationsModel = new VRReservations;
+        $data["reservations"] = $VRReservationsModel->renderView();
+
+
         $this->view("vehicle_reservation/reservations", $data);
     }
 

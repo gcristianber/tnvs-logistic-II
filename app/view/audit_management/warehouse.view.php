@@ -111,82 +111,64 @@
               <span class="link-title">Declined</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Shared with me</span>
-            </a>
-          </li>
           <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+              <i class="link-icon" data-feather="grid"></i>
+              <span class="link-title">Browse Vehicles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
               <i class="link-icon" data-feather="table"></i>
               <span class="link-title">Reservations</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
-              <i class="link-icon" data-feather="user"></i>
-              <span class="link-title">Users</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
-              <i class="link-icon" data-feather="calendar"></i>
-              <span class="link-title">Schedules</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+            <a href="<?= ROOT ?>vehicle_reservation/reports" class="nav-link">
               <i class="link-icon" data-feather="flag"></i>
               <span class="link-title">Reports</span>
             </a>
           </li>
           <li class="nav-item nav-category">VENDOR PORTAL</li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/feed" class="nav-link">
               <i class="link-icon" data-feather="hash"></i>
               <span class="link-title">Feed</span>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-              <span class="link-title">Buying</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="tag"></i>
-              <span class="link-title">Selling</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Proposals</span>
+              <span class="link-title">Contracts</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/vendors" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Vendors</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">My Orders</span>
-            </a>
-          </li>
+
           <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
           <li class="nav-item">
             <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">Inventory</span>
+              <i class="link-icon" data-feather="plus"></i>
+              <span class="link-title">Create Report</span>
             </a>
           <li class="nav-item">
             <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="bar-chart"></i>
+              <span class="link-title">Analytics</span>
+            </a>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/warehouse" class="nav-link">
+              <i class="link-icon" data-feather="home"></i>
+              <span class="link-title">Warehouse</span>
+            </a>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
               <span class="link-title">Audit Reports</span>
             </a>
@@ -197,6 +179,8 @@
               <span class="link-title">Templates</span>
             </a>
           </li>
+
+
         </ul>
       </div>
     </nav>

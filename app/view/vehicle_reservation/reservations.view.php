@@ -218,250 +218,139 @@
     <div class="page-wrapper">
 
       <!-- partial:../../partials/_navbar.html -->
-      <nav class="navbar">
-        <a href="#" class="sidebar-toggler">
-          <i data-feather="menu"></i>
-        </a>
-        <div class="navbar-content">
-          <form class="search-form">
-            <div class="input-group">
-              <div class="input-group-text">
-                <i data-feather="search"></i>
-              </div>
-              <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-            </div>
-          </form>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <a href="#" class="sidebar-brand">
+            Noble<span>UI</span>
+          </a>
+          <div class="sidebar-toggler not-active">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <ul class="nav">
+            <li class="nav-item nav-category">Main</li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>general/dashboard" class="nav-link">
+                <i class="link-icon" data-feather="box"></i>
+                <span class="link-title">Dashboard</span>
               </a>
-              <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-              </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="grid"></i>
+            <li class="nav-item nav-category">document tracking</li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+                <i class="link-icon" data-feather="feather"></i>
+                <span class="link-title">Compose</span>
               </a>
-              <div class="dropdown-menu p-0" aria-labelledby="appsDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p class="mb-0 fw-bold">Web Apps</p>
-                  <a href="javascript:;" class="text-muted">Edit</a>
-                </div>
-                <div class="row g-0 p-1">
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Chat</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Calendar</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Email</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Profile</p>
-                    </a>
-                  </div>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="mail"></i>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
+                <i class="link-icon" data-feather="send"></i>
+                <span class="link-title">Sent</span>
               </a>
-              <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>9 New Messages</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Leonardo Payne</p>
-                        <p class="tx-12 text-muted">Project status</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Carl Henson</p>
-                        <p class="tx-12 text-muted">Client meeting</p>
-                      </div>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Jensen Combs</p>
-                        <p class="tx-12 text-muted">Project updates</p>
-                      </div>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Amiah Burton</p>
-                        <p class="tx-12 text-muted">Project deatline</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Yaretzi Mayo</p>
-                        <p class="tx-12 text-muted">New record</p>
-                      </div>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="bell"></i>
-                <div class="indicator">
-                  <div class="circle"></div>
-                </div>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
+                <i class="link-icon" data-feather="more-horizontal"></i>
+                <span class="link-title">Pending</span>
               </a>
-              <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>6 New Notifications</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="gift"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New Order Recieved</p>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="alert-circle"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Server Limit Reached!</p>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New customer registered</p>
-                      <p class="tx-12 text-muted">2 sec ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="layers"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Apps are ready for update</p>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="download"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Download completed</p>
-                      <p class="tx-12 text-muted">6 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="profile">
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
+                <i class="link-icon" data-feather="mail"></i>
+                <span class="link-title">Received</span>
               </a>
-              <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
-                <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
-                  <div class="mb-3">
-                    <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
-                  </div>
-                  <div class="text-center">
-                    <p class="tx-16 fw-bolder">Amiah Burton</p>
-                    <p class="tx-12 text-muted">amiahburton@gmail.com</p>
-                  </div>
-                </div>
-                <ul class="list-unstyled p-1">
-                  <li class="dropdown-item py-2">
-                    <a href="../../pages/general/profile.html" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="user"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="edit"></i>
-                      <span>Edit Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="repeat"></i>
-                      <span>Switch User</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="log-out"></i>
-                      <span>Log Out</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
+                <i class="link-icon" data-feather="search"></i>
+                <span class="link-title">On Hold</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
+                <i class="link-icon" data-feather="archive"></i>
+                <span class="link-title">Archived</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
+                <i class="link-icon" data-feather="slash"></i>
+                <span class="link-title">Declined</span>
+              </a>
+            </li>
+            <li class="nav-item nav-category">VEHICLE RESERVATION</li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+                <i class="link-icon" data-feather="grid"></i>
+                <span class="link-title">Browse Vehicles</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+                <i class="link-icon" data-feather="table"></i>
+                <span class="link-title">Reservations</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>vehicle_reservation/reports" class="nav-link">
+                <i class="link-icon" data-feather="flag"></i>
+                <span class="link-title">Reports</span>
+              </a>
+            </li>
+            <li class="nav-item nav-category">VENDOR PORTAL</li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>vendor_portal_admin/feed" class="nav-link">
+                <i class="link-icon" data-feather="hash"></i>
+                <span class="link-title">Feed</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
+                <i class="link-icon" data-feather="feather"></i>
+                <span class="link-title">Contracts</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>vendor_portal_admin/vendors" class="nav-link">
+                <i class="link-icon" data-feather="users"></i>
+                <span class="link-title">Vendors</span>
+              </a>
+            </li>
+
+            <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
+            <li class="nav-item">
+              <a href="javascript:;" class="nav-link">
+                <i class="link-icon" data-feather="plus"></i>
+                <span class="link-title">Create Report</span>
+              </a>
+            <li class="nav-item">
+              <a href="javascript:;" class="nav-link">
+                <i class="link-icon" data-feather="bar-chart"></i>
+                <span class="link-title">Analytics</span>
+              </a>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>audit_management/warehouse" class="nav-link">
+                <i class="link-icon" data-feather="home"></i>
+                <span class="link-title">Warehouse</span>
+              </a>
+            <li class="nav-item">
+              <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
+                <i class="link-icon" data-feather="feather"></i>
+                <span class="link-title">Audit Reports</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:;" class="nav-link">
+                <i class="link-icon" data-feather="paperclip"></i>
+                <span class="link-title">Templates</span>
+              </a>
+            </li>
+
+
           </ul>
         </div>
       </nav>
@@ -506,129 +395,137 @@
                             <th>Renter</th>
                             <th>Pick Up Date</th>
                             <th>Return date</th>
-                            <th>Duration</th>
                             <th>Status</th>
                             <th data-orderable="false">action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr class="align-middle">
-                            <td>rev63f39df582e47</td>
-                            <td>7387663000090010</td>
-                            <td>NBC-1234</td>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img class="ht-50 wd-50 me-2 rounded-1 me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p>Audi A4 Sedan</p>
-                                  <small class="text-muted">Sedan</small>
+                          <?php
+                          if (!empty($reservations)) :
+                            foreach ($reservations as $reservation) :
+                          ?>
+                              <tr class="align-middle">
+                                <td><?= $reservation->reservation_id ?></td>
+                                <td><?= $reservation->fleet_vehicle_id ?></td>
+                                <td><?= $reservation->fleet_plate_number ?></td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img class="ht-50 wd-50 me-2 rounded-1 me-2" src="https://via.placeholder.com/40x40" alt="">
+                                    <div>
+                                      <p><?= $reservation->fleet_vehicle_name ?></p>
+                                      <small class="text-muted"><?= $reservation->vehicle_category_name ?></small>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td><?= $reservation->warehouse_name ?></td>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                                    <div>
+                                      <p><?= $reservation->renter_name ?></p>
+                                      <small class="text-muted"><?= $reservation->renter_position ?></small>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div>
+                                    <h6 class="text-success"><?= date("d M Y", strtotime($reservation->pick_up_date)) ?></h6>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div>
+                                    <h6 class="text-danger"><?= date("d M Y", strtotime($reservation->return_date)) ?></h6>
+                                  </div>
+                                </td>
+                                <td>
+                                  <?php if ($reservation->reservation_status_name == "pending") : ?>
+                                    <span class="badge bg-warning">Pending</span>
+                                  <?php endif; ?>
+                                  <?php if ($reservation->reservation_status_name == "available") : ?>
+                                    <span class="badge bg-success">Available</span>
+                                  <?php endif; ?>
+                                  <?php if ($reservation->reservation_status_name == "reserved") : ?>
+                                    <span class="badge bg-secondary">Reserved</span>
+                                  <?php endif; ?>
+                                  <?php if ($reservation->reservation_status_name == "dispatched") : ?>
+                                    <span class="badge bg-danger">Dispatched</span>
+                                  <?php endif; ?>
+                                </td>
+                                <td>
+                                  <button class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $reservation->reservation_id ?>">
+                                    <i class="btn-icon-prepend" data-feather="eye"></i>
+                                    View Details
+                                  </button>
+
+                                  <a class="link-secondary" href="javascript:;">
+                                    <i class="icon-md" data-feather="more-vertical"></i>
+                                  </a>
+                                </td>
+                              </tr>
+
+                              <div class="modal fade" id="<?= $reservation->reservation_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="d-flex align-items-center">
+                                          <img class="ht-40 wd-40 me-2 rounded-circle" src="https://via.placeholder.com/40x40" alt="">
+                                          <div>
+                                            <p><?= $reservation->renter_name ?></p>
+                                            <small class="text-muted"><?= $reservation->renter_position ?></small>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="text-wrap text-justify mb-3">
+                                        <?= $reservation->reservation_purpose ?>
+                                      </div>
+                                      <div>
+                                        <img class="img-fluid w-100 rounded-2 mb-3" src="https://via.placeholder.com/750x250" alt="">
+                                        <div class="text-center mb-3">
+                                          <div class="d-inline-flex align-items-center">
+                                            <h4 class="text-uppercase me-2"><?= $reservation->fleet_vehicle_name ?></h4>
+                                          </div>
+                                          <p class="text-muted"><?= $reservation->vehicle_category_name ?></p>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-around">
+                                          <div class="text-center text-secondary">
+                                            <span class="fs-2 material-symbols-outlined">gas_meter</span>
+                                            <p class="text-uppercase fw-bold"><?= $reservation->vehicle_fuel_type ?></p>
+                                          </div>
+                                          <div class="text-center text-secondary">
+                                            <span class="fs-2 material-symbols-outlined">chair</span>
+                                            <p class="text-uppercase fw-bold"><?= $reservation->vehicle_no_seats ?> SEATER</p>
+                                          </div>
+                                          <div class="text-center text-secondary">
+                                            <span class="fs-2 material-symbols-outlined">weight</span>
+                                            <p class="text-uppercase fw-bold"><?= $reservation->vehicle_weight ?></p>
+                                          </div>
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Approve Request</button>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </td>
-                            <td>WHS-001</td>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p>Vixen Monroe</p>
-                                  <small class="text-muted">HR Staff</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-success">03 Jan 2023</h6>
-                                <small class="text-muted">08:37 PM</small>
-                              </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-danger">10 Jan 2023</h6>
-                                <small class="text-muted">08:37 PM</small>
-                              </div>
-                            </td>
-                            <td>
-                              <div>
-                                <h6 class="text-dark">1 Day</h6>
-                              </div>
-                            </td>
-                            <td>
-                              <span class="badge bg-secondary">Reserved</span>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="btn-icon-prepend" data-feather="eye"></i>
-                                View Details
-                              </button>
-
-                              <a class="link-secondary" href="javascript:;">
-                                <i class="icon-md" data-feather="more-vertical"></i>
-                              </a>
-                            </td>
-                          </tr>
-
+                          <?php
+                            endforeach;
+                          endif;
+                          ?>
                         </tbody>
                       </table>
                     </div>
                   </div>
 
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center">
-                              <img class="ht-40 wd-40 me-2 rounded-circle" src="https://via.placeholder.com/40x40" alt="">
-                              <div>
-                                <p>Vixen Monroe</p>
-                                <small class="text-muted">HR Staff</small>
-                              </div>
-                            </div>
-                            <div class="text-end">
-                              <h6 class="text-dark">10 Jan</h6>
-                              <small class="text-muted">08:37 PM</small>
-                            </div>
-                          </div>
-                          <div class="text-wrap text-justify mb-3">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet eveniet explicabo recusandae accusantium rerum aspernatur aperiam quasi eaque iste voluptatibus!
-                          </div>
-                          <div>
-                            <img class="img-fluid w-100 rounded-2 mb-3" src="https://via.placeholder.com/750x250" alt="">
-                            <div class="text-center mb-3">
-                              <div class="d-inline-flex align-items-center">
-                                <h4 class="text-uppercase me-2">Audi A4 Sedan</h4>
-                              </div>
-                              <p class="text-muted">1.4 TFSI DYNAMIC</p>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-around">
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">gas_meter</span>
-                                <p class="text-uppercase fw-bold">DIESEL</p>
-                              </div>
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">chair</span>
-                                <p class="text-uppercase fw-bold">5 SEATER</p>
-                              </div>
-                              <div class="text-center text-secondary">
-                                <span class="fs-2 material-symbols-outlined">weight</span>
-                                <p class="text-uppercase fw-bold">1555 kg</p>
-                              </div>
-                            </div>
 
-                          </div>
-
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Approve Request</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
                   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
                   <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-line-tab">...</div>

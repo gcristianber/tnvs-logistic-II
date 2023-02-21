@@ -62,36 +62,122 @@
       </div>
       <div class="sidebar-body">
         <ul class="nav">
+          <li class="nav-item nav-category">Main</li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
+              <i class="link-icon" data-feather="box"></i>
+              <span class="link-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">document tracking</li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Compose</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
+              <i class="link-icon" data-feather="send"></i>
+              <span class="link-title">Sent</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
+              <i class="link-icon" data-feather="more-horizontal"></i>
+              <span class="link-title">Pending</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Received</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
+              <i class="link-icon" data-feather="search"></i>
+              <span class="link-title">On Hold</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
+              <i class="link-icon" data-feather="archive"></i>
+              <span class="link-title">Archived</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
+              <i class="link-icon" data-feather="slash"></i>
+              <span class="link-title">Declined</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+              <i class="link-icon" data-feather="grid"></i>
+              <span class="link-title">Browse Vehicles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Reservations</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vehicle_reservation/reports" class="nav-link">
+              <i class="link-icon" data-feather="flag"></i>
+              <span class="link-title">Reports</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">VENDOR PORTAL</li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/feed" class="nav-link">
               <i class="link-icon" data-feather="hash"></i>
               <span class="link-title">Feed</span>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Invites</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Proposals</span>
+              <span class="link-title">Contracts</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/vendors" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
               <span class="link-title">Vendors</span>
             </a>
           </li>
-          
+
+          <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
           <li class="nav-item">
             <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">My Orders</span>
+              <i class="link-icon" data-feather="plus"></i>
+              <span class="link-title">Create Report</span>
+            </a>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="bar-chart"></i>
+              <span class="link-title">Analytics</span>
+            </a>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/warehouse" class="nav-link">
+              <i class="link-icon" data-feather="home"></i>
+              <span class="link-title">Warehouse</span>
+            </a>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Audit Reports</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <i class="link-icon" data-feather="paperclip"></i>
+              <span class="link-title">Templates</span>
             </a>
           </li>
 
