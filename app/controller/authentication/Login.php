@@ -16,16 +16,14 @@ class Login{
 
             $arr["username"] = $_POST["username"];
             $row = $usersModel->searchViewByCriteria($arr);
-
+            
             if($row){
                 if($row->password == $_POST["password"]){
                     $_SESSION["user"] = $row;
                     redirect("general/dashboard");
                 }
             }
-            
-
-            
+                
         }
 
         $this->view("auth/login", $data);

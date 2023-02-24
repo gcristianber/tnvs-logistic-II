@@ -63,47 +63,49 @@
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Compose</span>
+            <a href="<?= ROOT ?>document_tracking/" class="nav-link">
+              <i class="link-icon" data-feather="search"></i>
+              <span class="link-title">Track</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Create</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
-              <i class="link-icon" data-feather="more-horizontal"></i>
-              <span class="link-title">Pending</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+              <i data-feather="mail" class="link-icon"></i>
+              <span class="link-title">Requests</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </a>
+            <div class="collapse" id="uiComponents">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">Pending</a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">Received</a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">On Hold</a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">Declined</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Received</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
-              <i class="link-icon" data-feather="search"></i>
-              <span class="link-title">On Hold</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
-              <i class="link-icon" data-feather="archive"></i>
-              <span class="link-title">Archived</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
-              <i class="link-icon" data-feather="slash"></i>
-              <span class="link-title">Declined</span>
-            </a>
-          </li>
+
           <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
             <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
@@ -196,54 +198,7 @@
             </div>
           </form>
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="grid"></i>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="appsDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p class="mb-0 fw-bold">Web Apps</p>
-                  <a href="javascript:;" class="text-muted">Edit</a>
-                </div>
-                <div class="row g-0 p-1">
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Chat</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Calendar</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Email</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Profile</p>
-                    </a>
-                  </div>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="mail"></i>

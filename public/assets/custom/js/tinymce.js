@@ -5,7 +5,7 @@ $(function() {
   if ($("#tinymceExample").length) {
     tinymce.init({
       selector: '#tinymceExample',
-      menubar: false,
+      menubar: true,
       height: 400,
       default_text_color: 'red',
       plugins: [

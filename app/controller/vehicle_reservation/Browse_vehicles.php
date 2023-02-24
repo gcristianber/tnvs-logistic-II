@@ -21,4 +21,11 @@ class Browse_vehicles{
         $this->view('vehicle_reservation/browse_vehicles', $data);
     }
 
+    public function view_vehicle(){
+        $data = [];
+
+
+        $this->view('vehicle_reservation/view_vehicle', $data);
+    }
+
 }

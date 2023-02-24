@@ -22,9 +22,9 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -36,6 +36,8 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
 
+  <!-- v4 -->
+  <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
 
@@ -65,47 +67,49 @@
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Compose</span>
+            <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
+              <i class="link-icon" data-feather="search"></i>
+              <span class="link-title">Track</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Create</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
-              <i class="link-icon" data-feather="more-horizontal"></i>
-              <span class="link-title">Pending</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+              <i data-feather="mail" class="link-icon"></i>
+              <span class="link-title">Requests</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </a>
+            <div class="collapse" id="uiComponents">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">Pending</a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">Received</a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">On Hold</a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript:;" class="nav-link">Declined</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Received</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
-              <i class="link-icon" data-feather="search"></i>
-              <span class="link-title">On Hold</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
-              <i class="link-icon" data-feather="archive"></i>
-              <span class="link-title">Archived</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
-              <i class="link-icon" data-feather="slash"></i>
-              <span class="link-title">Declined</span>
-            </a>
-          </li>
+
           <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
             <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
@@ -434,140 +438,109 @@
       <!-- partial -->
 
       <div class="page-content">
-        <div class="row">
-          <div class="col-sm-12 grid-margin">
-            <div class="card">
-              <div class="card-body">
-                <form id="compose">
-                  <div class="mb-4">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <div class="d-flex align-items-center">
-                          <i class="me-2 icon-lg" data-feather="feather"></i>
-                          <h5>COMPOSE DOCUMENT</h5>
-                        </div>
-                        <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Create Document</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Compose</li>
+          </ol>
+        </nav>
+
+
+
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="<?= ROOT ?>document_tracking/create_document">
+                <i data-feather="chevron-left" class="icon-lg"></i>
+                Back to Templates
+              </a>
+              <div class="text-center">
+                <h3 id="documentTitle" contenteditable="true">Untitled</h3>
+                <small class="text-muted">Created by You</small>
+              </div>
+              <div>
+                <button class="btn btn-outline-secondary btn-icon-text" id="useOcr" data-bs-toggle="modal" data-bs-target="#ocrModal">
+                  <i class="btn-icon-prepend" data-feather="code"></i>
+                  OCR
+                </button>
+                <div class="modal fade" id="ocrModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          <i data-feather="code" class="text-primary icon-md me-2"></i>
+                          Use OCR
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                       </div>
-                      <a href="javascript:;">
-                        <i class="icon-sm text-muted" data-feather="info"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <div class="mb-2">
-                      <div>
-                        <div class="d-flex">
-                          <h6 class="me-2">TITLE</h6>
-                          <span class="text-danger">*</span>
-                        </div>
-                        <small class="text-muted">Give your document a suitable title.</small>
+                      <div class="modal-body">
+                        <h6 class="card-title">OPTICAL CHARACTER RECOGNITION</h6>
+                        <p class="text-muted mb-3">Read the <a href="https://github.com/JeremyFagis/dropify" target="_blank"> Official Dropify Documentation </a>for a full list of instructions and other options.</p>
+                        <input type="file" id="myDropify" />
                       </div>
-                    </div>
-                    <input class="form-control" type="text" name="" id="title">
-                  </div>
-                  <div class="mb-3">
-                    <div class="mb-2">
-                      <div>
-                        <div class="d-flex">
-                          <h6 class="me-2">CATEGORY</h6>
-                          <span class="text-danger">*</span>
-                        </div>
-                        <small class="text-muted">Choose a category based on your document.</small>
-                      </div>
-                    </div>
-                    <select class="js-example-basic-single form-select" id="category" data-width="100%">
-                      <?php foreach($categories as $item): ?>
-                      <option value="<?=$item->category_id?>"><?=ucwords($item->category_name)?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <div class="mb-2">
-                      <div>
-                        <div class="d-flex">
-                          <h6 class="me-2">BODY</h6>
-                          <span class="text-danger">*</span>
-                        </div>
-                        <small class="text-muted">Write your document content.</small>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-icon-text" id="btnConvertOCR">
+                          <i data-feather="refresh-ccw" class="btn-icon-prepend"></i>
+                          Convert
+                        </button>
                       </div>
                     </div>
-                    <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
                   </div>
-                  <div class="mb-3">
-                    <div class="mb-2">
-                      <div>
-                        <div class="d-flex">
-                          <h6 class="me-2">PRIORITY</h6>
-                          <span class="text-danger">*</span>
-                        </div>
-                        <small class="text-muted">Set a prioritization to the document.</small>
-                      </div>
-                    </div>
+                </div>
 
-                    <div class="btn-group-vertical w-100" role="group" aria-label="Basic radio toggle button group">
-                      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="1">
-                      <label class="btn btn-outline-danger" for="btnradio1">
-                        <div class="d-flex align-items-center">
-                          <div>
-                            <i class="icon-md me-2" style="transform: rotate(0deg);" data-feather="triangle"></i>
-                          </div>
-                          <div class="d-flex flex-column align-items-start">
-                            <p>High</p>
-                            <small>Important and needing to be done or dealt with quickly.</small>
-                          </div>
-                        </div>
-                      </label>
-
-                      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="2">
-                      <label class="btn btn-outline-secondary" for="btnradio2">
-                        <div class="d-flex align-items-center">
-                          <div>
-                            <i class="icon-md me-2" style="transform: rotate(0deg);" data-feather="minus"></i>
-                          </div>
-                          <div class="d-flex flex-column align-items-start">
-                            <p>Medium</p>
-                            <small>Lorem ipsum dolor sit amet consectetur adipisicing.</small>
-                          </div>
-                        </div>
-                      </label>
-
-                      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="3">
-                      <label class="btn btn-outline-success" for="btnradio3">
-                        <div class="d-flex align-items-center">
-                          <div>
-                            <i class="icon-md me-2" style="transform: rotate(180deg);" data-feather="triangle"></i>
-                          </div>
-                          <div class="d-flex flex-column align-items-start">
-                            <p>Low</p>
-                            <small>Lorem ipsum dolor sit amet consectetur adipisicing.</small>
-                          </div>
-                        </div>
-                      </label>
-
-
-                    </div>
-
-
-                  </div>
-
-                  <div class="float-end">
-                    <button class="btn btn-primary btn-icon-text">
-                      <i class="btn-icon-prepend" data-feather="send"></i>
-                      Send Document
-                    </button>
-                  </div>
-                </form>
+                <button class="btn btn-primary btn-icon-text" id="sendDocument">
+                  <i class="btn-icon-prepend" data-feather="send"></i>
+                  Send Document
+                </button>
               </div>
             </div>
+          </div>
+          <div></div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-md-6 grid-margin">
+                <label for="category" class="form-label">
+                  <div>
+                    <p class="fw-bold">Category</p>
+                    <small class="text-muted">Select a category based on your document.</small>
+                  </div>
+                </label>
+                <select class="js-example-basic-single form-select" id="category" data-width="100%">
+                  <option value="TX">Contract</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="category" class="form-label">
+                  <div>
+                    <p class="fw-bold">Recipient</p>
+                    <small class="text-muted">Choose a department to send through. </small>
+                  </div>
+                </label>
+                <select class="js-example-basic-single form-select" data-width="100%">
+                  <option value="TX">Administrative</option>
+                  <option value="TX">Administrative</option>
+                </select>
+              </div>
+
+            </div>
+            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
+
+          </textarea>
           </div>
         </div>
 
 
       </div>
 
-
     </div>
   </div>
+
+  <!-- v4 -->
+  <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
 
   <!-- core:js -->
   <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
@@ -576,9 +549,8 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -587,74 +559,63 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
   <script src="<?= ROOT ?>assets/js/select2.js"></script>
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+
+
+  <script src="<?= ROOT ?>assets/custom/js/custom.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+
   <!-- End custom js for this page -->
+
   <script>
-    $(document).ready(() => {
-      $('#compose').submit((e) => {
-        e.preventDefault();
+    tinymce.init({
+      selector: '#tinymceExample',
+      menubar: true,
+      height: 600,
+      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table uploadimage print',
+      toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image | table | print | importword',
+      menu: {title: 'Import Word Document', cmd: 'mceImportWord'},
+      image_title: true,
+      automatic_uploads: true,
+      file_picker_types: 'image',
+      file_picker_callback: function(cb, value, meta) {
+        
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
 
-      
-        swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'info',
-          showCancelButton: true,
-          confirmButtonClass: 'me-2',
-          confirmButtonText: 'Yes, Send it!',
-          cancelButtonText: 'No, cancel!',
-          reverseButtons: true
-        }).then((result) => {
-          if (result.value) {
-            swal.fire(
-              'Success!',
-              'Your request has been sent!',
-              'success'
-            )
-            insert();
-            
-          } else if (
-            // Read more about handling dismissals
-            result.dismiss === swal.DismissReason.cancel
-          ) {
-            swal.fire(
-              'Cancelled',
-              'Your request has been revoked',
-              'error'
-            )
-          }
-        })
+        input.onchange = function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+
+          reader.onload = function() {
+            var id = 'blobid' + (new Date()).getTime();
+            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+            var base64 = reader.result.split(',')[1];
+            var blobInfo = blobCache.create(id, file, base64);
+            blobCache.add(blobInfo);
+
+            // Blob info
+            console.log(blobInfo.blobUri())
+
+            // call the callback and populate the Title field with the file name
+            cb(blobInfo.blobUri(), {
+              title: file.name
+            });
+          };
 
 
-      })
+          reader.readAsDataURL(file);
+        };
 
-      function insert() {
-        // console.log("Hello")
-        var title = $('#title').val()
-        var category = $('#category').val()
-        var editor = tinymce.get('tinymceExample');
-        var body = editor.getContent();  
-        var priority = $("input[type='radio']:checked").val();
+        input.click();
 
-        $.ajax({
-          method: "POST",
-          data: {
-            title: title,
-            category_id: category,
-            body: body,
-            priority_id: priority
-          },
-          success: (response)=>{
-            console.log(response)
-          }
-        })
-       
       }
     })
   </script>
+
+
 </body>
 
 </html>

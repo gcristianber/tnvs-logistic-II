@@ -5,6 +5,7 @@ $(function() {
   if ($("#tinymceExample").length) {
     tinymce.init({
       selector: '#tinymceExample',
+      menubar: 'insert',
       height: 400,
       default_text_color: 'red',
       plugins: [
@@ -12,7 +13,7 @@ $(function() {
         'searchreplace wordcount visualblocks visualchars code fullscreen',
       ],
       toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-      toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
+      toolbar2: '',
       image_advtab: true,
       templates: [{
           title: 'Test template 1',
