@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Compose Document</title>
+  <title>Upload Document</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +22,9 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -35,6 +36,8 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
 
+  <!-- v4 -->
+  <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
 
@@ -79,12 +82,6 @@
             <a href="<?= ROOT ?>document_tracking/" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-              <i class="link-icon" data-feather="folder"></i>
-              <span class="link-title">File Manager</span>
             </a>
           </li>
           <li class="nav-item">
@@ -155,7 +152,7 @@
 
           <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+            <a href="javascript:;" class="nav-link">
               <i class="link-icon" data-feather="plus"></i>
               <span class="link-title">Create Report</span>
             </a>
@@ -442,77 +439,88 @@
 
       <div class="page-content">
 
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Create Document</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Compose</li>
+          </ol>
+        </nav>
+
+
+
         <div class="card">
-          <div class="card-body">
+          <div class="card-header">
             <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <h6 class="card-title">SENT DOCUMENTS</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+              <a href="<?= ROOT ?>document_tracking/create_document">
+                <i data-feather="chevron-left" class="icon-lg"></i>
+                Back to Templates
+              </a>
+              <div class="text-center">
+                <h3 id="documentTitle" contenteditable="true">Untitled</h3>
+                <small class="text-muted">Created by You</small>
               </div>
               <div>
-                <a class="btn btn-outline-secondary btn-icon-text" href="<?= ROOT ?>document_tracking/create_document/upload">
-                  <i data-feather="upload" class="btn-icon-prepend"></i>
-                  Send File
-                </a>
-                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/create_document/compose">
-                  <i data-feather="feather" class="btn-icon-prepend"></i>
-                  Compose Document
-                </a>
+
+                <button class="btn btn-primary btn-icon-text" id="sendDocument">
+                  <i class="btn-icon-prepend" data-feather="send"></i>
+                  Send Document
+                </button>
               </div>
             </div>
-
-            <div class="table-responsive">
-              <table id="dataTableExample" class="table">
-                <thead>
-                  <tr>
-                    <th>Tracker Id</th>
-                    <th>File Name</th>
-                    <th>Category</th>
-                    <th>Recipient</th>
-                    <th>Date Created</th>
-                    <th>Status</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                    <td>
-                      <button class="btn btn-primary btn-icon">
-                        <i data-feather="eye" class="icon-md"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  
-                  
-                </tbody>
-              </table>
-            </div>
-
           </div>
+          <div></div>
+          <div class="card-body">
 
+            <div class="row">
+              <div class="col-md-6 grid-margin">
+                <label for="category" class="form-label">
+                  <div>
+                    <p class="fw-bold">Category</p>
+                    <small class="text-muted">Select a category based on your document.</small>
+                  </div>
+                </label>
+                <select class="js-example-basic-single form-select" id="category" data-width="100%">
+                  <option value="TX">Contract</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="category" class="form-label">
+                  <div>
+                    <p class="fw-bold">Recipient</p>
+                    <small class="text-muted">Choose a department to send through. </small>
+                  </div>
+                </label>
+                <select class="js-example-basic-single form-select" data-width="100%">
+                  <option value="TX">Administrative</option>
+                  <option value="TX">Administrative</option>
+                </select>
+              </div>
+
+            </div>
+            <input type="file" id="myDropify" />
+          </textarea>
+          </div>
         </div>
+
+
       </div>
 
-
-
     </div>
+  </div>
 
-  </div>
-  </div>
+  <!-- v4 -->
+  <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
 
   <!-- core:js -->
   <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -521,8 +529,63 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/js/select2.js"></script>
+
+
+  <script src="<?= ROOT ?>assets/custom/js/custom.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+
   <!-- End custom js for this page -->
+
+  <script>
+    tinymce.init({
+      selector: '#tinymceExample',
+      menubar: true,
+      height: 600,
+      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table uploadimage print',
+      toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image | table | print | importword',
+      menu: {title: 'Import Word Document', cmd: 'mceImportWord'},
+      image_title: true,
+      automatic_uploads: true,
+      file_picker_types: 'image',
+      file_picker_callback: function(cb, value, meta) {
+        
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+
+        input.onchange = function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+
+          reader.onload = function() {
+            var id = 'blobid' + (new Date()).getTime();
+            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+            var base64 = reader.result.split(',')[1];
+            var blobInfo = blobCache.create(id, file, base64);
+            blobCache.add(blobInfo);
+
+            // Blob info
+            console.log(blobInfo.blobUri())
+
+            // call the callback and populate the Title field with the file name
+            cb(blobInfo.blobUri(), {
+              title: file.name
+            });
+          };
+
+
+          reader.readAsDataURL(file);
+        };
+
+        input.click();
+
+      }
+    })
+  </script>
+
+
 </body>
 
 </html>

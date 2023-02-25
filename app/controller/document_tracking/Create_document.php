@@ -14,26 +14,17 @@ class Create_document{
         $this->view('document_tracking/create_document', $data);
     }
 
-    public function compose($template_id = ''){
+    public function upload(){
 
         $data = [];
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            print_r($_POST);
 
-            $content = $_POST["content"];
+        $this->view('document_tracking/upload_document', $data);
+    }
 
-            $encode = base64_encode($content);
+    public function compose($template_id = ''){
 
-            echo $encode;
-
-            $decode = base64_decode($encode);
-
-            echo $encode;
-            
-            die();
-
-        }
+        $data = [];
         
         $this->view('document_tracking/compose_document', $data);
     }

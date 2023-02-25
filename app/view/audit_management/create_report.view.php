@@ -10,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Audit Reports</title>
+  <title>Create Report</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,9 +27,9 @@
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
@@ -440,110 +440,83 @@
 
       <div class="page-content">
 
-        <div class="row">
-          <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title">Audit Reports</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-
-                <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Require Action</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Signed</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="change-line-tab" data-bs-toggle="tab" href="#change" role="tab" aria-controls="change" aria-selected="false">Request Changes</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="dismiss-line-tab" data-bs-toggle="tab" href="#dismiss" role="tab" aria-controls="dismiss" aria-selected="false">Dismissed</a>
-                  </li>
-
-                </ul>
-                <div class="tab-content mt-3" id="lineTabContent">
-                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                    <div class="table-responsive">
-                      <table id="dataTableExample" class="table">
-                        <thead>
-                          <tr>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Warehouse</th>
-                            <th>Section</th>
-                            <th>Date Issued</th>
-                            <th>Accuracy</th>
-                            <th>Status</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="align-middle">
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <i class="icon-lg me-2" data-feather="feather"></i>
-                                <p>Inventory Report Jan — Mar 2023</p>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                                <div>
-                                  <p>Lana Rhoades</p>
-                                  <small class="text-muted">lana@lulan-tnvs.com</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>WHS-001</td>
-                            <td>A</td>
-                            <td>
-                              <p class="fw-bold">03 Jan 2023</p>
-                              <small class="text-muted">07:59 PM</small>
-                            </td>
-                           
-                            <td>
-                            
-                            <div class="text-success d-flex align-items-center">
-                              <span class="material-symbols-outlined text-success me-2">trending_up</span>
-                              100%
-                            </div>
-                            </td>
-                            <td>
-                              <span class="badge bg-success">Signed</span>
-                            </td>
-                            <td>
-                              <div class="text-center">
-                                <button class="btn btn-outline-primary btn-icon-text">
-                                  <i class="btn-icon-prepend" data-feather="eye"></i>
-                                  View Report
-                                </button>
-                                <a class="link-secondary" href="javascript:;">
-                                  <i class="icon-md" data-feather="more-vertical"></i>
-                                </a>
-                              </div>
-                            </td>
-                          </tr>
-
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
-                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
-                  <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-line-tab">...</div>
-                  <div class="tab-pane fade" id="dismiss" role="tabpanel" aria-labelledby="dismiss-line-tab">...</div>
-                </div>
-
-
-
+        <div class="card grid-margin">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="#">
+                <i data-feather="chevron-left" class="icon-lg"></i>
+                Back to Templates
+              </a>
+              <div class="text-center">
+                <h3 id="documentTitle" contenteditable="true">Untitled</h3>
+                <small class="text-muted">Created by You</small>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-icon-text" id="sendDocument">
+                  Next
+                  <i class="btn-icon-append" data-feather="arrow-right"></i>
+                </button>
               </div>
             </div>
           </div>
+          <div></div>
+          <div class="card-body">
+
+            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
+          </textarea>
+          </div>
         </div>
+
+        <div class="card grid-margin">
+          <div class="card-body">
+            <div class="col-md-12 grid-margin">
+              <label for="category" class="form-label">
+                <div>
+                  <p class="fw-bold">Section</p>
+                  <small class="text-muted">Select a section to perform.</small>
+                </div>
+              </label>
+              <select class="js-example-basic-single form-select" id="category" data-width="100%">
+                <option value="TX">Section A</option>
+                <option value="TX">Section B</option>
+                <option value="TX">Section C</option>
+              </select>
+            </div>
+            <div class="table-responsive">
+              <table id="dataTableExample" class="table">
+                <thead>
+                  <tr>
+                    <th>Item Id</th>
+                    <th>Item Name</th>
+                    <th>Item Description</th>
+                    <th>Manufacturer</th>
+                    <th>Quantity</th>
+                    <th>Actual Count</th>
+                    <th>Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="align-middle">
+                    <td>A001</td>
+                    <td>Item A</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    <td>SM Supermalls</td>
+                    <td>
+                      <strong>99</strong>
+                    </td>
+                    <td>
+                      <input type="number" name="" id="" class="form-control wd-100">
+                    </td>
+                    <td>
+                      0%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -552,19 +525,69 @@
     <!-- endinject -->
 
     <!-- Plugin js for this page -->
+    <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
+    <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
     <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
     <!-- End plugin js for this page -->
 
     <!-- inject:js -->
+    <script src="<?= ROOT ?>assets/js/select2.js"></script>
     <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
     <script src="<?= ROOT ?>assets/js/template.js"></script>
+
     <!-- endinject -->
 
     <!-- Custom js for this page -->
-    <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
     <script src="<?= ROOT ?>assets/js/data-table.js"></script>
     <!-- End custom js for this page -->
+
+
+    <script>
+      tinymce.init({
+        selector: '#tinymceExample',
+        menubar: false,
+        height: 400,
+        plugins: 'advlist autolink lists link charmap print preview hr anchor pagebreak table print',
+        toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link | table | print',
+        image_title: true,
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        file_picker_callback: function(cb, value, meta) {
+
+          var input = document.createElement('input');
+          input.setAttribute('type', 'file');
+          input.setAttribute('accept', 'image/*');
+
+          input.onchange = function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function() {
+              var id = 'blobid' + (new Date()).getTime();
+              var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+              var base64 = reader.result.split(',')[1];
+              var blobInfo = blobCache.create(id, file, base64);
+              blobCache.add(blobInfo);
+
+              // Blob info
+              console.log(blobInfo.blobUri())
+
+              // call the callback and populate the Title field with the file name
+              cb(blobInfo.blobUri(), {
+                title: file.name
+              });
+            };
+
+
+            reader.readAsDataURL(file);
+          };
+
+          input.click();
+
+        }
+      })
+    </script>
 
 
 </body>

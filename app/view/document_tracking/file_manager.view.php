@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Compose Document</title>
+  <title>File Manager</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +23,8 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -35,11 +36,16 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
 
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
+  <!-- End Custom styles -->
+
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
 
 <body>
   <div class="main-wrapper">
+
 
     <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar">
@@ -205,18 +211,7 @@
             </div>
           </form>
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-              </div>
-            </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="grid"></i>
@@ -403,8 +398,8 @@
                     <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
                   </div>
                   <div class="text-center">
-                    <p class="tx-16 fw-bolder">Amiah Burton</p>
-                    <p class="tx-12 text-muted">amiahburton@gmail.com</p>
+                    <p class="tx-16 fw-bolder"><?= ucwords($_SESSION["user"]->fullname) ?></p>
+                    <p class="tx-12 text-muted"><?= ucwords($_SESSION["user"]->department_name) ?></p>
                   </div>
                 </div>
                 <ul class="list-unstyled p-1">
@@ -427,7 +422,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -442,68 +437,79 @@
 
       <div class="page-content">
 
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <h6 class="card-title">SENT DOCUMENTS</h6>
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">FILE MANAGER</h6>
                 <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-              </div>
-              <div>
-                <a class="btn btn-outline-secondary btn-icon-text" href="<?= ROOT ?>document_tracking/create_document/upload">
-                  <i data-feather="upload" class="btn-icon-prepend"></i>
-                  Send File
-                </a>
-                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/create_document/compose">
-                  <i data-feather="feather" class="btn-icon-prepend"></i>
-                  Compose Document
-                </a>
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table">
+                    <thead>
+                      <tr>
+                        <th>File Id</th>
+                        <th>File Name</th>
+                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Date Created</th>
+                        <th>Last Accessed</th>
+                        <th>Status</th>
+                        <th data-orderable="false">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>001</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <i data-feather="file" class="icon-lg me-2"></i>
+                            <div>
+                              <p>Test File.docx</p>
+                              <small class="text-muted">200 KB</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          Contract
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                            <div>
+                              <p>Cristianber Gordora</p>
+                              <small class="text-muted">Vendor Manager</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">09:36 PM</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">09:36 PM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Active</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Request Access
+                          </button>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-
-            <div class="table-responsive">
-              <table id="dataTableExample" class="table">
-                <thead>
-                  <tr>
-                    <th>Tracker Id</th>
-                    <th>File Name</th>
-                    <th>Category</th>
-                    <th>Recipient</th>
-                    <th>Date Created</th>
-                    <th>Status</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                    <td>
-                      <button class="btn btn-primary btn-icon">
-                        <i data-feather="eye" class="icon-md"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  
-                  
-                </tbody>
-              </table>
-            </div>
-
           </div>
-
         </div>
       </div>
 
-
-
     </div>
-
-  </div>
   </div>
 
   <!-- core:js -->
@@ -513,6 +519,8 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/apexcharts/apexcharts.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -521,8 +529,106 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/dashboard-light.js"></script>
   <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
+
+  <script src="<?= ROOT ?>assets/custom/js/apexcharts-light.js"></script>
   <!-- End custom js for this page -->
+
+  <script>
+    $(document).ready(() => {
+
+      setInterval(function() {
+        $.ajax({
+          method: 'POST',
+          data: {
+            getStatus: true
+          },
+          success: function(data) {
+            console.log(data)
+            var count = $.parseJSON(data)
+            $('#pendingCount').html(count.pending);
+            $('#receivedCount').html(count.received);
+            $('#onholdCount').html(count.onhold);
+            $('#archivedCount').html(count.archived);
+            $('#declinedCount').html(count.declined);
+
+            // console.log(count)
+          }
+        });
+      }, 1000);
+
+
+
+      var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+
+      $(document).on("click", "#copyClipboard", function() {
+        var id = $(this).data("id");
+        navigator.clipboard.writeText(id)
+      });
+
+
+      $(document).on("click", ".btnReceive", function() {
+        var id = $(this).data("id");
+        $.ajax({
+          method: "POST",
+          data: {
+            is_received: true,
+            target_id: id
+          },
+          success: (response) => {
+            console.log(response)
+          }
+        })
+      });
+
+      $(document).on("click", ".btnOnHold", function() {
+        var id = $(this).data("id");
+        $.ajax({
+          method: "POST",
+          data: {
+            is_hold: true,
+            target_id: id
+          },
+          success: (response) => {
+            console.log(response)
+          }
+        })
+      });
+
+      $(document).on("click", ".btnArchive", function() {
+        var id = $(this).data("id");
+        $.ajax({
+          method: "POST",
+          data: {
+            is_archived: true,
+            target_id: id
+          },
+          success: (response) => {
+            console.log(response)
+          }
+        })
+      });
+
+      $(document).on("click", ".btnDecline", function() {
+        var id = $(this).data("id");
+        $.ajax({
+          method: "POST",
+          data: {
+            is_declined: true,
+            target_id: id
+          },
+          success: (response) => {
+            console.log(response)
+          }
+        })
+      });
+
+
+    })
+  </script>
+
 </body>
 
 </html>

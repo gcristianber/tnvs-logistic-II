@@ -469,238 +469,50 @@
 
 
       <div class="page-content">
-        <div class="row">
-          <div class="col-md-12 grid-margin">
-            <div class="card">
-              <div class="card-body">
-                <div class="col grid-margin">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                      <img class="ht-150 wd-150 rounded-2 me-3" src="https://via.placeholder.com/150x150" alt="">
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <h3>White Jaguar XF 2 Car</h3>
-                          <p class="text-secondary">Sedan</p>
-                        </div>
-                        <div class="d-flex gap-3">
-                          <div>
-                            <i data-feather="battery-charging" class="text-secondary me-1"></i>
-                            100%
-                          </div>
-                          <div>
-                            <i data-feather="users" class="text-secondary me-1"></i>
-                            4 Seats
-                          </div>
-                          <div>
-                            <i data-feather="wind" class="text-secondary me-1"></i>
-                            AC
-                          </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="d-flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                          View Details
-                        </button>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="send" class="btn-icon-prepend"></i>
-                          Reserve Vehicle
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col grid-margin">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                      <img class="ht-150 wd-150 rounded-2 me-3" src="https://via.placeholder.com/150x150" alt="">
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <h3>White Jaguar XF 2 Car</h3>
-                          <p class="text-secondary">Sedan</p>
-                        </div>
-                        <div class="d-flex gap-3">
-                          <div>
-                            <i data-feather="battery-charging" class="text-secondary me-1"></i>
-                            100%
-                          </div>
-                          <div>
-                            <i data-feather="users" class="text-secondary me-1"></i>
-                            4 Seats
-                          </div>
-                          <div>
-                            <i data-feather="wind" class="text-secondary me-1"></i>
-                            AC
-                          </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="d-flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                          View Details
-                        </button>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="send" class="btn-icon-prepend"></i>
-                          Reserve Vehicle
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col grid-margin">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                      <img class="ht-150 wd-150 rounded-2 me-3" src="https://via.placeholder.com/150x150" alt="">
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <h3>White Jaguar XF 2 Car</h3>
-                          <p class="text-secondary">Sedan</p>
-                        </div>
-                        <div class="d-flex gap-3">
-                          <div>
-                            <i data-feather="battery-charging" class="text-secondary me-1"></i>
-                            100%
-                          </div>
-                          <div>
-                            <i data-feather="users" class="text-secondary me-1"></i>
-                            4 Seats
-                          </div>
-                          <div>
-                            <i data-feather="wind" class="text-secondary me-1"></i>
-                            AC
-                          </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="d-flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                          View Details
-                        </button>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="send" class="btn-icon-prepend"></i>
-                          Reserve Vehicle
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col grid-margin">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                      <img class="ht-150 wd-150 rounded-2 me-3" src="https://via.placeholder.com/150x150" alt="">
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <h3>White Jaguar XF 2 Car</h3>
-                          <p class="text-secondary">Sedan</p>
-                        </div>
-                        <div class="d-flex gap-3">
-                          <div>
-                            <i data-feather="battery-charging" class="text-secondary me-1"></i>
-                            100%
-                          </div>
-                          <div>
-                            <i data-feather="users" class="text-secondary me-1"></i>
-                            4 Seats
-                          </div>
-                          <div>
-                            <i data-feather="wind" class="text-secondary me-1"></i>
-                            AC
-                          </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="d-flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                          View Details
-                        </button>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="send" class="btn-icon-prepend"></i>
-                          Reserve Vehicle
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col grid-margin">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                      <img class="ht-150 wd-150 rounded-2 me-3" src="https://via.placeholder.com/150x150" alt="">
-                      <div class="d-flex flex-column justify-content-between">
-                        <div>
-                          <h3>White Jaguar XF 2 Car</h3>
-                          <p class="text-secondary">Sedan</p>
-                        </div>
-                        <div class="d-flex gap-3">
-                          <div>
-                            <i data-feather="battery-charging" class="text-secondary me-1"></i>
-                            100%
-                          </div>
-                          <div>
-                            <i data-feather="users" class="text-secondary me-1"></i>
-                            4 Seats
-                          </div>
-                          <div>
-                            <i data-feather="wind" class="text-secondary me-1"></i>
-                            AC
-                          </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                          <i data-feather="star" class="icon-lg text-warning" fill="currentColor"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="d-flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                          View Details
-                        </button>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="send" class="btn-icon-prepend"></i>
-                          Reserve Vehicle
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <h6 class="card-title">BROWSE VEHICLES</h6>
+                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
               </div>
             </div>
+
+            <div class="table-responsive">
+              <table id="dataTableExample" class="table">
+                <thead>
+                  <tr>
+                    <th>Fleet Id</th>
+                    <th>Vehicle Name</th>
+                    <th>Vehicle Type</th>
+                    <th>Color</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                    <td>
+                      <button class="btn btn-primary btn-icon">
+                        <i data-feather="eye" class="icon-md"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+            </div>
+
           </div>
+
         </div>
 
       </div>

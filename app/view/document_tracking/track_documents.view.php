@@ -86,6 +86,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
+              <i class="link-icon" data-feather="folder"></i>
+              <span class="link-title">File Manager</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
               <i data-feather="mail" class="link-icon"></i>
               <span class="link-title">Requests</span>
@@ -153,7 +159,7 @@
 
           <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
               <i class="link-icon" data-feather="plus"></i>
               <span class="link-title">Create Report</span>
             </a>

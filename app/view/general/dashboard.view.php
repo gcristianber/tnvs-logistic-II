@@ -63,7 +63,7 @@
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
               <i class="link-icon" data-feather="search"></i>
               <span class="link-title">Track</span>
             </a>
@@ -78,6 +78,18 @@
             <a href="<?= ROOT ?>document_tracking/" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
+              <i class="link-icon" data-feather="folder"></i>
+              <span class="link-title">File Manager</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
+              <i class="link-icon" data-feather="file"></i>
+              <span class="link-title">Accessed Files</span>
             </a>
           </li>
           <li class="nav-item">
@@ -129,53 +141,80 @@
           <li class="nav-item">
             <a href="<?= ROOT ?>vendor_portal_admin/feed" class="nav-link">
               <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Feed</span>
+              <span class="link-title">Newsfeed</span>
             </a>
           </li>
-
+          
           <li class="nav-item">
             <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Contracts</span>
+              <span class="link-title">Manage Contracts</span>
             </a>
           </li>
           <li class="nav-item">
             <a href="<?= ROOT ?>vendor_portal_admin/vendors" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Vendors</span>
+              <span class="link-title">Manage Vendors</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Purchase Requests</span>
             </a>
           </li>
 
           <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
               <i class="link-icon" data-feather="plus"></i>
               <span class="link-title">Create Report</span>
             </a>
-          <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="bar-chart"></i>
-              <span class="link-title">Analytics</span>
-            </a>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/warehouse" class="nav-link">
-              <i class="link-icon" data-feather="home"></i>
-              <span class="link-title">Warehouse</span>
-            </a>
+          </li>
           <li class="nav-item">
             <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Reports</span>
+              <span class="link-title">Audit Logs</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+              <i class="link-icon" data-feather="navigation"></i>
+              <span class="link-title">Navigate Vehicle</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="paperclip"></i>
-              <span class="link-title">Templates</span>
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">Track Delivers</span>
             </a>
           </li>
-
-
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Delivery Logs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Delivery Requests</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+              <i class="link-icon" data-feather="truck"></i>
+              <span class="link-title">Manage Vehicles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Manage Drivers</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
     </nav>
