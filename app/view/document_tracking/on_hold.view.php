@@ -54,7 +54,8 @@ License: For each use you must have a valid license purchased only from above li
     <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          Noble<span>UI</span>
+          <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
+          Lulan
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -73,9 +74,9 @@ License: For each use you must have a valid license purchased only from above li
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/compose_document" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Compose</span>
+              <span class="link-title">Create</span>
             </a>
           </li>
           <li class="nav-item">
@@ -85,38 +86,47 @@ License: For each use you must have a valid license purchased only from above li
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">
-              <i class="link-icon" data-feather="more-horizontal"></i>
-              <span class="link-title">Pending</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+              <i data-feather="mail" class="link-icon"></i>
+              <span class="link-title">Requests</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <div class="collapse" id="uiComponents">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">Pending</a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= ROOT ?>document_tracking/received" class="nav-link">Received</a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= ROOT ?>document_tracking/on_hold" class="nav-link">On Hold</a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">Declined</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
+              <i class="link-icon" data-feather="folder"></i>
+              <span class="link-title">File Manager</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Received</span>
+            <a href="<?= ROOT ?>document_tracking/accessed_files" class="nav-link">
+              <i class="link-icon" data-feather="file"></i>
+              <span class="link-title">Accessed Files</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/onhold" class="nav-link">
-              <i class="link-icon" data-feather="search"></i>
-              <span class="link-title">On Hold</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/archived" class="nav-link">
-              <i class="link-icon" data-feather="archive"></i>
-              <span class="link-title">Archived</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">
-              <i class="link-icon" data-feather="slash"></i>
-              <span class="link-title">Declined</span>
-            </a>
-          </li>
+          
+
           <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+            <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
               <i class="link-icon" data-feather="grid"></i>
               <span class="link-title">Browse Vehicles</span>
             </a>
@@ -128,61 +138,88 @@ License: For each use you must have a valid license purchased only from above li
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reports" class="nav-link">
+            <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
               <i class="link-icon" data-feather="flag"></i>
-              <span class="link-title">Reports</span>
+              <span class="link-title">Vehicle Reports</span>
             </a>
           </li>
           <li class="nav-item nav-category">VENDOR PORTAL</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/feed" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/newsfeed" class="nav-link">
               <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Feed</span>
+              <span class="link-title">Newsfeed</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Contracts</span>
+              <span class="link-title">Manage Contracts</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/vendors" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Vendors</span>
+              <span class="link-title">Manage Vendors</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Purchase Requests</span>
             </a>
           </li>
 
           <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
+            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
               <i class="link-icon" data-feather="plus"></i>
               <span class="link-title">Create Report</span>
             </a>
+          </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="bar-chart"></i>
-              <span class="link-title">Analytics</span>
-            </a>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/warehouse" class="nav-link">
-              <i class="link-icon" data-feather="home"></i>
-              <span class="link-title">Warehouse</span>
-            </a>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
+            <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Reports</span>
+              <span class="link-title">Audit Logs</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
+              <i class="link-icon" data-feather="navigation"></i>
+              <span class="link-title">Navigate Vehicle</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="paperclip"></i>
-              <span class="link-title">Templates</span>
+            <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">Track Delivers</span>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Delivery Logs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Delivery Requests</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
+              <i class="link-icon" data-feather="truck"></i>
+              <span class="link-title">Manage Vehicles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Manage Drivers</span>
+            </a>
+          </li>
 
         </ul>
       </div>
@@ -449,8 +486,8 @@ License: For each use you must have a valid license purchased only from above li
               <div class="card-body">
                 <div class="mb-3">
                   <div class="d-flex align-items-center">
-                    <i class="me-2 icon-lg text-bitbucket" data-feather="mail"></i>
-                    <h5>RECEIVED DOCUMENTS</h5>
+                    <i class="me-2 icon-lg text-secondary" data-feather="search"></i>
+                    <h5>ON HOLD DOCUMENTS</h5>
                   </div>
                   <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
                 </div>
@@ -518,6 +555,9 @@ License: For each use you must have a valid license purchased only from above li
                               <?php if ($item->status_name == 'received') : ?>
                                 <span class="badge bg-primary">Received</span>
                               <?php endif; ?>
+                              <?php if ($item->status_name == 'working') : ?>
+                                <span class="badge bg-info">Working</span>
+                              <?php endif; ?>
                               <?php if ($item->status_name == 'onhold') : ?>
                                 <span class="badge bg-secondary">On Hold</span>
                               <?php endif; ?>
@@ -547,8 +587,20 @@ License: For each use you must have a valid license purchased only from above li
                                   </button>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
                                     <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnWorking" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="activity" class="icon-sm me-2"></i> <span class="">Working</span></a>
                                     <a class="dropdown-item d-flex align-items-center btnArchive" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="archive" class="icon-sm me-2"></i> <span class="">Archive</span></a>
                                     <a class="dropdown-item d-flex align-items-center btnOnHold" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="search" class="icon-sm me-2"></i> <span class="">Hold</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnDecline" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="slash" class="icon-sm me-2"></i> <span class="">Decline</span></a>
+                                  </div>
+                                <?php endif; ?>
+                                <?php if ($item->status_name == 'working') : ?>
+                                  <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="modal" data-bs-target="#<?= $item->tracking_id ?>"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">Open</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnArchive" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="archive" class="icon-sm me-2"></i> <span class="">Archive</span></a>
+                                    <a class="dropdown-item d-flex align-items-center btnEdit" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
                                     <a class="dropdown-item d-flex align-items-center btnDecline" data-id="<?= $item->tracking_id ?>" href="javascript:;"><i data-feather="slash" class="icon-sm me-2"></i> <span class="">Decline</span></a>
                                   </div>
                                 <?php endif; ?>
@@ -837,6 +889,19 @@ License: For each use you must have a valid license purchased only from above li
           })
         });
 
+        $(document).on("click", ".btnWorking", function() {
+          var id = $(this).data("id");
+          $.ajax({
+            method: "POST",
+            data: {
+              is_working: true,
+              target_id: id
+            },
+            success: (response) => {
+              console.log(response)
+            }
+          })
+        });
 
         $(document).on("click", ".btnOnHold", function() {
           var id = $(this).data("id");

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -10,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Track Documents</title>
+  <title>Requestor Form</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +22,7 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -33,13 +32,9 @@
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
   <!-- End layout styles -->
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
 </head>
 
 <body>
@@ -49,7 +44,8 @@
     <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
-          Noble<span>UI</span>
+          <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
+          Lulan
         </a>
         <div class="sidebar-toggler not-active">
           <span></span>
@@ -68,27 +64,15 @@
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
-              <i class="link-icon" data-feather="search"></i>
-              <span class="link-title">Track</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
               <span class="link-title">Create</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
               <span class="link-title">Sent</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-              <i class="link-icon" data-feather="folder"></i>
-              <span class="link-title">File Manager</span>
             </a>
           </li>
           <li class="nav-item">
@@ -102,24 +86,37 @@
             <div class="collapse" id="uiComponents">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="javascript:;" class="nav-link">Pending</a>
+                  <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">Pending</a>
                 </li>
                 <li class="nav-item">
-                  <a href="javascript:;" class="nav-link">Received</a>
+                  <a href="<?= ROOT ?>document_tracking/received" class="nav-link">Received</a>
                 </li>
                 <li class="nav-item">
-                  <a href="javascript:;" class="nav-link">On Hold</a>
+                  <a href="<?= ROOT ?>document_tracking/on_hold" class="nav-link">On Hold</a>
                 </li>
                 <li class="nav-item">
-                  <a href="javascript:;" class="nav-link">Declined</a>
+                  <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">Declined</a>
                 </li>
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
+              <i class="link-icon" data-feather="folder"></i>
+              <span class="link-title">File Manager</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/accessed_files" class="nav-link">
+              <i class="link-icon" data-feather="file"></i>
+              <span class="link-title">Accessed Files</span>
+            </a>
+          </li>
+
 
           <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+            <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
               <i class="link-icon" data-feather="grid"></i>
               <span class="link-title">Browse Vehicles</span>
             </a>
@@ -131,29 +128,35 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reports" class="nav-link">
+            <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
               <i class="link-icon" data-feather="flag"></i>
-              <span class="link-title">Reports</span>
+              <span class="link-title">Vehicle Reports</span>
             </a>
           </li>
           <li class="nav-item nav-category">VENDOR PORTAL</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/feed" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/newsfeed" class="nav-link">
               <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Feed</span>
+              <span class="link-title">Newsfeed</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/contracts" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Contracts</span>
+              <span class="link-title">Manage Contracts</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/vendors" class="nav-link">
+            <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
               <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Vendors</span>
+              <span class="link-title">Manage Vendors</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
+              <i class="link-icon" data-feather="shopping-cart"></i>
+              <span class="link-title">Purchase Requests</span>
             </a>
           </li>
 
@@ -163,29 +166,50 @@
               <i class="link-icon" data-feather="plus"></i>
               <span class="link-title">Create Report</span>
             </a>
+          </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="bar-chart"></i>
-              <span class="link-title">Analytics</span>
-            </a>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/warehouse" class="nav-link">
-              <i class="link-icon" data-feather="home"></i>
-              <span class="link-title">Warehouse</span>
-            </a>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
+            <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Reports</span>
+              <span class="link-title">Audit Logs</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
+              <i class="link-icon" data-feather="navigation"></i>
+              <span class="link-title">Navigate Vehicle</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:;" class="nav-link">
-              <i class="link-icon" data-feather="paperclip"></i>
-              <span class="link-title">Templates</span>
+            <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
+              <i class="link-icon" data-feather="package"></i>
+              <span class="link-title">Track Delivers</span>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
+              <i class="link-icon" data-feather="table"></i>
+              <span class="link-title">Delivery Logs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Delivery Requests</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
+              <i class="link-icon" data-feather="truck"></i>
+              <span class="link-title">Manage Vehicles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
+              <i class="link-icon" data-feather="users"></i>
+              <span class="link-title">Manage Drivers</span>
+            </a>
+          </li>
 
         </ul>
       </div>
@@ -445,41 +469,96 @@
       <!-- partial -->
 
       <div class="page-content">
+
+
         <div class="card">
           <div class="card-body">
 
-            <div class="text-center">
-              <button class="btn btn-outline-primary btn-icon-text">
-                <i data-feather="search" class="btn-icon-prepend"></i>
-                Track Document
-              </button>
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <a href="<?= ROOT ?>document_tracking/request_document">
+                <i data-feather="chevron-left" class="icon-lg"></i>
+                Back
+              </a>
+              <a href="#">
+                Finish
+                <i data-feather="chevron-right" class="icon-lg"></i>
+              </a>
             </div>
 
+            <div class="mb-3">
+              <div>
+                <h6>FILL OUT REQUEST</h6>
+                <small class="text-muted">Select your type of document to request.</small>
+              </div>
+            </div>
 
-        
+            <div class="alert alert-primary" role="alert">
+              <i data-feather="alert-circle"></i>
+              Please make sure that the details are correct for verification of the document.
+            </div>
+
+            <form id="signupForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input id="name" class="form-control" name="name" type="text">
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Employee Id</label>
+                <input id="name" class="form-control" name="name" type="text">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Employee Position</label>
+                <select class="js-example-basic-single form-select" data-width="100%">
+                  <option value="TX">Office Staff</option>
+                </select>
+              </div>
+             
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input id="email" class="form-control" name="email" type="email">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Document Type</label>
+                <select class="js-example-basic-single form-select" data-width="100%">
+                  <option value="TX">Employment Certificate</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Reason for Request</label>
+                <textarea name="" id="" class="form-control" cols="30" rows="10" placeholder="Type something..."></textarea>
+              </div>
+            </form>
           </div>
         </div>
-
       </div>
+
+
+
     </div>
 
-    <!-- core:js -->
-    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-    <!-- endinject -->
+  </div>
+  </div>
 
-    <!-- Plugin js for this page -->
-    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-    <!-- End plugin js for this page -->
+  <!-- core:js -->
+  <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+  <!-- endinject -->
 
-    <!-- inject:js -->
-    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="<?= ROOT ?>assets/js/template.js"></script>
-    <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="<?= ROOT ?>assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
 
-    <!-- Custom js for this page -->
-    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-    <!-- End custom js for this page -->
+  <!-- inject:js -->
+  <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+  <script src="<?= ROOT ?>assets/js/template.js"></script>
+  <!-- endinject -->
+
+  <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/form-validation.js"></script>
+  <script src="<?= ROOT ?>assets/js/select2.js"></script>
+  <!-- End custom js for this page -->
 </body>
 
 </html>

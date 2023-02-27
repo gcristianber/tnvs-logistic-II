@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -10,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Browse Vehicles</title>
+  <title>Document Requests</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,25 +23,20 @@
 
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-  <link rel="stylesheet" href="../../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
   <!-- End layout styles -->
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
 </head>
-
 
 <body>
   <div class="main-wrapper">
@@ -71,42 +65,18 @@
           </li>
           <li class="nav-item nav-category">document tracking</li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/request_document" class="nav-link">
               <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Create</span>
+              <span class="link-title">Request Document</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
+            <a href="<?= ROOT ?>document_tracking/send_document" class="nav-link">
               <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
+              <span class="link-title">Send Document</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i data-feather="mail" class="link-icon"></i>
-              <span class="link-title">Requests</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </a>
-            <div class="collapse" id="uiComponents">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">Pending</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/received" class="nav-link">Received</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/on_hold" class="nav-link">On Hold</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">Declined</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+
           <li class="nav-item">
             <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
               <i class="link-icon" data-feather="folder"></i>
@@ -114,12 +84,24 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/accessed_files" class="nav-link">
-              <i class="link-icon" data-feather="file"></i>
-              <span class="link-title">Accessed Files</span>
+            <a href="<?= ROOT ?>document_tracking/grant_documents" class="nav-link">
+              <i class="link-icon" data-feather="unlock"></i>
+              <span class="link-title">Grant Documents</span>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/incoming_documents" class="nav-link">
+              <i class="link-icon" data-feather="file-text"></i>
+              <span class="link-title">Incoming Documents</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= ROOT ?>document_tracking/document_requests" class="nav-link">
+              <i class="link-icon" data-feather="mail"></i>
+              <span class="link-title">Document Requests</span>
+            </a>
+          </li>
+
 
           <li class="nav-item nav-category">VEHICLE RESERVATION</li>
           <li class="nav-item">
@@ -475,81 +457,148 @@
       </nav>
       <!-- partial -->
 
-
       <div class="page-content">
+
         <div class="card">
           <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between">
+
+            <div class="mb-3 d-flex align-items-center justify-content-between">
               <div>
-                <h6 class="card-title">BROWSE VEHICLES</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+                <h6>REQUEST DOCUMENT</h6>
+                <small class="text-muted">Manage your requested documents.</small>
+              </div>
+
+              <div>
+                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/request_document/requestor_form">
+                  <i data-feather="feather" class="btn-icon-prepend"></i>
+                  Create Request
+                </a>
               </div>
             </div>
 
-            <div class="table-responsive">
-              <table id="dataTableExample" class="table">
-                <thead>
-                  <tr>
-                    <th>Fleet Id</th>
-                    <th>Vehicle Name</th>
-                    <th>Vehicle Type</th>
-                    <th>Color</th>
-                    <th>Status</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                    <td>
-                      <button class="btn btn-primary btn-icon">
-                        <i data-feather="eye" class="icon-md"></i>
-                      </button>
-                    </td>
-                  </tr>
-
-
-                </tbody>
-              </table>
+            <div class="alert alert-primary" role="alert">
+              <i data-feather="alert-circle"></i>
+              Follow up your documents if the request is expired.
             </div>
 
+            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">In Progress</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
+              </li>
+
+            </ul>
+            <div class="tab-content mt-3" id="lineTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                <div class="mb-3">
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="btnradio1">All</label>
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio2">Employment Certificate</label>
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio3">Time-Off Request</label>
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio3">Report</label>
+                </div>
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table">
+                    <thead>
+                      <tr>
+                        <th>Tracking Id</th>
+                        <th>Document Type</th>
+                        <th>Author</th>
+                        <th>Date Created</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>rd63fb2261b7e24</td>
+                        <td>
+                          Employment Certificate
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                            <div>
+                              <p>John Doe</p>
+                              <small class="text-muted">Super Admin</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">05:13 PM</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold">06 Jan 2023</p>
+                          <small class="text-muted">05:13 PM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Pending</span>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="eye" class="btn-icon-prepend"></i>
+                            View Request
+                          </button>
+                          <a href="" class="link-secondary">
+                            <i data-feather="more-vertical" class="icon-md"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
+              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="success-line-tab">decline</div>
+            </div>
+
+
+
+
+
+
+
           </div>
-
         </div>
-
       </div>
+
 
 
     </div>
 
-    <!-- core:js -->
-    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-    <!-- endinject -->
+  </div>
+  </div>
 
-    <!-- Plugin js for this page -->
-    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <!-- End plugin js for this page -->
+  <!-- core:js -->
+  <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+  <!-- endinject -->
 
-    <!-- inject:js -->
-    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="<?= ROOT ?>assets/js/template.js"></script>
-    <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <!-- End plugin js for this page -->
 
-    <!-- Custom js for this page -->
-    <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-    <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
+  <!-- inject:js -->
+  <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+  <script src="<?= ROOT ?>assets/js/template.js"></script>
+  <!-- endinject -->
 
-    <!-- End custom js for this page -->
-
+  <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+  <!-- End custom js for this page -->
 </body>
 
 </html>
