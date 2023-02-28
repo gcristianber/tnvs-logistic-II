@@ -6,6 +6,8 @@ class Compose_document{
 
     public function index(){
 
+
+        $this->view('partials/sidebar');
         $this->view("document_tracking/compose_document");
     }
 

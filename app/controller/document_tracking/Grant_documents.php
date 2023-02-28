@@ -6,6 +6,7 @@ class Grant_documents{
 
     public function index(){
 
+        $this->view('partials/sidebar');
         $this->view("document_tracking/grant_documents");
     }
 

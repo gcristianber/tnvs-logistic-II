@@ -48,7 +48,7 @@
   <div class="main-wrapper">
 
     <!-- partial:../../partials/_sidebar.html -->
-    <nav class="sidebar">
+    <!-- <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
           <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
@@ -220,7 +220,7 @@
 
         </ul>
       </div>
-    </nav>
+    </nav> -->
     <!-- partial -->
 
     <div class="page-wrapper">

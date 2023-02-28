@@ -6,6 +6,8 @@ class File_manager{
 
     public function index(){
 
+
+        $this->view('partials/sidebar');
         $this->view("document_tracking/file_manager");
     }
 

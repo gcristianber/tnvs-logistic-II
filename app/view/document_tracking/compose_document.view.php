@@ -45,7 +45,7 @@
   <div class="main-wrapper">
 
     <!-- partial:../../partials/_sidebar.html -->
-    <nav class="sidebar">
+    <!-- <nav class="sidebar">
       <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
           <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
@@ -205,7 +205,7 @@
 
         </ul>
       </div>
-    </nav>
+    </nav> -->
     <!-- partial -->
 
     <div class="page-wrapper">
@@ -470,7 +470,6 @@
         </nav>
 
 
-
         <div class="card">
           <div class="card-header">
             <div class="d-flex align-items-center justify-content-between">
@@ -479,7 +478,7 @@
                 Back
               </a>
               <div class="text-center">
-                <h3 id="documentTitle" contenteditable="true">Untitled</h3>
+                <h3 id="documentTitle" contenteditable="true" name="documentTitle">Untitled</h3>
                 <small class="text-muted">Created by You</small>
               </div>
               <div>
@@ -512,49 +511,49 @@
                     </div>
                   </div>
                 </div>
-
-                <button class="btn btn-primary btn-icon-text" id="sendDocument">
+                <button type="submit" class="btn btn-primary btn-icon-text" id="sendDocument">
                   <i class="btn-icon-prepend" data-feather="send"></i>
                   Send Document
                 </button>
               </div>
             </div>
           </div>
-          <div></div>
+
           <div class="card-body">
 
-            <div class="row">
-              <div class="col-md-6 grid-margin">
-                <label for="category" class="form-label">
-                  <div>
-                    <p class="fw-bold">Category</p>
-                    <small class="text-muted">Select a category based on your document.</small>
-                  </div>
-                </label>
-                <select class="js-example-basic-single form-select" id="category" data-width="100%">
-                  <option value="TX">Contract</option>
-                </select>
-              </div>
-
-              <div class="col-md-6">
-                <label for="category" class="form-label">
-                  <div>
-                    <p class="fw-bold">Recipient</p>
-                    <small class="text-muted">Choose a department to send through. </small>
-                  </div>
-                </label>
-                <select class="js-example-basic-single form-select" data-width="100%">
-                  <option value="TX">Administrative</option>
-                  <option value="TX">Administrative</option>
-                </select>
-              </div>
-
+            <div class="alert alert-danger d-none" role="alert" id="alert">
+              <i data-feather="alert-circle"></i>
+              <span id="textAlert">There's no document attached!</span>
             </div>
-            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
-
-          </textarea>
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <label for="category" class="form-label">
+                  <div>
+                    <p class="fw-bold">PURPOSE</p>
+                    <small class="text-muted">Write a purpose of sending document.</small>
+                  </div>
+                </label>
+                <div class="mb-3">
+                  <select class="form-select" name="category_select" id="categorySelect">
+                    <option selected="" disabled="">Select Category</option>
+                    <?php foreach ($categories as $category) : ?>
+                      <option value="<?= $category->category_id ?>"><?= ucwords($category->document_category_name) ?></option>
+                    <?php endforeach ?>
+                  </select>
+                </div>
+                <div>
+                  <textarea name="purpose" class="form-control" id="purpose" cols="30" rows="5" placeholder="Type something..."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <p class="fw-bold">COMPOSE</p>
+              <small class="text-muted">Compose your own document.</small>
+            </div>
+            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something..."></textarea>
           </div>
         </div>
+
 
 
       </div>
@@ -596,14 +595,17 @@
       selector: '#tinymceExample',
       menubar: true,
       height: 600,
-      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table uploadimage print',
-      toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image | table | print | importword',
-      menu: {title: 'Import Word Document', cmd: 'mceImportWord'},
+      plugins: 'advlist autolink lists charmap print preview hr anchor pagebreak print',
+      toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | print',
+      menu: {
+        title: 'Import Word Document',
+        cmd: 'mceImportWord'
+      },
       image_title: true,
       automatic_uploads: true,
       file_picker_types: 'image',
       file_picker_callback: function(cb, value, meta) {
-        
+
         var input = document.createElement('input');
         input.setAttribute('type', 'file');
         input.setAttribute('accept', 'image/*');

@@ -12,17 +12,19 @@ class Login{
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             
-            $usersModel = new UsersModel;
+            // $usersModel = new UsersModel;
 
-            $arr["username"] = $_POST["username"];
-            $row = $usersModel->searchViewByCriteria($arr);
+            // $arr["username"] = $_POST["username"];
+            // $row = $usersModel->searchViewByCriteria($arr);
             
-            if($row){
-                if($row->password == $_POST["password"]){
-                    $_SESSION["user"] = $row;
-                    redirect("general/dashboard");
-                }
-            }
+            // if($row){
+            //     if($row->password == $_POST["password"]){
+            //         $_SESSION["user"] = $row;
+            //         redirect("general/dashboard");
+            //     }
+            // }
+
+            redirect("general/dashboard");
                 
         }
 

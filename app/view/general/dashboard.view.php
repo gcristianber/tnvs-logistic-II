@@ -40,170 +40,6 @@
 <body>
   <div class="main-wrapper">
 
-    <!-- partial:../../partials/_sidebar.html -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-          <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
-          Lulan
-        </a>
-        <div class="sidebar-toggler not-active">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="sidebar-body">
-        <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/request_document" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Request Document</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/send_document" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Send Document</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-              <i class="link-icon" data-feather="folder"></i>
-              <span class="link-title">File Manager</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/grant_documents" class="nav-link">
-              <i class="link-icon" data-feather="unlock"></i>
-              <span class="link-title">Grant Documents</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/incoming_documents" class="nav-link">
-              <i class="link-icon" data-feather="file-text"></i>
-              <span class="link-title">Incoming Documents</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/document_requests" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Document Requests</span>
-            </a>
-          </li>
-
-
-          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="grid"></i>
-              <span class="link-title">Browse Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Reservations</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
-              <i class="link-icon" data-feather="flag"></i>
-              <span class="link-title">Vehicle Reports</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">VENDOR PORTAL</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/newsfeed" class="nav-link">
-              <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Newsfeed</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Manage Contracts</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Vendors</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-              <span class="link-title">Purchase Requests</span>
-            </a>
-          </li>
-
-          <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
-              <i class="link-icon" data-feather="plus"></i>
-              <span class="link-title">Create Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Logs</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
-              <i class="link-icon" data-feather="navigation"></i>
-              <span class="link-title">Navigate Vehicle</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">Track Delivers</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Delivery Logs</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Delivery Requests</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="truck"></i>
-              <span class="link-title">Manage Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Drivers</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-    <!-- partial -->
-
     <div class="page-wrapper">
 
       <!-- partial:../../partials/_navbar.html -->
@@ -221,83 +57,6 @@
             </div>
           </form>
           <ul class="navbar-nav">
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="mail"></i>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>9 New Messages</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Leonardo Payne</p>
-                        <p class="tx-12 text-muted">Project status</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Carl Henson</p>
-                        <p class="tx-12 text-muted">Client meeting</p>
-                      </div>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Jensen Combs</p>
-                        <p class="tx-12 text-muted">Project updates</p>
-                      </div>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Amiah Burton</p>
-                        <p class="tx-12 text-muted">Project deatline</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Yaretzi Mayo</p>
-                        <p class="tx-12 text-muted">New record</p>
-                      </div>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="bell"></i>
@@ -306,54 +65,18 @@
                 </div>
               </a>
               <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
+                <div class="px-3 py-2 d-flex gap-5 align-items-center justify-content-between border-bottom">
                   <p>6 New Notifications</p>
                   <a href="javascript:;" class="text-muted">Clear all</a>
                 </div>
                 <div class="p-1">
                   <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
                     <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="gift"></i>
+                      <i class="icon-sm text-white" data-feather="mail"></i>
                     </div>
                     <div class="flex-grow-1 me-2">
-                      <p>New Order Recieved</p>
+                      <p>Someone is requesting a document.</p>
                       <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="alert-circle"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Server Limit Reached!</p>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New customer registered</p>
-                      <p class="tx-12 text-muted">2 sec ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="layers"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Apps are ready for update</p>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="download"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Download completed</p>
-                      <p class="tx-12 text-muted">6 hrs ago</p>
                     </div>
                   </a>
                 </div>

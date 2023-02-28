@@ -1,67 +1,62 @@
 $(document).ready(() => {
 
-    const sendBtn = $('#sendDocument');
     const ocrBtn = $('#btnConvertOCR');
 
-    sendBtn.on('click', () => {
-
+    $('#sendDocument').on("click", (e) => {
+        e.preventDefault()
         const documentTitle = $('#documentTitle');
+        const purpose = $('#purpose').val();
+        const category = $('#categorySelect').val();
         const editor = tinymce.get('tinymceExample');
         const content = editor.getContent();
 
-        const trimTitle = documentTitle[0].innerHTML.replace('<br>', '')
-        console.log(trimTitle)
+        var alert = document.getElementById("alert")
+        var textAlert = document.getElementById("textAlert")
 
-        console.log(content)
+        const trimTitle = documentTitle[0].innerHTML.replace('<br>', '')
+
 
         $.ajax({
-            type: 'POST',
-            data: {content: content},
-            success: function(response){
+            type: "POST",
+            data: {
+                title: trimTitle,
+                category: category,
+                purpose: purpose,
+                content: content
+            },
+            success: function (response) {
                 console.log(response)
+                if (response.success) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                    });
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Uploaded Successfully!'
+                    })
+                    alert.classList.add("d-none")
+                } else {
+                    alert.classList.remove("d-none")
+                    textAlert.innerHTML = response;
+                }
+
+
             }
+
         })
 
-        showSwal()
+
+
+
     })
 
     function showSwal() {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger me-2'
-            },
-            buttonsStyling: false,
-        })
 
-        swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "Your document will be sent!",
-            icon: 'info',
-            showCancelButton: true,
-            confirmButtonClass: 'me-2',
-            confirmButtonText: 'Yes, send it!',
-            cancelButtonText: 'No, cancel!',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.value) {
-                swalWithBootstrapButtons.fire(
-                    'Sent!',
-                    'Your document has been sent.',
-                    'success'
-                )
-                // ! --> Function for upload here...
-            } else if (
-                // Read more about handling dismissals
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                    'Sending has been cancelled',
-                    'error'
-                )
-            }
-        })
     }
 
     ocrBtn.on('click', () => {

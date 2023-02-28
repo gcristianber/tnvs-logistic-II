@@ -11,6 +11,7 @@ class Request_document{
 
 
         
+        $this->view('partials/sidebar');
         $this->view('document_tracking/request_document', $data);
     }  
 
