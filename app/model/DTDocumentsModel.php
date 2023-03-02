@@ -33,7 +33,7 @@ class DTDocumentsModel{
 
         $data = [
             "document_id" => $id,
-            "document_name" => $title,
+            "document_name" => $title.".docx",
             "document_size" => $file_details['size'],
             "document_extension" => "docx",
             "document_purpose" => $compose["purpose"],

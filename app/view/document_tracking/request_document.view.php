@@ -38,6 +38,24 @@
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
 
+<style>
+  input[type="radio"] {
+    display: none;
+  }
+
+  /* Style the label to look like a clickable element */
+  label {
+    cursor: pointer;
+    /* Add any additional styling you want for your label */
+  }
+
+  input[type="radio"]:checked+label {
+    border: 1px solid #6571ff;
+    border-radius: 4px;
+    user-select: none;
+  }
+</style>
+
 <body>
   <div class="main-wrapper">
 
@@ -307,7 +325,7 @@
               <div>
                 <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/request_document/requestor_form">
                   <i data-feather="feather" class="btn-icon-prepend"></i>
-                  Create Request
+                  Create request
                 </a>
               </div>
             </div>
@@ -318,16 +336,12 @@
               Follow up your documents if the request is expired.
             </div>
 
-
-
-
-
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">In Progress</a>
+                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ongoing</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
@@ -336,22 +350,16 @@
                 <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Expired</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Followed Up</a>
               </li>
+
 
             </ul>
             <div class="tab-content mt-3" id="lineTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                <div class="mb-3">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-primary" for="btnradio1">All</label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio2">Employment Certificate</label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3">Time-Off Request</label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3">Report</label>
-                </div>
                 <div class="table-responsive">
                   <table id="dataTableExample" class="table">
                     <thead>
@@ -384,14 +392,55 @@
                           <span class="badge bg-warning">Pending</span>
                         </td>
                         <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
+                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i data-feather="eye" class="btn-icon-prepend"></i>
                             View Request
                           </button>
-                          <a href="" class="link-secondary">
-                            <i data-feather="more-vertical" class="icon-md"></i>
-                          </a>
                         </td>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="bg-gray-100 p-3 text-wrap mb-3">
+                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, quos dicta pariatur illo repellendus minus delectus laudantium facere repellat reiciendis ab exercitationem quis temporibus sint?
+                                </div>
+
+
+                                <ul class="list-group">
+                                  <li class="list-group-item">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                      <div class="d-flex align-items-center">
+                                        <div class="ht-40 wd-40 rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center me-2">
+                                          <i data-feather="more-horizontal" class="icon-lg"></i>
+                                        </div>
+                                        
+                                        <div>
+                                          <h6>PENDING</h6>
+                                          <small class="text-muted">Document has set to pending</small>
+                                        </div>
+                                      </div>
+
+                                      <div class="text-end">
+                                        <h6>03 Jan</h6>
+                                        <small class="text-muted">03:47 AM</small>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Follow Up Request</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </tr>
                     </tbody>
                   </table>

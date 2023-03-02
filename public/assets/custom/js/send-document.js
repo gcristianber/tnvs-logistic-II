@@ -14,11 +14,14 @@ $(document).ready(() => {
             processData: false,
             contentType: false,
             success: function (response) {
+
+                console.log(response)
                 if ($.trim(response)) {
 
                     if (response.success) {
                         // ? RENDER DATA
                         console.log(response);
+                        console.log("Hello");
                         // render_data(response)
 
                         $("#uploadForm")[0].reset()
@@ -41,17 +44,9 @@ $(document).ready(() => {
                     }
 
                 }
-                // render_data()
             }
         })
     })
-
-    function render_data(data) {
-
-    }
-
-
-
 
 
 })

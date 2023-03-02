@@ -12,7 +12,6 @@ class Send_document
 
         $data = [];
 
-
         $DocumentsModel = new DTDocumentsModel;
         $DocumentCategoryModel = new DTDocCategoryModel;
 

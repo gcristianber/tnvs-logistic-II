@@ -301,7 +301,7 @@
 
             <div class="mb-3 d-flex align-items-center justify-content-between">
               <div>
-                <h6>REQUEST DOCUMENT</h6>
+                <h6>DOCUMENT REQUEST</h6>
                 <small class="text-muted">Manage your requested documents.</small>
               </div>
             </div>
@@ -311,7 +311,7 @@
                 <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">In Progress</a>
+                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ongoing</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
@@ -326,16 +326,7 @@
             </ul>
             <div class="tab-content mt-3" id="lineTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                <div class="mb-3">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-primary" for="btnradio1">All</label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio2">Employment Certificate</label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3">Time-Off Request</label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3">Report</label>
-                </div>
+
                 <div class="table-responsive">
                   <table id="dataTableExample" class="table">
                     <thead>
@@ -377,12 +368,27 @@
                         </td>
                         <td class="text-center">
                           <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="eye" class="btn-icon-prepend"></i>
-                            View Request
+                            <i data-feather="feather" class="btn-icon-prepend"></i>
+                            Use Template
                           </button>
-                          <a href="" class="link-secondary">
+                          <button class="btn btn-outline-primary btn-icon-text">
+                            <i data-feather="send" class="btn-icon-prepend"></i>
+                            Send Document
+                          </button>
+
+                          <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <i data-feather="more-vertical" class="icon-md"></i>
-                          </a>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+                              <i data-feather="eye" class="icon-md me-2"></i>
+                              <span class="">View</span>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+                              <i data-feather="slash" class="icon-md me-2"></i>
+                              <span class="">Decline</span>
+                            </a>
+                          </div>
                         </td>
                       </tr>
                     </tbody>

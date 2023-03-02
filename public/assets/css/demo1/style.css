@@ -8173,6 +8173,8 @@ div.tox .btn-group-vertical > .btn-group:not(:first-child) > .tox-button,
   color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
 }
 
+
+
 .text-info {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-info-rgb), var(--bs-text-opacity)) !important;
@@ -8182,6 +8184,7 @@ div.tox .btn-group-vertical > .btn-group:not(:first-child) > .tox-button,
   --bs-text-opacity: 1;
   color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;
 }
+
 
 .text-danger {
   --bs-text-opacity: 1;

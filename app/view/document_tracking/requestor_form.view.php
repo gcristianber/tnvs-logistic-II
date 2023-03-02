@@ -22,7 +22,7 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -39,182 +39,6 @@
 
 <body>
   <div class="main-wrapper">
-
-    <!-- partial:../../partials/_sidebar.html -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-          <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
-          Lulan
-        </a>
-        <div class="sidebar-toggler not-active">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="sidebar-body">
-        <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Create</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i data-feather="mail" class="link-icon"></i>
-              <span class="link-title">Requests</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </a>
-            <div class="collapse" id="uiComponents">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">Pending</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/received" class="nav-link">Received</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/on_hold" class="nav-link">On Hold</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">Declined</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-              <i class="link-icon" data-feather="folder"></i>
-              <span class="link-title">File Manager</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/accessed_files" class="nav-link">
-              <i class="link-icon" data-feather="file"></i>
-              <span class="link-title">Accessed Files</span>
-            </a>
-          </li>
-
-
-          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="grid"></i>
-              <span class="link-title">Browse Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Reservations</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
-              <i class="link-icon" data-feather="flag"></i>
-              <span class="link-title">Vehicle Reports</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">VENDOR PORTAL</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/newsfeed" class="nav-link">
-              <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Newsfeed</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Manage Contracts</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Vendors</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-              <span class="link-title">Purchase Requests</span>
-            </a>
-          </li>
-
-          <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
-              <i class="link-icon" data-feather="plus"></i>
-              <span class="link-title">Create Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Logs</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
-              <i class="link-icon" data-feather="navigation"></i>
-              <span class="link-title">Navigate Vehicle</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">Track Delivers</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Delivery Logs</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Delivery Requests</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="truck"></i>
-              <span class="link-title">Manage Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Drivers</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-    <!-- partial -->
 
     <div class="page-wrapper">
 
@@ -471,48 +295,57 @@
       <div class="page-content">
 
 
-        <div class="card">
-          <div class="card-body">
-
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <a href="<?= ROOT ?>document_tracking/request_document">
-                <i data-feather="chevron-left" class="icon-lg"></i>
-                Back
-              </a>
-              <a href="#">
-                Finish
-                <i data-feather="chevron-right" class="icon-lg"></i>
-              </a>
-            </div>
-
-            <div class="mb-3">
-              <div>
-                <h6>FILL OUT REQUEST</h6>
-                <small class="text-muted">Select your type of document to request.</small>
+        <form id="requestorForm" enctype="multipart/form-data">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <a href="<?= ROOT ?>document_tracking/request_document">
+                  <i data-feather="chevron-left" class="icon-lg"></i>
+                  Back
+                </a>
+                <button type="submit" class="btn btn-primary">
+                  Submit Request
+                </button>
               </div>
-            </div>
 
-            <div class="alert alert-primary" role="alert">
-              <i data-feather="alert-circle"></i>
-              Please make sure that the details are correct for verification of the document.
-            </div>
+              <div class="mb-3">
+                <div>
+                  <h6>FILL OUT REQUEST</h6>
+                  <small class="text-muted">Select your type of document to request.</small>
+                </div>
+              </div>
 
-            <form id="signupForm">
-            <div class="mb-3">
+              <div class="alert alert-primary" role="alert">
+                <i data-feather="alert-circle"></i>
+                Please make sure that the details are correct for verification of the document.
+              </div>
+
+              <div class="alert alert-danger d-none" role="alert" id="alert">
+                <i data-feather="alert-circle"></i>
+                <span id="textAlert">There's no document attached!</span>
+              </div>
+
+              <div class="alert alert-danger d-none" role="alert" id="alert">
+                <i data-feather="alert-circle"></i>
+                <span id="textAlert">There's no document attached!</span>
+              </div>
+
+
+              <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
                 <input id="name" class="form-control" name="name" type="text">
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">Employee Id</label>
-                <input id="name" class="form-control" name="name" type="text">
+                <input id="employeeId" class="form-control" name="employee_id" type="text">
               </div>
               <div class="mb-3">
                 <label class="form-label">Employee Position</label>
-                <select class="js-example-basic-single form-select" data-width="100%">
-                  <option value="TX">Office Staff</option>
+                <select class="form-select" id="employeePosition" name="employee_position" data-width="100%">
+                  <option disabled selected>Select Position</option>
+                  <option value="1">Office Staff</option>
                 </select>
               </div>
-             
 
               <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
@@ -521,17 +354,19 @@
 
               <div class="mb-3">
                 <label class="form-label">Document Type</label>
-                <select class="js-example-basic-single form-select" data-width="100%">
-                  <option value="TX">Employment Certificate</option>
+                <select class="form-select" name="document_type" id="documentType" data-width="100%">
+                  <option disabled selected>Select Document Type</option>         
+                  <option value="1">Employment Certificate</option>
                 </select>
               </div>
               <div class="mb-3">
                 <label class="form-label">Reason for Request</label>
-                <textarea name="" id="" class="form-control" cols="30" rows="10" placeholder="Type something..."></textarea>
+                <textarea name="reason_for_request" id="reason" class="form-control" cols="30" rows="10" placeholder="Type something..."></textarea>
               </div>
-            </form>
+
+            </div>
           </div>
-        </div>
+        </form>
       </div>
 
 
@@ -546,8 +381,7 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/jquery-validation/jquery.validate.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -556,8 +390,8 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/form-validation.js"></script>
-  <script src="<?= ROOT ?>assets/js/select2.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/request-document-gen.js"></script>
   <!-- End custom js for this page -->
 </body>
 

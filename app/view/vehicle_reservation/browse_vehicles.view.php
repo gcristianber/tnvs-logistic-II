@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -24,204 +23,24 @@
 
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-  <link rel="stylesheet" href="../../../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
   <!-- End layout styles -->
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
 </head>
-
 
 <body>
   <div class="main-wrapper">
-
-    <!-- partial:../../partials/_sidebar.html -->
-    <!-- <nav class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-          <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
-          Lulan
-        </a>
-        <div class="sidebar-toggler not-active">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="sidebar-body">
-        <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Create</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i data-feather="mail" class="link-icon"></i>
-              <span class="link-title">Requests</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </a>
-            <div class="collapse" id="uiComponents">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">Pending</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/received" class="nav-link">Received</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/on_hold" class="nav-link">On Hold</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">Declined</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-              <i class="link-icon" data-feather="folder"></i>
-              <span class="link-title">File Manager</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/accessed_files" class="nav-link">
-              <i class="link-icon" data-feather="file"></i>
-              <span class="link-title">Accessed Files</span>
-            </a>
-          </li>
-          
-
-          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="grid"></i>
-              <span class="link-title">Browse Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Reservations</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
-              <i class="link-icon" data-feather="flag"></i>
-              <span class="link-title">Vehicle Reports</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">VENDOR PORTAL</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/newsfeed" class="nav-link">
-              <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Newsfeed</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Manage Contracts</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Vendors</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-              <span class="link-title">Purchase Requests</span>
-            </a>
-          </li>
-
-          <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
-              <i class="link-icon" data-feather="plus"></i>
-              <span class="link-title">Create Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Logs</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
-              <i class="link-icon" data-feather="navigation"></i>
-              <span class="link-title">Navigate Vehicle</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">Track Delivers</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Delivery Logs</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Delivery Requests</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="truck"></i>
-              <span class="link-title">Manage Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Drivers</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </nav> -->
-    <!-- partial -->
 
     <div class="page-wrapper">
 
@@ -475,80 +294,124 @@
       </nav>
       <!-- partial -->
 
-
       <div class="page-content">
+
+
         <div class="card">
           <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between">
+
+            <div class="mb-3 d-flex align-items-center justify-content-between">
               <div>
-                <h6 class="card-title">BROWSE VEHICLES</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+                <h6>BROWSE VEHICLES</h6>
+                <small class="text-muted">Browse your desired vehicle</small>
               </div>
             </div>
-
             <div class="table-responsive">
-              <table id="dataTableExample" class="table">
+              <table id="PendingTable" class="table display">
                 <thead>
                   <tr>
                     <th>Fleet Id</th>
-                    <th>Vehicle Name</th>
-                    <th>Vehicle Type</th>
+                    <th>Plate Number</th>
+                    <th>Vehicle</th>
+                    <th>Type</th>
+                    <th>Year</th>
                     <th>Color</th>
+                    <th>Fuel Type</th>
                     <th>Status</th>
-                    <th></th>
-                    <th></th>
+                    <th data-orderable="false" class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
+                  <tr class="align-middle">
+                    <td>001</td>
+                    <td>FUK-001</td>
                     <td>
-                      <button class="btn btn-primary btn-icon">
-                        <i data-feather="eye" class="icon-md"></i>
-                      </button>
+                      <div class="d-flex align-items-center">
+                        <img class="ht-40 wd-40 rounded-2 me-2 img-fluid" src="https://images.summitmedia-digital.com/topgear/images/2021/11/23/honda-civic-red-2022-main-1637644905.jpg" alt="">
+                        <div>
+                          <p class="fw-bold">Honda</p>
+                          <small class="text-muted">Civic</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Sedan</td>
+                    <td>2022</td>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="ht-20 wd-20 bg-danger rounded-2"></div>
+                        <div class="ht-20 wd-20 bg-dark rounded-2"> </div>
+                      </div>
+                    </td>
+                    <td>Gasoline</td>
+                    <td>
+                      <span class="badge bg-danger">
+                        Reserved
+                      </span>
+                    </td>
+                    <td>
+                      <div class="text-center">
+                        <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          <i data-feather="eye" class="btn-icon-prepend"></i>
+                          View Details
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <img src="" alt="">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button class="btn btn-danger btn-icon">
+                          <i data-feather="flag"></i>
+                        </button>
+                      </div>
                     </td>
                   </tr>
-
-
                 </tbody>
               </table>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-
     </div>
 
-    <!-- core:js -->
-    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-    <!-- endinject -->
+  </div>
+  </div>
 
-    <!-- Plugin js for this page -->
-    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <!-- End plugin js for this page -->
+  <!-- core:js -->
+  <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+  <!-- endinject -->
 
-    <!-- inject:js -->
-    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="<?= ROOT ?>assets/js/template.js"></script>
-    <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <!-- End plugin js for this page -->
 
-    <!-- Custom js for this page -->
-    <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-    <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
+  <!-- inject:js -->
+  <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+  <script src="<?= ROOT ?>assets/js/template.js"></script>
+  <!-- endinject -->
 
-    <!-- End custom js for this page -->
+  <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/request-document-access.js"></script>
+
+  <!-- End custom js for this page -->
 
 </body>
 

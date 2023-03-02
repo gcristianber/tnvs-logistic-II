@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -10,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>File Manager</title>
+  <title>Request Document</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,22 +22,19 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
-
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/custom/css/style.css">
-  <!-- End Custom styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
@@ -63,7 +59,18 @@
             </div>
           </form>
           <ul class="navbar-nav">
-
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
+                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
+                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
+                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
+                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
+              </div>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="grid"></i>
@@ -250,8 +257,8 @@
                     <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
                   </div>
                   <div class="text-center">
-                    <p class="tx-16 fw-bolder"><?= ucwords($_SESSION["user"]->fullname) ?></p>
-                    <p class="tx-12 text-muted"><?= ucwords($_SESSION["user"]->department_name) ?></p>
+                    <p class="tx-16 fw-bolder">Amiah Burton</p>
+                    <p class="tx-12 text-muted">amiahburton@gmail.com</p>
                   </div>
                 </div>
                 <ul class="list-unstyled p-1">
@@ -274,7 +281,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
+                    <a href="javascript:;" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -289,79 +296,130 @@
 
       <div class="page-content">
 
-        <div class="row">
-          <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title">FILE MANAGER</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
-                <div class="table-responsive">
-                  <table id="dataTableExample" class="table">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Document Type</th>
-                        <th>Category</th>
-                        <th>Author</th>
-                        <th>Department</th>
-                        <th>Date Created</th>
-                        <th>Status</th>
-                        
-                        <th data-orderable="false">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <i data-feather="file" class="icon-lg me-2"></i>
-                            <div>
-                              <p>Test File.docx</p>
-                              <small class="text-muted">200 KB</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>docx</td>
-                        <td>
-                          Contract
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
-                            <div>
-                              <p>Cristianber Gordora</p>
-                              <small class="text-muted">Vendor Manager</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Logistic</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">09:36 PM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Active</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Request Access
-                          </button>
-                        </td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-                </div>
+
+        <div class="card">
+          <div class="card-body">
+
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <div>
+                <h6>FILE MANAGER</h6>
+                <small class="text-muted">Manage your sent documents.</small>
               </div>
+            </div>
+
+            <div class="alert alert-primary" role="alert">
+              <i data-feather="alert-circle"></i>
+              A simple primary alert—check it out!
+            </div>
+
+            <div class="table-responsive">
+              <table id="PendingTable" class="table display">
+                <thead>
+                  <tr>
+                    <th>Document Id</th>
+                    <th>Document Name</th>
+                    <th>Category</th>
+                    <th>Author</th>
+                    <th>Date Created</th>
+                    <th data-orderable="false" class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  if (!empty($view_table)) :
+                    foreach ($view_table as $data) :
+                      if ($data->document_status == "pending") :
+                  ?>
+                        <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                          <td><?= $data->document_id ?></td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <i data-feather="file" class="icon-lg me-2"></i>
+                              <div>
+                                <p class="fw-bold"><?= $data->document_name ?></p>
+                                <small class="text-muted">
+                                  <?= round($data->document_size / 1024) . ' KB' ?>
+                                </small>
+                              </div>
+                            </div>
+                          </td>
+                          <td><?= ucwords($data->document_category_name) ?></td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img src="https://via.placeholder.com/40x40" class="me-2" alt="">
+
+                              <div>
+                                <p><?= $data->display_name ?></p>
+                                <small class="text-muted"><?= $data->account_type_name ?></small>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                            <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                          </td>
+                          <td class="text-center">
+                            <button class="btn btn-primary btn-icon-text sendRequestBtn" data-bs-toggle="modal" data-bs-target="#<?= $data->document_id ?>">
+                              <i data-feather="plus" class="btn-icon-prepend"></i>
+                              Request Access
+                            </button>
+                          </td>
+                          <div class="modal fade" id="<?= $data->document_id ?>" data-id="<?= $data->document_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                  <div class="mb-3">
+                                    <h6>REQUEST DOCUMENT</h6>
+                                    <small class="text-muted">Compose a reason of accessing document.</small>
+                                  </div>
+
+                                  <div class="alert alert-danger d-none" id="textAlert" role="alert">
+                                    <i data-feather="alert-circle"></i>
+                                    <span>Text area is empty!</span>
+                                  </div>
+                                  <textarea name="textarea_reason" class="form-control" cols="30" rows="5" placeholder="Type something..."></textarea>
+
+                                  <ul class="list-group mt-3">
+                                    <li class="list-group-item">
+                                      <div class="d-flex align-items-center">
+                                        <i data-feather="file" class="icon-lg me-2"></i>
+                                        <div>
+                                          <p class="fw-bold"><?= $data->document_name ?></p>
+                                          <small class="text-muted">
+                                            <?= round($data->document_size / 1024) . ' KB' ?>
+                                          </small>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary submitRequest">Send Request</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </tr>
+                  <?php
+                      endif;
+                    endforeach;
+                  endif;
+                  ?>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-
     </div>
+
+  </div>
   </div>
 
   <!-- core:js -->
@@ -371,8 +429,8 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/apexcharts/apexcharts.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -381,11 +439,11 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/dashboard-light.js"></script>
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/request-document-access.js"></script>
 
-  <script src="<?= ROOT ?>assets/custom/js/apexcharts-light.js"></script>
   <!-- End custom js for this page -->
 
 </body>

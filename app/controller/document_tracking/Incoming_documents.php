@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Incoming_documents
 {
 
@@ -8,6 +10,8 @@ class Incoming_documents
     public function index()
     {
         $data = [];
+
+        $_SESSION["department_name"] = "administrative";
 
         $DocumentsModel = new DTDocumentsModel;
         $data["view_table"] = $DocumentsModel->renderViewData();

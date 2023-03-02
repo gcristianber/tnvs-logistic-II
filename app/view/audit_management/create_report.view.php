@@ -47,182 +47,6 @@
 <body>
   <div class="main-wrapper">
 
-    <!-- partial:../../partials/_sidebar.html -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-          <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
-          Lulan
-        </a>
-        <div class="sidebar-toggler not-active">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="sidebar-body">
-        <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>general/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/create_document" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Create</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
-              <i data-feather="mail" class="link-icon"></i>
-              <span class="link-title">Requests</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down link-arrow">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </a>
-            <div class="collapse" id="uiComponents">
-              <ul class="nav sub-menu">
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/pending" class="nav-link">Pending</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/received" class="nav-link">Received</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/on_hold" class="nav-link">On Hold</a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= ROOT ?>document_tracking/declined" class="nav-link">Declined</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-              <i class="link-icon" data-feather="folder"></i>
-              <span class="link-title">File Manager</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/accessed_files" class="nav-link">
-              <i class="link-icon" data-feather="file"></i>
-              <span class="link-title">Accessed Files</span>
-            </a>
-          </li>
-          
-
-          <li class="nav-item nav-category">VEHICLE RESERVATION</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="grid"></i>
-              <span class="link-title">Browse Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Reservations</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
-              <i class="link-icon" data-feather="flag"></i>
-              <span class="link-title">Vehicle Reports</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">VENDOR PORTAL</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/newsfeed" class="nav-link">
-              <i class="link-icon" data-feather="hash"></i>
-              <span class="link-title">Newsfeed</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Manage Contracts</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Vendors</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
-              <i class="link-icon" data-feather="shopping-cart"></i>
-              <span class="link-title">Purchase Requests</span>
-            </a>
-          </li>
-
-          <li class="nav-item nav-category">AUDIT MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
-              <i class="link-icon" data-feather="plus"></i>
-              <span class="link-title">Create Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
-              <i class="link-icon" data-feather="feather"></i>
-              <span class="link-title">Audit Logs</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">FLEET MANAGEMENT</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
-              <i class="link-icon" data-feather="navigation"></i>
-              <span class="link-title">Navigate Vehicle</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
-              <i class="link-icon" data-feather="package"></i>
-              <span class="link-title">Track Delivers</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
-              <i class="link-icon" data-feather="table"></i>
-              <span class="link-title">Delivery Logs</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Delivery Requests</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
-              <i class="link-icon" data-feather="truck"></i>
-              <span class="link-title">Manage Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Manage Drivers</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-    <!-- partial -->
-
     <div class="page-wrapper">
 
       <!-- partial:../../partials/_navbar.html -->
@@ -477,42 +301,27 @@
 
       <div class="page-content">
 
-        <div class="card grid-margin">
-          <div class="card-header">
-            <div class="d-flex align-items-center justify-content-between">
-              <a href="#">
-                <i data-feather="chevron-left" class="icon-lg"></i>
-                Back to Templates
-              </a>
-              <div class="text-center">
-                <h3 id="documentTitle" contenteditable="true">Untitled</h3>
-                <small class="text-muted">Created by You</small>
-              </div>
-              <div>
-                <button class="btn btn-primary btn-icon-text" id="sendDocument">
-                  Next
-                  <i class="btn-icon-append" data-feather="arrow-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div></div>
-          <div class="card-body">
 
-            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
-          </textarea>
-          </div>
-        </div>
 
         <div class="card grid-margin">
           <div class="card-body">
             <div class="col-md-12 grid-margin">
-              <label for="category" class="form-label">
+
+              <div class="d-flex align-items-center justify-content-between mb-3">
                 <div>
-                  <p class="fw-bold">Section</p>
+                  <p class="fw-bold">CONDUCT AUDIT</p>
                   <small class="text-muted">Select a section to perform.</small>
                 </div>
-              </label>
+                <button class="btn btn-primary" id="getTableData">
+                  Generate Report
+                </button>
+              </div>
+
+              <div class="alert alert-primary" role="alert">
+                <i data-feather="alert-circle"></i>
+                A simple primary alert—check it out!
+              </div>
+
               <select class="js-example-basic-single form-select" id="category" data-width="100%">
                 <option value="TX">Section A</option>
                 <option value="TX">Section B</option>
@@ -523,34 +332,72 @@
               <table id="dataTableExample" class="table">
                 <thead>
                   <tr>
-                    <th>Item Id</th>
+                    <th>Item_Id</th>
                     <th>Item Name</th>
                     <th>Item Description</th>
                     <th>Manufacturer</th>
                     <th>Quantity</th>
                     <th>Actual Count</th>
+                    <th>Variance</th>
                     <th>Accuracy</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="align-middle">
-                    <td>A001</td>
-                    <td>Item A</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td>SM Supermalls</td>
-                    <td>
+                    <td data-name="item_id">A001</td>
+                    <td data-name="item_name">Item A</td>
+                    <td data-name="item_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    <td data-name="manufacturer">SM Supermalls</td>
+                    <td data-name="system_count">
                       <strong>99</strong>
                     </td>
-                    <td>
-                      <input type="number" name="" id="" class="form-control wd-100">
+                    <td data-name="actual_count">
+                      <div class="border rounded-2 text-center p-2" contenteditable="true">
+                      </div>
                     </td>
-                    <td>
+                    <td data-name="variance">
+                      0
+                    </td>
+                    <td data-name="accuracy">
+                      0%
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td data-name="item_id">A002</td>
+                    <td data-name="item_name">Item B</td>
+                    <td data-name="item_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                    <td data-name="manufacturer">Lulan Incorp</td>
+                    <td data-name="system_count">
+                      <strong>28</strong>
+                    </td>
+                    <td data-name="actual_count">
+                      <div class="border rounded-2 text-center p-2" contenteditable="true">
+                      </div>
+                    </td>
+                    <td data-name="variance">
+                      0
+                    </td>
+                    <td data-name="accuracy">
                       0%
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+
+        <div class="card grid-margin">
+
+          <div class="card-body">
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <div>
+                <h6>CONCLUSION</h6>
+                <small class="text-muted">Manage your sent documents.</small>
+              </div>
+            </div>
+            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
+          </textarea>
           </div>
         </div>
 
@@ -624,6 +471,95 @@
 
         }
       })
+
+
+      const btn = document.getElementById("getTableData")
+      const actualCountInputs = document.querySelectorAll('[data-name="actual_count"] div');
+
+      btn.addEventListener("click", () => {
+        getTableData()
+      })
+
+      actualCountInputs.forEach((input) => {
+        // Add input event listener to the actual count input element
+        input.addEventListener('input', () => {
+          // Get the parent row element
+          const row = input.closest('tr');
+
+          // Get the system count value
+          const systemCount = parseInt(row.querySelector('[data-name="system_count"] strong').textContent);
+
+          // Get the actual count value
+          const actualCount = parseInt(input.textContent) || 0;
+
+          // Compute the variance and accuracy
+          const variance = actualCount - systemCount;
+          const accuracy = systemCount == 0 ? 'N/A' : ((actualCount / systemCount) * 100).toFixed(2);
+
+          // Update the variance and accuracy values in the row
+          row.querySelector('[data-name="variance"]').textContent = variance;
+          const accuracyEl = row.querySelector('[data-name="accuracy"]');
+          accuracyEl.textContent = `${accuracy}%`;
+
+          // Change the color of the accuracy text based on the percentage
+          if (accuracy >= 100) {
+            accuracyEl.style.color = '#20c997';
+          } else if (accuracy >= 75) {
+            accuracyEl.style.color = '#ffc107';
+          } else if (accuracy >= 50) {
+            accuracyEl.style.color = '#fd7e14';
+          } else if (accuracy < 25) {
+            accuracyEl.style.color = '#ff3366';
+          }
+        });
+      });
+
+
+      function getTableData() {
+        // Get a reference to the table element
+        var table = document.getElementById("dataTableExample");
+
+        // Create an empty array to store the objects
+        var tableData = [];
+
+        // Loop through each row in the table
+        for (var i = 1, row; row = table.rows[i]; i++) {
+
+          // Create a new object to store the cell data for this row
+          var rowData = {};
+
+          // Loop through each cell in the row
+          for (var j = 0, cell; cell = row.cells[j]; j++) {
+
+            var cellName = cell.getAttribute("data-name");
+            // Get the text content of the cell
+            var cellText = cell.textContent.trim();
+
+            // Use the cell text as the value for a key-value pair in the object
+            rowData[cellName] = cellText;
+          }
+
+          // Add the object to the array
+          tableData.push(rowData);
+        }
+
+        // Log the array of objects to the console
+        console.log(tableData);
+
+        $.ajax({
+          type: "POST",
+          data: {
+            tableData: tableData
+          },
+          success: function(response) {
+            console.log(response)
+          },
+          error: function(xhr, status, error) {
+            console.log("Error sending table data:", error);
+          }
+        })
+
+      }
     </script>
 
 

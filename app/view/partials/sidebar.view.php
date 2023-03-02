@@ -42,9 +42,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/grant_documents" class="nav-link">
+                <a href="<?= ROOT ?>document_tracking/accessed_documents" class="nav-link">
                     <i class="link-icon" data-feather="unlock"></i>
-                    <span class="link-title">Grant Documents</span>
+                    <span class="link-title">Accessed Documents</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -80,7 +80,6 @@
                     <span class="link-title">Vehicle Reports</span>
                 </a>
             </li>
-
             <li class="nav-item nav-category">vendor portal</li>
             <li class="nav-item">
                 <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
@@ -89,7 +88,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/manage_contracts" class="nav-link">
+                <a href="<?= ROOT ?>vendor_portal_admin/manage_vendor_contracts" class="nav-link">
                     <i class="link-icon" data-feather="feather"></i>
                     <span class="link-title">Manage Contracts</span>
                 </a>
@@ -102,6 +101,12 @@
             </li>
 
             <li class="nav-item nav-category">audit management</li>
+            <li class="nav-item">
+                <a href="<?= ROOT ?>audit_management/cycle_count" class="nav-link">
+                    <i class="link-icon" data-feather="calendar"></i>
+                    <span class="link-title">Schedules</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
                     <i class="link-icon" data-feather="plus"></i>

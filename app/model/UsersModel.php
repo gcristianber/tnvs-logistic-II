@@ -6,8 +6,8 @@ class UsersModel{
 
     use Model;
 
-    protected $table = "users";
-    protected $view_table = 'users_view';
+    protected $table = "admin_um_accounts";
+    protected $view_table = 'admin_um_accounts_view';
 
     public function renderView(){
         
