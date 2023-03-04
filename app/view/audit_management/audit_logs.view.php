@@ -380,10 +380,16 @@
                             <i data-feather="plus" class="btn-icon-prepend"></i>
                             Mark as done
                           </button>
-                          <button class="btn btn-outline-primary btn-icon-text">
-                            <i data-feather="edit-2" class="btn-icon-prepend"></i>
-                            Edit Report
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="send"></i>
                           </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="download"></i>
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="edit"></i>
+                          </button>
+                          
                         </td>
                       </tr>
                     </tbody>

@@ -424,11 +424,11 @@
                               </td>
                               <td class="text-center">
                                 <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="plus" class="btn-icon-prepend"></i>
-                                  Receive
+                                  <i data-feather="eye" class="btn-icon-prepend"></i>
+                                  View Details
                                 </button>
                                 <button class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#<?= $data->document_id ?>">
-                                  <i data-feather="external-link" ></i>
+                                  <i data-feather="edit" ></i>
                                 </button>
                                 </div>
                               </td>
@@ -527,11 +527,11 @@
                               </td>
                               <td class="text-center">
                                 <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="edit" class="btn-icon-prepend"></i>
-                                  Edit Document
+                                  <i data-feather="eye" class="btn-icon-prepend"></i>
+                                  View Details
                                 </button>
                                 <button class="btn btn-outline-primary btn-icon">
-                                  <i data-feather="download" class="btn-icon-prepend"></i>
+                                  <i data-feather="edit" class="btn-icon-prepend"></i>
                                 </button>
                               </td>
                             </tr>
