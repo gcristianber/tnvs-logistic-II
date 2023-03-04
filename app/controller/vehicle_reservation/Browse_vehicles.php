@@ -6,7 +6,13 @@ class Browse_vehicles{
 
     public function index(){
 
-        $this->view('vehicle_reservation/browse_vehicles');
+        $data = [];
+
+        $FMVehicles = new FMVehicles;
+
+        $data["vehicles"] = $FMVehicles->renderViewData();
+
+        $this->view('vehicle_reservation/browse_vehicles', $data);
         $this->view('partials/sidebar');
     }
 

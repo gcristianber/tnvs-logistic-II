@@ -21,7 +21,7 @@ $(document).ready(() => {
                     if (response.success) {
                         // ? RENDER DATA
                         console.log(response);
-                        console.log("Hello");
+                        // console.log("Hello");
                         // render_data(response)
 
                         $("#uploadForm")[0].reset()

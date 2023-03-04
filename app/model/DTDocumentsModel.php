@@ -22,7 +22,7 @@ class DTDocumentsModel{
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
 
-        $file_path = "uploads/".$id."/";
+        $file_path = "uploads/documents/".$id."/";
         mkdir($file_path);
         
         \PhpOffice\PhpWord\Shared\Html::addHtml($section, $content, false, false);
@@ -72,7 +72,7 @@ class DTDocumentsModel{
         date_default_timezone_set("Asia/Hong_Kong");
 
         $folder_id      = uniqid("doc");
-        $make_new_path  = "uploads/".$folder_id."/";
+        $make_new_path  = "uploads/documents/".$folder_id."/";
 
         mkdir($make_new_path);
 

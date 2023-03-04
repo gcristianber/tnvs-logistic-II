@@ -24,6 +24,7 @@
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-colorpicker/bootstrap-colorpicker.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -38,6 +39,31 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
+
+<style>
+  .dropify-wrapper {
+    width: 400px;
+    height: 300px;
+  }
+
+  .dropify-wrapper {
+    position: relative;
+  }
+
+  .dropify-infos {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .dropify-button {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+</style>
 
 <body>
   <div class="main-wrapper">
@@ -301,8 +327,70 @@
 
             <div class="mb-3 d-flex justify-content-between align-items-center">
               <div>
-                <h6>BROWSE VEHICLES</h6>
+                <h6>MANAGE VEHICLES</h6>
                 <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#addVehicleModal">
+                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                  Add Vehicle
+                </button>
+                <div class="modal fade" id="addVehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Vehicle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <form id="addVehicleForm" enctype="multipart/form-data">
+                        <div class="modal-body">
+                          <div class="d-flex gap-2">
+                            <input type="file" id="myDropify" />
+                            <div class="w-100 d-flex flex-column justify-content-between">
+                              <div class="mb-3">
+                                <input type="text" name="make" id="" class="form-control" placeholder="Vehicle Name">
+                              </div>
+                              <div class="mb-3">
+                                <input type="text" name="model_year" id="" class="form-control" placeholder="Model Year">
+                              </div>
+                              <div class="mb-3 d-flex align-items-center gap-2">
+                                <select name="vehicle_model_type_id" id="" class="form-select">
+                                  <option selected disabled>Select Type</option>
+                                  <option value="1">Sedan</option>
+                                  <option value="2">Van</option>
+                                  <option value="3">Trucks</option>
+                                </select>
+
+                                <select name="gearbox_type_id" id="" class="form-select">
+                                  <option selected disabled>Select Gearbox Type</option>
+                                  <option value="1">Automatic</option>
+                                  <option value="2">Manual</option>
+                                </select>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <div id="cp1" class="input-group mb-2" title="Using input value">
+                                  <input type="text" name="color" class="form-control" value="#DD0F20FF" />
+                                  <span class="input-group-text colorpicker-input-addon"><i></i></span>
+                                </div>
+                                <div>
+                                  <input type="number" name="no_seaters" id="" class="form-control">
+                                </div>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <input type="text" name="odometer" id="" class="form-control" placeholder="Odometer">
+                                <input type="text" name="dimensions" id="" class="form-control" placeholder="Dimensions">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -341,22 +429,6 @@
                               <div>
                                 <div class="d-flex align-items-center gap-2">
                                   <h3><?= ucwords($data->make) ?></h3>
-
-                                  <?php if ($data->status_name == "available") :
-                                  ?>
-                                  <span class="badge bg-success">Available</span>
-                                  <?php
-                                  endif;  ?>
-                                  <?php if ($data->status_name == "reserved") :
-                                  ?>
-                                  <span class="badge bg-secondary">Reserved</span>
-                                  <?php
-                                  endif;  ?>
-                                  <?php if ($data->status_name == "dispatched") :
-                                  ?>
-                                  <span class="badge bg-danger">Dispatched</span>
-                                  <?php
-                                  endif;  ?>
                                 </div>
                                 <p class="text-muted"><?= ucwords($data->model_type_name) ?></p>
                               </div>
@@ -382,15 +454,11 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
-                                <i data-feather="plus" class="btn-icon-prepend"></i>
-                                Reserve Vehicle
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?=$data->vehicle_id?>" data-id="<?=$data->vehicle_id?>">
+                                <i data-feather="settings" class="btn-icon-prepend"></i>
+                                Edit Vehicle
                               </button>
-                              <button class="btn btn-outline-primary btn-icon">
-                                <i data-feather="external-link"></i>
-                              </button>
-
-                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="<?=$data->vehicle_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -398,7 +466,8 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                     </div>
                                     <div class="modal-body">
-
+                                      <label for="updatePhoto" class="form-label">Change Photo</label>
+                                      <input type="file" name="" id="updatePhoto" class="form-control">
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -460,11 +529,11 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?=$data->vehicle_id?>" data-id="<?=$data->vehicle_id?>">
                                 <i data-feather="settings" class="btn-icon-prepend"></i>
                                 Edit Vehicle
                               </button>
-                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="<?=$data->vehicle_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -534,11 +603,11 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?=$data->vehicle_id?>" data-id="<?=$data->vehicle_id?>">
                                 <i data-feather="settings" class="btn-icon-prepend"></i>
                                 Edit Vehicle
                               </button>
-                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="<?=$data->vehicle_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -585,6 +654,7 @@
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -595,8 +665,10 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/add-vehicle.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
+  <script src="<?= ROOT ?>assets/js/bootstrap-colorpicker.js"></script>
+
 
   <!-- End custom js for this page -->
 

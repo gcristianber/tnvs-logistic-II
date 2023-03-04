@@ -121,7 +121,7 @@ $(document).ready(() => {
     function getData() {
       $.ajax({
         // Pass data into php
-        url: 'http://localhost/ASADASDASDA/TNVS-LOGISTIC2/public/audit_management/cycle_count/getdata',
+        url: 'http://localhost/TNVS-LOGISTIC2/public/audit_management/cycle_count/getData',
         method: "GET",
         dataType: "json",
         success: function (response) {

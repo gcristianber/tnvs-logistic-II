@@ -1,4 +1,4 @@
-<nav class="sidebar">
+`<nav class="sidebar">
     <div class="sidebar-header">
         <a href="#" class="sidebar-brand">
             <img class="ht-30 wd-30" src="<?= ROOT ?>assets/images/favicon.png" alt="">
@@ -24,7 +24,7 @@
             <li class="nav-item">
                 <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
                     <i class="link-icon" data-feather="shopping-cart"></i>
-                    <span class="link-title">Purchase Requests</span>
+                    <span class="link-title">Purchase````` Requests</span>
                 </a>
             </li>
             <li class="nav-item">
