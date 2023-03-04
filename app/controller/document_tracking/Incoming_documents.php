@@ -15,6 +15,7 @@ class Incoming_documents
 
         $DocumentsModel = new DTDocumentsModel;
         $data["view_table"] = $DocumentsModel->renderViewData();
+        // ! $data["view_table"] ----> $view_table
 
         $this->view("document_tracking/incoming_documents", $data);
         $this->view('partials/sidebar');

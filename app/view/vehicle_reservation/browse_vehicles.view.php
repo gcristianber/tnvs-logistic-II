@@ -296,93 +296,366 @@
 
       <div class="page-content">
 
-
         <div class="card">
           <div class="card-body">
 
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <div>
-                <h6>BROWSE VEHICLES</h6>
-                <small class="text-muted">Browse your desired vehicle</small>
-              </div>
+            <div class="mb-3">
+              <h6>BROWSE VEHICLES</h6>
+              <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
             </div>
-            <div class="table-responsive">
-              <table id="PendingTable" class="table display">
-                <thead>
-                  <tr>
-                    <th>Fleet Id</th>
-                    <th>Plate Number</th>
-                    <th>Vehicle</th>
-                    <th>Type</th>
-                    <th>Year</th>
-                    <th>Color</th>
-                    <th>Fuel Type</th>
-                    <th>Status</th>
-                    <th data-orderable="false" class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="align-middle">
-                    <td>001</td>
-                    <td>FUK-001</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <img class="ht-40 wd-40 rounded-2 me-2 img-fluid" src="https://images.summitmedia-digital.com/topgear/images/2021/11/23/honda-civic-red-2022-main-1637644905.jpg" alt="">
-                        <div>
-                          <p class="fw-bold">Honda</p>
-                          <small class="text-muted">Civic</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Sedan</td>
-                    <td>2022</td>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <div class="ht-20 wd-20 bg-danger rounded-2"></div>
-                        <div class="ht-20 wd-20 bg-dark rounded-2"> </div>
-                      </div>
-                    </td>
-                    <td>Gasoline</td>
-                    <td>
-                      <span class="badge bg-danger">
-                        Reserved
-                      </span>
-                    </td>
-                    <td>
-                      <div class="text-center">
-                        <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          <i data-feather="eye" class="btn-icon-prepend"></i>
-                          View Details
-                        </button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <img src="" alt="">
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                              </div>
+
+            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="sedan-line-tab" data-bs-toggle="tab" href="#sedan" role="tab" aria-controls="sedan" aria-selected="true">Sedan</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="vans-line-tab" data-bs-toggle="tab" href="#vans" role="tab" aria-controls="vans" aria-selected="false">Vans</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="delivery-line-tab" data-bs-toggle="tab" href="#delivery" role="tab" aria-controls="delivery" aria-selected="true">Trucks</a>
+              </li>
+            </ul>
+
+
+            <div class="tab-content mt-3" id="lineTabContent">
+              <div class="tab-pane fade show active" id="sedan" role="tabpanel" aria-labelledby="sedan-line-tab">
+                <div class="mb-3 d-flex align-items-center gap-3">
+                  <input type="text" name="" id="searchSedan" class="form-control search-box" placeholder="Search vehicle">
+                  <button class="btn btn-outline-primary">
+                    Search
+                  </button>
+                </div>
+                <div class="row" class="vehicle-list">
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-success">Available</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
                             </div>
                           </div>
                         </div>
-
-                        <button class="btn btn-danger btn-icon">
-                          <i data-feather="flag"></i>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
                         </button>
                       </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </div>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-success">Available</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-secondary">Reserved</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-danger">Dispatched</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="vans" role="tabpanel" aria-labelledby="vans-line-tab">
+                <div class="mb-3">
+                  <input type="text" name="" id="searchVan" class="form-control search-box" placeholder="Search vehicle">
+                </div>
+                <div class="row" class="vehicle-list">
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>ARTISTA VAN</h3>
+                              <span class="badge bg-success">Available</span>
+                            </div>
+                            <p class="text-muted">Van Gogh</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-success">Available</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-danger">Reserved</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex gap-2">
+                        <div class="ht-100 wd-100 rounded-2 bg-gray-200 me-2"></div>
+                        <div class="d-flex flex-column justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3>HONDA</h3>
+                              <span class="badge bg-success">Available</span>
+                            </div>
+                            <p class="text-muted">Civic</p>
+                          </div>
+                          <div class="d-flex align-items-center gap-4">
+                            <div>
+                              <i data-feather="sliders" class="icon-md text-primary"></i>
+                              Automatic
+                            </div>
+                            <div>
+                              <i data-feather="users" class="icon-md text-primary"></i>
+                              4 Seaters
+                            </div>
+                            <div>
+                              <i data-feather="battery" class="icon-md text-primary"></i>
+                              100 KMP/H
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Reserve Vehicle
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon">
+                          <i data-feather="bell"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+
+
+
+
           </div>
         </div>
+
       </div>
     </div>
 
@@ -409,9 +682,24 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/request-document-access.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
 
   <!-- End custom js for this page -->
+
+  <script>
+    $(document).ready(function() {
+
+      const searchBoxes = document.getElementsByClassName("search-box")
+      const vehicleLists = document.getElementsByClassName("vehicle-list")
+
+      searchBar.addEventListener("input", function(){
+        const query = this.value.trim().toLowerCase()
+
+      })
+
+    });
+  </script>
+
 
 </body>
 

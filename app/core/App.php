@@ -9,7 +9,8 @@ class App{
         "vehicle_reservation"       => "vehicle_reservation",
         "vendor_portal_admin"       => "vendor_portal_admin",
         "vendor_portal_vendor"      => "vendor_portal_vendor",
-        "fleet_management"          => "fleet_management",
+        "fleet_management_admin"    => "fleet_management_admin",
+        "fleet_management_driver"   => "fleet_management_driver",
         "general"                   => "general"
     ];
 

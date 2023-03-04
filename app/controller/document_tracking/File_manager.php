@@ -10,7 +10,9 @@ class File_manager{
         $DocReqAccessModel = new DTDocReqAccessModel;
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){    
+
             $DocReqAccessModel->insertRequest($_POST);
+            
             exit();
         }
 

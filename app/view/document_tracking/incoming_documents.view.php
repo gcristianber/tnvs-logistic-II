@@ -363,13 +363,11 @@
                               <td>
                                 <div class="d-flex align-items-center">
                                   <img src="https://via.placeholder.com/40x40" class="me-2" alt="">
-                                  
                                   <div>
                                     <p><?= $data->display_name ?></p>
                                     <small class="text-muted"><?= $data->account_type_name ?></small>
                                   </div>
                                 </div>
-                               
                               </td>
                               <td>
                                 <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>

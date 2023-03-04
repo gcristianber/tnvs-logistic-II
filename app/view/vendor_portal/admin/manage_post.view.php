@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -10,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+  <title>Manage Post</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +22,14 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
@@ -39,94 +41,6 @@
 
 <body>
   <div class="main-wrapper">
-
-    <!-- partial:../../partials/_sidebar.html -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-          Noble<span>UI</span>
-        </a>
-        <div class="sidebar-toggler not-active">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="sidebar-body">
-        <ul class="nav">
-          <li class="nav-item nav-category">Main</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/dashboard" class="nav-link">
-              <i class="link-icon" data-feather="box"></i>
-              <span class="link-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item nav-category">document tracking</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/sent" class="nav-link">
-              <i class="link-icon" data-feather="send"></i>
-              <span class="link-title">Sent</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/received" class="nav-link">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Received</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>document_tracking/shared_with_me" class="nav-link">
-              <i class="link-icon" data-feather="users"></i>
-              <span class="link-title">Shared with me</span>
-            </a>
-          </li>
-
-          <li class="nav-item nav-category">Fleet Management</li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/schedules" class="nav-link">
-              <i class="link-icon" data-feather="navigation"></i>
-              <span class="link-title">Navigation</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicles" class="nav-link">
-              <i class="link-icon" data-feather="git-pull-request"></i>
-              <span class="link-title">Routes</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicles" class="nav-link">
-              <i class="link-icon" data-feather="user"></i>
-              <span class="link-title">Drivers</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicles" class="nav-link">
-              <i class="link-icon" data-feather="truck"></i>
-              <span class="link-title">Vehicles</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicles" class="nav-link">
-              <i class="link-icon" data-feather="battery"></i>
-              <span class="link-title">Mileage</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= ROOT ?>vehicle_reservation/vehicles" class="nav-link">
-              <i class="link-icon" data-feather="tool"></i>
-              <span class="link-title">Maintenance</span>
-            </a>
-          </li>
-
-
-
-
-
-        </ul>
-      </div>
-    </nav>
-    <!-- partial -->
 
     <div class="page-wrapper">
 
@@ -381,16 +295,219 @@
       <!-- partial -->
 
       <div class="page-content">
-        
-        <div class="card h-100">
-          <div class="card-body h-100">
-            <div id='map' class="h-100 w-100 rounded-2"></div>
+
+
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= ROOT ?>vendor_portal_admin/purchase_requests">Purchase Requests</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Manage Post</li>
+          </ol>
+        </nav>
+
+
+
+        <div class="card">
+          <div class="card-body">
+
+            <div class="mb-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                  <i data-feather="shopping-cart" class="text-primary me-3"></i>
+                  <div>
+                    <div class="d-flex align-items-center">
+                      <h6 class="me-2">INTEL COMPUTERS</h6>
+                      <span class="text-muted">#001</span>
+                    </div>
+                    <small class="text-muted">Electronics</small>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-primary btn-icon-text">
+                    <i data-feather="user-plus" class="btn-icon-prepend"></i>
+                    Invite Vendors
+                  </button>
+                  <button class="btn btn-outline-primary btn-icon">
+                    <i data-feather="settings"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="p-3 bg-gray-100 rounded-2 mb-3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolor corrupti, fuga ipsum voluptatibus deleniti! Distinctio consequuntur aperiam vel iusto eligendi expedita earum consequatur voluptatibus.
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i data-feather="file" class="icon-lg me-2"></i>
+                      <div>
+                        <p>Test Reference.docx</p>
+                        <small class="text-muted">200 KB</small>
+                      </div>
+                    </div>
+                    <a href="">
+                      <i data-feather="download" class="icon-md"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Participants</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="awarded-line-tab" data-bs-toggle="tab" href="#awarded" role="tab" aria-controls="awarded" aria-selected="true">Awarded</a>
+              </li>
+            </ul>
+            <div class="tab-content mt-3" id="lineTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th data-orderable="false"></th>
+                        <th>Vendor Id</th>
+                        <th>Vendor Name</th>
+                        <th>Author</th>
+                        <th>Sent Date</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>
+                          <input type="checkbox" class="form-check-input" id="">
+                        </td>
+                        <td>001</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>SM Supermalls</p>
+                              <small class="text-muted">sm@gmail.com</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p>Intel Computers</p>
+                          <small class="text-muted">Electronics</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">03:47 AM</small>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#awardVendor">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Award Vendor
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="eye"></i>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <div class="modal fade" id="awardVendor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-body">
+
+
+                              <ul class="list-group">
+                                <li class="list-group-item">
+                                  <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                    <div>
+                                      <p>SM Supermalls</p>
+                                      <small class="text-muted">sm@gmail.com</small>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Award</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="awarded" role="tabpanel" aria-labelledby="awarded-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th>Vendor Id</th>
+                        <th>Vendor Name</th>
+                        <th>Location</th>
+                        <th>Award Date</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>001</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>SM Supermalls</p>
+                              <small class="text-muted">sm@gmail.com</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="fw-bold">Quezon City</p>
+                          <small class="text-muted">Philippines</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">03:47 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Pending</span>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text" id="createContract">
+                            <i data-feather="feather" class="btn-icon-prepend"></i>
+                            Create Contract
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon-text" >
+                            <i data-feather="star" class="btn-icon-prepend"></i>
+                            Rate Vendor
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="eye"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+
+
           </div>
         </div>
+
       </div>
-
-
     </div>
+
+  </div>
   </div>
 
   <!-- core:js -->
@@ -398,29 +515,26 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
+  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
   <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
   <script src="<?= ROOT ?>assets/js/template.js"></script>
-
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
-
   <!-- endinject -->
 
   <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/create-vendor-contract.js"></script>
+
   <!-- End custom js for this page -->
 
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
-    const map = new mapboxgl.Map({
-      container: 'map', // container ID
-      style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-74.5, 40], // starting position [lng, lat]
-      zoom: 9, // starting zoom
-    });
-  </script>
+
 </body>
 
 </html>

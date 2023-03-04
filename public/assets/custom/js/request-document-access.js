@@ -10,7 +10,6 @@ $(document).ready(() => {
         var textAreaValue = $.trim(textArea.val())
 
         // var textAlert = document.getElementById("textAlert");
-
         if (textAreaValue !== '') {
 
             $.ajax({

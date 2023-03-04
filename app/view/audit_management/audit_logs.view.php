@@ -312,43 +312,89 @@
                   <p class="fw-bold">AUDIT LOGS</p>
                   <small class="text-muted">Select a section to perform.</small>
                 </div>
-                <button class="btn btn-primary" id="getTableData">
-                  Generate Report
-                </button>
-              </div>
-
-              <div class="alert alert-primary" role="alert">
-                <i data-feather="alert-circle"></i>
-                A simple primary alert—check it out!
+                <div>
+                  <button class="btn btn-primary btn-icon-text" disabled>
+                    <i data-feather="download" class="btn-icon-prepend"></i>
+                    Download Report
+                  </button>
+                  <button class="btn btn-outline-primary btn-icon-text">
+                    <i data-feather="send" class="btn-icon-prepend"></i>
+                    Forward
+                  </button>
+                </div>
               </div>
 
             </div>
-            <div class="table-responsive">
-              <table id="dataTableExample" class="table">
-                <thead>
-                  <tr>
-                    <th>Item_Id</th>
-                    <th>Item Name</th>
-                    <th>Item Description</th>
-                    <th>Manufacturer</th>
-                    <th>Quantity</th>
-                    <th>Actual Count</th>
-                    <th>Variance</th>
-                    <th>Accuracy</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="align-middle">
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tr>
-                </tbody>
-              </table>
+
+
+
+            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ongoing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Done</a>
+              </li>
+            </ul>
+            <div class="tab-content mt-3" id="lineTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th data-orderable="false"></th>
+                        <th>Audit ID</th>
+                        <th>Title</th>
+                        <th>Section</th>
+                        <th>Author</th>
+                        <th>Audit Date</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>
+                          <input type="checkbox" name="" id="" class="form-check-input">
+                        </td>
+                        <td>001</td>
+                        <td>Audit for Jan — Mar 2023</td>
+                        <td>Section A</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="rounded-circle ht-40 wd-40 me-2" alt="avatar">
+                            <div>
+                              <p class="fw-bold">Leandro Quisado</p>
+                              <small class="text-muted">Audit Manager</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p>03 Jan 2023</p>
+                          <small class="text-muted">04:19 PM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-info">Ongoing</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Mark as done
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon-text">
+                            <i data-feather="edit-2" class="btn-icon-prepend"></i>
+                            Edit Report
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
             </div>
+
+
+
           </div>
         </div>
 
@@ -374,7 +420,7 @@
     <!-- endinject -->
 
     <!-- Custom js for this page -->
-    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+    <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
     <!-- End custom js for this page -->
 </body>
 

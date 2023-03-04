@@ -69,9 +69,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/reservations" class="nav-link">
+                <a href="<?= ROOT ?>vehicle_reservation/manage_reservations" class="nav-link">
                     <i class="link-icon" data-feather="table"></i>
-                    <span class="link-title">Reservations</span>
+                    <span class="link-title">Manage Reservations</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -88,9 +88,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/manage_vendor_contracts" class="nav-link">
+                <a href="<?= ROOT ?>vendor_portal_admin/vendor_contracts" class="nav-link">
                     <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">Manage Contracts</span>
+                    <span class="link-title">Vendor Contracts</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -121,37 +121,25 @@
             </li>
             <li class="nav-item nav-category">fleet management</li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management/navigate_vehicle" class="nav-link">
-                    <i class="link-icon" data-feather="navigation"></i>
-                    <span class="link-title">Navigate Vehicle</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management/track_delivers" class="nav-link">
+                <a href="<?= ROOT ?>fleet_management_admin/track_deliver" class="nav-link">
                     <i class="link-icon" data-feather="package"></i>
-                    <span class="link-title">Track Delivers</span>
+                    <span class="link-title">Track Deliver</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management/delivery_logs" class="nav-link">
-                    <i class="link-icon" data-feather="table"></i>
-                    <span class="link-title">Delivery Logs</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management/delivery_requests" class="nav-link">
+                <a href="<?= ROOT ?>fleet_management_admin/delivery_requests" class="nav-link">
                     <i class="link-icon" data-feather="mail"></i>
                     <span class="link-title">Delivery Requests</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management/manage_vehicles" class="nav-link">
+                <a href="<?= ROOT ?>fleet_management_admin/manage_vehicles" class="nav-link">
                     <i class="link-icon" data-feather="truck"></i>
                     <span class="link-title">Manage Vehicles</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management/manage_drivers" class="nav-link">
+                <a href="<?= ROOT ?>fleet_management_admin/manage_drivers" class="nav-link">
                     <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Manage Drivers</span>
                 </a>

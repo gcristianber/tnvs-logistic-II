@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Request Document</title>
+  <title>Track Deliver</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +23,6 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -38,26 +37,9 @@
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
 
-<style>
-  input[type="radio"] {
-    display: none;
-  }
-
-  /* Style the label to look like a clickable element */
-  label {
-    cursor: pointer;
-    /* Add any additional styling you want for your label */
-  }
-
-  input[type="radio"]:checked+label {
-    border: 1px solid #6571ff;
-    border-radius: 4px;
-    user-select: none;
-  }
-</style>
-
 <body>
   <div class="main-wrapper">
+
 
     <div class="page-wrapper">
 
@@ -313,152 +295,10 @@
 
       <div class="page-content">
 
-        <div class="card">
-          <div class="card-body">
-
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <div>
-                <h6>REQUEST DOCUMENT</h6>
-                <small class="text-muted">Manage your requested documents.</small>
-              </div>
-
-              <div>
-                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/request_document/requestor_form">
-                  <i data-feather="feather" class="btn-icon-prepend"></i>
-                  Create request
-                </a>
-              </div>
-            </div>
-
-
-            <div class="alert alert-primary" role="alert">
-              <i data-feather="alert-circle"></i>
-              Follow up your documents if the request is expired.
-            </div>
-
-            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ongoing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Expired</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Followed Up</a>
-              </li>
-
-
-            </ul>
-            <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                <div class="table-responsive">
-                  <table id="dataTableExample" class="table">
-                    <thead>
-                      <tr>
-                        <th>Tracking Id</th>
-                        <th>Document Type</th>
-                        <th>Recipient</th>
-                        <th>Date Created</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>rd63fb2261b7e24</td>
-                        <td>
-                          Employment Certificate
-                        </td>
-                        <td>Human Resource</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">05:13 PM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">06 Jan 2023</p>
-                          <small class="text-muted">05:13 PM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="eye" class="btn-icon-prepend"></i>
-                            View Request
-                          </button>
-                        </td>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="bg-gray-100 p-3 text-wrap mb-3">
-                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, quos dicta pariatur illo repellendus minus delectus laudantium facere repellat reiciendis ab exercitationem quis temporibus sint?
-                                </div>
-
-
-                                <ul class="list-group">
-                                  <li class="list-group-item">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                      <div class="d-flex align-items-center">
-                                        <div class="ht-40 wd-40 rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center me-2">
-                                          <i data-feather="more-horizontal" class="icon-lg"></i>
-                                        </div>
-
-                                        <div>
-                                          <h6>PENDING</h6>
-                                          <small class="text-muted">Document has set to pending</small>
-                                        </div>
-                                      </div>
-
-                                      <div class="text-end">
-                                        <h6>03 Jan</h6>
-                                        <small class="text-muted">03:47 AM</small>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-
-
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Follow Up Request</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
-              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="success-line-tab">decline</div>
-            </div>
-
-          </div>
-        </div>
       </div>
 
 
-
     </div>
-
-  </div>
   </div>
 
   <!-- core:js -->
@@ -466,17 +306,16 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
   <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
   <script src="<?= ROOT ?>assets/js/template.js"></script>
+
+
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
   <!-- End custom js for this page -->
 </body>
 

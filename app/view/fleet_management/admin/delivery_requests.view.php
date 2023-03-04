@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Purchase Requests</title>
+  <title>Delivery Requests</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -300,31 +300,40 @@
           <div class="card-body">
 
             <div class="mb-3">
-              <h6>PURCHASE REQUESTS</h6>
+              <h6>DELIVERY REQUESTS</h6>
               <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
             </div>
 
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Requests</a>
+                <a class="nav-link active" id="pending-line-tab" data-bs-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="published-line-tab" data-bs-toggle="tab" href="#published" role="tab" aria-controls="published" aria-selected="true">Published</a>
+                <a class="nav-link" id="preparing-line-tab" data-bs-toggle="tab" href="#preparing" role="tab" aria-controls="preparing" aria-selected="true">Preparing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="delivery-line-tab" data-bs-toggle="tab" href="#delivery" role="tab" aria-controls="delivery" aria-selected="true">Out for delivery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="toreceived-line-tab" data-bs-toggle="tab" href="#toreceived" role="tab" aria-controls="toreceived" aria-selected="true">To Received</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="true">Completed</a>
               </li>
             </ul>
 
 
             <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+              <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-line-tab">
                 <div class="table-responsive">
                   <table id="dataTableExample" class="table display">
                     <thead>
                       <tr>
                         <th>Request Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
+                        <th>Requestor</th>
+                        <th>Pickup Location</th>
+                        <th>Drop-off Location</th>
                         <th>Request Date</th>
-                        <th>Due Date</th>
                         <th>Status</th>
                         <th data-orderable="false" class="text-center">Action</th>
                       </tr>
@@ -333,53 +342,70 @@
                       <tr class="align-middle">
                         <td>001</td>
                         <td>
-                          <p>Intel Computers</p>
-                          <small class="text-muted">Electronics</small>
-                        </td>
-                        <td>
                           <div class="d-flex align-items-center">
                             <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
                             <div>
                               <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
+                              <small class="text-muted">Warehouse Staff</small>
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
+                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
                         </td>
                         <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
+                          <p>1071 Brgy. Kaligayahan, Quirino Highway Novaliches</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
                           <small class="text-muted">03:47 AM</small>
                         </td>
                         <td>
                           <span class="badge bg-warning">Pending</span>
                         </td>
                         <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="publishPost">
+                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Publish Post
+                            Prepare Shipment
                           </button>
                           <button class="btn btn-outline-primary btn-icon">
                             <i data-feather="external-link"></i>
                           </button>
                         </td>
                       </tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-line-tab">
+              <div class="tab-pane fade" id="preparing" role="tabpanel" aria-labelledby="preparing-line-tab">
                 <div class="table-responsive">
                   <table id="dataTableExample" class="table display">
                     <thead>
                       <tr>
                         <th>Request Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Request Date</th>
-                        <th>Due Date</th>
+                        <th>Requestor</th>
+                        <th>Pickup Location</th>
+                        <th>Drop-off Location</th>
+                        <th>Expect Date</th>
                         <th>Status</th>
                         <th data-orderable="false" class="text-center">Action</th>
                       </tr>
@@ -388,75 +414,273 @@
                       <tr class="align-middle">
                         <td>001</td>
                         <td>
-                          <p>Intel Computers</p>
-                          <small class="text-muted">Electronics</small>
-                        </td>
-                        <td>
                           <div class="d-flex align-items-center">
                             <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
                             <div>
                               <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
+                              <small class="text-muted">Warehouse Staff</small>
                             </div>
                           </div>
+                        </td>
+                        <td>
+                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p>1071 Brgy. Kaligayahan, Quirino Highway Novaliches</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
                         </td>
                         <td>
                           <p class="fw-bold">03 Jan 2023</p>
                           <small class="text-muted">03:47 AM</small>
                         </td>
                         <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-info">Ongoing</span>
+                          <span class="badge bg-secondary">Preparing</span>
                         </td>
                         <td class="text-center">
-                          <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests/manage_post" class="btn btn-primary btn-icon-text">
-                            <i data-feather="settings" class="btn-icon-prepend"></i>
-                            Manage Post
-                          </a>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="user-plus"></i>
+                          <button class="btn btn-primary btn-icon-text" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            View Details
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon" >
+                            <i data-feather="settings"></i>
                           </button>
                         </td>
                       </tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="delivery" role="tabpanel" aria-labelledby="delivery-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th>Request Id</th>
+                        <th>Requestor</th>
+                        <th>Pickup Location</th>
+                        <th>Drop-off Location</th>
+                        <th>Expect Date</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
                       <tr class="align-middle">
                         <td>001</td>
                         <td>
-                          <p>Intel Computers</p>
-                          <small class="text-muted">Electronics</small>
-                        </td>
-                        <td>
                           <div class="d-flex align-items-center">
                             <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
                             <div>
                               <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
+                              <small class="text-muted">Warehouse Staff</small>
                             </div>
                           </div>
+                        </td>
+                        <td>
+                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p>1071 Brgy. Kaligayahan, Quirino Highway Novaliches</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
                         </td>
                         <td>
                           <p class="fw-bold">03 Jan 2023</p>
                           <small class="text-muted">03:47 AM</small>
                         </td>
                         <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-danger">Ended</span>
+                          <span class="badge bg-info">Out for Delivery</span>
                         </td>
                         <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="settings" class="btn-icon-prepend"></i>
-                            Manage Post
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="user-plus"></i>
+                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i data-feather="navigation" class="btn-icon-prepend"></i>
+                            Navigate Delivery
                           </button>
                         </td>
                       </tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="toreceived" role="tabpanel" aria-labelledby="toreceived-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th>Request Id</th>
+                        <th>Requestor</th>
+                        <th>Pickup Location</th>
+                        <th>Drop-off Location</th>
+                        <th>Date Received</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>001</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>Jayson Sabido</p>
+                              <small class="text-muted">Warehouse Staff</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p>1071 Brgy. Kaligayahan, Quirino Highway Novaliches</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          --
+                        </td>
+                        <td>
+                          <span class="badge bg-primary">To received</span>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            View Details
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon" >
+                            <i data-feather="settings"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th>Request Id</th>
+                        <th>Requestor</th>
+                        <th>Pickup Location</th>
+                        <th>Drop-off Location</th>
+                        <th>Request Date</th>
+                        <th>Date Delivered</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>001</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>Jayson Sabido</p>
+                              <small class="text-muted">Warehouse Staff</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p>1071 Brgy. Kaligayahan, Quirino Highway Novaliches</p>
+                          <small class="text-muted">Quezon City, Philippines</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">03:47 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Completed</span>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            View Details
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon" id="download">
+                            <i data-feather="download"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </tbody>
                   </table>
                 </div>

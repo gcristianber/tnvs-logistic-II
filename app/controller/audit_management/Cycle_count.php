@@ -11,12 +11,13 @@ class Cycle_count
         $AuditSchedModel = new AMAuditSched;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $AuditSchedModel->addSchedule($_POST);
+            // $AuditSchedModel->addSchedule($_POST);
+            print_r($_POST);
+            $data = [
+                "title"
+            ];
 
-            $data = $AuditSchedModel->findAll();
-            echo json_encode($data);
-        
-
+            echo "Hello from php";
             exit();
         }
 
@@ -24,5 +25,15 @@ class Cycle_count
         $this->view("audit_management/cycle_count");
         $this->view("partials/sidebar");
 
+    }
+
+    public function getData(){
+
+        $AuditSchedModel = new AMAuditSched;
+        $data = $AuditSchedModel->findAll();
+
+        // print_r($data);
+        echo json_encode($data);
+        // echo "hello";
     }
 }

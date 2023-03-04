@@ -11,8 +11,9 @@ class Dashboard{
         $data = [];
 
 
-        $this->view('partials/sidebar');
+        
         $this->view('general/dashboard', $data);
+        $this->view('partials/sidebar');
         
     }
 

@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Request Document</title>
+  <title>Vendor Contracts</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,12 +23,13 @@
 
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
@@ -37,24 +38,6 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
-
-<style>
-  input[type="radio"] {
-    display: none;
-  }
-
-  /* Style the label to look like a clickable element */
-  label {
-    cursor: pointer;
-    /* Add any additional styling you want for your label */
-  }
-
-  input[type="radio"]:checked+label {
-    border: 1px solid #6571ff;
-    border-radius: 4px;
-    user-select: none;
-  }
-</style>
 
 <body>
   <div class="main-wrapper">
@@ -316,24 +299,9 @@
         <div class="card">
           <div class="card-body">
 
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <div>
-                <h6>REQUEST DOCUMENT</h6>
-                <small class="text-muted">Manage your requested documents.</small>
-              </div>
-
-              <div>
-                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/request_document/requestor_form">
-                  <i data-feather="feather" class="btn-icon-prepend"></i>
-                  Create request
-                </a>
-              </div>
-            </div>
-
-
-            <div class="alert alert-primary" role="alert">
-              <i data-feather="alert-circle"></i>
-              Follow up your documents if the request is expired.
+            <div class="mb-3">
+              <h6>VENDOR CONTRACTS</h6>
+              <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
             </div>
 
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
@@ -341,121 +309,153 @@
                 <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ongoing</a>
+                <a class="nav-link" id="published-line-tab" data-bs-toggle="tab" href="#published" role="tab" aria-controls="published" aria-selected="true">Published</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Expired</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Followed Up</a>
-              </li>
-
-
             </ul>
+
             <div class="tab-content mt-3" id="lineTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
                 <div class="table-responsive">
-                  <table id="dataTableExample" class="table">
+                  <table id="dataTableExample" class="table display">
                     <thead>
                       <tr>
-                        <th>Tracking Id</th>
-                        <th>Document Type</th>
-                        <th>Recipient</th>
-                        <th>Date Created</th>
-                        <th>Due Date</th>
+                        <th>Contract Id</th>
+                        <th>Purchase Request</th>
+                        <th>Author</th>
+                        <th>Counterparty</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
                         <th>Status</th>
                         <th data-orderable="false" class="text-center">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>rd63fb2261b7e24</td>
+                      <tr class="align-middle">
+                        <td>001</td>
                         <td>
-                          Employment Certificate
+                          <p>Intel Computers</p>
+                          <small class="text-muted">#001</small>
                         </td>
-                        <td>Human Resource</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>Jayson Sabido</p>
+                              <small class="text-muted">Procurement Staff</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>SM Supermalls</p>
+                              <small class="text-muted">sm@gmail.com</small>
+                            </div>
+                          </div>
+                        </td>
+
                         <td>
                           <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">05:13 PM</small>
+                          <small class="text-muted">03:47 AM</small>
                         </td>
                         <td>
-                          <p class="fw-bold">06 Jan 2023</p>
-                          <small class="text-muted">05:13 PM</small>
+                          <p class="fw-bold text-danger">05 Jan 2023</p>
+                          <small class="text-muted">03:47 AM</small>
                         </td>
                         <td>
                           <span class="badge bg-warning">Pending</span>
                         </td>
                         <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="eye" class="btn-icon-prepend"></i>
-                            View Request
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="edit-2" class="btn-icon-prepend"></i>
+                            Edit Contract
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="download"></i>
                           </button>
                         </td>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="bg-gray-100 p-3 text-wrap mb-3">
-                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, quos dicta pariatur illo repellendus minus delectus laudantium facere repellat reiciendis ab exercitationem quis temporibus sint?
-                                </div>
-
-
-                                <ul class="list-group">
-                                  <li class="list-group-item">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                      <div class="d-flex align-items-center">
-                                        <div class="ht-40 wd-40 rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center me-2">
-                                          <i data-feather="more-horizontal" class="icon-lg"></i>
-                                        </div>
-
-                                        <div>
-                                          <h6>PENDING</h6>
-                                          <small class="text-muted">Document has set to pending</small>
-                                        </div>
-                                      </div>
-
-                                      <div class="text-end">
-                                        <h6>03 Jan</h6>
-                                        <small class="text-muted">03:47 AM</small>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-
-
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Follow Up Request</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
-              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="success-line-tab">decline</div>
+              <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-line-tab">
+                <div class="table-responsive">
+                  <table id="dataTableExample" class="table display">
+                    <thead>
+                      <tr>
+                        <th>Contract Id</th>
+                        <th>Purchase Request</th>
+                        <th>Author</th>
+                        <th>Counterparty</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td>001</td>
+                        <td>
+                          <p>Intel Computers</p>
+                          <small class="text-muted">#001</small>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>Jayson Sabido</p>
+                              <small class="text-muted">Procurement Staff</small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                            <div>
+                              <p>SM Supermalls</p>
+                              <small class="text-muted">sm@gmail.com</small>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <p class="fw-bold">03 Jan 2023</p>
+                          <small class="text-muted">03:47 AM</small>
+                        </td>
+                        <td>
+                          <p class="fw-bold text-danger">05 Jan 2023</p>
+                          <small class="text-muted">03:47 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Pending</span>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="edit-2" class="btn-icon-prepend"></i>
+                            Edit Contract
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="download"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
+
+
+
+
 
           </div>
         </div>
+
       </div>
-
-
-
     </div>
 
   </div>
@@ -468,6 +468,8 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -476,8 +478,27 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
+
   <!-- End custom js for this page -->
+
+  <script>
+    $(document).ready(function() {
+      // handle click event on dropdown item
+      $('.dropdown-menu #followUp').click(function(e) {
+        e.preventDefault();
+        var id = $(this).closest('tr').data('id'); // get the ID of the row to update
+
+        console.log(id)
+
+      });
+    });
+  </script>
+
+
 </body>
 
 </html>

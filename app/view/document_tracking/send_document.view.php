@@ -423,24 +423,13 @@
                                 <?= ucwords($data->department_name) ?>
                               </td>
                               <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->document_id ?>">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Receive
                                 </button>
-
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
+                                <button class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#<?= $data->document_id ?>">
+                                  <i data-feather="external-link" ></i>
+                                </button>
                                 </div>
                               </td>
                               <div class="modal fade" id="<?= $data->document_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -538,23 +527,12 @@
                               </td>
                               <td class="text-center">
                                 <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
+                                  <i data-feather="edit" class="btn-icon-prepend"></i>
+                                  Edit Document
                                 </button>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="download" class="btn-icon-prepend"></i>
+                                </button>
                               </td>
                             </tr>
                       <?php

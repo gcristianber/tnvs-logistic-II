@@ -17,7 +17,7 @@ class Create_report
 
             $AuditReportModel = new AMAuditReports;
             
-            print_r($tableData);
+            // print_r($tableData);
 
             $AuditReportModel->insertReport($tableData);
 
