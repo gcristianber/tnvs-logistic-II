@@ -19,8 +19,10 @@ class File_manager{
 
         $data["view_table"] = $DocumentsModel->renderViewData();
         
+        $this->view('partials/navbar');
         $this->view("document_tracking/file_manager", $data);
         $this->view('partials/sidebar');
+        
     }
 
 }

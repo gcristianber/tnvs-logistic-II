@@ -17,7 +17,9 @@ class Incoming_documents
         $data["view_table"] = $DocumentsModel->renderViewData();
         // ! $data["view_table"] ----> $view_table
 
+        $this->view('partials/navbar');
         $this->view("document_tracking/incoming_documents", $data);
         $this->view('partials/sidebar');
+        
     }
 }

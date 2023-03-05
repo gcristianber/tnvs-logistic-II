@@ -8,9 +8,10 @@ class Accessed_documents{
 
 
         
-        
+        $this->view('partials/navbar');
         $this->view("document_tracking/accessed_documents");
         $this->view('partials/sidebar');
+        
     }
 
 }

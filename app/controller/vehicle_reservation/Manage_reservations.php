@@ -10,8 +10,10 @@ class Manage_reservations
         $data = [];
 
 
+        $this->view('partials/navbar');
         $this->view("vehicle_reservation/manage_reservations");
         $this->view("partials/sidebar");
+       
 
     }
 

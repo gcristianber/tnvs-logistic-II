@@ -49,7 +49,6 @@
 
     <div class="page-wrapper">
 
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -286,7 +285,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -297,8 +296,6 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
-
       <div class="page-content">
 
 
@@ -389,7 +386,7 @@
                           <button class="btn btn-outline-primary btn-icon">
                             <i data-feather="edit"></i>
                           </button>
-                          
+
                         </td>
                       </tr>
                     </tbody>

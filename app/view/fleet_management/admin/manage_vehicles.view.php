@@ -69,8 +69,6 @@
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -307,7 +305,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -318,8 +316,6 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
-
       <div class="page-content">
 
         <div class="card">
@@ -347,8 +343,9 @@
                           <div class="d-flex gap-2">
                             <input type="file" id="myDropify" />
                             <div class="w-100 d-flex flex-column justify-content-between">
-                              <div class="mb-3">
+                              <div class="mb-3 d-flex align-items-center gap-2">
                                 <input type="text" name="make" id="" class="form-control" placeholder="Vehicle Name">
+                                <input type="text" name="plate" id="" class="form-control" placeholder="Plate Number">
                               </div>
                               <div class="mb-3">
                                 <input type="text" name="model_year" id="" class="form-control" placeholder="Model Year">
@@ -420,6 +417,7 @@
                   <?php
                   foreach ($vehicles as $data) :
                     if (!empty($vehicles) && $data->model_type_name == "sedan") :
+
                   ?>
                       <div class="col-md-12 grid-margin">
                         <div class="d-flex justify-content-between">
@@ -430,7 +428,8 @@
                                 <div class="d-flex align-items-center gap-2">
                                   <h3><?= ucwords($data->make) ?></h3>
                                 </div>
-                                <p class="text-muted"><?= ucwords($data->model_type_name) ?></p>
+                                <p class="text-muted"><?= $data->plate ?></p>
+
                               </div>
                               <div class="d-flex align-items-center gap-4">
                                 <div>
@@ -454,11 +453,11 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?=$data->vehicle_id?>" data-id="<?=$data->vehicle_id?>">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
                                 <i data-feather="settings" class="btn-icon-prepend"></i>
                                 Edit Vehicle
                               </button>
-                              <div class="modal fade" id="<?=$data->vehicle_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -529,11 +528,11 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?=$data->vehicle_id?>" data-id="<?=$data->vehicle_id?>">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
                                 <i data-feather="settings" class="btn-icon-prepend"></i>
                                 Edit Vehicle
                               </button>
-                              <div class="modal fade" id="<?=$data->vehicle_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -603,11 +602,11 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?=$data->vehicle_id?>" data-id="<?=$data->vehicle_id?>">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
                                 <i data-feather="settings" class="btn-icon-prepend"></i>
                                 Edit Vehicle
                               </button>
-                              <div class="modal fade" id="<?=$data->vehicle_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">

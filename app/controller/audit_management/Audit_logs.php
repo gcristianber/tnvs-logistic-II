@@ -9,6 +9,7 @@ class Audit_logs{
         
         $this->view("audit_management/audit_logs");
         $this->view("partials/sidebar");
+        $this->view('partials/navbar');
     }
 
 }

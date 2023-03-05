@@ -26,8 +26,10 @@ class Manage_vehicles{
         $data["vehicles"] = $FMVehicles->renderViewData();
         
 
+        $this->view('partials/navbar');
         $this->view("fleet_management/admin/manage_vehicles", $data);
         $this->view("partials/sidebar");
+        
     }
 
 

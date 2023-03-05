@@ -328,7 +328,7 @@
                   <?php
                   if (!empty($view_table)) :
                     foreach ($view_table as $data) :
-                      if ($data->document_status == "pending") :
+                      if ($data->document_status == "archived") :
                   ?>
                         <tr class="align-middle" data-id="<?= $data->document_id ?>">
                           <td><?= $data->document_id ?></td>

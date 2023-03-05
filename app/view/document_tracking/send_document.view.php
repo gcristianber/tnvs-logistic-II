@@ -43,8 +43,6 @@
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -281,7 +279,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -292,8 +290,6 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
-
       <div class="page-content">
 
 
@@ -428,45 +424,386 @@
                                   View Details
                                 </button>
                                 <button class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#<?= $data->document_id ?>">
-                                  <i data-feather="edit" ></i>
+                                  <i data-feather="edit"></i>
                                 </button>
+                </div>
+                </td>
+                <div class="modal fade" id="<?= $data->document_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <?php if (!empty($data->document_purpose)) : ?>
+                          <div class="p-3 bg-gray-100 rounded-2 mb-3">
+                            <?= $data->document_purpose ?>
+                          </div>
+                        <?php endif; ?>
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                            <div class="d-flex align-items-center justify-content-between">
+                              <div class="d-flex align-items-center">
+                                <i data-feather="file" class="icon-lg me-2"></i>
+                                <div>
+                                  <p class="fw-bold"><?= $data->document_name ?></p>
+                                  <small class="text-muted">
+                                    <?= round($data->document_size / 1024) . ' KB' ?>
+                                  </small>
                                 </div>
-                              </td>
-                              <div class="modal fade" id="<?= $data->document_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
+                              </div>
+
+                              <a href="<?= ROOT . "uploads/" . $data->document_id . "/" . $data->document_name ?>">
+                                <i data-feather="download" class="icon-md"></i>
+                              </a>
+                            </div>
+                          </li>
+                        </ul>
+
+
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </tr>
+          <?php
+                          endif;
+                        endforeach;
+                      endif;
+          ?>
+          </tbody>
+          </table>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="received" role="tabpanel" aria-labelledby="received-line-tab">
+              <div class="table-responsive">
+                <table id="ReceivedTable" class="table display">
+                  <thead>
+                    <tr>
+                      <th>Document Id</th>
+                      <th>Document Name</th>
+                      <th>Category</th>
+                      <th>Date Created</th>
+                      <th>Recipient</th>
+                      <th data-orderable="false" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (!empty($view_table)) :
+                      foreach ($view_table as $data) :
+                        if ($data->document_status == "received") :
+                    ?>
+                          <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                            <td><?= $data->document_id ?></td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <i data-feather="file" class="icon-lg me-2"></i>
+                                <div>
+                                  <p class="fw-bold"><?= $data->document_name ?></p>
+                                  <small class="text-muted">
+                                    <?= round($data->document_size / 1024) . ' KB' ?>
+                                  </small>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= ucwords($data->document_category_name) ?></td>
+                            <td>
+                              <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                            </td>
+                            <td>
+                              <?= ucwords($data->department_name) ?>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-primary btn-icon-text">
+                                <i data-feather="eye" class="btn-icon-prepend"></i>
+                                View Details
+                              </button>
+                              <button class="btn btn-outline-primary btn-icon">
+                                <i data-feather="edit" class="btn-icon-prepend"></i>
+                              </button>
+                            </td>
+                          </tr>
+                    <?php
+                        endif;
+                      endforeach;
+                    endif;
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="onhold" role="tabpanel" aria-labelledby="onhold-line-tab">
+              <div class="table-responsive">
+                <table id="OnholdTable" class="table display">
+                  <thead>
+                    <tr>
+                      <th>Document Id</th>
+                      <th>Document Name</th>
+                      <th>Category</th>
+                      <th>Date Created</th>
+                      <th>Recipient</th>
+                      <th data-orderable="false" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (!empty($view_table)) :
+                      foreach ($view_table as $data) :
+                        if ($data->document_status == "on hold") :
+                    ?>
+                          <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                            <td><?= $data->document_id ?></td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <i data-feather="file" class="icon-lg me-2"></i>
+                                <div>
+                                  <p class="fw-bold"><?= $data->document_name ?></p>
+                                  <small class="text-muted">
+                                    <?= round($data->document_size / 1024) . ' KB' ?>
+                                  </small>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= ucwords($data->document_category_name) ?></td>
+                            <td>
+                              <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                            </td>
+                            <td>
+                              <?= ucwords($data->department_name) ?>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-primary btn-icon-text">
+                                <i data-feather="eye" class="btn-icon-prepend"></i>
+                                View Request
+                              </button>
+
+                              <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                                <i data-feather="more-vertical" class="icon-md"></i>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
+                                <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
+                                  <i data-feather="edit-2" class="icon-md me-2"></i>
+                                  <span class="">Edit Document</span>
+                                </a>
+                                <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
+                                  <i data-feather="git-pull-request" class="icon-md me-2"></i>
+                                  <span class="">Follow Up</span>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                    <?php
+                        endif;
+                      endforeach;
+                    endif;
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="declined-line-tab">
+              <div class="table-responsive">
+                <table id="DeclinedTable" class="table display">
+                  <thead>
+                    <tr>
+                      <th>Document Id</th>
+                      <th>Document Name</th>
+                      <th>Category</th>
+                      <th>Date Created</th>
+                      <th>Recipient</th>
+                      <th data-orderable="false" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (!empty($view_table)) :
+                      foreach ($view_table as $data) :
+                        if ($data->document_status == "declined") :
+                    ?>
+                          <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                            <td><?= $data->document_id ?></td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <i data-feather="file" class="icon-lg me-2"></i>
+                                <div>
+                                  <p class="fw-bold"><?= $data->document_name ?></p>
+                                  <small class="text-muted">
+                                    <?= round($data->document_size / 1024) . ' KB' ?>
+                                  </small>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= ucwords($data->document_category_name) ?></td>
+                            <td>
+                              <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                            </td>
+                            <td>
+                              <?= ucwords($data->department_name) ?>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-primary btn-icon-text">
+                                <i data-feather="eye" class="btn-icon-prepend"></i>
+                                View Request
+                              </button>
+
+                              <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                                <i data-feather="more-vertical" class="icon-md"></i>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
+                                <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
+                                  <i data-feather="edit-2" class="icon-md me-2"></i>
+                                  <span class="">Edit Document</span>
+                                </a>
+                                <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
+                                  <i data-feather="git-pull-request" class="icon-md me-2"></i>
+                                  <span class="">Follow Up</span>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                    <?php
+                        endif;
+                      endforeach;
+                    endif;
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="followedup" role="tabpanel" aria-labelledby="followedup-line-tab">
+              <div class="table-responsive">
+                <table id="FollowedUpTable" class="table display">
+                  <thead>
+                    <tr>
+                      <th>Document Id</th>
+                      <th>Document Name</th>
+                      <th>Category</th>
+                      <th>Date Created</th>
+                      <th>Recipient</th>
+                      <th data-orderable="false" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (!empty($view_table)) :
+                      foreach ($view_table as $data) :
+                        if ($data->document_status == "followed up") :
+                    ?>
+                          <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                            <td><?= $data->document_id ?></td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <i data-feather="file" class="icon-lg me-2"></i>
+                                <div>
+                                  <p class="fw-bold"><?= $data->document_name ?></p>
+                                  <small class="text-muted">
+                                    <?= round($data->document_size / 1024) . ' KB' ?>
+                                  </small>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= ucwords($data->document_category_name) ?></td>
+                            <td>
+                              <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                            </td>
+                            <td>
+                              <?= ucwords($data->department_name) ?>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-primary btn-icon-text">
+                                <i data-feather="eye" class="btn-icon-prepend"></i>
+                                View Request
+                              </button>
+
+                              <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                                <i data-feather="more-vertical" class="icon-md"></i>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
+                                <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
+                                  <i data-feather="edit-2" class="icon-md me-2"></i>
+                                  <span class="">Edit Document</span>
+                                </a>
+                                <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
+                                  <i data-feather="git-pull-request" class="icon-md me-2"></i>
+                                  <span class="">Follow Up</span>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                    <?php
+                        endif;
+                      endforeach;
+                    endif;
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="returned" role="tabpanel" aria-labelledby="returned-line-tab">
+              <div class="table-responsive">
+                <table id="ReturnedTable" class="table display">
+                  <thead>
+                    <tr>
+                      <th>Document Id</th>
+                      <th>Document Name</th>
+                      <th>Category</th>
+                      <th>Date Created</th>
+                      <th>Recipient</th>
+                      <th data-orderable="false" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    if (!empty($view_table)) :
+                      foreach ($view_table as $data) :
+                        if ($data->document_status == "returned") :
+                    ?>
+                          <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                            <td><?= $data->document_id ?></td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <i data-feather="file" class="icon-lg me-2"></i>
+                                <div>
+                                  <p class="fw-bold"><?= $data->document_name ?></p>
+                                  <small class="text-muted">
+                                    <?= round($data->document_size / 1024) . ' KB' ?>
+                                  </small>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= ucwords($data->document_category_name) ?></td>
+                            <td>
+                              <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                            </td>
+                            <td>
+                              <?= ucwords($data->department_name) ?>
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i data-feather="eye" class="btn-icon-prepend"></i>
+                                View Request
+                              </button>
+                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
                                       <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                     </div>
                                     <div class="modal-body">
-                                      <?php if (!empty($data->document_purpose)) : ?>
-                                        <div class="p-3 bg-gray-100 rounded-2 mb-3">
-                                          <?= $data->document_purpose ?>
-                                        </div>
-                                      <?php endif; ?>
-                                      <ul class="list-group">
-                                        <li class="list-group-item">
-                                          <div class="d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                              <i data-feather="file" class="icon-lg me-2"></i>
-                                              <div>
-                                                <p class="fw-bold"><?= $data->document_name ?></p>
-                                                <small class="text-muted">
-                                                  <?= round($data->document_size / 1024) . ' KB' ?>
-                                                </small>
-                                              </div>
-                                            </div>
-
-                                            <a href="<?= ROOT . "uploads/" . $data->document_id . "/" . $data->document_name ?>">
-                                              <i data-feather="download" class="icon-md"></i>
-                                            </a>
-                                          </div>
-                                        </li>
-                                      </ul>
-
-
-
+                                      ...
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -475,377 +812,36 @@
                                   </div>
                                 </div>
                               </div>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="received" role="tabpanel" aria-labelledby="received-line-tab">
-                <div class="table-responsive">
-                  <table id="ReceivedTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "received") :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Details
-                                </button>
-                                <button class="btn btn-outline-primary btn-icon">
-                                  <i data-feather="edit" class="btn-icon-prepend"></i>
-                                </button>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="onhold" role="tabpanel" aria-labelledby="onhold-line-tab">
-                <div class="table-responsive">
-                  <table id="OnholdTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "on hold") :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
 
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
+                              <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                                <i data-feather="more-vertical" class="icon-md"></i>
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
+                                <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
+                                  <i data-feather="edit-2" class="icon-md me-2"></i>
+                                  <span class="">Edit Document</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="declined-line-tab">
-                <div class="table-responsive">
-                  <table id="DeclinedTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "declined") :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
+                                <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
+                                  <i data-feather="git-pull-request" class="icon-md me-2"></i>
+                                  <span class="">Follow Up</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="followedup" role="tabpanel" aria-labelledby="followedup-line-tab">
-                <div class="table-responsive">
-                  <table id="FollowedUpTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "followed up") :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="returned" role="tabpanel" aria-labelledby="returned-line-tab">
-                <div class="table-responsive">
-                  <table id="ReturnedTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "returned") :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        ...
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
+                              </div>
+                            </td>
+                          </tr>
+                    <?php
+                        endif;
+                      endforeach;
+                    endif;
+                    ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
   </div>
   </div>

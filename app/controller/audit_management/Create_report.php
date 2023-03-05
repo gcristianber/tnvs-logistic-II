@@ -29,6 +29,7 @@ class Create_report
             exit();
         }
 
+        $this->view('partials/navbar');
         $this->view("audit_management/create_report", $data);
         $this->view('partials/sidebar');
     }

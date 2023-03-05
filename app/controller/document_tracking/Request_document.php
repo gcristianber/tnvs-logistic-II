@@ -33,9 +33,10 @@ class Request_document{
             exit();
         }
         
-        
+        $this->view('partials/navbar');
         $this->view('document_tracking/requestor_form', $data);
         $this->view('partials/sidebar');
+        
     }
 
 }

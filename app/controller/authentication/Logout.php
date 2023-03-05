@@ -6,9 +6,7 @@ class Logout{
 
     use Controller;
 
-    public function index(){
-
-        
+    public function index(){  
 
         unset($_SESSION);
         session_destroy();

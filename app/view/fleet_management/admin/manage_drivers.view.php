@@ -38,13 +38,36 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
+<style>
+  .dropify-wrapper {
+    border-radius: 100%;
+    width: 250px;
+    height: 250px;
+  }
+
+  .dropify-wrapper {
+    position: relative;
+  }
+
+  .dropify-infos {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .dropify-button {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+</style>
 
 <body>
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -281,7 +304,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -292,16 +315,68 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
 
       <div class="page-content">
 
         <div class="card">
           <div class="card-body">
 
-            <div class="mb-3">
-              <h6>MANAGE DRIVERS</h6>
-              <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <div>
+                <h6>MANAGE DRIVERS</h6>
+                <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#addDriverModal">
+                  <i data-feather="user-plus" class="btn-icon-prepend"></i>
+                  Add Driver
+                </button>
+                <div class="modal fade" id="addDriverModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Driver</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <form id="addDriverForm" enctype="multipart/form-data">
+                        <div class="modal-body">
+                          <div class="d-flex flex-column align-items-center gap-2">
+                            <div class="mb-3">
+                              <input type="file" id="myDropify" class="" />
+                            </div>
+                            <div class="w-100 d-flex flex-column justify-content-between">
+                              <div class="mb-3 d-flex align-items-center gap-2">
+                                <input type="text" name="display_name" id="" class="form-control" placeholder="Display Name">
+                                <input type="email" name="email_address" id="" class="form-control" placeholder="Email Address">
+                              </div>
+                              <div class="mb-3">
+                                <input type="text" name="contact_number" id="" class="form-control" placeholder="Contact Number">
+                              </div>
+                              <div class="mb-3 d-flex align-items-center gap-2">
+                                <input type="text" name="city" id="" class="form-control" placeholder="City">
+                                <input type="text" name="country" id="" class="form-control" placeholder="Country">
+                              </div>
+                              <div class="mb-3">
+                                <textarea name="address" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
+                              </div>
+                              <div class="mb-3">
+                                <input class="form-control" name="password" type="password" placeholder="Password">
+                              </div>
+                              <div class="mb-3">
+                                <input class="form-control" name="confirm_password" type="password" placeholder="Confirm Password">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="table-responsive">
@@ -318,58 +393,83 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="align-middle">
-                    <td>001</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                        <div>
-                          <p>John Smith</p>
-                          <small class="text-muted">j.smith@gmail.com</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
-                      <small class="text-muted">Quezon City, Philippines</small>
-                    </td>
-                    <td>
-                      09228165011
-                    </td>
-                    <td>
-                      <p class="fw-bold">03 Jan 2023</p>
-                      <small class="text-muted">03:47 AM</small>
-                    </td>
-                    <td>
-                      <span class="badge bg-success">Active</span>
-                    </td>
-                    <td class="text-center">
-                      <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i data-feather="settings" class="btn-icon-prepend"></i>
-                        Manage Account
-                      </button>
-                      <button class="btn btn-outline-primary btn-icon">
-                        <i data-feather="external-link"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
 
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                  <?php
+                  if (!empty($drivers)) :
+                    foreach ($drivers as $data) :
+                  ?>
+                      <tr class="align-middle">
+                        <td><?= $data->driver_id ?></td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img class="img-lg img-fit me-2" src="<?= ROOT ?>uploads/images/avatars/<?= $data->img_name ?>" alt="">
+                            <div>
+                              <p><?= $data->display_name ?></p>
+                              <small class="text-muted"><?= $data->email_address ?></small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p><?= $data->address ?></p>
+                          <small class="text-muted"><?= $data->city ?>, <?= $data->country ?></small>
+                        </td>
+                        <td>
+                          <?= $data->contact_number ?>
+                        </td>
+                        <td>
+                          <p class="fw-bold"><?= date("d M Y", strtotime($data->last_accessed)) ?></p>
+                          <small class="text-muted"><?= date("h:i A", strtotime($data->last_accessed)) ?></small>
+                        </td>
+                        <td>
+                          <?php if ($data->status_name == "available") :
+                          ?>
+                            <span class="badge bg-success">Available</span>
+                          <?php
+                          endif;  ?>
+                          <?php if ($data->status_name == "reserved") :
+                          ?>
+                            <span class="badge bg-secondary">Reserved</span>
+                          <?php
+                          endif;  ?>
+                          <?php if ($data->status_name == "dispatched") :
+                          ?>
+                            <span class="badge bg-danger">Dispatched</span>
+                          <?php
+                          endif;  ?>
+                        </td>
+                        <td class="text-center">
+                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i data-feather="settings" class="btn-icon-prepend"></i>
+                            Manage Account
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="external-link"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                  <?php
+                    endforeach;
+                  endif;
+
+
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -403,55 +503,9 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/add-driver.js"></script>
 
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(function() {
-
-      $("#publishPost").on("click", () => {
-
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger me-2'
-          },
-          buttonsStyling: false,
-        })
-
-        swalWithBootstrapButtons.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonClass: 'me-2',
-          confirmButtonText: 'Yes, Publish it!',
-          cancelButtonText: 'No, cancel!',
-          reverseButtons: true
-        }).then((result) => {
-          if (result.value) {
-            swalWithBootstrapButtons.fire(
-              'Published!',
-              'Your post is now visible.',
-              'success'
-            )
-          } else if (
-            // Read more about handling dismissals
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons.fire(
-              'Cancelled',
-              'Publish has been cancelled',
-              'error'
-            )
-          }
-        })
-      })
-
-    });
-  </script>
-
 
 </body>
 

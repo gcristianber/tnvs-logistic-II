@@ -44,7 +44,6 @@
 
     <div class="page-wrapper">
 
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -281,7 +280,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -292,12 +291,8 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
 
       <div class="page-content">
-
-
-
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= ROOT ?>vendor_portal_admin/purchase_requests">Purchase Requests</a></li>
@@ -483,7 +478,7 @@
                             <i data-feather="feather" class="btn-icon-prepend"></i>
                             Create Contract
                           </button>
-                          <button class="btn btn-outline-primary btn-icon-text" >
+                          <button class="btn btn-outline-primary btn-icon-text">
                             <i data-feather="star" class="btn-icon-prepend"></i>
                             Rate Vendor
                           </button>

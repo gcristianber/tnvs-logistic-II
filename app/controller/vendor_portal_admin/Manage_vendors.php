@@ -8,5 +8,6 @@ class Manage_vendors{
 
         $this->view("vendor_portal/admin/manage_vendors");
         $this->view("partials/sidebar");
+        $this->view('partials/navbar');
     }
 }

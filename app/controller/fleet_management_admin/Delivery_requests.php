@@ -6,8 +6,10 @@ class Delivery_requests{
 
     public function index(){
 
+        $this->view('partials/navbar');
         $this->view("fleet_management/admin/delivery_requests");
         $this->view("partials/sidebar");
+        
     }
 
 }

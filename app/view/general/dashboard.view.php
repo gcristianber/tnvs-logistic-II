@@ -50,8 +50,6 @@ License: For each use you must have a valid license purchased only from above li
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -89,22 +87,22 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
                 <div class="row g-0 p-1">
                   <div class="col-3 text-center">
-                    <a href="pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i>
+                    <a href="../../pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i>
                       <p class="tx-12">Chat</p>
                     </a>
                   </div>
                   <div class="col-3 text-center">
-                    <a href="pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i>
+                    <a href="../../pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i>
                       <p class="tx-12">Calendar</p>
                     </a>
                   </div>
                   <div class="col-3 text-center">
-                    <a href="pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i>
+                    <a href="../../pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i>
                       <p class="tx-12">Email</p>
                     </a>
                   </div>
                   <div class="col-3 text-center">
-                    <a href="pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i>
+                    <a href="../../pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i>
                       <p class="tx-12">Profile</p>
                     </a>
                   </div>
@@ -270,7 +268,7 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
                 <ul class="list-unstyled p-1">
                   <li class="dropdown-item py-2">
-                    <a href="pages/general/profile.html" class="text-body ms-0">
+                    <a href="../../pages/general/profile.html" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="user"></i>
                       <span>Profile</span>
                     </a>
@@ -288,7 +286,7 @@ License: For each use you must have a valid license purchased only from above li
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -299,8 +297,6 @@ License: For each use you must have a valid license purchased only from above li
           </ul>
         </div>
       </nav>
-      <!-- partial -->
-
       <div class="page-content">
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">

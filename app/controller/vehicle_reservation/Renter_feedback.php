@@ -6,7 +6,9 @@ class Renter_feedback{
 
     public function index(){
 
+        $this->view('partials/navbar');
         $this->view('vehicle_reservation/renter_feedback');
+        $this->view('partials/navbar');
     }
 
 }

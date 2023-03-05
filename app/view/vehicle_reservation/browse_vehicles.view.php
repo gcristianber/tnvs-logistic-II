@@ -43,8 +43,6 @@
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -281,7 +279,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -292,8 +290,6 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
-
       <div class="page-content">
 
         <div class="card">
@@ -344,17 +340,17 @@
 
                                   <?php if ($data->status_name == "available") :
                                   ?>
-                                  <span class="badge bg-success">Available</span>
+                                    <span class="badge bg-success">Available</span>
                                   <?php
                                   endif;  ?>
                                   <?php if ($data->status_name == "reserved") :
                                   ?>
-                                  <span class="badge bg-secondary">Reserved</span>
+                                    <span class="badge bg-secondary">Reserved</span>
                                   <?php
                                   endif;  ?>
                                   <?php if ($data->status_name == "dispatched") :
                                   ?>
-                                  <span class="badge bg-danger">Dispatched</span>
+                                    <span class="badge bg-danger">Dispatched</span>
                                   <?php
                                   endif;  ?>
                                 </div>
@@ -398,7 +394,38 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                     </div>
                                     <div class="modal-body">
-
+                                      <div class="mb-3">
+                                        <h6>RESERVE VEHICLE</h6>
+                                        <small class="text-muted">Compose a reason of accessing document.</small>
+                                      </div>
+                                      <div class="d-flex align-items-center flex-column">
+                                        <img class="ht-100 wd-100" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="">
+                                        <div class="text-center mb-3">
+                                          <h3><?= ucwords($data->make) ?></h3>
+                                          <p class="text-muted"><?= ucwords($data->model_type_name) ?></p>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-4">
+                                          <div>
+                                            <i data-feather="sliders" class="icon-md text-primary"></i>
+                                            <?= ucwords($data->gear_type_name) ?>
+                                          </div>
+                                          <div>
+                                            <i data-feather="users" class="icon-md text-primary"></i>
+                                            <?= $data->no_seaters ?> Seaters
+                                          </div>
+                                          <div>
+                                            <i data-feather="battery" class="icon-md text-primary"></i>
+                                            <?= $data->odometer ?> KMP/H
+                                          </div>
+                                          <div>
+                                            <i data-feather="anchor" class="icon-md text-primary"></i>
+                                            <?= $data->dimensions ?>
+                                          </div>
+                                        </div>
+                                        <div class="w-100 mt-4">
+                                          <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

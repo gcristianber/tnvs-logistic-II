@@ -32,9 +32,10 @@ class Send_document
         $data["categories"] = $DocumentCategoryModel->findAll();
         $data["view_table"] = $DocumentsModel->renderViewData();
 
-
+        $this->view('partials/navbar');
         $this->view("document_tracking/send_document", $data);
         $this->view('partials/sidebar');
+        
     }
 
 
@@ -85,7 +86,10 @@ class Send_document
 
         $data["categories"] = $DocumentCategoryModel->findAll();
 
-        $this->view("document_tracking/compose_document", $data);
         $this->view('partials/sidebar');
+        $this->view('partials/navbar');
+        $this->view("document_tracking/compose_document", $data);
+
+        
     }
 }

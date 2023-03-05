@@ -54,8 +54,8 @@
                     <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
                     <form class="forms-sample" method="POST">
                       <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                        <label for="username" class="form-label">Vendor Id</label>
+                        <input type="text" class="form-control" id="username" name="vendor_id" placeholder="Username">
                       </div>
                       <div class="mb-3">
                         <label for="userPassword" class="form-label">Password</label>

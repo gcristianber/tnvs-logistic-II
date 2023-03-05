@@ -22,6 +22,7 @@ class FMVehicles
         $data = [
             "vehicle_id" => uniqid("vh"),
             "make" => $form["make"],
+            "plate" => $form["plate"],
             "vehicle_model_type_id" => $form["vehicle_model_type_id"],
             "gearbox_type_id" => $form["gearbox_type_id"],
             "color" => $form["color"],
@@ -49,6 +50,7 @@ class FMVehicles
             "vehicle_id" => $vehicle_id,
             "img_name" => $file_name,
             "make" => $form["make"],
+            "plate" => $form["plate"],
             "vehicle_model_type_id" => $form["vehicle_model_type_id"],
             "gearbox_type_id" => $form["gearbox_type_id"],
             "color" => $form["color"],

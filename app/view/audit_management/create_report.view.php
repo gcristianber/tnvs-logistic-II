@@ -48,8 +48,6 @@
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -286,7 +284,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -297,7 +295,6 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
 
       <div class="page-content">
 
@@ -316,17 +313,6 @@
                   Generate Report
                 </button>
               </div>
-
-              <div class="alert alert-primary" role="alert">
-                <i data-feather="alert-circle"></i>
-                A simple primary alert—check it out!
-              </div>
-
-              <select class="js-example-basic-single form-select" id="category" data-width="100%">
-                <option value="TX">Section A</option>
-                <option value="TX">Section B</option>
-                <option value="TX">Section C</option>
-              </select>
             </div>
             <div class="table-responsive">
               <table id="dataTableExample" class="table">

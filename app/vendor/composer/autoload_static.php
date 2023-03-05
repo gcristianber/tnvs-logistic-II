@@ -10,6 +10,7 @@ class ComposerStaticInit02c6fdb7c61a54895fe84c4e9bc89a2f
         'P' => 
         array (
             'PhpOffice\\PhpWord\\' => 18,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'L' => 
         array (
@@ -21,6 +22,10 @@ class ComposerStaticInit02c6fdb7c61a54895fe84c4e9bc89a2f
         'PhpOffice\\PhpWord\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Laminas\\Escaper\\' => 
         array (

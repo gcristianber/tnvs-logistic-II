@@ -22,6 +22,7 @@ class Cycle_count
         }
 
 
+        $this->view('partials/navbar');
         $this->view("audit_management/cycle_count");
         $this->view("partials/sidebar");
 
