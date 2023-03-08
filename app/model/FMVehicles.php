@@ -51,7 +51,7 @@ class FMVehicles
             "img_name" => $file_name,
             "make" => $form["make"],
             "plate" => $form["plate"],
-            "vehicle_model_type_id" => $form["vehicle_model_type_id"],
+            "model_type_id" => $form["vehicle_model_type_id"],
             "gearbox_type_id" => $form["gearbox_type_id"],
             "color" => $form["color"],
             "no_seaters" => $form["no_seaters"],

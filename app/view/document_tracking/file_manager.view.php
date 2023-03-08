@@ -307,11 +307,6 @@
               </div>
             </div>
 
-            <div class="alert alert-primary" role="alert">
-              <i data-feather="alert-circle"></i>
-              A simple primary alert—check it out!
-            </div>
-
             <div class="table-responsive">
               <table id="PendingTable" class="table display">
                 <thead>

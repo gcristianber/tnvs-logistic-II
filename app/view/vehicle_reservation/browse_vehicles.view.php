@@ -24,6 +24,7 @@
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -332,7 +333,7 @@
                       <div class="col-md-12 grid-margin">
                         <div class="d-flex justify-content-between">
                           <div class="d-flex gap-2">
-                            <img class="img-lg img-fit" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="">
+                            <img class="rounded-2" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="" style="height: 150px; width: 250px;">
                             <div class="d-flex flex-column justify-content-between">
                               <div>
                                 <div class="d-flex align-items-center gap-2">
@@ -354,12 +355,12 @@
                                   <?php
                                   endif;  ?>
                                 </div>
-                                <p class="text-muted"><?= ucwords($data->model_type_name) ?></p>
+                                <p class="text-muted"><?= ucwords($data->plate) ?></p>
                               </div>
                               <div class="d-flex align-items-center gap-4">
                                 <div>
                                   <i data-feather="sliders" class="icon-md text-primary"></i>
-                                  <?= ucwords($data->gear_type_name) ?>
+                                  <?= ucwords($data->gearbox_type_name) ?>
                                 </div>
                                 <div>
                                   <i data-feather="users" class="icon-md text-primary"></i>
@@ -378,7 +379,7 @@
                           </div>
                           <div class="d-flex">
                             <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>">
+                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>">
                                 <i data-feather="plus" class="btn-icon-prepend"></i>
                                 Reserve Vehicle
                               </button>
@@ -386,50 +387,60 @@
                                 <i data-feather="external-link"></i>
                               </button>
 
-                              <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                              <div class="modal fade" id="<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                      <h5 class="modal-title" id="exampleModalLabel">Reserve Vehicle</h5>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                     </div>
                                     <div class="modal-body">
-                                      <div class="mb-3">
-                                        <h6>RESERVE VEHICLE</h6>
-                                        <small class="text-muted">Compose a reason of accessing document.</small>
+
+
+                                      <div class="alert alert-primary" role="alert">
+                                        <i data-feather="alert-circle"></i>
+                                        A simple primary alert—check it out!
                                       </div>
-                                      <div class="d-flex align-items-center flex-column">
-                                        <img class="ht-100 wd-100" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="">
-                                        <div class="text-center mb-3">
-                                          <h3><?= ucwords($data->make) ?></h3>
-                                          <p class="text-muted"><?= ucwords($data->model_type_name) ?></p>
-                                        </div>
-                                        <div class="d-flex align-items-center gap-4">
-                                          <div>
-                                            <i data-feather="sliders" class="icon-md text-primary"></i>
-                                            <?= ucwords($data->gear_type_name) ?>
-                                          </div>
-                                          <div>
-                                            <i data-feather="users" class="icon-md text-primary"></i>
-                                            <?= $data->no_seaters ?> Seaters
-                                          </div>
-                                          <div>
-                                            <i data-feather="battery" class="icon-md text-primary"></i>
-                                            <?= $data->odometer ?> KMP/H
-                                          </div>
-                                          <div>
-                                            <i data-feather="anchor" class="icon-md text-primary"></i>
-                                            <?= $data->dimensions ?>
+
+
+                                      <div class="d-flex align-items-center mb-3">
+                                        <div class="w-100">
+                                          <label for="datePickerExample" class="form-label px-1">Pick-up Date</label>
+                                          <div class="d-flex align-items-center">
+                                            <div class="input-group date datepicker datePickerExample" id="">
+                                              <input type="text" name="pickup_date" class="form-control">
+                                              <span class="input-group-text input-group-addon"><i data-feather="calendar"></i></span>
+                                            </div>
                                           </div>
                                         </div>
-                                        <div class="w-100 mt-4">
-                                          <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                        <div class="w-100">
+                                          <label for="datePickerExample" class="form-label">Return Date</label>
+                                          <div class="d-flex align-items-center">
+                                            <div class="input-group date datepicker datePickerExample" id="">
+                                              <input type="text" name="return_date" class="form-control">
+                                              <span class="input-group-text input-group-addon"><i data-feather="calendar"></i></span>
+                                            </div>
+                                          </div>
                                         </div>
+                                      </div>
+                                      <div class="d-flex align-items-center gap-2 px-1 mb-3">
+                                        <div class="w-100">
+                                          <label for="name">Email Address</label>
+                                          <input type="email" name="email_address" id="name" class="form-control">
+                                        </div>
+                                        <div class="w-100">
+                                          <label for="name">Contact Number</label>
+                                          <input type="text" name="contact_number" id="contact" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="px-1">
+                                        <label for="reason">Reason</label>
+                                        <textarea name="reason" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
                                       </div>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                      <button type="button" class="btn btn-primary reserve-vehicle">Save changes</button>
                                     </div>
                                   </div>
                                 </div>
@@ -468,7 +479,7 @@
                               <div class="d-flex align-items-center gap-4">
                                 <div>
                                   <i data-feather="sliders" class="icon-md text-primary"></i>
-                                  <?= ucwords($data->gear_type_name) ?>
+                                  <?= ucwords($data->gearbox_type_name) ?>
                                 </div>
                                 <div>
                                   <i data-feather="users" class="icon-md text-primary"></i>
@@ -612,6 +623,10 @@
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/moment/moment.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.js"></script>
+
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -623,10 +638,22 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
-
+  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/reserve-vehicle.js"></script>
   <!-- End custom js for this page -->
 
+  <script>
+    $(document).ready(() => {
+      $('.datePickerExample').datepicker('setDate', 'yyy-dd-mm');
+
+      $('.timepicker').on('click', function() {
+        console.log("hello")
+      })
+
+      // $('#datetimepickerExample1').datetimepicker({
+      //   format: 'LT'
+      // });
+    })
+  </script>
 
 </body>
 

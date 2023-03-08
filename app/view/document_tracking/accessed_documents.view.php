@@ -300,10 +300,6 @@
                                 <small class="text-muted">Manage your grant documents.</small>
                             </div>
                         </div>
-                        <div class="alert alert-primary" role="alert">
-                            <i data-feather="alert-circle"></i>
-                            A simple primary alert—check it out!
-                        </div>
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
                                 <thead>

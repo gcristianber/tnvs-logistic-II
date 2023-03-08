@@ -86,10 +86,10 @@ class Send_document
 
         $data["categories"] = $DocumentCategoryModel->findAll();
 
-        $this->view('partials/sidebar');
+       
         $this->view('partials/navbar');
         $this->view("document_tracking/compose_document", $data);
-
+        $this->view('partials/sidebar');
         
     }
 }

@@ -422,7 +422,7 @@
                       <div class="col-md-12 grid-margin">
                         <div class="d-flex justify-content-between">
                           <div class="d-flex gap-2">
-                            <img class="img-lg img-fit" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="">
+                          <img class="rounded-2" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="" style="height: 150px; width: 250px;" >
                             <div class="d-flex flex-column justify-content-between">
                               <div>
                                 <div class="d-flex align-items-center gap-2">
@@ -434,7 +434,7 @@
                               <div class="d-flex align-items-center gap-4">
                                 <div>
                                   <i data-feather="sliders" class="icon-md text-primary"></i>
-                                  <?= ucwords($data->gear_type_name) ?>
+                                  <?= ucwords($data->gearbox_type_name) ?>
                                 </div>
                                 <div>
                                   <i data-feather="users" class="icon-md text-primary"></i>
@@ -509,7 +509,7 @@
                               <div class="d-flex align-items-center gap-4">
                                 <div>
                                   <i data-feather="sliders" class="icon-md text-primary"></i>
-                                  <?= ucwords($data->gear_type_name) ?>
+                                  <?= ucwords($data->gearbox_type_name) ?>
                                 </div>
                                 <div>
                                   <i data-feather="users" class="icon-md text-primary"></i>
@@ -583,7 +583,7 @@
                               <div class="d-flex align-items-center gap-4">
                                 <div>
                                   <i data-feather="sliders" class="icon-md text-primary"></i>
-                                  <?= ucwords($data->gear_type_name) ?>
+                                  <?= ucwords($data->gearbox_type_name) ?>
                                 </div>
                                 <div>
                                   <i data-feather="users" class="icon-md text-primary"></i>

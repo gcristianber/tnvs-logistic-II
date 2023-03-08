@@ -325,13 +325,6 @@
                 </a>
               </div>
             </div>
-
-
-            <div class="alert alert-primary" role="alert">
-              <i data-feather="alert-circle"></i>
-              Follow up your documents if the request is expired.
-            </div>
-
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>

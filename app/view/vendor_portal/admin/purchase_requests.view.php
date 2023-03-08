@@ -326,42 +326,67 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <p>Intel Computers</p>
-                          <small class="text-muted">Electronics</small>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="publishPost">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Publish Post
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="external-link"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($purchase_requests)) :
+                        foreach ($purchase_requests as $data) :
+                          if ($data->pr_status_name == "pending") :
+                      ?>
+                            <tr class="align-middle" data-id="<?= $data->pr_id ?>">
+                              <td><?= $data->pr_id ?></td>
+                              <td>
+                                <p><?= $data->title ?></p>
+                                <small class="text-muted"><?= ucwords($data->category_name) ?></small>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                  <div>
+                                    <p><?= $data->display_name ?></p>
+                                    <small class="text-muted"><?= ucwords($data->account_type_name) ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <p class="fw-bold"><?= date("d M Y", strtotime($data->end_date)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->end_date)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->pr_status_name) {
+                                  case "pending":
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case "reserved":
+                                    echo '<span class="badge bg-success">Published</span>';
+                                    break;
+                                  case "dispatched":
+                                    echo '<span class="badge bg-danger">Ended</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-primary btn-icon-text publish-request" class="btn btn-primary">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Publish Request
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="external-link"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
+
                     </tbody>
                   </table>
                 </div>
@@ -381,78 +406,70 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <p>Intel Computers</p>
-                          <small class="text-muted">Electronics</small>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-info">Ongoing</span>
-                        </td>
-                        <td class="text-center">
-                          <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests/manage_post" class="btn btn-primary btn-icon-text">
-                            <i data-feather="settings" class="btn-icon-prepend"></i>
-                            Manage Post
-                          </a>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="user-plus"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <p>Intel Computers</p>
-                          <small class="text-muted">Electronics</small>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-danger">Ended</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="settings" class="btn-icon-prepend"></i>
-                            Manage Post
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="user-plus"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($purchase_requests)) :
+                        foreach ($purchase_requests as $data) :
+                          if ($data->pr_status_name == "ongoing" || $data->pr_status_name == "ended") :
+                      ?>
+                            <tr class="align-middle" data-id="<?= $data->pr_id ?>">
+                              <td><?= $data->pr_id ?></td>
+                              <td>
+                                <p><?= $data->title ?></p>
+                                <small class="text-muted"><?= ucwords($data->category_name) ?></small>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                  <div>
+                                    <p><?= $data->display_name ?></p>
+                                    <small class="text-muted"><?= ucwords($data->account_type_name) ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <p class="fw-bold"><?= date("d M Y", strtotime($data->end_date)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->end_date)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->pr_status_name) {
+                                  case "pending":
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case "ongoing":
+                                    echo '<span class="badge bg-info">Ongoing</span>';
+                                    break;
+                                  case "ended":
+                                    echo '<span class="badge bg-danger">Ended</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td class="text-center">
+                                <a href="<?= ROOT ?>vendor_portal_admin/manage_post/<?= $data->pr_id ?>" class="btn btn-primary btn-icon-text" class="btn btn-primary">
+                                  <i data-feather="settings" class="btn-icon-prepend"></i>
+                                  Manage Post
+                                </a>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="user-plus"></i>
+                                </button>
+                                <button class="btn btn-outline-danger btn-icon">
+                                  <i data-feather="slash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
+
                     </tbody>
                   </table>
                 </div>
@@ -492,54 +509,9 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/vendor_portal/manage-request.js"></script>
 
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(function() {
-
-      $("#publishPost").on("click", () => {
-
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger me-2'
-          },
-          buttonsStyling: false,
-        })
-
-        swalWithBootstrapButtons.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonClass: 'me-2',
-          confirmButtonText: 'Yes, Publish it!',
-          cancelButtonText: 'No, cancel!',
-          reverseButtons: true
-        }).then((result) => {
-          if (result.value) {
-            swalWithBootstrapButtons.fire(
-              'Published!',
-              'Your post is now visible.',
-              'success'
-            )
-          } else if (
-            // Read more about handling dismissals
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons.fire(
-              'Cancelled',
-              'Publish has been cancelled',
-              'error'
-            )
-          }
-        })
-      })
-
-    });
-  </script>
 
 
 </body>

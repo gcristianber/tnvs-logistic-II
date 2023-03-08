@@ -311,10 +311,10 @@
                   <i data-feather="shopping-cart" class="text-primary me-3"></i>
                   <div>
                     <div class="d-flex align-items-center">
-                      <h6 class="me-2">INTEL COMPUTERS</h6>
-                      <span class="text-muted">#001</span>
+                      <h6 class="me-2"><?= strtoupper($purchase_request->title) ?></h6>
+                      <span class="text-muted">#<?= $purchase_request->pr_id?></span>
                     </div>
-                    <small class="text-muted">Electronics</small>
+                    <small class="text-muted"><?= ucwords($purchase_request->category_name)?></small>
                   </div>
                 </div>
                 <div>
@@ -330,15 +330,18 @@
             </div>
             <div class="mb-3">
               <div class="p-3 bg-gray-100 rounded-2 mb-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolor corrupti, fuga ipsum voluptatibus deleniti! Distinctio consequuntur aperiam vel iusto eligendi expedita earum consequatur voluptatibus.
+              <?= $purchase_request->body?>
               </div>
+              <?php
+              if(!empty($purchase_request->file_name)):
+              ?>
               <ul class="list-group">
                 <li class="list-group-item">
                   <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                       <i data-feather="file" class="icon-lg me-2"></i>
                       <div>
-                        <p>Test Reference.docx</p>
+                        <p><?= $purchase_request->file_name ?></p>
                         <small class="text-muted">200 KB</small>
                       </div>
                     </div>
@@ -348,6 +351,7 @@
                   </div>
                 </li>
               </ul>
+              <?php endif;?>
             </div>
 
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">

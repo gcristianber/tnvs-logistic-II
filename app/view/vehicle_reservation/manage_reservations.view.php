@@ -302,7 +302,7 @@
 
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
+                <a class="nav-link active" id="pending-line-tab" data-bs-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="reserved-line-tab" data-bs-toggle="tab" href="#reserved" role="tab" aria-controls="reserved" aria-selected="false">Reserved</a>
@@ -317,17 +317,15 @@
 
 
             <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="reserved-line-tab">
+              <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-line-tab">
                 <div class="table-responsive">
                   <table id="dataTableExample" class="table display">
                     <thead>
                       <tr>
                         <th>Request Id</th>
                         <th>Hirer</th>
-                        <th>Plate</th>
                         <th>Vehicle</th>
                         <th>Type</th>
-                        <th>Request Date</th>
                         <th>Pick Up Date</th>
                         <th>Return Date</th>
                         <th>Status</th>
@@ -335,55 +333,76 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>FKY-081</td>
-                        <td>
-                          <div>
-                            <p>Honda</p>
-                            <small class="text-muted">Civic</small>
-                          </div>
-                        </td>
-                        <td>Sedan</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
+                      <?php
+                      if (!empty($reservations)) :
+                        foreach ($reservations as $data) :
+                          if ($data->reserve_status_name == "pending") :
+                      ?>
+                            <tr class="align-middle" data-id="<?= $data->reservation_id ?>" data-vehicle_id="<?= $data->vehicle_id ?>">
+                              <td><?= $data->reservation_id ?></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                  <div>
+                                    <p><?= $data->hirer_name ?></p>
+                                    <small class="text-muted"><?= ucwords($data->hirer_role) ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><?= $data->make ?></p>
+                                  <small class="text-muted"><?= $data->plate ?></small>
+                                </div>
+                              </td>
+                              <td><?= ucwords($data->model_type_name) ?></td>
+                              <td>
+                                <p class="fw-bold text-success"><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
+                              </td>
+                              <td>
+                                <p class="fw-bold text-danger"><?= date("d M Y", strtotime($data->return_date)) ?></p>
+                              </td>
 
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Approve Request
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="external-link"></i>
-                          </button>
+                              <td>
+                                <?php
+                                switch ($data->reserve_status_name) {
+                                  case "pending":
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case "reserved":
+                                    echo '<span class="badge bg-secondary">Reserved</span>';
+                                    break;
+                                  case "dispatched":
+                                    echo '<span class="badge bg-danger">Dispatched</span>';
+                                    break;
+                                  case "returned":
+                                    echo '<span class="badge bg-success">Returned</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
 
-                          <button class="btn btn-outline-danger btn-icon">
-                            <i data-feather="slash"></i>
-                          </button>
-                        </td>
-                      </tr>
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-primary btn-icon-text approve-request">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Approve Request
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="external-link"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-icon">
+                                  <i data-feather="slash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -395,10 +414,8 @@
                       <tr>
                         <th>Request Id</th>
                         <th>Hirer</th>
-                        <th>Plate</th>
                         <th>Vehicle</th>
                         <th>Type</th>
-                        <th>Request Date</th>
                         <th>Pick Up Date</th>
                         <th>Return Date</th>
                         <th>Status</th>
@@ -406,50 +423,76 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>FKY-081</td>
-                        <td>
-                          <div>
-                            <p>Honda</p>
-                            <small class="text-muted">Civic</small>
-                          </div>
-                        </td>
-                        <td>Sedan</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-secondary">Reserved</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Dispatch Vehicle
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="external-link"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($reservations)) :
+                        foreach ($reservations as $data) :
+                          if ($data->reserve_status_name == "reserved") :
+                      ?>
+                            <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                              <td><?= $data->reservation_id ?></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                  <div>
+                                    <p><?= $data->hirer_name ?></p>
+                                    <small class="text-muted"><?= ucwords($data->hirer_role) ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><?= $data->make ?></p>
+                                  <small class="text-muted"><?= $data->plate ?></small>
+                                </div>
+                              </td>
+                              <td><?= ucwords($data->model_type_name) ?></td>
+                              <td>
+                                <p class="fw-bold text-success"><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
+                              </td>
+                              <td>
+                                <p class="fw-bold text-danger"><?= date("d M Y", strtotime($data->return_date)) ?></p>
+                              </td>
+
+                              <td>
+                                <?php
+                                switch ($data->reserve_status_name) {
+                                  case "pending":
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case "reserved":
+                                    echo '<span class="badge bg-secondary">Reserved</span>';
+                                    break;
+                                  case "dispatched":
+                                    echo '<span class="badge bg-danger">Dispatched</span>';
+                                    break;
+                                  case "returned":
+                                    echo '<span class="badge bg-success">Returned</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-primary btn-icon-text dispatch-vehicle">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Dispatch Vehicle
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="external-link"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-icon">
+                                  <i data-feather="slash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -461,10 +504,8 @@
                       <tr>
                         <th>Request Id</th>
                         <th>Hirer</th>
-                        <th>Plate</th>
                         <th>Vehicle</th>
                         <th>Type</th>
-                        <th>Request Date</th>
                         <th>Pick Up Date</th>
                         <th>Return Date</th>
                         <th>Status</th>
@@ -472,50 +513,76 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>FKY-081</td>
-                        <td>
-                          <div>
-                            <p>Honda</p>
-                            <small class="text-muted">Civic</small>
-                          </div>
-                        </td>
-                        <td>Sedan</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-secondary">Reserved</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Set as Returned
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="external-link"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($reservations)) :
+                        foreach ($reservations as $data) :
+                          if ($data->reserve_status_name == "dispatched") :
+                      ?>
+                            <tr class="align-middle" data-id="<?= $data->reservation_id ?>" data-vehicle_id="<?= $data->vehicle_id ?>">
+                              <td><?= $data->reservation_id ?></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                  <div>
+                                    <p><?= $data->hirer_name ?></p>
+                                    <small class="text-muted"><?= ucwords($data->hirer_role) ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><?= $data->make ?></p>
+                                  <small class="text-muted"><?= $data->plate ?></small>
+                                </div>
+                              </td>
+                              <td><?= ucwords($data->model_type_name) ?></td>
+                              <td>
+                                <p class="fw-bold text-success"><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
+                              </td>
+                              <td>
+                                <p class="fw-bold text-danger"><?= date("d M Y", strtotime($data->return_date)) ?></p>
+                              </td>
+
+                              <td>
+                                <?php
+                                switch ($data->reserve_status_name) {
+                                  case "pending":
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case "reserved":
+                                    echo '<span class="badge bg-secondary">Reserved</span>';
+                                    break;
+                                  case "dispatched":
+                                    echo '<span class="badge bg-danger">Dispatched</span>';
+                                    break;
+                                  case "returned":
+                                    echo '<span class="badge bg-success">Returned</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-primary btn-icon-text return-vehicle">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Mark as returned
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="external-link"></i>
+                                </button>
+
+                                <button class="btn btn-outline-danger btn-icon">
+                                  <i data-feather="slash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -530,7 +597,6 @@
                         <th>Plate</th>
                         <th>Vehicle</th>
                         <th>Type</th>
-                        <th>Request Date</th>
                         <th>Pick Up Date</th>
                         <th>Return Date</th>
                         <th>Status</th>
@@ -538,50 +604,73 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>Jayson Sabido</p>
-                              <small class="text-muted">Procurement Staff</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>FKY-081</td>
-                        <td>
-                          <div>
-                            <p>Honda</p>
-                            <small class="text-muted">Civic</small>
-                          </div>
-                        </td>
-                        <td>Sedan</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold text-danger">05 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-secondary">Returned</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="star" class="btn-icon-prepend"></i>
-                            View Feedback
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="external-link"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($reservations)) :
+                        foreach ($reservations as $data) :
+                          if ($data->reserve_status_name == "returned") :
+                      ?>
+                            <tr class="align-middle">
+                              <td><?= $data->reservation_id ?></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                                  <div>
+                                    <p><?= $data->hirer_name ?></p>
+                                    <small class="text-muted"><?= ucwords($data->hirer_role) ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>FKY-081</td>
+                              <td>
+                                <div>
+                                  <p><?= $data->make ?></p>
+                                  <small class="text-muted"><?= $data->plate ?></small>
+                                </div>
+                              </td>
+                              <td><?= ucwords($data->model_type_name) ?></td>
+                              <td>
+                                <p class="fw-bold text-success"><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
+                              </td>
+                              <td>
+                                <p class="fw-bold text-danger"><?= date("d M Y", strtotime($data->return_date)) ?></p>
+                              </td>
+
+                              <td>
+                                <?php
+                                switch ($data->reserve_status_name) {
+                                  case "pending":
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case "reserved":
+                                    echo '<span class="badge bg-secondary">Reserved</span>';
+                                    break;
+                                  case "dispatched":
+                                    echo '<span class="badge bg-danger">Dispatched</span>';
+                                    break;
+                                  case "returned":
+                                    echo '<span class="badge bg-success">Returned</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="star" class="btn-icon-prepend"></i>
+                                  View Rating
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="download"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -621,22 +710,9 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reservations.js"></script>
 
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(function() {
-      // handle click event on dropdown item
-      $('.dropdown-menu #followUp').click(function(e) {
-        e.preventDefault();
-        var id = $(this).closest('tr').data('id'); // get the ID of the row to update
-
-        console.log(id)
-
-      });
-    });
-  </script>
 
 
 </body>

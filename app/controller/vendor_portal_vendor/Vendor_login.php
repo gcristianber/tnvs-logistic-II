@@ -22,7 +22,6 @@ class Vendor_login
                     $otp = rand(100000, 999999);
 
                     $VPVendors->update($id, ["otp" => $otp], 'vendor_id');
-
                     try {
                         //Server settings
                         $mail->SMTPDebug = 2;                      //Enable verbose debug output
@@ -35,8 +34,8 @@ class Vendor_login
                         $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
                         //Recipients
-                        $mail->setFrom('cristiangordora27@gmail.com', 'Chan');
-                        $mail->addAddress('gcristianber@gmail.com', 'Gcristianber');     //Add a recipient
+                        $mail->setFrom('cristiangordora27@gmail.com', 'LULAN TNVS - LOGISTIC 2');
+                        $mail->addAddress($row->email_address, $row->display_name);     //Add a recipient
 
                         //Content
                         $mail->isHTML(true);                                  //Set email format to HTML

@@ -314,16 +314,13 @@
                 <a class="nav-link" id="received-line-tab" data-bs-toggle="tab" href="#received" role="tab" aria-controls="received" aria-selected="false">Received</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="onhold-line-tab" data-bs-toggle="tab" href="#onhold" role="tab" aria-controls="onhold" aria-selected="false">On Hold</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" id="followedup-line-tab" data-bs-toggle="tab" href="#followedup" role="tab" aria-controls="followedup" aria-selected="false">Followed Up</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="returned-line-tab" data-bs-toggle="tab" href="#returned" role="tab" aria-controls="returned" aria-selected="false">Returned</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
               </li>
             </ul>
             <div class="tab-content mt-3" id="lineTabContent">
@@ -373,72 +370,19 @@
                                 <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
                                 <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
                               </td>
-                             
+
                               <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->document_id ?>">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Approve Request
                                 </button>
-
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                </button>
+                                <button class="btn btn-outline-danger btn-icon">
+                                  <i data-feather="slash" class="btn-icon-prepend"></i>
+                                </button>
                               </td>
-                              <div class="modal fade" id="<?= $data->document_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <?php if (!empty($data->document_purpose)) : ?>
-                                        <div class="p-3 bg-gray-100 rounded-2 mb-3">
-                                          <?= $data->document_purpose ?>
-                                        </div>
-                                      <?php endif; ?>
-                                      <ul class="list-group">
-                                        <li class="list-group-item">
-                                          <div class="d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                              <i data-feather="file" class="icon-lg me-2"></i>
-                                              <div>
-                                                <p class="fw-bold"><?= $data->document_name ?></p>
-                                                <small class="text-muted">
-                                                  <?= round($data->document_size / 1024) . ' KB' ?>
-                                                </small>
-                                              </div>
-                                            </div>
-
-                                            <a href="<?= ROOT . "uploads/" . $data->document_id . "/" . $data->document_name ?>">
-                                              <i data-feather="download" class="icon-md"></i>
-                                            </a>
-                                          </div>
-                                        </li>
-                                      </ul>
-
-
-
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-outline-danger">Decline</button>
-                                      <button type="button" class="btn btn-primary">Receive Document</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
                             </tr>
                       <?php
                           endif;
@@ -491,163 +435,15 @@
                               </td>
                               <td class="text-center">
                                 <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
+                                  <i data-feather="archive" class="btn-icon-prepend"></i>
+                                  Archive Document
                                 </button>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="onhold" role="tabpanel" aria-labelledby="onhold-line-tab">
-                <div class="table-responsive">
-                  <table id="OnholdTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "on hold" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
                                 </button>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="declined-line-tab">
-                <div class="table-responsive">
-                  <table id="DeclinedTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
-                        <th>Category</th>
-                        <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "declined" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="corner-down-left" class="btn-icon-prepend"></i>
                                 </button>
-
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
                               </td>
                             </tr>
                       <?php
@@ -791,6 +587,76 @@
                                     </div>
                                   </div>
                                 </div>
+
+                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                                  <i data-feather="more-vertical" class="icon-md"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
+                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
+                                    <i data-feather="edit-2" class="icon-md me-2"></i>
+                                    <span class="">Edit Document</span>
+                                  </a>
+                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
+                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
+                                    <span class="">Follow Up</span>
+                                  </a>
+                                </div>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="declined-line-tab">
+                <div class="table-responsive">
+                  <table id="DeclinedTable" class="table display">
+                    <thead>
+                      <tr>
+                        <th>Document Id</th>
+                        <th>Document Name</th>
+                        <th>Category</th>
+                        <th>Date Created</th>
+                        <th>Recipient</th>
+                        <th data-orderable="false" class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      if (!empty($view_table)) :
+                        foreach ($view_table as $data) :
+                          if ($data->document_status == "declined" && $_SESSION["department_name"] == $data->department_name) :
+                      ?>
+                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
+                              <td><?= $data->document_id ?></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <i data-feather="file" class="icon-lg me-2"></i>
+                                  <div>
+                                    <p class="fw-bold"><?= $data->document_name ?></p>
+                                    <small class="text-muted">
+                                      <?= round($data->document_size / 1024) . ' KB' ?>
+                                    </small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td><?= ucwords($data->document_category_name) ?></td>
+                              <td>
+                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <?= ucwords($data->department_name) ?>
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="eye" class="btn-icon-prepend"></i>
+                                  View Request
+                                </button>
 
                                 <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
                                   <i data-feather="more-vertical" class="icon-md"></i>

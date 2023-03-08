@@ -88,6 +88,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="<?= ROOT ?>vendor_portal_admin/auction_requests" class="nav-link">
+                    <i class="link-icon" data-feather="tag"></i>
+                    <span class="link-title">Auction Requests</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="<?= ROOT ?>vendor_portal_admin/vendor_contracts" class="nav-link">
                     <i class="link-icon" data-feather="feather"></i>
                     <span class="link-title">Vendor Contracts</span>
@@ -97,6 +103,12 @@
                 <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
                     <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Manage Vendors</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT ?>vendor_portal_admin/manage_categories" class="nav-link">
+                    <i class="link-icon" data-feather="list"></i>
+                    <span class="link-title">Manage Categories</span>
                 </a>
             </li>
 
