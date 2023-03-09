@@ -10,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Create Report</title>
+  <title>Audit Reports</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -306,18 +306,48 @@
 
               <div class="d-flex align-items-center justify-content-between mb-3">
                 <div>
-                  <p class="fw-bold">AUDIT LOGS</p>
+                  <p class="fw-bold">AUDIT REPORTS</p>
                   <small class="text-muted">Select a section to perform.</small>
                 </div>
                 <div>
-                  <button class="btn btn-primary btn-icon-text" disabled>
-                    <i data-feather="download" class="btn-icon-prepend"></i>
-                    Download Report
+                  <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i data-feather="feather" class="btn-icon-prepend"></i>
+                    Create Report
                   </button>
-                  <button class="btn btn-outline-primary btn-icon-text">
-                    <i data-feather="send" class="btn-icon-prepend"></i>
-                    Forward
-                  </button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="mb-2">
+                            <label for="auditTitle" class="form-label">Title</label>
+                            <input type="text" name="audit_title" id="auditTitle" class="form-control" placeholder="Title">
+                          </div>
+                          <div class="mb-2">
+                            <label for="itemCategory" class="form-label">Item Category</label>
+                            <select name="item_category" class="form-select" id="itemCategory">
+                              <option disabled selected>Select Category</option>
+                              <option value="1">Vehicles</option>
+                              <option value="2">Electronics</option>
+                              <option value="3">Office Supplies</option>
+                              <option value="4">Foods and Beverages</option>
+                            </select>
+                          </div>
+                          <div class="mb-2">
+                            <label for="auditScope" class="form-label">Scope</label>
+                            <textarea name="audit_scope" class="form-control" id="auditScope" cols="30" rows="5" placeholder="Type something..."></textarea>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                          <button type="button" class="btn btn-primary">Create</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -342,53 +372,71 @@
                         <th data-orderable="false"></th>
                         <th>Audit ID</th>
                         <th>Title</th>
-                        <th>Section</th>
                         <th>Author</th>
-                        <th>Audit Date</th>
+                        <th>Date Created</th>
+                        <th>Last Update</th>
                         <th>Status</th>
                         <th data-orderable="false" class="text-center">Action</th>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>
-                          <input type="checkbox" name="" id="" class="form-check-input">
-                        </td>
-                        <td>001</td>
-                        <td>Audit for Jan — Mar 2023</td>
-                        <td>Section A</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="rounded-circle ht-40 wd-40 me-2" alt="avatar">
-                            <div>
-                              <p class="fw-bold">Leandro Quisado</p>
-                              <small class="text-muted">Audit Manager</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p>03 Jan 2023</p>
-                          <small class="text-muted">04:19 PM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-info">Ongoing</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Mark as done
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="send"></i>
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="download"></i>
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="edit"></i>
-                          </button>
+                      <?php
+                      if (!empty($audit_reports)) :
+                        foreach ($audit_reports as $data) :
+                          if ($data->status_name == "ongoing") :
+                      ?>
+                            <tr class="align-middle">
+                              <td>
+                                <input type="checkbox" name="" id="" class="form-check-input">
+                              </td>
+                              <td><?= $data->audit_report_id ?></td>
+                              <td><?= $data->report_title ?></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <img src="https://via.placeholder.com/40x40" class="rounded-circle ht-40 wd-40 me-2" alt="avatar">
+                                  <div>
+                                    <p><?= $data->author_name ?></p>
+                                    <small class="text-muted"><?= $data->author_role ?></small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <p><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <p><?= date("d M Y", strtotime($data->last_update)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->last_update)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->status_name) {
+                                  case "ongoing":
+                                    echo '<span class="badge bg-info">Ongoing</span>';
+                                    break;
+                                  case "done":
+                                    echo '<span class="badge bg-success">Done</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Mark as done
+                                </button>
+                                <a class="btn btn-outline-primary btn-icon"  href="<?= ROOT ?>audit_management/audit_logs/create_report/001">
+                                  <i data-feather="edit"></i>
+                                </a>
 
-                        </td>
-                      </tr>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>

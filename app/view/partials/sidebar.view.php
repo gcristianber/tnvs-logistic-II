@@ -24,6 +24,12 @@
 
             <li class="nav-item nav-category">document tracking</li>
             <li class="nav-item">
+                <a href="<?= ROOT ?>document_tracking/" class="nav-link">
+                    <i class="link-icon" data-feather="search"></i>
+                    <span class="link-title">Track Document</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="<?= ROOT ?>document_tracking/request_document" class="nav-link">
                     <i class="link-icon" data-feather="feather"></i>
                     <span class="link-title">Request Document</span>
@@ -53,12 +59,6 @@
                     <span class="link-title">Incoming Documents</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/document_requests" class="nav-link">
-                    <i class="link-icon" data-feather="mail"></i>
-                    <span class="link-title">Document Requests</span>
-                </a>
-            </li>
 
           
             <li class="nav-item nav-category">vehicle reservation</li>
@@ -76,8 +76,8 @@
             </li>
             <li class="nav-item">
                 <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
-                    <i class="link-icon" data-feather="flag"></i>
-                    <span class="link-title">Vehicle Reports</span>
+                    <i class="link-icon" data-feather="star"></i>
+                    <span class="link-title">Feedbacks</span>
                 </a>
             </li>
             <li class="nav-item nav-category">vendor portal</li>
@@ -105,30 +105,18 @@
                     <span class="link-title">Manage Vendors</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/manage_categories" class="nav-link">
-                    <i class="link-icon" data-feather="list"></i>
-                    <span class="link-title">Manage Categories</span>
-                </a>
-            </li>
 
             <li class="nav-item nav-category">audit management</li>
             <li class="nav-item">
                 <a href="<?= ROOT ?>audit_management/cycle_count" class="nav-link">
-                    <i class="link-icon" data-feather="calendar"></i>
-                    <span class="link-title">Schedules</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
-                    <i class="link-icon" data-feather="plus"></i>
+                    <i class="link-icon" data-feather="search"></i>
                     <span class="link-title">Create Report</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
                     <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">Audit Logs</span>
+                    <span class="link-title">Audit Reports</span>
                 </a>
             </li>
             <li class="nav-item nav-category">fleet management</li>

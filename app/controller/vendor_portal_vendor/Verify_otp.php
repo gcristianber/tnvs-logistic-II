@@ -18,7 +18,7 @@ class Verify_otp{
             if($row){
                 if($row->otp == $otp_inputted){
                     //! TODO: Redirect to vendor dashboard
-                    redirect("vendor_portal_vendor/test");
+                    redirect("vendor_portal_vendor/dashboard");
                 }
             }
 

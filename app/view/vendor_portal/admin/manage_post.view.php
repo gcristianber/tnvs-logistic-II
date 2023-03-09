@@ -312,16 +312,68 @@
                   <div>
                     <div class="d-flex align-items-center">
                       <h6 class="me-2"><?= strtoupper($purchase_request->title) ?></h6>
-                      <span class="text-muted">#<?= $purchase_request->pr_id?></span>
+                      <span class="text-muted">#<?= $purchase_request->pr_id ?></span>
                     </div>
-                    <small class="text-muted"><?= ucwords($purchase_request->category_name)?></small>
+                    <small class="text-muted"><?= ucwords($purchase_request->category_name) ?></small>
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-primary btn-icon-text">
+                  <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#inviteVendors">
                     <i data-feather="user-plus" class="btn-icon-prepend"></i>
                     Invite Vendors
                   </button>
+
+                  <div class="modal fade" id="inviteVendors" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Invite Vendors</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="alert alert-primary" role="alert">
+                            <i data-feather="alert-circle"></i>
+                            Only verified vendors can be invited.
+                          </div>
+
+                          <div class="mb-3 d-flex align-items-center">
+                            <input type="text" name="" id="" class="form-control me-2" placeholder="Search vendor...">
+                            <button class="btn btn-outline-primary">
+                              Search
+                            </button>
+                          </div>
+                          <ul class="list-group">
+                            <?php
+                            if (!empty($verified_vendors)) :
+                              foreach ($verified_vendors as $data) :
+                            ?>
+                                <li class="list-group-item" data-id="<?= $data->vendor_id ?>">
+                                  <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                      <img class="ht-40 wd-40 rounded-circle me-2" src="https://via.placeholder.com/40x40" alt="">
+                                      <div>
+                                        <p><?= $data->display_name ?></p>
+                                        <small class="text-muted"><?= $data->email_address ?></small>
+                                      </div>
+                                    </div>
+                                    <input type="checkbox" name="vendors" class="form-check-input vendorCheckbox" value="<?= $data->vendor_id ?>">
+                                  </div>
+                                </li>
+                            <?php
+                              endforeach;
+                            endif;
+                            ?>
+                          </ul>
+
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" id="sendInvite">Send Invite</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <button class="btn btn-outline-primary btn-icon">
                     <i data-feather="settings"></i>
                   </button>
@@ -330,28 +382,28 @@
             </div>
             <div class="mb-3">
               <div class="p-3 bg-gray-100 rounded-2 mb-3">
-              <?= $purchase_request->body?>
+                <?= $purchase_request->body ?>
               </div>
               <?php
-              if(!empty($purchase_request->file_name)):
+              if (!empty($purchase_request->file_name)) :
               ?>
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <i data-feather="file" class="icon-lg me-2"></i>
-                      <div>
-                        <p><?= $purchase_request->file_name ?></p>
-                        <small class="text-muted">200 KB</small>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <i data-feather="file" class="icon-lg me-2"></i>
+                        <div>
+                          <p><?= $purchase_request->file_name ?></p>
+                          <small class="text-muted">200 KB</small>
+                        </div>
                       </div>
+                      <a href="">
+                        <i data-feather="download" class="icon-md"></i>
+                      </a>
                     </div>
-                    <a href="">
-                      <i data-feather="download" class="icon-md"></i>
-                    </a>
-                  </div>
-                </li>
-              </ul>
-              <?php endif;?>
+                  </li>
+                </ul>
+              <?php endif; ?>
             </div>
 
             <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
@@ -529,10 +581,9 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/create-vendor-contract.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/vendor_portal/invite-vendors.js"></script>
 
   <!-- End custom js for this page -->
-
 
 </body>
 

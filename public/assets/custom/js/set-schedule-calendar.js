@@ -1,49 +1,21 @@
 $(document).ready(() => {
   $(function () {
-
     getData()
-    // sample calendar events data
-
-    // var Draggable = FullCalendar.Draggable;
     var calendarEl = document.getElementById('fullcalendar');
-    // var containerEl = document.getElementById('external-events');
 
-    var curYear = moment().format('YYYY');
-    var curMonth = moment().format('MM');
-
-    // console.log(curYear)
-    // console.log(curMonth)
-    // Calendar Event Source
     var calendarEvents = {
-      // id: 001,
-      backgroundColor: 'rgba(46, 204, 113,.15)',
-      borderColor: '#2ecc71',
+      backgroundColor: 'rgba(101, 113, 255, .15)',
+      borderColor: '#6571ff',
       events: [
         {
-          audit_schedule_id: '001',
-          section: 'Section A',
-          start: '2023-03-08T11:19:00',
-          // end: curYear + '-' + curMonth + '-09T15:00:00',
-          title: 'test',
-          description: 'test'
+          title: "isa",
+          description: "Hello",
+          start:  "2023-03-23"
         }
       ]
     };
 
-    // console.log(calendarEvents.events)
-
-    // console.log(calendarEvents.events)
-
-
-    // new Draggable(containerEl, {
-    //   itemSelector: '.fc-event',
-    //   eventData: function(eventEl) {
-    //     return {
-    //       title: eventEl.innerText
-    //     };
-    //   }
-    // });
-
+    
 
     // initialize the calendar
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -60,10 +32,6 @@ $(document).ready(() => {
       timeZone: 'UTC',
       hiddenDays: [],
       navLinks: 'true',
-      // weekNumbers: true,
-      // weekNumberFormat: {
-      //   week:'numeric',
-      // },
       dayMaxEvents: 2,
       events: [],
       eventSources: [calendarEvents],
@@ -81,21 +49,19 @@ $(document).ready(() => {
 
         $("#testForm").submit((e) => {
           e.preventDefault()
-  
+
           const form = document.getElementById("testForm")
           const formData = new FormData(form)
           const selectedDate = info.dateStr
-          formData.append("date_schedule", selectedDate)
-  
-          const title = formData.get("title");
-          const section = formData.get("section_id");
-          const time = formData.get("time_schedule");
+          formData.append("start", selectedDate)
 
-          if (!title || !section || !time) {
-            console.log("Please fill out all required fields.");
+          const title = formData.get("title");
+
+          if (!title) {
+            console.log("Please put a title!");
             return;
           }
-  
+
           console.log("hello")
           $.ajax({
             // Pass data into php
@@ -105,12 +71,11 @@ $(document).ready(() => {
             processData: false,
             success: function (response) {
               console.log(response)
-              // loadSchedules()
               form.reset()
               $("#createEventModal").modal("hide");
             }
           })
-  
+
         })
 
 
@@ -119,22 +84,38 @@ $(document).ready(() => {
     });
 
     function getData() {
+      var currentUrl = $(location).attr('href');
+
       $.ajax({
         // Pass data into php
-        url: 'http://localhost/TNVS-LOGISTIC2/public/audit_management/cycle_count/getData',
+        url: currentUrl + '/getdata',
         method: "GET",
         dataType: "json",
         success: function (response) {
+          // console.log(response)
 
-          console.log(response)
-          calendarEvents.events = response
-          // loadSchedules()
+          var fetchedEvents = response;
 
+          // calendarEvents.events = response
+
+          for (var i = 0; i < fetchedEvents.length; i++) {
+            calendarEvents.events.push({
+              title: fetchedEvents[i].title,
+              start: fetchedEvents[i].start,
+              description: fetchedEvents[i].description,
+              // add any other relevant properties here
+            });
+          }
+          console.log(calendarEvents.events)
+
+          // calendarEvents.events.push(response)
+  
+          calendar.render();
         }
       })
     }
 
-    calendar.render();
+
 
 
   });

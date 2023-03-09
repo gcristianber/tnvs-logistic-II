@@ -12,7 +12,8 @@ class App{
         "vendor_portal_vendor"      => "vendor_portal_vendor",
         "fleet_management_admin"    => "fleet_management_admin",
         "fleet_management_driver"   => "fleet_management_driver",
-        "general"                   => "general"
+        "general"                   => "general",
+        "templates"                 => "templates"
     ];
 
     protected $system       = "authentication";

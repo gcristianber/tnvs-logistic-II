@@ -308,136 +308,106 @@
         </div>
       </nav>
       <div class="page-content">
-
         <div class="card">
           <div class="card-body">
-
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <div>
-                <h6>REQUEST DOCUMENT</h6>
-                <small class="text-muted">Manage your requested documents.</small>
-              </div>
-
-              <div>
-                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>document_tracking/request_document/requestor_form">
-                  <i data-feather="feather" class="btn-icon-prepend"></i>
-                  Create request
-                </a>
-              </div>
-            </div>
-            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ongoing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="completed-line-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Expired</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Followed Up</a>
-              </li>
-
-
-            </ul>
-            <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                <div class="table-responsive">
-                  <table id="dataTableExample" class="table">
-                    <thead>
-                      <tr>
-                        <th>Tracking Id</th>
-                        <th>Document Type</th>
-                        <th>Recipient</th>
-                        <th>Date Created</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>rd63fb2261b7e24</td>
-                        <td>
-                          Employment Certificate
-                        </td>
-                        <td>Human Resource</td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">05:13 PM</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">06 Jan 2023</p>
-                          <small class="text-muted">05:13 PM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="eye" class="btn-icon-prepend"></i>
-                            View Request
-                          </button>
-                        </td>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="bg-gray-100 p-3 text-wrap mb-3">
-                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, quos dicta pariatur illo repellendus minus delectus laudantium facere repellat reiciendis ab exercitationem quis temporibus sint?
-                                </div>
-
-
-                                <ul class="list-group">
-                                  <li class="list-group-item">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                      <div class="d-flex align-items-center">
-                                        <div class="ht-40 wd-40 rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center me-2">
-                                          <i data-feather="more-horizontal" class="icon-lg"></i>
-                                        </div>
-
-                                        <div>
-                                          <h6>PENDING</h6>
-                                          <small class="text-muted">Document has set to pending</small>
-                                        </div>
-                                      </div>
-
-                                      <div class="text-end">
-                                        <h6>03 Jan</h6>
-                                        <small class="text-muted">03:47 AM</small>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-
-
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Follow Up Request</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </tr>
-                    </tbody>
-                  </table>
+            <div class="mb-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <h6 class="fw-bold">SELECT TEMPLATE</h6>
+                  <small class="text-muted">Select your preferred template.</small>
+                </div>
+                <div>
+                  <button class="btn btn-primary btn-icon-text">
+                    <i data-feather="feather" class="btn-icon-prepend"></i>
+                    Create Document
+                  </button>
                 </div>
               </div>
-              <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
-              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="success-line-tab">decline</div>
             </div>
+            <div class="d-flex gap-3 flex-wrap">
+              <div>
+                <!-- <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"> -->
+                <a href="<?= ROOT ?>templates/templates/vendor_contract">
+                  <div class="text-center">
+                    <img class="rounded-2 mb-3 border border-1" src="<?= ROOT ?>assets/images/thumbnails/generated_documents/vendor-contract-template.jpg" alt="" style="height: 275px; width: 200px;">
+                    <p class="text-dark">Vendor Contract</p>
+                  </div>
+                </a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <label for=""></label>
+                        <input type="text" name="" id="title" class="form-control" placeholder="Title">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"> -->
+                <a href="<?= ROOT ?>templates/templates/purchase_order">
+                  <div class="text-center">
+                    <img class="rounded-2 mb-3 border border-1" src="<?= ROOT ?>assets/images/thumbnails/generated_documents/purchase-request-template.jpg" alt="" style="height: 275px; width: 200px;">
+                    <p class="text-dark">Purchase Order</p>
+                  </div>
+                </a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <label for=""></label>
+                        <input type="text" name="" id="title" class="form-control" placeholder="Title">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <!-- <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal"> -->
+                <a href="<?= ROOT ?>templates/templates/employment_certificate">
+                  <div class="text-center">
+                    <img class="rounded-2 mb-3 border border-1" src="<?= ROOT ?>assets/images/thumbnails/generated_documents/employment-certificate-template.jpg" alt="" style="height: 275px; width: 200px;">
+                    <p class="text-dark">Employment Certificate</p>
+                  </div>
+                </a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <label for=""></label>
+                        <input type="text" name="" id="title" class="form-control" placeholder="Title">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 
           </div>
         </div>

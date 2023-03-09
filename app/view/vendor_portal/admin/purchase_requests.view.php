@@ -452,7 +452,7 @@
                                 ?>
                               </td>
                               <td class="text-center">
-                                <a href="<?= ROOT ?>vendor_portal_admin/manage_post/<?= $data->pr_id ?>" class="btn btn-primary btn-icon-text" class="btn btn-primary">
+                                <a href="<?= ROOT ?>vendor_portal_admin/manage_post?pr_id=<?= $data->pr_id ?>" class="btn btn-primary btn-icon-text" class="btn btn-primary">
                                   <i data-feather="settings" class="btn-icon-prepend"></i>
                                   Manage Post
                                 </a>

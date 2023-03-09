@@ -293,7 +293,7 @@
 
       <div class="page-content">
 
-        <div class="card">
+        <div class="card grid-margin">
           <div class="card-body">
 
             <div class="mb-3">
@@ -451,7 +451,6 @@
 
           </div>
         </div>
-
       </div>
     </div>
 

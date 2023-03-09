@@ -5,8 +5,6 @@ spl_autoload_register(function($classname){
 });
 
 
-
-
 require("vendor/autoload.php");
 
 require ("env/const.php");

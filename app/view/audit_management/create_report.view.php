@@ -309,17 +309,25 @@
                   <p class="fw-bold">CONDUCT AUDIT</p>
                   <small class="text-muted">Select a section to perform.</small>
                 </div>
-                <button class="btn btn-primary" id="getTableData">
-                  Generate Report
-                </button>
+                <div>
+                  <button class="btn btn-outline-primary btn-icon-text" >
+                    <i data-feather="download" class="btn-icon-prepend"></i>
+                    Export
+                  </button>
+                  <button class="btn btn-primary btn-icon-text" id="getTableData">
+                    <i data-feather="save" class="btn-icon-prepend"></i>
+                    Save Report
+                  </button>
+                </div>
               </div>
             </div>
             <div class="table-responsive">
               <table id="dataTableExample" class="table">
                 <thead>
                   <tr>
-                    <th>Item_Id</th>
+                    <th>Item Id</th>
                     <th>Item Name</th>
+                    <th>Category</th>
                     <th>Item Description</th>
                     <th>Manufacturer</th>
                     <th>Quantity</th>
@@ -329,13 +337,18 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  if(!empty($items_to_audit)):
+                    foreach($items_to_audit as $data):
+                  ?>
                   <tr class="align-middle">
-                    <td data-name="item_id">A001</td>
-                    <td data-name="item_name">Item A</td>
-                    <td data-name="item_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td data-name="manufacturer">SM Supermalls</td>
+                    <td data-name="item_id"><?= $data->item_id ?></td>
+                    <td data-name="item_name"><?= $data->item_name ?></td>
+                    <td data-name="category"><?= $data->category_name ?></td>
+                    <td data-name="item_desc"><?= $data->item_description ?></td>
+                    <td data-name="manufacturer"><?= $data->manufacturer ?></td>
                     <td data-name="system_count">
-                      <strong>99</strong>
+                      <strong><?= $data->quantity ?></strong>
                     </td>
                     <td data-name="actual_count">
                       <div class="border rounded-2 text-center p-2" contenteditable="true">
@@ -348,25 +361,10 @@
                       0%
                     </td>
                   </tr>
-                  <tr class="align-middle">
-                    <td data-name="item_id">A002</td>
-                    <td data-name="item_name">Item B</td>
-                    <td data-name="item_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td data-name="manufacturer">Lulan Incorp</td>
-                    <td data-name="system_count">
-                      <strong>28</strong>
-                    </td>
-                    <td data-name="actual_count">
-                      <div class="border rounded-2 text-center p-2" contenteditable="true">
-                      </div>
-                    </td>
-                    <td data-name="variance">
-                      0
-                    </td>
-                    <td data-name="accuracy">
-                      0%
-                    </td>
-                  </tr>
+                  <?php
+                  endforeach;
+                  endif;
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -532,18 +530,18 @@
         // Log the array of objects to the console
         console.log(tableData);
 
-        $.ajax({
-          type: "POST",
-          data: {
-            tableData: tableData
-          },
-          success: function(response) {
-            console.log(response)
-          },
-          error: function(xhr, status, error) {
-            console.log("Error sending table data:", error);
-          }
-        })
+        // $.ajax({
+        //   type: "POST",
+        //   data: {
+        //     tableData: tableData
+        //   },
+        //   success: function(response) {
+        //     console.log(response)
+        //   },
+        //   error: function(xhr, status, error) {
+        //     console.log("Error sending table data:", error);
+        //   }
+        // })
 
       }
     </script>

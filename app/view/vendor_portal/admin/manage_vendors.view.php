@@ -348,12 +348,12 @@
                           <span class="badge bg-warning">Pending</span>
                         </td>
                         <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Verify Vendor
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="search" class="btn-icon-prepend"></i>
+                            Review Request
                           </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="settings"></i>
+                          <button class="btn btn-outline-danger btn-icon">
+                            <i data-feather="slash" class="btn-icon-prepend"></i>
                           </button>
                         </td>
                       </tr>
@@ -416,8 +416,11 @@
                         </td>
                         <td class="text-center">
                           <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Verify Vendor
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            View Profile
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="mail"></i>
                           </button>
                           <button class="btn btn-outline-primary btn-icon">
                             <i data-feather="settings"></i>
@@ -459,157 +462,67 @@
           <div class="card-body">
 
             <div class="mb-3">
-              <h6>AWARDED SUPPLIERS</h6>
-              <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
-            </div>
-
-            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pending-line-tab" data-bs-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="preparing-line-tab" data-bs-toggle="tab" href="#preparing" role="tab" aria-controls="preparing" aria-selected="true">Verified</a>
-              </li>
-            </ul>
-
-            <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-line-tab">
-                <div class="table-responsive">
-                  <table id="dataTableExample" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Vendor Id</th>
-                        <th>Vendor Name</th>
-                        <th>Address</th>
-                        <th>Date Join</th>
-                        <th>Status</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>SM Supermalls</p>
-                              <small class="text-muted">smsupermalls@gmail.com</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
-                          <small class="text-muted">Quezon City, Philippines</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Verify Vendor
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="settings"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </tbody>
-                  </table>
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <h6>AWARDED SUPPLIERS</h6>
+                  <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="preparing" role="tabpanel" aria-labelledby="preparing-line-tab">
-                <div class="table-responsive">
-                  <table id="dataTableExample" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Vendor Id</th>
-                        <th>Vendor Name</th>
-                        <th>Address</th>
-                        <th>Date Join</th>
-                        <th>Status</th>
-                        <th data-orderable="false" class="text-center">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>001</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
-                            <div>
-                              <p>SM Supermalls</p>
-                              <small class="text-muted">smsupermalls@gmail.com</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
-                          <small class="text-muted">Quezon City, Philippines</small>
-                        </td>
-                        <td>
-                          <p class="fw-bold">03 Jan 2023</p>
-                          <small class="text-muted">03:47 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Verified</span>
-                        </td>
-                        <td class="text-center">
-                          <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Verify Vendor
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="settings"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </tbody>
-                  </table>
+                <div>
+                  <button class="btn btn-primary btn-icon-text">
+                    <i data-feather="download" class="btn-icon-prepend"></i>
+                    Extract List
+                  </button>
                 </div>
               </div>
             </div>
 
 
+            <table id="dataTableExample" class="table display">
+              <thead>
+                <tr>
+                  <th>Vendor Id</th>
+                  <th>Vendor Name</th>
+                  <th>Address</th>
+                  <th>Date Join</th>
+                  <th>Status</th>
+                  <th data-orderable="false" class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="align-middle">
+                  <td>001</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle me-2">
+                      <div>
+                        <p>SM Supermalls</p>
+                        <small class="text-muted">smsupermalls@gmail.com</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p>416 Sta. Catalina St. Brgy. Holy Spirit</p>
+                    <small class="text-muted">Quezon City, Philippines</small>
+                  </td>
+                  <td>
+                    <p class="fw-bold">03 Jan 2023</p>
+                    <small class="text-muted">03:47 AM</small>
+                  </td>
+                  <td>
+                    <span class="badge bg-warning">Pending</span>
+                  </td>
+                  <td class="text-center">
+                    <button class="btn btn-primary btn-icon-text" class="btn btn-primary" id="prepareShipment">
+                      <i data-feather="mail" class="btn-icon-prepend"></i>
+                      Send Email
+                    </button>
+                    <button class="btn btn-outline-primary btn-icon">
+                      <i data-feather="settings"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
 
 
