@@ -16,25 +16,5 @@ class Audit_logs{
         $this->view('partials/navbar');
     }
 
-    public function create_report($audit_id){
-
-
-        $data = [];
-
-        $AuditReportModel = new AMAuditReports;
-        $data["audit_report"] = $AuditReportModel->first(["audit_report_id"=>$audit_id]);
-
-        $target_category_id =  $data["audit_report"]->category_type_id;
-
-        $WHSInventory = new WHSInventory;
-        $data["items_to_audit"] = $WHSInventory->renderViewByCriteria(["category_id" => $target_category_id ]);
-
-        
-
-        $this->view('partials/navbar');
-        $this->view("audit_management/create_report", $data);
-        $this->view('partials/sidebar');
-
-    }
 
 }

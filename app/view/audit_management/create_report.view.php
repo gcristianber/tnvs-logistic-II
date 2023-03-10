@@ -310,7 +310,7 @@
                   <small class="text-muted">Select a section to perform.</small>
                 </div>
                 <div>
-                  <button class="btn btn-outline-primary btn-icon-text" >
+                  <button class="btn btn-outline-primary btn-icon-text">
                     <i data-feather="download" class="btn-icon-prepend"></i>
                     Export
                   </button>
@@ -320,6 +320,14 @@
                   </button>
                 </div>
               </div>
+
+              <select name="" class="form-select" id="categoryDropdown">
+                <option disabled selected>Select Category</option>
+                <option value="1">Vehicles</option>
+                <option value="2">Electronics</option>
+                <option value="3">Office Supplies</option>
+                <option value="4">Foods and Beverages</option>
+              </select>
             </div>
             <div class="table-responsive">
               <table id="dataTableExample" class="table">
@@ -337,34 +345,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  if(!empty($items_to_audit)):
-                    foreach($items_to_audit as $data):
-                  ?>
-                  <tr class="align-middle">
-                    <td data-name="item_id"><?= $data->item_id ?></td>
-                    <td data-name="item_name"><?= $data->item_name ?></td>
-                    <td data-name="category"><?= $data->category_name ?></td>
-                    <td data-name="item_desc"><?= $data->item_description ?></td>
-                    <td data-name="manufacturer"><?= $data->manufacturer ?></td>
-                    <td data-name="system_count">
-                      <strong><?= $data->quantity ?></strong>
-                    </td>
-                    <td data-name="actual_count">
-                      <div class="border rounded-2 text-center p-2" contenteditable="true">
-                      </div>
-                    </td>
-                    <td data-name="variance">
-                      0
-                    </td>
-                    <td data-name="accuracy">
-                      0%
-                    </td>
-                  </tr>
-                  <?php
-                  endforeach;
-                  endif;
-                  ?>
+
                 </tbody>
               </table>
             </div>
@@ -456,94 +437,54 @@
         }
       })
 
+      const categoryDropdown = document.getElementById("categoryDropdown")
 
-      const btn = document.getElementById("getTableData")
-      const actualCountInputs = document.querySelectorAll('[data-name="actual_count"] div');
+      $("#categoryDropdown").on("change", function() {
+        var selectedCategory = $(this).val()
 
-      btn.addEventListener("click", () => {
-        getTableData()
+        var currentUrl = $(location).attr('href');
+        // console.log(selectedCategory)
+
+        $.ajax({
+          url: currentUrl + '/getTable',
+          type: 'POST',
+          data: {
+            category_id: selectedCategory
+          },
+          dataType: 'json',
+          success: function(data) {
+            var tableRows = '';
+            $.each(data, function(index, item) {
+              tableRows += '<tr class="align-middle">' +
+                '<td data-name="item_id">' + item.item_id + '</td>' +
+                '<td data-name="item_name">' + item.item_name + '</td>' +
+                '<td data-name="category">' + item.category_name + '</td>' +
+                '<td data-name="item_desc">' + item.item_description + '</td>' +
+                '<td data-name="manufacturer">' + item.manufacturer + '</td>' +
+                '<td data-name="system_count">' + item.quantity + '</td>' +
+                '<td data-name="actual_count" class="actual-count"><div class="border rounded-2 text-center p-2" contenteditable="true">0</div></td>' +
+                '<td data-name="variance">0</td>' +
+                '<td data-name="accuracy">0%</td>' +
+                '</tr>'
+            });
+            $("#dataTableExample tbody").html(tableRows)
+
+            $(".actual-count").on("input", function(){
+              
+              // ! TODO: MAKE A SCRIPT FOR COMPUTING
+
+              
+            })
+
+
+          }
+        })
+
+       
+        
+
+        
       })
-
-      actualCountInputs.forEach((input) => {
-        // Add input event listener to the actual count input element
-        input.addEventListener('input', () => {
-          // Get the parent row element
-          const row = input.closest('tr');
-
-          // Get the system count value
-          const systemCount = parseInt(row.querySelector('[data-name="system_count"] strong').textContent);
-
-          // Get the actual count value
-          const actualCount = parseInt(input.textContent) || 0;
-
-          // Compute the variance and accuracy
-          const variance = actualCount - systemCount;
-          const accuracy = systemCount == 0 ? 'N/A' : ((actualCount / systemCount) * 100).toFixed(2);
-
-          // Update the variance and accuracy values in the row
-          row.querySelector('[data-name="variance"]').textContent = variance;
-          const accuracyEl = row.querySelector('[data-name="accuracy"]');
-          accuracyEl.textContent = `${accuracy}%`;
-
-          // Change the color of the accuracy text based on the percentage
-          if (accuracy >= 100) {
-            accuracyEl.style.color = '#20c997';
-          } else if (accuracy >= 75) {
-            accuracyEl.style.color = '#ffc107';
-          } else if (accuracy >= 50) {
-            accuracyEl.style.color = '#fd7e14';
-          } else if (accuracy < 25) {
-            accuracyEl.style.color = '#ff3366';
-          }
-        });
-      });
-
-
-      function getTableData() {
-        // Get a reference to the table element
-        var table = document.getElementById("dataTableExample");
-
-        // Create an empty array to store the objects
-        var tableData = [];
-
-        // Loop through each row in the table
-        for (var i = 1, row; row = table.rows[i]; i++) {
-
-          // Create a new object to store the cell data for this row
-          var rowData = {};
-
-          // Loop through each cell in the row
-          for (var j = 0, cell; cell = row.cells[j]; j++) {
-
-            var cellName = cell.getAttribute("data-name");
-            // Get the text content of the cell
-            var cellText = cell.textContent.trim();
-
-            // Use the cell text as the value for a key-value pair in the object
-            rowData[cellName] = cellText;
-          }
-
-          // Add the object to the array
-          tableData.push(rowData);
-        }
-
-        // Log the array of objects to the console
-        console.log(tableData);
-
-        // $.ajax({
-        //   type: "POST",
-        //   data: {
-        //     tableData: tableData
-        //   },
-        //   success: function(response) {
-        //     console.log(response)
-        //   },
-        //   error: function(xhr, status, error) {
-        //     console.log("Error sending table data:", error);
-        //   }
-        // })
-
-      }
     </script>
 
 

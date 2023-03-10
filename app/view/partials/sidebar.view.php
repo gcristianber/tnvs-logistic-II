@@ -108,7 +108,7 @@
 
             <li class="nav-item nav-category">audit management</li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>audit_management/cycle_count" class="nav-link">
+                <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
                     <i class="link-icon" data-feather="search"></i>
                     <span class="link-title">Create Report</span>
                 </a>
