@@ -296,388 +296,293 @@
 
       <div class="page-content">
 
-
-        <div class="card">
-          <div class="card-body">
-
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <div>
-                <h6>INCOMING DOCUMENTS</h6>
-                <small class="text-muted">Manage your incoming documents.</small>
-              </div>
-            </div>
-            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pending-line-tab" data-bs-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="received-line-tab" data-bs-toggle="tab" href="#received" role="tab" aria-controls="received" aria-selected="false">Received</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="followedup-line-tab" data-bs-toggle="tab" href="#followedup" role="tab" aria-controls="followedup" aria-selected="false">Followed Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="returned-line-tab" data-bs-toggle="tab" href="#returned" role="tab" aria-controls="returned" aria-selected="false">Returned</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="declined-line-tab" data-bs-toggle="tab" href="#declined" role="tab" aria-controls="declined" aria-selected="false">Declined</a>
-              </li>
-            </ul>
-            <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-line-tab">
+        <div class="accordion grid-margin" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <i data-feather="mail" class="icon-lg me-2"></i>
+                <span class="me-2">Pending</span>
+                <small class="text-muted">(2)</small>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
                 <div class="table-responsive">
                   <table id="PendingTable" class="table display">
                     <thead>
                       <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
+                        <th>Tracking Id</th>
                         <th>Category</th>
-                        <th>Author</th>
+                        <th>Purpose</th>
+                        <th>Department</th>
                         <th>Date Created</th>
-                        <th data-orderable="false" class="text-center">Action</th>
+                        <th>Status</th>
+                        <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "pending" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <img src="https://via.placeholder.com/40x40" class="me-2" alt="">
-                                  <div>
-                                    <p><?= $data->display_name ?></p>
-                                    <small class="text-muted"><?= $data->account_type_name ?></small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
+                      <tr class="align-middle">
+                        <td>12303105382704989</td>
+                        <td>
+                          <p>Invoice</p>
+                        </td>
+                        <td>
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </td>
 
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="plus" class="btn-icon-prepend"></i>
-                                  Approve Request
-                                </button>
-                                <button class="btn btn-outline-primary btn-icon">
-                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                </button>
-                                <button class="btn btn-outline-danger btn-icon">
-                                  <i data-feather="slash" class="btn-icon-prepend"></i>
-                                </button>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
+                        <td>
+                          --
+                        </td>
+                        <td>
+                          <p>21 Jan 2023</p>
+                          <small class="text-muted">4:22 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-secondary">Pending</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Receive
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="trash-2"></i>
+                          </button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-pane fade" id="received" role="tabpanel" aria-labelledby="received-line-tab">
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <i data-feather="arrow-down" class="icon-lg me-2"></i>
+                <span class="me-2">Received Requests</span>
+                <small class="text-muted">(2)</small>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
                 <div class="table-responsive">
-                  <table id="ReceivedTable" class="table display">
+                  <table id="PendingTable" class="table display">
                     <thead>
                       <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
+                        <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Purpose</th>
+                        <th>Department</th>
                         <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
+                        <th>Status</th>
+                        <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "received" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="archive" class="btn-icon-prepend"></i>
-                                  Archive Document
-                                </button>
-                                <button class="btn btn-outline-primary btn-icon">
-                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                </button>
-                                <button class="btn btn-outline-primary btn-icon">
-                                  <i data-feather="corner-down-left" class="btn-icon-prepend"></i>
-                                </button>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
+                      <tr class="align-middle">
+                        <td>12303105382704989</td>
+                        <td>
+                          <p>Invoice</p>
+                        </td>
+                        <td>
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </td>
+
+                        <td>
+                          --
+                        </td>
+                        <td>
+                          <p>21 Jan 2023</p>
+                          <small class="text-muted">4:22 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-primary">Received</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="search" class="btn-icon-prepend"></i>
+                            Review Request
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="trash-2"></i>
+                          </button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-pane fade" id="followedup" role="tabpanel" aria-labelledby="followedup-line-tab">
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <i data-feather="search" class="icon-lg me-2"></i>
+                <span class="me-2">On Review</span>
+                <small class="text-muted">(2)</small>
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
                 <div class="table-responsive">
-                  <table id="FollowedUpTable" class="table display">
+                  <table id="PendingTable" class="table display">
                     <thead>
                       <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
+                        <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Purpose</th>
+                        <th>Department</th>
                         <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
+                        <th>Status</th>
+                        <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "followed up" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
+                      <tr class="align-middle">
+                        <td>12303105382704989</td>
+                        <td>
+                          <p>Invoice</p>
+                        </td>
+                        <td>
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </td>
 
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
+                        <td>
+                          --
+                        </td>
+                        <td>
+                          <p>21 Jan 2023</p>
+                          <small class="text-muted">4:22 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Review</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Work in Progress
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="trash-2"></i>
+                          </button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-pane fade" id="returned" role="tabpanel" aria-labelledby="returned-line-tab">
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <i data-feather="activity" class="icon-lg me-2"></i>
+                <span class="me-2">Working in progress</span>
+                <small class="text-muted">(4)</small>
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
                 <div class="table-responsive">
-                  <table id="ReturnedTable" class="table display">
+                  <table id="PendingTable" class="table display">
                     <thead>
                       <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
+                        <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Purpose</th>
+                        <th>Department</th>
                         <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
+                        <th>Status</th>
+                        <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "returned" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        ...
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                      <tr class="align-middle">
+                        <td>12303105382704989</td>
+                        <td>
+                          <p>Invoice</p>
+                        </td>
+                        <td>
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </td>
 
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
+                        <td>
+                          --
+                        </td>
+                        <td>
+                          <p>21 Jan 2023</p>
+                          <small class="text-muted">4:22 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Work in progress</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="feather" class="btn-icon-prepend"></i>
+                            Create Document
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="trash-2"></i>
+                          </button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="tab-pane fade" id="declined" role="tabpanel" aria-labelledby="declined-line-tab">
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                <i data-feather="send" class="icon-lg me-2"></i>
+                <span class="me-2">Released</span>
+                <small class="text-muted">(10)</small>
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
                 <div class="table-responsive">
-                  <table id="DeclinedTable" class="table display">
+                  <table id="PendingTable" class="table display">
                     <thead>
                       <tr>
-                        <th>Document Id</th>
-                        <th>Document Name</th>
+                        <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Purpose</th>
+                        <th>Department</th>
                         <th>Date Created</th>
-                        <th>Recipient</th>
-                        <th data-orderable="false" class="text-center">Action</th>
+                        <th>Status</th>
+                        <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      if (!empty($view_table)) :
-                        foreach ($view_table as $data) :
-                          if ($data->document_status == "declined" && $_SESSION["department_name"] == $data->department_name) :
-                      ?>
-                            <tr class="align-middle" data-id="<?= $data->document_id ?>">
-                              <td><?= $data->document_id ?></td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <i data-feather="file" class="icon-lg me-2"></i>
-                                  <div>
-                                    <p class="fw-bold"><?= $data->document_name ?></p>
-                                    <small class="text-muted">
-                                      <?= round($data->document_size / 1024) . ' KB' ?>
-                                    </small>
-                                  </div>
-                                </div>
-                              </td>
-                              <td><?= ucwords($data->document_category_name) ?></td>
-                              <td>
-                                <p class="fw-bold"><?= date("d M Y", strtotime($data->date_created)) ?></p>
-                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                              </td>
-                              <td>
-                                <?= ucwords($data->department_name) ?>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="eye" class="btn-icon-prepend"></i>
-                                  View Request
-                                </button>
+                      <tr class="align-middle">
+                        <td>12303105382704989</td>
+                        <td>
+                          <p>Invoice</p>
+                        </td>
+                        <td>
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </td>
 
-                                <a href="javascript:;" class="link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-                                  <i data-feather="more-vertical" class="icon-md"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 25.3px, 0px);" data-popper-placement="bottom-start">
-                                  <a href="<?= ROOT ?>document_tracking/send_document/edit_document/<?= $data->document_id ?>" class="dropdown-item d-flex align-items-center" id="editDocument" href="javascript:;">
-                                    <i data-feather="edit-2" class="icon-md me-2"></i>
-                                    <span class="">Edit Document</span>
-                                  </a>
-                                  <a href="<?= ROOT ?>document_tracking/" class="dropdown-item d-flex align-items-center" id="followUp" href="javascript:;">
-                                    <i data-feather="git-pull-request" class="icon-md me-2"></i>
-                                    <span class="">Follow Up</span>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                      <?php
-                          endif;
-                        endforeach;
-                      endif;
-                      ?>
+                        <td>
+                          --
+                        </td>
+                        <td>
+                          <p>21 Jan 2023</p>
+                          <small class="text-muted">4:22 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-danger">Released</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="clock" class="btn-icon-prepend"></i>
+                            View History
+                          </button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -685,8 +590,118 @@
             </div>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-3">
+              <h6 class="fw-bold">FILE MANAGER</h6>
+              <small class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</small>
+            </div>
+            <div>
+              <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Files</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Activity</a>
+                </li>
+              </ul>
+              <div class="tab-content mt-3" id="lineTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                  <div class="table-responsive">
+                    <table id="PendingTable" class="table display">
+                      <thead>
+                        <tr>
+                          <th>Document Id</th>
+                          <th>Category</th>
+                          <th>Author</th>
+                          <th>Date Created</th>
+                          <th>Status</th>
+                          <th data-orderable="false">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>12303105382704989</td>
+                          <td>
+                            <p>Invoice</p>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center gap-2">
+                              <img src="https://via.placeholder.com/40x40" alt="">
+                              <div>
+                                <p>Aldion Belo</p>
+                                <small class="text-muted">HR Staff</small>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p>21 Jan 2023</p>
+                            <small class="text-muted">4:22 AM</small>
+                          </td>
+                          <td>
+                            <span class="badge bg-secondary">Pending</span>
+                          </td>
+                          <td>
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="send" class="btn-icon-prepend"></i>
+                              Forward Document
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon">
+                              <i data-feather="download"></i>
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon">
+                              <i data-feather="archive"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                  <div class="table-responsive">
+                    <table id="PendingTable" class="table display">
+                      <thead>
+                        <tr>
+                          <th>Activity Id</th>
+                          <th>Type</th>
+                          <th>Executor</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>12303105382704989</td>
+                          <td>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center gap-2">
+                              <img src="https://via.placeholder.com/40x40" alt="">
+                              <div>
+                                <p>Aldion Belo</p>
+                                <small class="text-muted">HR Staff</small>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p>21 Jan 2023</p>
+                            <small class="text-muted">4:22 AM</small>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    
 
   </div>
   </div>

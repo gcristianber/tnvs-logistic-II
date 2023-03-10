@@ -20,11 +20,9 @@
                 </a>
             </li>
 
-
-
             <li class="nav-item nav-category">document tracking</li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/" class="nav-link">
+                <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
                     <i class="link-icon" data-feather="search"></i>
                     <span class="link-title">Track Document</span>
                 </a>
@@ -42,25 +40,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/file_manager" class="nav-link">
-                    <i class="link-icon" data-feather="folder"></i>
-                    <span class="link-title">File Manager</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/accessed_documents" class="nav-link">
-                    <i class="link-icon" data-feather="unlock"></i>
-                    <span class="link-title">Accessed Documents</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="<?= ROOT ?>document_tracking/incoming_documents" class="nav-link">
                     <i class="link-icon" data-feather="file-text"></i>
                     <span class="link-title">Incoming Documents</span>
                 </a>
             </li>
-
-          
             <li class="nav-item nav-category">vehicle reservation</li>
             <li class="nav-item">
                 <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">

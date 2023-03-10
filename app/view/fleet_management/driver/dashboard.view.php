@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,7 +10,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Request Document</title>
+  <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +23,7 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -37,24 +37,6 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
-
-<style>
-  input[type="radio"] {
-    display: none;
-  }
-
-  /* Style the label to look like a clickable element */
-  label {
-    cursor: pointer;
-    /* Add any additional styling you want for your label */
-  }
-
-  input[type="radio"]:checked+label {
-    border: 1px solid #6571ff;
-    border-radius: 4px;
-    user-select: none;
-  }
-</style>
 
 <body>
   <div class="main-wrapper">
@@ -308,212 +290,12 @@
         </div>
       </nav>
       <div class="page-content">
-        <div class="card">
-          <div class="card-body">
-            <div class="mb-3">
-              <div class="d-flex align-items-center justify-content-between">
-                <div>
-                  <h6 class="fw-bold">REQUEST DOCUMENT</h6>
-                  <small class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</small>
-                </div>
-                <div>
-                  <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i data-feather="feather" class="btn-icon-prepend"></i>
-                    Create Document
-                  </button>
 
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Create Document</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
-
-
-                          <div class="mb-3">
-                            <label for="request_purpose" class="form-label">
-                              <p>Select Department</p>
-                              <small class="text-muted">Select your document type.</small>
-                            </label>
-                            <select name="" class="form-select">
-                              <option selected disabled>...</option>
-                              <option value="1">Administrative</option>
-                              <option value="2">Finance</option>
-                              <option value="3">Human Resource</option>
-                              <option value="3">Logistic</option>
-                            </select>
-                          </div>
-                          <div class="mb-3">
-                            <label for="request_purpose" class="form-label">
-                              <p>Select Document Type</p>
-                              <small class="text-muted">Select your document type.</small>
-                            </label>
-                            <select name="" class="form-select">
-                              <option selected disabled>...</option>
-                              <option value="1">Employment Certificate</option>
-                              <option value="2">Purchase Order</option>
-                              <option value="3">Invoice</option>
-                            </select>
-                          </div>
-                          <div class="mb-3">
-                            <div class="form-check form-switch mb-2">
-                              <input type="checkbox" class="form-check-input" id="formSwitch1">
-                              <label class="form-check-label" for="formSwitch1">If the document is not in category, Please specify below.</label>
-                            </div>
-                            <input type="text" name="" id="" class="form-control" placeholder="Type something...">
-                          </div>
-                          <div>
-                            <label for="request_purpose" class="form-label">
-                              <p>Purpose</p>
-                              <small class="text-muted">Write a purpose for requesting a document.</small>
-                            </label>
-                            <textarea name="request_purpose" class="form-control" cols="30" rows="5" placeholder="Type something..."></textarea>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Send Request</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-              <div class="table-responsive mt-3">
-                <table id="PendingTable" class="table display">
-                  <thead>
-                    <tr>
-                      <th>Tracking Id</th>
-                      <th>Category</th>
-                      <th>Purpose</th>
-                      <th>Department</th>
-                      <th>Date Created</th>
-                      <th>Status</th>
-                      <th data-orderable="false">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="align-middle">
-                      <td>12303105382704989</td>
-                      <td>
-                        <p>Invoice</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>21 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-primary">Received</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>42303152351114989</td>
-                      <td>
-                        <p>Employment Certificate</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>24 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-success">Review</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>42303152351114989</td>
-                      <td>
-                        <p>Employment Certificate</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>24 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-danger">Released</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>42303152351114989</td>
-                      <td>
-                        <p>Employment Certificate</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>24 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-warning">Working in progress</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-
-          </div>
-        </div>
+     
       </div>
 
 
-
     </div>
-
-  </div>
   </div>
 
   <!-- core:js -->
@@ -521,8 +303,11 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/chartjs/Chart.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/jquery.flot/jquery.flot.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/apexcharts/apexcharts.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -531,8 +316,10 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/js/dashboard-light.js"></script>
+  <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
   <!-- End custom js for this page -->
+
 </body>
 
 </html>

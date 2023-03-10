@@ -42,6 +42,13 @@
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
 
+<style>
+  .perfect-scrollbar-example {
+    position: relative;
+    max-height: 250px;
+  }
+</style>
+
 <body>
   <div class="main-wrapper">
 
@@ -297,40 +304,90 @@
       <div class="page-content">
         <div class="card">
           <div class="card-body">
-            <div class="input-group mb-3">
-              <div class="input-group-text">
-                <i data-feather="search"></i>
-              </div>
-              <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-            </div>
-            <div class="mb-4 p-2 border border-1 d-flex align-items-center justify-content-between">
+            <div class="mb-4 d-flex align-items-center justify-content-between">
               <div class="d-flex gap-2">
                 <div class="ht-50 wd-50 rounded-2 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary">
                   <i data-feather="package"></i>
                 </div>
                 <div class="d-flex flex-column justify-content-between">
                   <div>
-                    <p class="text-muted">Tracking Number: <span class="text-dark fw-bold"> 001</span> </p>
+                    <p class="text-muted">Tracking Number: <span class="text-dark fw-bold"> 12303105382704989</span> </p>
                   </div>
                   <div>
-                    <span class="badge bg-primary">Out for delivery</span>
+                    <i data-feather="calendar" class="ht-20"></i>
+                    Mar 10 (Today) 3:18 PM
                   </div>
+                  <!-- <div>
+                    <span class="badge bg-primary">Out for delivery</span>
+                  </div> -->
                 </div>
               </div>
               <div>
-                <button class="btn btn-primary btn-icon-text">
-                  <i data-feather="crosshair" class="btn-icon-prepend"></i>
-                  Track Delivery
-                </button>
-                <button class="btn btn-outline-primary btn-icon">
+                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#chatMessage">
                   <i data-feather="message-circle" class="btn-icon-prepend"></i>
+                  Message
                 </button>
+                <div class="modal fade" id="chatMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Chat Message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="d-flex align-items-center gap-2">
+                          <img class="ht-40 wd-40 rounded-2" src="https://via.placeholder.com/40x40" alt="">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <p>Leandro Quisado</p>
+                              <span class="badge bg-success">Online</span>
+                            </div>
+                            <small class="text-muted">leanleandroquisasdo@gmail.com</small>
+                          </div>
+                        </div>
+
+                        <div id="messages" class=" flex-column gap-2 my-3 px-3 perfect-scrollbar-example">
+                          <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
+                            <small class="text-muted">03:13 PM</small>
+                            <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
+                              <!-- Append chat here -->
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="chat-footer d-flex">
+                          <form class="search-form flex-grow-1 me-2">
+                            <div class="input-group">
+                              <input type="text" class="form-control" id="chatForm" placeholder="Type a message">
+                            </div>
+                          </form>
+                          <div>
+                            <button type="button" id="sendMessage" class="btn btn-primary btn-icon">
+                              <i data-feather="send"></i>
+                            </button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-primary btn-icon">
+                  <i data-feather="user"></i>
+                </button>
+
+
               </div>
+            </div>
+            <div>
+
             </div>
 
             <div id='map' class="rounded-2" style='width: 100%; height: 600px;'></div>
           </div>
         </div>
+
       </div>
 
 
@@ -354,8 +411,13 @@
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
 
+  <!-- #REALTIME GPS -->
   <script type="module">
     // Import the functions you need from the SDKs you need
+
+    var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+
+
     import {
       initializeApp
     } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -367,11 +429,12 @@
       getDoc,
       doc,
       onSnapshot,
-      updateDoc
+      updateDoc,
+      query,
+      where,
+      orderBy,
+      getDocs
     } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -391,11 +454,12 @@
 
     // Get a reference to the "geo" collection in the database
     const geoRef = collection(db, "geo");
+    const chatRef = collection(db, "driver-chat");
 
+    // !TARGET THE ID TO FIREBASE
     const customGeoDocRef = doc(geoRef, "delivery-001");
 
-
-    // !MAPBOX
+    // !MAPBOX INITIALIZATION
     mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
     const map = new mapboxgl.Map({
       container: 'map', // container ID
@@ -407,6 +471,7 @@
     // Create a default Marker and add it to the map.
     let currentMarker = null;
 
+    // !LISTENS EVERY CHANGES AND CHANGE THE MARKER's LOCATION
     onSnapshot(customGeoDocRef, (doc) => {
       if (doc.exists()) {
 
@@ -440,71 +505,61 @@
       console.log("Error getting document:", error);
     });
 
-    // getDoc(customGeoDocRef)
-    // .then((doc) => {
-    //     if (doc.exists()) {
-    //       var latitude = doc.data().latitude;
-    //       var longitude = doc.data().longitude;
 
-    //       console.log(`Latitude: ${latitude}`)
-    //       console.log(`Longitude: ${longitude}`)
 
-    //       console.log("Document has been updated!")
+    const querySnapshot = query(chatRef, orderBy("timestamp"));
+    // const querySnapshot = query(chatRef, where("recipient", "==", "001"), orderBy("timestamp"));
 
-    //       currentMarker = new mapboxgl.Marker()
-    //         .setLngLat([longitude, latitude])
-    //         .addTo(map);
+    const chatBox = $("#messages");
+    onSnapshot(querySnapshot, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          // console.log(`New message: ${change.doc.data().message}`); 
+          const chatTimestamp = change.doc.data().timestamp
+          const date = chatTimestamp.toDate();
+          const timeString = date.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          });
+          const chatMessage = change.doc.data().message
+          const chatMessageHTML = `
+      <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
+        <small class="text-muted">${timeString}</small>
+        <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
+          ${chatMessage}
+        </div>
+      </div>
+    `;
 
-    //       map.flyTo({
-    //         center: [longitude, latitude],
-    //         essential: true // this animation is considered essential with respect to prefers-reduced-motion
-    //       });
+          chatBox.append(chatMessageHTML);
 
-    //     } else {
-    //       console.log("No such document!");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log("Error getting document:", error);
-    //   });
-
-    // const success = (position) => {
-
-    //   const {
-    //     longitude,
-    //     latitude
-    //   } = position.coords
-
-    // const newGeoDoc = {
-    //   longitude: longitude, // replace with your longitude value
-    //   latitude: latitude // replace with your latitude value
-    // };
-
-    // updateDoc(customGeoDocRef, newGeoDoc)
-    //   .then(() => {
-    //     console.log("Document updated");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error updating document: ", error);
-    //   });
-
-    //   console.log(`Longitude- ${longitude} and Latitude- ${latitude}`)
-
-    //   // remove the previous marker from the map
-    // if (currentMarker) {
-    //   currentMarker.remove();
-    // }
+          const messagesElement = document.getElementById('messages');
+          messagesElement.scrollTop = messagesElement.scrollHeight - messagesElement.clientHeight;
+        }
+      });
+    }, (error) => {
+      console.log(`Encountered error: ${error}`);
+    });
 
 
 
-    // }
+    $("#sendMessage").on("click", function() {
+      var recipient = "001"
+      var chatForm = $("#chatForm").val()
 
-    // const error = (err) => {
-    //   console.log(err)
-    // }
+      $("#chatForm").val("")
 
-    // navigator.geolocation.watchPosition(success, error)
+      // Add chatForm value to the firebase
+      addDoc(chatRef, {
+        recipient: recipient,
+        message: chatForm,
+        timestamp: new Date()
+      })
+    })
   </script>
+
+
 </body>
 
 </html>
