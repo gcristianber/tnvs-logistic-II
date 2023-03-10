@@ -23,16 +23,21 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
+
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' />
+
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
@@ -290,7 +295,42 @@
         </div>
       </nav>
       <div class="page-content">
+        <div class="card">
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <div class="input-group-text">
+                <i data-feather="search"></i>
+              </div>
+              <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+            </div>
+            <div class="mb-4 p-2 border border-1 d-flex align-items-center justify-content-between">
+              <div class="d-flex gap-2">
+                <div class="ht-50 wd-50 rounded-2 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary">
+                  <i data-feather="package"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-between">
+                  <div>
+                    <p class="text-muted">Tracking Number: <span class="text-dark fw-bold"> 001</span> </p>
+                  </div>
+                  <div>
+                    <span class="badge bg-primary">Out for delivery</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-primary btn-icon-text">
+                  <i data-feather="crosshair" class="btn-icon-prepend"></i>
+                  Track Delivery
+                </button>
+                <button class="btn btn-outline-primary btn-icon">
+                  <i data-feather="message-circle" class="btn-icon-prepend"></i>
+                </button>
+              </div>
+            </div>
 
+            <div id='map' class="rounded-2" style='width: 100%; height: 600px;'></div>
+          </div>
+        </div>
       </div>
 
 
@@ -313,6 +353,158 @@
 
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      setDoc,
+      getDoc,
+      doc,
+      onSnapshot,
+      updateDoc
+    } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCdE861SnlahEpGMerK9TrJAwAMUMfoRWs",
+      authDomain: "lulan-geo.firebaseapp.com",
+      projectId: "lulan-geo",
+      storageBucket: "lulan-geo.appspot.com",
+      messagingSenderId: "362524656961",
+      appId: "1:362524656961:web:592cc21b9a735594510dc0"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Get a reference to the Firestore database
+    const db = getFirestore(app);
+
+    // Get a reference to the "geo" collection in the database
+    const geoRef = collection(db, "geo");
+
+    const customGeoDocRef = doc(geoRef, "delivery-001");
+
+
+    // !MAPBOX
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      style: 'mapbox://styles/mapbox/streets-v12', // style URL
+      center: [-74.5, 40], // starting position [lng, lat]
+      zoom: 17, // starting zoom
+    });
+
+    // Create a default Marker and add it to the map.
+    let currentMarker = null;
+
+    onSnapshot(customGeoDocRef, (doc) => {
+      if (doc.exists()) {
+
+        var latitude = doc.data().latitude;
+        var longitude = doc.data().longitude;
+
+        console.log(`Latitude: ${latitude}`)
+        console.log(`Longitude: ${longitude}`)
+
+        console.log("Document has been updated!")
+        console.log("Document has been get!")
+
+        if (currentMarker) {
+          currentMarker.remove();
+        }
+
+        currentMarker = new mapboxgl.Marker()
+          .setLngLat([longitude, latitude])
+          .addTo(map);
+
+        map.flyTo({
+          center: [longitude, latitude],
+          essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+
+
+      } else {
+        console.log("No such document!");
+      }
+    }, (error) => {
+      console.log("Error getting document:", error);
+    });
+
+    // getDoc(customGeoDocRef)
+    // .then((doc) => {
+    //     if (doc.exists()) {
+    //       var latitude = doc.data().latitude;
+    //       var longitude = doc.data().longitude;
+
+    //       console.log(`Latitude: ${latitude}`)
+    //       console.log(`Longitude: ${longitude}`)
+
+    //       console.log("Document has been updated!")
+
+    //       currentMarker = new mapboxgl.Marker()
+    //         .setLngLat([longitude, latitude])
+    //         .addTo(map);
+
+    //       map.flyTo({
+    //         center: [longitude, latitude],
+    //         essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    //       });
+
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log("Error getting document:", error);
+    //   });
+
+    // const success = (position) => {
+
+    //   const {
+    //     longitude,
+    //     latitude
+    //   } = position.coords
+
+    // const newGeoDoc = {
+    //   longitude: longitude, // replace with your longitude value
+    //   latitude: latitude // replace with your latitude value
+    // };
+
+    // updateDoc(customGeoDocRef, newGeoDoc)
+    //   .then(() => {
+    //     console.log("Document updated");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error updating document: ", error);
+    //   });
+
+    //   console.log(`Longitude- ${longitude} and Latitude- ${latitude}`)
+
+    //   // remove the previous marker from the map
+    // if (currentMarker) {
+    //   currentMarker.remove();
+    // }
+
+
+
+    // }
+
+    // const error = (err) => {
+    //   console.log(err)
+    // }
+
+    // navigator.geolocation.watchPosition(success, error)
+  </script>
 </body>
 
 </html>
