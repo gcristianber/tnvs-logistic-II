@@ -9,34 +9,44 @@ class Request_document{
     public function index(){
         $data = [];
 
+        $RequestModel = new DT_RequestModel;
+        $data["requests"] = $RequestModel->renderAll();
+
         $this->view('document_tracking/request_document', $data);
         $this->view('partials/sidebar');
     }  
 
-    public function requestor_form(){
-        $data = [];
-
-        $DocumentReqModel = new DTDocReqModel;
+    public function send_data(){
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $check = $DocumentReqModel->checkForm($_POST);
+            // print_r($_POST);
+            $RequestModel = new DT_RequestModel;
 
-            if (!$check) {
-                $error_alert = implode(",", $DocumentReqModel->errors);
-                echo $error_alert;
-            } else {
-                $DocumentReqModel->insertData($_POST);
-                header('Content-Type: application/json');
-                echo json_encode(["success" => true]);
+            // !TODO 1: Check the form
+            // $check = $RequestModel->check($_POST);
+
+            // !TODO 2: If the check method returns true then execute the code below.
+            // if($check){
+            //     $RequestModel->send($_POST);
+            // }
+            $send = $RequestModel->send($_POST);
+
+            if($send){
+                $TrackingModel = new DT_TrackingModel;
+                $TrackingModel->insertNew($send);
+
+                echo $send;
             }
-
-            exit();
         }
-        
-        $this->view('partials/navbar');
-        $this->view('document_tracking/requestor_form', $data);
-        $this->view('partials/sidebar');
-        
+    }
+
+    public function fetch_data(){
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            $RequestModel = new DT_RequestModel;
+            $data = $RequestModel->findAll();
+
+            echo json_encode($data);
+        }
     }
 
 }

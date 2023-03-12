@@ -11,11 +11,8 @@ class Incoming_documents
     {
         $data = [];
 
-        $_SESSION["department_name"] = "administrative";
-
-        $DocumentsModel = new DTDocumentsModel;
-        $data["view_table"] = $DocumentsModel->renderViewData();
-        // ! $data["view_table"] ----> $view_table
+        $RequestModel = new DT_RequestModel;
+        $data["requests"] = $RequestModel->renderAll();
 
         $this->view('partials/navbar');
         $this->view("document_tracking/incoming_documents", $data);

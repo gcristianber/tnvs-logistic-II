@@ -36,6 +36,8 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 </head>
 
 <style>
@@ -337,7 +339,7 @@
                               <p>Select Department</p>
                               <small class="text-muted">Select your document type.</small>
                             </label>
-                            <select name="" class="form-select">
+                            <select name="department_id" class="form-select">
                               <option selected disabled>...</option>
                               <option value="1">Administrative</option>
                               <option value="2">Finance</option>
@@ -350,7 +352,7 @@
                               <p>Select Document Type</p>
                               <small class="text-muted">Select your document type.</small>
                             </label>
-                            <select name="" class="form-select">
+                            <select name="category_id" class="form-select" id="documentCategory">
                               <option selected disabled>...</option>
                               <option value="1">Employment Certificate</option>
                               <option value="2">Purchase Order</option>
@@ -362,7 +364,7 @@
                               <input type="checkbox" class="form-check-input" id="formSwitch1">
                               <label class="form-check-label" for="formSwitch1">If the document is not in category, Please specify below.</label>
                             </div>
-                            <input type="text" name="" id="" class="form-control" placeholder="Type something...">
+                            <input type="text" name="option_category" id="inputForm" class="form-control d-none" placeholder="Type something...">
                           </div>
                           <div>
                             <label for="request_purpose" class="form-label">
@@ -374,135 +376,125 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Send Request</button>
+                          <button type="button" class="btn btn-primary" id="sendRequest">Send Request</button>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal fade" id="qrCodeModal" tabindex="-1" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <div class="d-flex flex-column align-items-center">
+                            <p>Your tracking number</p>
+                            <h5 id="qrcodeValue"></h5>
+                          </div>
+                          <div class="d-flex justify-content-center py-3">
+                            <div id="qrcode">
+                            
+                            
+                            </div>
+                          </div>
+
+                          <div>
+                            <button type="button" class="btn btn-primary w-100 mb-2" id="downloadQRCode">Download QR</button>
+                            <button type="button" class="btn btn-outline-secondary w-100" data-bs-dismiss="modal">Close</button>
+                          </div>
+
+
+                        </div>
+
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-              <div class="table-responsive mt-3">
-                <table id="PendingTable" class="table display">
-                  <thead>
-                    <tr>
-                      <th>Tracking Id</th>
-                      <th>Category</th>
-                      <th>Purpose</th>
-                      <th>Department</th>
-                      <th>Date Created</th>
-                      <th>Status</th>
-                      <th data-orderable="false">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="align-middle">
-                      <td>12303105382704989</td>
-                      <td>
-                        <p>Invoice</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
+            <div class="table-responsive mt-3">
+              <table id="requestTable" class="table display">
+                <thead>
+                  <tr>
+                    <th>Tracking Id</th>
+                    <th>Category</th>
+                    <th>Option Category</th>
+                    <th>Purpose</th>
+                    <th>Department</th>
+                    <th>Date Created</th>
+                    <th>Status</th>
+                    <th data-orderable="false">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  if (!empty($requests)) :
+                    foreach ($requests as $data) :
+                  ?>
+                      <tr class="align-middle">
+                        <td><?= $data->tracking_id ?></td>
+                        <td>
+                          <p><?= ucwords($data->category_name) ?></p>
+                        </td>
+                        <td>
+                          <?php
+                          if (!empty($data->option_category)) {
+                            echo $data->option_category;
+                          } else {
+                            echo "--";
+                          }
+                          ?>
+                        </td>
+                        <td>
+                          <?= $data->purpose ?>
+                        </td>
+                        <td>
+                          <?= ucwords($data->receiver) ?>
+                        </td>
+                        <td>
+                          <p>
+                            <?= date("d M Y", strtotime($data->date_created)) ?>
+                          </p>
+                          <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                        </td>
+                        <td>
 
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>21 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-primary">Received</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>42303152351114989</td>
-                      <td>
-                        <p>Employment Certificate</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>24 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-success">Review</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>42303152351114989</td>
-                      <td>
-                        <p>Employment Certificate</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>24 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-danger">Released</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>42303152351114989</td>
-                      <td>
-                        <p>Employment Certificate</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
-
-                      <td>
-                        --
-                      </td>
-                      <td>
-                        <p>24 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <span class="badge bg-warning">Working in progress</span>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Track Document
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                          <?php
+                          switch ($data->current_status_name) {
+                            case "received":
+                              echo '<span class="badge bg-primary">Received</span>';
+                              break;
+                            case "review":
+                              echo '<span class="badge bg-success">Review</span>';
+                              break;
+                            case "work in progress":
+                              echo '<span class="badge bg-warning">Work in progress</span>';
+                              break;
+                            case "released":
+                              echo '<span class="badge bg-danger">Released</span>';
+                              break;
+                            case "declined":
+                              echo '<span class="badge bg-secondart">Declined</span>';
+                              break;
+                            default:
+                              echo 'Unknown status';
+                          }
+                          ?>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="search" class="btn-icon-prepend"></i>
+                            Track Document
+                          </button>
+                        </td>
+                      </tr>
+                  <?php
+                    endforeach;
+                  endif;
+                  ?>
+                </tbody>
+              </table>
+            </div>
 
 
           </div>
@@ -533,6 +525,87 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <!-- End custom js for this page -->
+
+  <script>
+    $(document).ready(function() {
+
+      const currentUrl = $(location).attr('href');
+
+      $("#formSwitch1").change(function() {
+        var selectCategory = $("#documentCategory")
+        var defaultOption = $("#documentCategory option:selected")
+        if (this.checked) {
+          $("#inputForm").addClass("d-block")
+          $("#inputForm").removeClass("d-none")
+          $("#documentCategory").val(defaultOption.val());
+          selectCategory.prop("disabled", true)
+        } else {
+          $("#inputForm").addClass("d-none")
+          $("#inputForm").val("")
+          selectCategory.prop("disabled", false)
+        }
+      });
+
+      $("#sendRequest").on("click", function() {
+
+        let department_id = $('select[name="department_id"]').val()
+        let category_id = $('select[name="category_id"]').val()
+        let option_category = $('input[name="option_category"]').val()
+        let request_purpose = $('textarea[name="request_purpose"]').val()
+
+        let formData = {
+          "receiver_id": department_id,
+          "category_id": category_id,
+          "option_category": option_category,
+          "purpose": request_purpose,
+        }
+        $.ajax({
+          url: currentUrl + '/send_data',
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+
+            console.log(response)
+            generateQR(response)
+            $('#exampleModal').modal("hide")
+            $('#qrCodeModal').modal("show")
+          }
+        })
+      })
+
+      $("#downloadQRCode").on("click", function(){
+        downloadQR()
+      })
+
+      function generateQR(qrValue){
+        var qr = qrcode(0, "L");
+        qr.addData(qrValue);
+        qr.make();
+        var qrCodeImage = qr.createImgTag(10, 5);
+
+        var qrCodeDiv = document.getElementById("qrcode");
+        var qrCodeVal = document.getElementById("qrcodeValue")
+        qrCodeDiv.innerHTML = qrCodeImage;
+        qrCodeVal.innerHTML = qrValue;
+
+        window.qrCodeImageData = qrCodeImage.replace(/^data:image\/(png|jpg);base64,/, "");
+      
+      }
+
+      function downloadQR(){
+        var downloadLink = document.createElement("a");
+        downloadLink.href = "data:image/png;base64," + window.qrCodeImageData;
+        downloadLink.download = "qrcode.png";
+        
+        // Trigger download
+        downloadLink.click();
+      }
+
+
+
+    });
+  </script>
+  </script>
 </body>
 
 </html>

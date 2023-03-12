@@ -301,7 +301,7 @@
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <i data-feather="mail" class="icon-lg me-2"></i>
-                <span class="me-2">Pending</span>
+                <span class="me-2">Received</span>
                 <small class="text-muted">(2)</small>
               </button>
             </h2>
@@ -313,102 +313,91 @@
                       <tr>
                         <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Option Category</th>
                         <th>Purpose</th>
-                        <th>Department</th>
+                        <th>Author</th>
                         <th>Date Created</th>
                         <th>Status</th>
                         <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>12303105382704989</td>
-                        <td>
-                          <p>Invoice</p>
-                        </td>
-                        <td>
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        </td>
+                      <?php
+                      if (!empty($requests)) :
+                        foreach ($requests as $data) :
+                          if ($data->current_status_name == "received") :
+                      ?>
+                            <tr class="align-middle">
+                              <td><?= $data->tracking_id ?></td>
+                              <td>
+                                <p><?= ucwords($data->category_name) ?></p>
+                              </td>
+                              <td>
+                                <?php
+                                if (!empty($data->option_category)) {
+                                  echo $data->option_category;
+                                } else {
+                                  echo "--";
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <?= $data->purpose ?>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <img src="https://via.placeholder.com/40x40" alt="">
+                                  <div>
+                                    <p><?= $data->requestor_name ?></p>
+                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                  </div>
+                                </div>
 
-                        <td>
-                          --
-                        </td>
-                        <td>
-                          <p>21 Jan 2023</p>
-                          <small class="text-muted">4:22 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-secondary">Pending</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Receive
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <i data-feather="arrow-down" class="icon-lg me-2"></i>
-                <span class="me-2">Received Requests</span>
-                <small class="text-muted">(2)</small>
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <div class="table-responsive">
-                  <table id="PendingTable" class="table display">
-                    <thead>
-                      <tr>
-                        <th>Tracking Id</th>
-                        <th>Category</th>
-                        <th>Purpose</th>
-                        <th>Department</th>
-                        <th>Date Created</th>
-                        <th>Status</th>
-                        <th data-orderable="false">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>12303105382704989</td>
-                        <td>
-                          <p>Invoice</p>
-                        </td>
-                        <td>
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        </td>
-
-                        <td>
-                          --
-                        </td>
-                        <td>
-                          <p>21 Jan 2023</p>
-                          <small class="text-muted">4:22 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-primary">Received</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="search" class="btn-icon-prepend"></i>
-                            Review Request
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
+                              </td>
+                              <td>
+                                <p>
+                                  <?= date("d M Y", strtotime($data->date_created)) ?>
+                                </p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->current_status_name) {
+                                  case "received":
+                                    echo '<span class="badge bg-primary">Received</span>';
+                                    break;
+                                  case "review":
+                                    echo '<span class="badge bg-success">Review</span>';
+                                    break;
+                                  case "work in progress":
+                                    echo '<span class="badge bg-warning">Work in progress</span>';
+                                    break;
+                                  case "released":
+                                    echo '<span class="badge bg-danger">Released</span>';
+                                    break;
+                                  case "declined":
+                                    echo '<span class="badge bg-secondart">Declined</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="search" class="btn-icon-prepend"></i>
+                                  Review Request
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="trash-2"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -431,43 +420,91 @@
                       <tr>
                         <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Option Category</th>
                         <th>Purpose</th>
-                        <th>Department</th>
+                        <th>Author</th>
                         <th>Date Created</th>
                         <th>Status</th>
                         <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>12303105382704989</td>
-                        <td>
-                          <p>Invoice</p>
-                        </td>
-                        <td>
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        </td>
+                      <?php
+                      if (!empty($requests)) :
+                        foreach ($requests as $data) :
+                          if ($data->current_status_name == "review") :
+                      ?>
+                            <tr class="align-middle">
+                              <td><?= $data->tracking_id ?></td>
+                              <td>
+                                <p><?= ucwords($data->category_name) ?></p>
+                              </td>
+                              <td>
+                                <?php
+                                if (!empty($data->option_category)) {
+                                  echo $data->option_category;
+                                } else {
+                                  echo "--";
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <?= $data->purpose ?>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <img src="https://via.placeholder.com/40x40" alt="">
+                                  <div>
+                                    <p><?= $data->requestor_name ?></p>
+                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                  </div>
+                                </div>
 
-                        <td>
-                          --
-                        </td>
-                        <td>
-                          <p>21 Jan 2023</p>
-                          <small class="text-muted">4:22 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Review</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Work in Progress
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
+                              </td>
+                              <td>
+                                <p>
+                                  <?= date("d M Y", strtotime($data->date_created)) ?>
+                                </p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->current_status_name) {
+                                  case "received":
+                                    echo '<span class="badge bg-primary">Received</span>';
+                                    break;
+                                  case "review":
+                                    echo '<span class="badge bg-success">Review</span>';
+                                    break;
+                                  case "work in progress":
+                                    echo '<span class="badge bg-warning">Work in progress</span>';
+                                    break;
+                                  case "released":
+                                    echo '<span class="badge bg-danger">Released</span>';
+                                    break;
+                                  case "declined":
+                                    echo '<span class="badge bg-secondart">Declined</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="search" class="btn-icon-prepend"></i>
+                                  Review Request
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="trash-2"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -490,43 +527,91 @@
                       <tr>
                         <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Option Category</th>
                         <th>Purpose</th>
-                        <th>Department</th>
+                        <th>Author</th>
                         <th>Date Created</th>
                         <th>Status</th>
                         <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>12303105382704989</td>
-                        <td>
-                          <p>Invoice</p>
-                        </td>
-                        <td>
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        </td>
+                      <?php
+                      if (!empty($requests)) :
+                        foreach ($requests as $data) :
+                          if ($data->current_status_name == "work in progress") :
+                      ?>
+                            <tr class="align-middle">
+                              <td><?= $data->tracking_id ?></td>
+                              <td>
+                                <p><?= ucwords($data->category_name) ?></p>
+                              </td>
+                              <td>
+                                <?php
+                                if (!empty($data->option_category)) {
+                                  echo $data->option_category;
+                                } else {
+                                  echo "--";
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <?= $data->purpose ?>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <img src="https://via.placeholder.com/40x40" alt="">
+                                  <div>
+                                    <p><?= $data->requestor_name ?></p>
+                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                  </div>
+                                </div>
 
-                        <td>
-                          --
-                        </td>
-                        <td>
-                          <p>21 Jan 2023</p>
-                          <small class="text-muted">4:22 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Work in progress</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="feather" class="btn-icon-prepend"></i>
-                            Create Document
-                          </button>
-                          <button class="btn btn-outline-primary btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
+                              </td>
+                              <td>
+                                <p>
+                                  <?= date("d M Y", strtotime($data->date_created)) ?>
+                                </p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->current_status_name) {
+                                  case "received":
+                                    echo '<span class="badge bg-primary">Received</span>';
+                                    break;
+                                  case "review":
+                                    echo '<span class="badge bg-success">Review</span>';
+                                    break;
+                                  case "work in progress":
+                                    echo '<span class="badge bg-warning">Work in progress</span>';
+                                    break;
+                                  case "released":
+                                    echo '<span class="badge bg-danger">Released</span>';
+                                    break;
+                                  case "declined":
+                                    echo '<span class="badge bg-secondart">Declined</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="search" class="btn-icon-prepend"></i>
+                                  Review Request
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="trash-2"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -549,40 +634,91 @@
                       <tr>
                         <th>Tracking Id</th>
                         <th>Category</th>
+                        <th>Option Category</th>
                         <th>Purpose</th>
-                        <th>Department</th>
+                        <th>Author</th>
                         <th>Date Created</th>
                         <th>Status</th>
                         <th data-orderable="false">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>12303105382704989</td>
-                        <td>
-                          <p>Invoice</p>
-                        </td>
-                        <td>
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        </td>
+                      <?php
+                      if (!empty($requests)) :
+                        foreach ($requests as $data) :
+                          if ($data->current_status_name == "released") :
+                      ?>
+                            <tr class="align-middle">
+                              <td><?= $data->tracking_id ?></td>
+                              <td>
+                                <p><?= ucwords($data->category_name) ?></p>
+                              </td>
+                              <td>
+                                <?php
+                                if (!empty($data->option_category)) {
+                                  echo $data->option_category;
+                                } else {
+                                  echo "--";
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <?= $data->purpose ?>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <img src="https://via.placeholder.com/40x40" alt="">
+                                  <div>
+                                    <p><?= $data->requestor_name ?></p>
+                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                  </div>
+                                </div>
 
-                        <td>
-                          --
-                        </td>
-                        <td>
-                          <p>21 Jan 2023</p>
-                          <small class="text-muted">4:22 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-danger">Released</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="clock" class="btn-icon-prepend"></i>
-                            View History
-                          </button>
-                        </td>
-                      </tr>
+                              </td>
+                              <td>
+                                <p>
+                                  <?= date("d M Y", strtotime($data->date_created)) ?>
+                                </p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->current_status_name) {
+                                  case "received":
+                                    echo '<span class="badge bg-primary">Received</span>';
+                                    break;
+                                  case "review":
+                                    echo '<span class="badge bg-success">Review</span>';
+                                    break;
+                                  case "work in progress":
+                                    echo '<span class="badge bg-warning">Work in progress</span>';
+                                    break;
+                                  case "released":
+                                    echo '<span class="badge bg-danger">Released</span>';
+                                    break;
+                                  case "declined":
+                                    echo '<span class="badge bg-secondart">Declined</span>';
+                                    break;
+                                  default:
+                                    echo 'Unknown status';
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="search" class="btn-icon-prepend"></i>
+                                  Review Request
+                                </button>
+                                <button class="btn btn-outline-primary btn-icon">
+                                  <i data-feather="trash-2"></i>
+                                </button>
+                              </td>
+                            </tr>
+                      <?php
+                          endif;
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -701,7 +837,7 @@
         </div>
       </div>
     </div>
-    
+
 
   </div>
   </div>
@@ -711,10 +847,12 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
+  <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -726,18 +864,39 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/send-document.js"></script>
-
+  <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
   <!-- End custom js for this page -->
+
 
   <script>
     $(document).ready(function() {
-      // handle click event on dropdown item
-      $('.dropdown-menu #followUp').click(function(e) {
-        e.preventDefault();
-        var id = $(this).closest('tr').data('id'); // get the ID of the row to update
+      $('#formFile').on('change', function() {
+        const editor = tinymce.get('tinymceExample');
+        const content = editor.getContent()
+        const file = this.files[0]
+        const reader = new FileReader()
 
-        console.log(id)
+        reader.readAsDataURL(file)
+
+        reader.onload = async function() {
+          const image = new Image()
+
+          image.src = reader.result
+          image.onload = async function() {
+            const result = await Tesseract.recognize(image, 'eng', {
+              logger: m => console.log(`OCR progress: ${Math.round(m.progress * 100)}%`)
+            })
+
+            console.log(result)
+            console.log(result.data.text)
+
+            editor.setContent(result.data.text)
+          }
+
+
+        }
+
+
 
       });
     });

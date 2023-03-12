@@ -34,15 +34,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/send_document" class="nav-link">
-                    <i class="link-icon" data-feather="send"></i>
-                    <span class="link-title">Send Document</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="<?= ROOT ?>document_tracking/incoming_documents" class="nav-link">
                     <i class="link-icon" data-feather="file-text"></i>
                     <span class="link-title">Incoming Documents</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT ?>document_tracking/document_templates" class="nav-link">
+                    <i class="link-icon" data-feather="file-text"></i>
+                    <span class="link-title">Document Templates</span>
                 </a>
             </li>
             <li class="nav-item nav-category">vehicle reservation</li>

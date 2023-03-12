@@ -55,15 +55,10 @@ $(document).ready(() => {
 
     })
 
-    function showSwal() {
-
-    }
-
     ocrBtn.on('click', () => {
 
         const editor = tinymce.get('tinymceExample');
         const content = editor.getContent();
-
 
         const fileInput = document.getElementById("myDropify")
 
@@ -81,7 +76,6 @@ $(document).ready(() => {
 
                 console.log(result)
                 console.log(result.data.text)
-
 
                 editor.setContent(result.data.text)
             }
