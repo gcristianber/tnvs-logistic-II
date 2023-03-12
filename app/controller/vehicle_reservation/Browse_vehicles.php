@@ -14,6 +14,8 @@ class Browse_vehicles
 
         $data["vehicles"] = $FMVehicles->renderViewData();
 
+        // print_r($data["vehicles"]);
+
         $this->view('partials/navbar');
         $this->view('vehicle_reservation/browse_vehicles', $data);
         $this->view('partials/sidebar');

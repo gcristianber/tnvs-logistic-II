@@ -326,50 +326,38 @@
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Create Document</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Create Template</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                         </div>
                         <div class="modal-body">
 
+                          <div class="mb-3">
+                            <select name="" class="form-select" id="">
+                              <option disabled selected>...</option>
+                              <option value="">Contract</option>
+                            </select>
+                          </div>
 
-                          <div class="mb-3">
-                            <label for="request_purpose" class="form-label">
-                              <p>Select Department</p>
-                              <small class="text-muted">Select your document type.</small>
-                            </label>
-                            <select name="" class="form-select">
-                              <option selected disabled>...</option>
-                              <option value="1">Administrative</option>
-                              <option value="2">Finance</option>
-                              <option value="3">Human Resource</option>
-                              <option value="3">Logistic</option>
-                            </select>
-                          </div>
-                          <div class="mb-3">
-                            <label for="request_purpose" class="form-label">
-                              <p>Select Document Type</p>
-                              <small class="text-muted">Select your document type.</small>
-                            </label>
-                            <select name="" class="form-select">
-                              <option selected disabled>...</option>
-                              <option value="1">Employment Certificate</option>
-                              <option value="2">Purchase Order</option>
-                              <option value="3">Invoice</option>
-                            </select>
-                          </div>
                           <div class="mb-3">
                             <div class="form-check form-switch mb-2">
                               <input type="checkbox" class="form-check-input" id="formSwitch1">
-                              <label class="form-check-label" for="formSwitch1">If the document is not in category, Please specify below.</label>
+                              <label class="form-check-label" for="formSwitch1">Use OCR</label>
                             </div>
-                            <input type="text" name="" id="" class="form-control" placeholder="Type something...">
                           </div>
-                          <div>
-                            <label for="request_purpose" class="form-label">
-                              <p>Purpose</p>
-                              <small class="text-muted">Write a purpose for requesting a document.</small>
-                            </label>
-                            <textarea name="request_purpose" class="form-control" cols="30" rows="5" placeholder="Type something..."></textarea>
+
+                          <div class="mb-3">
+
+                            <div class="alert alert-primary" role="alert">
+                              <i data-feather="alert-circle"></i>
+                              A simple primary alert—check it out!
+                            </div>
+
+                            <input class="form-control" type="file" id="formFile">
+                          </div>
+
+                          <div class="mb-3">
+                            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something..."></textarea>
+
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -382,74 +370,74 @@
                 </div>
               </div>
             </div>
-              <div class="table-responsive mt-3">
-                <table id="PendingTable" class="table display">
-                  <thead>
-                    <tr>
-                      <th>Template Id</th>
-                      <th>Category</th>
-                      <th>Description</th>
-                      <th>Status</th>
-                      <th>Date Created</th>
-                      <th data-orderable="false">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="align-middle">
-                      <td>12303105382704989</td>
-                      <td>
-                        <p>Invoice</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
+            <div class="table-responsive mt-3">
+              <table id="PendingTable" class="table display">
+                <thead>
+                  <tr>
+                    <th>Template Id</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Date Created</th>
+                    <th data-orderable="false">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="align-middle">
+                    <td>12303105382704989</td>
+                    <td>
+                      <p>Invoice</p>
+                    </td>
+                    <td>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    </td>
 
-                      <td>
-                        <span class="badge bg-success">Active</span>
-                      </td>
-                      <td>
-                        <p>21 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="edit" class="btn-icon-prepend"></i>
-                          Edit Template
-                        </button>
-                        <button class="btn btn-outline-primary btn-icon">
-                          <i data-feather="power"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="align-middle">
-                      <td>12303105382704989</td>
-                      <td>
-                        <p>Invoice</p>
-                      </td>
-                      <td>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      </td>
+                    <td>
+                      <span class="badge bg-success">Active</span>
+                    </td>
+                    <td>
+                      <p>21 Jan 2023</p>
+                      <small class="text-muted">4:22 AM</small>
+                    </td>
+                    <td>
+                      <button class="btn btn-primary btn-icon-text">
+                        <i data-feather="edit" class="btn-icon-prepend"></i>
+                        Edit Template
+                      </button>
+                      <button class="btn btn-outline-primary btn-icon">
+                        <i data-feather="power"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="align-middle">
+                    <td>12303105382704989</td>
+                    <td>
+                      <p>Invoice</p>
+                    </td>
+                    <td>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    </td>
 
-                      <td>
-                        <span class="badge bg-danger">Disabled</span>
-                      </td>
-                      <td>
-                        <p>21 Jan 2023</p>
-                        <small class="text-muted">4:22 AM</small>
-                      </td>
-                      <td>
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="edit" class="btn-icon-prepend"></i>
-                          Edit Template
-                        </button>
-                        <button class="btn btn-outline-primary btn-icon">
-                          <i data-feather="power"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                    <td>
+                      <span class="badge bg-danger">Disabled</span>
+                    </td>
+                    <td>
+                      <p>21 Jan 2023</p>
+                      <small class="text-muted">4:22 AM</small>
+                    </td>
+                    <td>
+                      <button class="btn btn-primary btn-icon-text">
+                        <i data-feather="edit" class="btn-icon-prepend"></i>
+                        Edit Template
+                      </button>
+                      <button class="btn btn-outline-primary btn-icon">
+                        <i data-feather="power"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
 
           </div>
@@ -468,6 +456,9 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
+  <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
+  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
+
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <!-- End plugin js for this page -->
@@ -479,7 +470,44 @@
 
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
+
   <!-- End custom js for this page -->
+
+  <script>
+    $(document).ready(function() {
+      $('#formFile').on('change', function() {
+        const editor = tinymce.get('tinymceExample');
+        const content = editor.getContent()
+        const file = this.files[0]
+        const reader = new FileReader()
+
+        reader.readAsDataURL(file)
+
+        reader.onload = async function() {
+          const image = new Image()
+
+          image.src = reader.result
+          image.onload = async function() {
+            const result = await Tesseract.recognize(image, 'eng', {
+              logger: m => console.log(`OCR progress: ${Math.round(m.progress * 100)}%`)
+            })
+
+            console.log(result)
+            console.log(result.data.text)
+
+            editor.setContent(result.data.text)
+          }
+
+
+        }
+
+
+
+      });
+    });
+  </script>
+
 </body>
 
 </html>

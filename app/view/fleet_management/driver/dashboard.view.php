@@ -23,7 +23,6 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -291,7 +290,50 @@
       </nav>
       <div class="page-content">
 
-     
+
+        <div class="card">
+          <div class="card-body">
+
+            <div class="d-flex gap-2 mb-3">
+              <div class="ht-50 wd-50 rounded-2 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary">
+                <i data-feather="package"></i>
+              </div>
+              <div class="d-flex flex-column justify-content-between">
+                <div>
+                  <p class="text-muted">Tracking Number: <span class="text-dark fw-bold"> 12303105382704989</span> </p>
+                </div>
+                <div>
+                  <i data-feather="calendar" class="ht-20"></i>
+                  Mar 10 (Today) 3:18 PM
+                </div>
+                <!-- <div>
+                    <span class="badge bg-primary">Out for delivery</span>
+                  </div> -->
+              </div>
+            </div>
+
+            <div id="map" class="w-100 bg-secondary mb-3 rounded-2" style="height: 500px;">
+            
+            </div>
+
+            <div class="d-flex gap-2 mb-3">
+              <img class="rounded-circle" src="https://via.placeholder.com/40x40" alt="">
+              <div>
+                <p>Leandro Quisado</p>
+                <small class="text-muted">leanleandroquisasdo@gmail.com</small>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-icon-text w-100 mb-2">
+              <i data-feather="play" class="btn-icon-prepend"></i>
+              Start Trip
+            </button>
+            <button class="btn btn-outline-primary btn-icon-text w-100">
+              <i data-feather="message-circle" class="btn-icon-prepend"></i>
+              Message
+            </button>
+          </div>
+        </div>
+
       </div>
 
 
@@ -303,11 +345,6 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
-  <script src="<?= ROOT ?>assets/vendors/chartjs/Chart.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/jquery.flot/jquery.flot.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/apexcharts/apexcharts.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -316,8 +353,6 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/dashboard-light.js"></script>
-  <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
   <!-- End custom js for this page -->
 
 </body>

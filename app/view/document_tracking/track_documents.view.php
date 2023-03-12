@@ -22,6 +22,7 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
@@ -39,6 +40,9 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+
 </head>
 
 <body>
@@ -304,14 +308,31 @@
 
 
             <div class="d-flex align-items-center gap-2">
-              <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+              <input type="text" class="form-control" id="trackingForm" placeholder="Search here...">
               <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-outline-primary btn-icon">
+                <button class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#uploadQR">
                   <span class="material-symbols-outlined">
                     qr_code_scanner
                   </span>
                 </button>
-                <button class="btn btn-primary">
+                <div class="modal fade" id="uploadQR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Scan QR Code</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                      </div>
+                      <div class="modal-body">
+                      <input type="file" id="myDropify"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="scanQR">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="searchDocument">
                   Search
                 </button>
               </div>
@@ -319,7 +340,7 @@
 
             <div class="table-responsive mt-3">
 
-              <table id="PendingTable" class="table display">
+              <table id="resultTable" class="table display">
                 <thead>
                   <tr>
                     <th>Department</th>
@@ -336,7 +357,7 @@
                   ?>
                       <tr class="align-middle">
                         <td>
-                          <p><?= ucwords($data->department_name) ?></p>
+                          <p><?= ucwords($data->receiver) ?></p>
                         </td>
                         <td>
                           <p><?= date("d M Y", strtotime($data->action_date)) ?></p>
@@ -404,6 +425,7 @@
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -415,7 +437,8 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/request-document-access.js"></script>
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/document_tracking/track_document.js"></script>
 
   <!-- End custom js for this page -->
 

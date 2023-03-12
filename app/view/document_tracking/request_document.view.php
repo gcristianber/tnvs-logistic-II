@@ -391,10 +391,7 @@
                             <h5 id="qrcodeValue"></h5>
                           </div>
                           <div class="d-flex justify-content-center py-3">
-                            <div id="qrcode">
-                            
-                            
-                            </div>
+                            <div id="qrcode"></div>
                           </div>
 
                           <div>
@@ -548,6 +545,7 @@
 
       $("#sendRequest").on("click", function() {
 
+        console.log("Hello")
         let department_id = $('select[name="department_id"]').val()
         let category_id = $('select[name="category_id"]').val()
         let option_category = $('input[name="option_category"]').val()
@@ -573,11 +571,11 @@
         })
       })
 
-      $("#downloadQRCode").on("click", function(){
+      $("#downloadQRCode").on("click", function() {
         downloadQR()
       })
 
-      function generateQR(qrValue){
+      function generateQR(qrValue) {
         var qr = qrcode(0, "L");
         qr.addData(qrValue);
         qr.make();
@@ -589,14 +587,34 @@
         qrCodeVal.innerHTML = qrValue;
 
         window.qrCodeImageData = qrCodeImage.replace(/^data:image\/(png|jpg);base64,/, "");
-      
+
+        var downloadBtn = document.getElementById("downloadQRCode");
+
+        downloadBtn.addEventListener("click", function() {
+          var canvas = document.createElement("canvas");
+          var context = canvas.getContext("2d");
+          var img = new Image();
+          img.onload = function() {
+            canvas.width = img.width * 5;
+            canvas.height = img.height * 5;
+            context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function(blob) {
+              var link = document.createElement("a");
+              link.download = "qrcode.png";
+              link.href = URL.createObjectURL(blob);
+              link.click();
+            }, "image/png");
+          };
+          img.src = qr.createDataURL();
+        });
+
       }
 
-      function downloadQR(){
+      function downloadQR() {
         var downloadLink = document.createElement("a");
         downloadLink.href = "data:image/png;base64," + window.qrCodeImageData;
         downloadLink.download = "qrcode.png";
-        
+
         // Trigger download
         downloadLink.click();
       }

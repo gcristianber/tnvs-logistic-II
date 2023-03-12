@@ -327,7 +327,7 @@
                         foreach ($requests as $data) :
                           if ($data->current_status_name == "received") :
                       ?>
-                            <tr class="align-middle">
+                            <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
                               <td>
                                 <p><?= ucwords($data->category_name) ?></p>
@@ -384,10 +384,28 @@
                                 ?>
                               </td>
                               <td>
-                                <button class="btn btn-primary btn-icon-text">
+                                <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
                                   <i data-feather="search" class="btn-icon-prepend"></i>
                                   Review Request
                                 </button>
+
+                                <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary reviewBtn">Continue</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                                 <button class="btn btn-outline-primary btn-icon">
                                   <i data-feather="trash-2"></i>
                                 </button>
@@ -434,7 +452,7 @@
                         foreach ($requests as $data) :
                           if ($data->current_status_name == "review") :
                       ?>
-                            <tr class="align-middle">
+                            <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
                               <td>
                                 <p><?= ucwords($data->category_name) ?></p>
@@ -491,10 +509,28 @@
                                 ?>
                               </td>
                               <td>
-                                <button class="btn btn-primary btn-icon-text">
+                                <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
                                   <i data-feather="search" class="btn-icon-prepend"></i>
                                   Review Request
                                 </button>
+
+                                <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary workingBtn">Continue</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                                 <button class="btn btn-outline-primary btn-icon">
                                   <i data-feather="trash-2"></i>
                                 </button>
@@ -541,7 +577,7 @@
                         foreach ($requests as $data) :
                           if ($data->current_status_name == "work in progress") :
                       ?>
-                            <tr class="align-middle">
+                            <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
                               <td>
                                 <p><?= ucwords($data->category_name) ?></p>
@@ -598,10 +634,61 @@
                                 ?>
                               </td>
                               <td>
-                                <button class="btn btn-primary btn-icon-text">
-                                  <i data-feather="search" class="btn-icon-prepend"></i>
-                                  Review Request
+                                <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
+                                  <i data-feather="feather" class="btn-icon-prepend"></i>
+                                  Create Document
                                 </button>
+
+                                <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Create Document</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="mb-3">
+                                          <h6 class="fw-bold">SELECT TEMPLATE</h6>
+                                          <small class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</small>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <select name="" class="form-select" id="">
+                                            <option disabled selected>...</option>
+                                            <option value="">Contract</option>
+                                          </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <div class="form-check form-switch mb-2">
+                                            <input type="checkbox" class="form-check-input" id="formSwitch1">
+                                            <label class="form-check-label" for="formSwitch1">Use OCR</label>
+                                          </div>
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                          <div class="alert alert-primary" role="alert">
+                                            <i data-feather="alert-circle"></i>
+                                            A simple primary alert—check it out!
+                                          </div>
+
+                                          <input class="form-control file-upload" type="file" id="formFile">
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something..."></textarea>
+
+                                        </div>
+
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary releaseBtn">Continue</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                                 <button class="btn btn-outline-primary btn-icon">
                                   <i data-feather="trash-2"></i>
                                 </button>
@@ -648,7 +735,7 @@
                         foreach ($requests as $data) :
                           if ($data->current_status_name == "released") :
                       ?>
-                            <tr class="align-middle">
+                            <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
                               <td>
                                 <p><?= ucwords($data->category_name) ?></p>
@@ -848,6 +935,7 @@
 
   <!-- Plugin js for this page -->
   <script src='https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js'></script>
+  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
@@ -864,6 +952,7 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/document_tracking/manage-requests.js"></script>
   <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
   <!-- End custom js for this page -->
 

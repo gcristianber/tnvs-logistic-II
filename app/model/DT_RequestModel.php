@@ -32,7 +32,7 @@ class DT_RequestModel
     {
         $query = "select * from $this->view_table";
 
-        $query .= " order by tracking_id $this->order_type limit $this->limit offset $this->offset";
+        $query .= " order by tracking_id $this->order_type";
 
 		return $this->query($query);
     }

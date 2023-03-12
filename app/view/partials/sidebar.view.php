@@ -53,8 +53,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+                    <i class="link-icon" data-feather="list"></i>
+                    <span class="link-title">My Reservations</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="<?= ROOT ?>vehicle_reservation/manage_reservations" class="nav-link">
-                    <i class="link-icon" data-feather="table"></i>
+                    <i class="link-icon" data-feather="settings"></i>
                     <span class="link-title">Manage Reservations</span>
                 </a>
             </li>
@@ -62,6 +68,12 @@
                 <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
                     <i class="link-icon" data-feather="star"></i>
                     <span class="link-title">Feedbacks</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
+                    <i class="link-icon" data-feather="flag"></i>
+                    <span class="link-title">Reports</span>
                 </a>
             </li>
             <li class="nav-item nav-category">vendor portal</li>
