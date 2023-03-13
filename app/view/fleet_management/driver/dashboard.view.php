@@ -35,6 +35,9 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
 </head>
 
 <body>
@@ -312,8 +315,8 @@
               </div>
             </div>
 
-            <div id="map" class="w-100 bg-secondary mb-3 rounded-2" style="height: 500px;">
-            
+            <div id="map" class="w-100 mb-3 rounded-2" style="height: 500px;">
+
             </div>
 
             <div class="d-flex gap-2 mb-3">
@@ -354,6 +357,97 @@
 
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
+
+  <script type="module">
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      setDoc,
+      getDoc,
+      doc,
+      onSnapshot,
+      updateDoc,
+    } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCdE861SnlahEpGMerK9TrJAwAMUMfoRWs",
+      authDomain: "lulan-geo.firebaseapp.com",
+      projectId: "lulan-geo",
+      storageBucket: "lulan-geo.appspot.com",
+      messagingSenderId: "362524656961",
+      appId: "1:362524656961:web:592cc21b9a735594510dc0",
+    };
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: 'mapbox://styles/mapbox/streets-v12', // style URL
+      center: [-74.5, 40], // starting position [lng, lat]
+      zoom: 15 // starting zoom
+    });
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    // Get a reference to the Firestore database
+    const db = getFirestore(app);
+
+    // Get a reference to the "geo" collection in the database
+    const geoRef = collection(db, "geo");
+
+    const customGeoDocRef = doc(geoRef, "delivery-001");
+
+    let currentMarker = null;
+
+    const success = (position) => {
+      const {
+        longitude,
+        latitude
+      } = position.coords;
+
+      const newGeoDoc = {
+        longitude: longitude, // replace with your longitude value
+        latitude: latitude, // replace with your latitude value
+      };
+
+      updateDoc(customGeoDocRef, newGeoDoc)
+        .then(() => {
+          console.log("Document updated");
+        })
+        .catch((error) => {
+          console.error("Error updating document: ", error);
+        });
+
+      console.log(`Longitude- ${longitude} and Latitude- ${latitude}`);
+
+      // remove the previous marker from the map
+    
+
+      if (currentMarker) {
+        currentMarker.remove();
+      }
+
+      currentMarker = new mapboxgl.Marker()
+        .setLngLat([longitude, latitude])
+        .addTo(map);
+
+      map.flyTo({
+        center: [longitude, latitude],
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+      });
+    };
+
+    const error = (err) => {
+      console.log(err);
+    };
+
+    navigator.geolocation.watchPosition(success, error);
+  </script>
 
 </body>
 

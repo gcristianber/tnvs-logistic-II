@@ -13,7 +13,7 @@ class App{
         "fleet_management_admin"    => "fleet_management_admin",
         "fleet_management_driver"   => "fleet_management_driver",
         "general"                   => "general",
-        "templates"                 => "templates"
+        "templates"                 => "templates",
     ];
 
     protected $system       = "authentication";

@@ -299,13 +299,13 @@
         <div class="accordion grid-margin" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <i data-feather="mail" class="icon-lg me-2"></i>
                 <span class="me-2">Received</span>
                 <small class="text-muted">(2)</small>
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <div class="table-responsive">
                   <table id="PendingTable" class="table display">
@@ -510,8 +510,8 @@
                               </td>
                               <td>
                                 <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
-                                  <i data-feather="search" class="btn-icon-prepend"></i>
-                                  Review Request
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Work in progress
                                 </button>
 
                                 <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -680,6 +680,12 @@
                                           <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something..."></textarea>
 
                                         </div>
+
+                                        <div class="mb-3">
+                                          <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+
+                                        </div>
+
 
                                       </div>
                                       <div class="modal-footer">

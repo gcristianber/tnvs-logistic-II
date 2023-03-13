@@ -9,6 +9,20 @@ class Templates {
 
     }
 
+    public function default_template($data){
+
+        $dompdf = new Dompdf\Dompdf();
+
+        ob_start();
+        $html = $this->view("templates/default", $data);
+        $html=ob_get_clean();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $dompdf->stream("uploads/vendor_contract.pdf", Array("Attachment" => 0));
+    }
+
     public function vendor_contract(){
         $data = [
             "title"=> "Test Title",

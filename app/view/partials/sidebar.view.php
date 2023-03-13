@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+                <a href="<?= ROOT ?>vehicle_reservation/my_reservations" class="nav-link">
                     <i class="link-icon" data-feather="list"></i>
                     <span class="link-title">My Reservations</span>
                 </a>
@@ -71,7 +71,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
+                <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
                     <i class="link-icon" data-feather="flag"></i>
                     <span class="link-title">Reports</span>
                 </a>

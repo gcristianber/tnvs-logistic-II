@@ -332,9 +332,12 @@
                         <div class="modal-body">
 
                           <div class="mb-3">
-                            <select name="" class="form-select" id="">
+                            <select name="" class="form-select" id="categoryId">
                               <option disabled selected>...</option>
-                              <option value="">Contract</option>
+                              <option value="1">Contract</option>
+                              <option value="2">Contract</option>
+                              <option value="3">Contract</option>
+                              <option value="4">Contract</option>
                             </select>
                           </div>
 
@@ -356,13 +359,16 @@
                           </div>
 
                           <div class="mb-3">
-                            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something..."></textarea>
+                            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="5" placeholder="Type something..."></textarea>
+                          </div>
 
+                          <div class="mb-3">
+                            <textarea name="" id="description" cols="30" rows="10" class="form-control" placeholder="Description"></textarea>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Send Request</button>
+                          <button type="button" class="btn btn-primary " id="createTemplate">Continue</button>
                         </div>
                       </div>
                     </div>
@@ -383,58 +389,51 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="align-middle">
-                    <td>12303105382704989</td>
-                    <td>
-                      <p>Invoice</p>
-                    </td>
-                    <td>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </td>
+                  <?php
+                  if (!empty($templates)) :
+                    foreach ($templates as $data) :
+                  ?>
+                      <tr class="align-middle">
+                        <td><?= $data->template_id ?></td>
+                        <td>
+                          <p><?= $data->category_name ?></p>
+                        </td>
+                        <td>
+                          <?= $data->description ?>
+                        </td>
 
-                    <td>
-                      <span class="badge bg-success">Active</span>
-                    </td>
-                    <td>
-                      <p>21 Jan 2023</p>
-                      <small class="text-muted">4:22 AM</small>
-                    </td>
-                    <td>
-                      <button class="btn btn-primary btn-icon-text">
-                        <i data-feather="edit" class="btn-icon-prepend"></i>
-                        Edit Template
-                      </button>
-                      <button class="btn btn-outline-primary btn-icon">
-                        <i data-feather="power"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr class="align-middle">
-                    <td>12303105382704989</td>
-                    <td>
-                      <p>Invoice</p>
-                    </td>
-                    <td>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    </td>
-
-                    <td>
-                      <span class="badge bg-danger">Disabled</span>
-                    </td>
-                    <td>
-                      <p>21 Jan 2023</p>
-                      <small class="text-muted">4:22 AM</small>
-                    </td>
-                    <td>
-                      <button class="btn btn-primary btn-icon-text">
-                        <i data-feather="edit" class="btn-icon-prepend"></i>
-                        Edit Template
-                      </button>
-                      <button class="btn btn-outline-primary btn-icon">
-                        <i data-feather="power"></i>
-                      </button>
-                    </td>
-                  </tr>
+                        <td>
+                          <?php
+                          switch ($data->is_enabled) {
+                            case "1":
+                              echo '<span class="badge bg-success">Enabled</span>';
+                              break;
+                            case "2":
+                              echo '<span class="badge bg-danger">Disabled</span>';
+                              break;
+                            default:
+                              echo 'Unknown status';
+                          }
+                          ?>
+                        </td>
+                        <td>
+                          <p><?= date("d M Y" ,strtotime($data->date_created)) ?></p>
+                          <small class="text-muted"><?= date("h:i A" ,strtotime($data->date_created)) ?></small>
+                        </td>
+                        <td>
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="edit" class="btn-icon-prepend"></i>
+                            Edit Template
+                          </button>
+                          <button class="btn btn-outline-primary btn-icon">
+                            <i data-feather="power"></i>
+                          </button>
+                        </td>
+                      </tr>
+                  <?php
+                    endforeach;
+                  endif;
+                  ?>
                 </tbody>
               </table>
             </div>
@@ -471,6 +470,7 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="<?= ROOT ?>assets/js/tinymce.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/document_tracking/manage-templates.js"></script>
 
   <!-- End custom js for this page -->
 
