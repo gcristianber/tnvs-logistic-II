@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Request Document</title>
+  <title>Manage Reservations</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
@@ -33,24 +32,17 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-
 </head>
 
 <body>
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-
-      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -287,7 +279,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
+                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -298,133 +290,61 @@
           </ul>
         </div>
       </nav>
-      <!-- partial -->
-
       <div class="page-content">
 
         <div class="card">
           <div class="card-body">
 
-
-
-            <div class="d-flex align-items-center gap-2 mb-3">
-              <input type="text" class="form-control" id="trackingForm" placeholder="Search here...">
-              <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#uploadQR">
-                  <span class="material-symbols-outlined">
-                    qr_code_scanner
-                  </span>
-                </button>
-                <div class="modal fade" id="uploadQR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Scan QR Code</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                      </div>
-                      <div class="modal-body">
-                      <input type="file" id="myDropify"/>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="scanQR">Continue</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button class="btn btn-primary" id="searchDocument">
-                  Search
-                </button>
-              </div>
+            <div class="mb-3">
+              <h6>FEEDBACKS</h6>
+              <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
             </div>
-            
-            <?php if(!empty($file_attachment)): ?>
-            <div class="mb-3 p-3 border border-1 rounded-2">
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center gap-2">
-                  <i data-feather="file"></i>
-                  <div>
-                    <p><?= $file_attachment->document_name ?></p>
-                    <small class="text-muted"><?= $file_attachment->document_size ?> KB</small>
-                  </div>
-                </div>
 
-                <a href="<?= ROOT ?>uploads/documents/<?= $file_attachment->document_id ?>/<?= $file_attachment->document_name ?>">
-                  <i data-feather="download" class="icon-lg"></i>
-                </a>
-              </div>
-            </div>
-            <?php  endif; ?>
-
-            <div class="table-responsive mt-3">
-
-              <table id="resultTable" class="table display">
+            <div class="table-responsive">
+              <table id="dataTableExample" class="table display">
                 <thead>
                   <tr>
-                    <th>Department</th>
-                    <th>Date Received</th>
-                    <th>Date Released</th>
-                    <th>Status</th>
-                    <th data-orderable="false">Remarks</th>
+                    <th>Hirer</th>
+                    <th>Vehicle</th>
+                    <th>Type</th>
+                    <th>Date Created</th>
+                    <th>Feedback</th>
+                    <th data-orderable="false">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  if (!empty($track_details)) :
-                    foreach ($track_details as $data) :
-                  ?>
-                      <tr class="align-middle">
-                        <td>
-                          <p><?= ucwords($data->receiver) ?></p>
-                        </td>
-                        <td>
-                          <p><?= date("d M Y", strtotime($data->action_date)) ?></p>
-                          <small class="text-muted"><?= date("h:i A", strtotime($data->action_date)) ?></small>
-                        </td>
-                        <td>
-                          <?php
-                          if (!empty($data->date_released)) {
-                            echo $data->date_released;
-                          } else {
-                            echo "--";
-                          }
-                          ?>
-                        </td>
-                        <td>
-                          <?php
-                          switch ($data->status_name) {
-                            case "received":
-                              echo '<span class="badge bg-primary">Received</span>';
-                              break;
-                            case "review":
-                              echo '<span class="badge bg-success">Review</span>';
-                              break;
-                            case "work in progress":
-                              echo '<span class="badge bg-warning">Work in progress</span>';
-                              break;
-                            case "released":
-                              echo '<span class="badge bg-danger">Released</span>';
-                              break;
-                            case "declined":
-                              echo '<span class="badge bg-secondart">Declined</span>';
-                              break;
-                            default:
-                              echo 'Unknown status';
-                          }
-                          ?>
-                        </td>
-                        <td>
-                          <?= $data->remarks ?>
-                        </td>
-                      </tr>
-                  <?php
-                    endforeach;
-                  endif;
-                  ?>
+                  <tr class="align-middle">
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <img src="https://via.placeholder.com/40x40" alt="" class="rounded-circle">
+                        <div>
+                          <p>Aldion Belo</p>
+                          <small class="text-muted">HR Staff</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p>Test Vehicle</p>
+                      <small class="text-muted">TYT-424</small>
+                    </td>
+                    <td>Sedan</td>
+                    <td>04 Apr 2023</td>
+                    <td><p class="text-wrap">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident, culpa velit pariatur excepturi vitae quos beatae dolorum ipsa, perferendis dicta veniam vel! Architecto, at? Nobis!</p></td>
+                    <td>
+                      <button class="btn btn-primary btn-icon-text">
+                        <i data-feather="download" class="btn-icon-prepend"></i>
+                        Download Feedback
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
-
             </div>
+
+
+
+
+
           </div>
         </div>
 
@@ -443,7 +363,6 @@
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -455,10 +374,10 @@
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/document_tracking/track_document.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reservations.js"></script>
 
   <!-- End custom js for this page -->
+
 
 </body>
 

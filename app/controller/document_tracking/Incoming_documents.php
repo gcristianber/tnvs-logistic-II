@@ -12,7 +12,9 @@ class Incoming_documents
         $data = [];
 
         $RequestModel = new DT_RequestModel;
+        $FileManagerModel = new DT_FileManagerModel;
         $data["requests"] = $RequestModel->renderAll();
+        $data["files"] = $FileManagerModel->renderAll();
 
         $this->view('partials/navbar');
         $this->view("document_tracking/incoming_documents", $data);
@@ -71,7 +73,7 @@ class Incoming_documents
             [
                 "tracking_id" => $_POST["tracking_id"],
                 "remarks" => $_POST["remarks"],
-                "status_id" => 4
+                "status_id" => 4,
             ]
         );
 
@@ -95,8 +97,11 @@ class Incoming_documents
         mkdir($uploadDir);
         $fileName = 'example.pdf';
 
+        
+
         file_put_contents($uploadDir . $fileName, $pdfContent);
         chmod($uploadDir, 0755);
+        $fileSize = filesize($uploadDir . $fileName);
 
         /* 
         TODO: Insert the following to the database
@@ -109,17 +114,17 @@ class Incoming_documents
          * -> Author Id
         */
 
+        $addFile = [
+            "document_id" => $tracking_id,
+            "document_name" => $fileName,
+            "document_size" => $fileSize,
+            "category_id" => $_POST["category_id"],
+            "department_id" => 1, //!TODO: Change this depends on SESSION
+            "author_id" => "sa12345",
+        ];
+
         $FileManagerModel = new DT_FileManagerModel;
-        // $FileManagerModel->insert(
-        //     [
-        //         "document_id" => ,
-        //         "document_name" => ,
-        //         "document_size" => ,
-        //         "category_id" => ,
-        //         "date_created" => ,
-        //         "department_id" => ,
-        //         "author_id" =>,
-        //     ]
-        //     );
+        $FileManagerModel->insert($addFile);
+        
     }
 }

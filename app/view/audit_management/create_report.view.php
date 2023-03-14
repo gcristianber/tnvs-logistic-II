@@ -298,29 +298,29 @@
 
       <div class="page-content">
 
-
-
         <div class="card grid-margin">
+
           <div class="card-body">
-            <div class="col-md-12 grid-margin">
-
-              <div class="d-flex align-items-center justify-content-between mb-3">
-                <div>
-                  <p class="fw-bold">CONDUCT AUDIT</p>
-                  <small class="text-muted">Select a section to perform.</small>
-                </div>
-                <div>
-                  <button class="btn btn-outline-primary btn-icon-text">
-                    <i data-feather="download" class="btn-icon-prepend"></i>
-                    Export
-                  </button>
-                  <button class="btn btn-primary btn-icon-text" id="getTableData">
-                    <i data-feather="save" class="btn-icon-prepend"></i>
-                    Save Report
-                  </button>
-                </div>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <p class="fw-bold">CONDUCT AUDIT</p>
+                <small class="text-muted">Select a section to perform.</small>
               </div>
-
+              <div>
+                <button class="btn btn-outline-primary btn-icon-text">
+                  <i data-feather="download" class="btn-icon-prepend"></i>
+                  Export
+                </button>
+                <button class="btn btn-primary btn-icon-text" id="getTableData">
+                  <i data-feather="save" class="btn-icon-prepend"></i>
+                  Save Report
+                </button>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Title" id="title">
+            </div>
+            <div class="mb-3">
               <select name="" class="form-select" id="categoryDropdown">
                 <option disabled selected>Select Category</option>
                 <option value="1">Vehicles</option>
@@ -349,143 +349,192 @@
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-
-        <div class="card grid-margin">
-
-          <div class="card-body">
-            <div class="mb-3 d-flex align-items-center justify-content-between">
-              <div>
-                <h6>CONCLUSION</h6>
-                <small class="text-muted">Manage your sent documents.</small>
-              </div>
+            <div class="mb-3">
+              <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
             </div>
-            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10" placeholder="Type something...">
           </textarea>
+            </div>
           </div>
+
         </div>
-
       </div>
-    </div>
 
-    <!-- core:js -->
-    <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
-    <!-- endinject -->
+      <!-- core:js -->
+      <script src="<?= ROOT ?>assets/vendors/core/core.js"></script>
+      <!-- endinject -->
 
-    <!-- Plugin js for this page -->
-    <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-    <!-- End plugin js for this page -->
+      <!-- Plugin js for this page -->
+      <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
+      <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
+      <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+      <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+      <!-- End plugin js for this page -->
 
-    <!-- inject:js -->
-    <script src="<?= ROOT ?>assets/js/select2.js"></script>
-    <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="<?= ROOT ?>assets/js/template.js"></script>
+      <!-- inject:js -->
+      <script src="<?= ROOT ?>assets/js/select2.js"></script>
+      <script src="<?= ROOT ?>assets/vendors/feather-icons/feather.min.js"></script>
+      <script src="<?= ROOT ?>assets/js/template.js"></script>
 
-    <!-- endinject -->
+      <!-- endinject -->
 
-    <!-- Custom js for this page -->
-    <script src="<?= ROOT ?>assets/js/data-table.js"></script>
-    <!-- End custom js for this page -->
+      <!-- Custom js for this page -->
+      <script src="<?= ROOT ?>assets/js/data-table.js"></script>
+      <!-- End custom js for this page -->
 
 
-    <script>
-      tinymce.init({
-        selector: '#tinymceExample',
-        menubar: false,
-        height: 400,
-        plugins: 'advlist autolink lists link charmap print preview hr anchor pagebreak table print',
-        toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link | table | print',
-        image_title: true,
-        automatic_uploads: true,
-        file_picker_types: 'image',
-        file_picker_callback: function(cb, value, meta) {
+      <script>
+        tinymce.init({
+          selector: '#tinymceExample',
+          menubar: false,
+          height: 400,
+          plugins: 'advlist autolink lists link charmap print preview hr anchor pagebreak table print',
+          toolbar1: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link | table | print',
+          image_title: true,
+          automatic_uploads: true,
+          file_picker_types: 'image',
+          file_picker_callback: function(cb, value, meta) {
 
-          var input = document.createElement('input');
-          input.setAttribute('type', 'file');
-          input.setAttribute('accept', 'image/*');
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
 
-          input.onchange = function() {
-            var file = this.files[0];
-            var reader = new FileReader();
+            input.onchange = function() {
+              var file = this.files[0];
+              var reader = new FileReader();
 
-            reader.onload = function() {
-              var id = 'blobid' + (new Date()).getTime();
-              var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-              var base64 = reader.result.split(',')[1];
-              var blobInfo = blobCache.create(id, file, base64);
-              blobCache.add(blobInfo);
+              reader.onload = function() {
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
 
-              // Blob info
-              console.log(blobInfo.blobUri())
+                // Blob info
+                console.log(blobInfo.blobUri())
 
-              // call the callback and populate the Title field with the file name
-              cb(blobInfo.blobUri(), {
-                title: file.name
-              });
+                // call the callback and populate the Title field with the file name
+                cb(blobInfo.blobUri(), {
+                  title: file.name
+                });
+              };
+
+
+              reader.readAsDataURL(file);
             };
 
-
-            reader.readAsDataURL(file);
-          };
-
-          input.click();
-
-        }
-      })
-
-      const categoryDropdown = document.getElementById("categoryDropdown")
-
-      $("#categoryDropdown").on("change", function() {
-        var selectedCategory = $(this).val()
-
-        var currentUrl = $(location).attr('href');
-        // console.log(selectedCategory)
-
-        $.ajax({
-          url: currentUrl + '/getTable',
-          type: 'POST',
-          data: {
-            category_id: selectedCategory
-          },
-          dataType: 'json',
-          success: function(data) {
-            var tableRows = '';
-            $.each(data, function(index, item) {
-              tableRows += '<tr class="align-middle">' +
-                '<td data-name="item_id">' + item.item_id + '</td>' +
-                '<td data-name="item_name">' + item.item_name + '</td>' +
-                '<td data-name="category">' + item.category_name + '</td>' +
-                '<td data-name="item_desc">' + item.item_description + '</td>' +
-                '<td data-name="manufacturer">' + item.manufacturer + '</td>' +
-                '<td data-name="system_count">' + item.quantity + '</td>' +
-                '<td data-name="actual_count" class="actual-count"><div class="border rounded-2 text-center p-2" contenteditable="true">0</div></td>' +
-                '<td data-name="variance">0</td>' +
-                '<td data-name="accuracy">0%</td>' +
-                '</tr>'
-            });
-            $("#dataTableExample tbody").html(tableRows)
-
-            $(".actual-count").on("input", function(){
-              
-              // ! TODO: MAKE A SCRIPT FOR COMPUTING
-
-              
-            })
-
+            input.click();
 
           }
         })
 
-       
-        
+        var currentUrl = $(location).attr('href');
 
-        
-      })
-    </script>
+        const categoryDropdown = document.getElementById("categoryDropdown")
+
+        $("#categoryDropdown").on("change", function() {
+          var selectedCategory = $(this).val()
+
+
+          // console.log(selectedCategory)
+
+          $.ajax({
+            url: currentUrl + '/getTable',
+            type: 'POST',
+            data: {
+              category_id: selectedCategory
+            },
+            dataType: 'json',
+            success: function(data) {
+              var tableRows = '';
+              $.each(data, function(index, item) {
+                tableRows += '<tr class="align-middle">' +
+                  '<td data-name="item_id">' + item.item_id + '</td>' +
+                  '<td data-name="item_name">' + item.item_name + '</td>' +
+                  '<td data-name="category">' + item.category_name + '</td>' +
+                  '<td data-name="item_desc">' + item.item_description + '</td>' +
+                  '<td data-name="manufacturer">' + item.manufacturer + '</td>' +
+                  '<td data-name="system_count">' + item.quantity + '</td>' +
+                  '<td data-name="actual_count" class="actual-count"><div class="border rounded-2 text-center p-2" contenteditable="true">0</div></td>' +
+                  '<td data-name="variance">0</td>' +
+                  '<td data-name="accuracy">0%</td>' +
+                  '</tr>'
+              });
+              $("#dataTableExample tbody").html(tableRows)
+
+              $(".actual-count").on("input", function() {
+                var row = $(this).closest("tr"); // get the table row for the input cell
+                var systemCount = parseInt(row.find("[data-name='system_count']").text()); // get the system count for the row
+                var actualCount = parseInt($(this).text()); // get the actual count entered by the user
+                var variance = actualCount - systemCount; // calculate the variance
+                var accuracy = systemCount > 0 ? (actualCount / systemCount) * 100 : 0; // calculate the accuracy as a percentage
+                row.find("[data-name='variance']").text(variance); // update the variance cell
+                var accuracyCell = row.find("[data-name='accuracy']");
+                accuracyCell.text(accuracy.toFixed(2) + '%'); // update the accuracy cell
+                if (accuracy >= 100) {
+                  accuracyCell.removeClass("text-warning text-danger").addClass("text-success"); // apply success class
+                } else if (accuracy >= 50) {
+                  accuracyCell.removeClass("text-success text-danger").addClass("text-warning"); // apply warning class
+                } else {
+                  accuracyCell.removeClass("text-success text-warning").addClass("text-danger"); // apply danger class
+                }
+              });
+            }
+          })
+        })
+
+        let data = []; // create an array to store the data
+        $("#getTableData").on("click", function() {
+
+          var title = $("#title").val()
+          var content = tinymce.get("tinymceExample").getContent();
+          var category_type_id = $("#categoryDropdown").val()
+          $("#dataTableExample tbody tr").each(function() {
+            var row = $(this);
+            var itemId = parseInt(row.find("[data-name='item_id']").text());
+            var actualCount = parseInt(row.find("[data-name='actual_count']").text());
+            var variance = parseInt(row.find("[data-name='variance']").text());
+            var accuracy = parseFloat(row.find("[data-name='accuracy']").text().replace('%', ''));
+            row.data({
+              itemId: itemId,
+              actualCount: actualCount,
+              variance: variance,
+              accuracy: accuracy
+            });
+          });
+
+          // example of how to retrieve the data for a specific row:
+          var row = $("#dataTableExample tbody tr:eq(0)");
+          var itemId = row.data("itemId");
+          var actualCount = row.data("actualCount");
+          var variance = row.data("variance");
+          var accuracy = row.data("accuracy");
+          console.log(itemId, actualCount, variance, accuracy); // log the data to the console
+
+          let data = {
+            itemId: itemId,
+            actualCount: actualCount,
+            variance: variance,
+            accuracy: accuracy
+          }
+
+          console.log(data); // log the data to the console
+
+          $.ajax({
+            url: currentUrl + '/generate_report',
+            type: "POST",
+            data: {
+              title: title,
+              audit_items: data,
+              conclusion: content,
+              category_type_id: category_type_id,
+
+            },
+            success: function(response) {
+              console.log(response)
+            }
+          })
+        })
+      </script>
 
 
 </body>

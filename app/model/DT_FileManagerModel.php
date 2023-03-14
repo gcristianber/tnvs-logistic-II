@@ -6,7 +6,7 @@ class DT_FileManagerModel
     use Model;
 
     protected $table = "log2_dt_file_manager";
-    protected $view_table = "log2_dt_file_manager";
+    protected $view_table = "log2_dt_file_manager_view";
 
     // * Data fetch settings
     protected $limit         = 10;
@@ -31,9 +31,6 @@ class DT_FileManagerModel
     public function renderAll()
     {
         $query = "select * from $this->view_table";
-
-        $query .= " order by tracking_id $this->order_type";
-
 		return $this->query($query);
     }
     public function renderByCriteria(){}

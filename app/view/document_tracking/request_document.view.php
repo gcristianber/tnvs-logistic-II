@@ -446,7 +446,7 @@
                           <?= $data->purpose ?>
                         </td>
                         <td>
-                          <?= ucwords($data->receiver) ?>
+                          <?= ucwords($data->receiver_department) ?>
                         </td>
                         <td>
                           <p>
@@ -457,7 +457,7 @@
                         <td>
 
                           <?php
-                          switch ($data->current_status_name) {
+                          switch ($data->status_name) {
                             case "received":
                               echo '<span class="badge bg-primary">Received</span>';
                               break;

@@ -17,7 +17,10 @@ class Track_documents{
         $data = [];
 
         $TrackingModel = new DT_TrackingModel;
+        $FileManagerModel = new DT_FileManagerModel;
         $data["track_details"] = $TrackingModel->renderViewByCriteria(["tracking_id" => $id]);
+        $data["file_attachment"] = $FileManagerModel->first(["document_id"=>$id]);
+        
 
         $this->view('partials/navbar');
         $this->view("document_tracking/track_documents", $data);

@@ -22,6 +22,7 @@ class DT_RequestModel
     {
         $data["tracking_id"] = rand(1000000000, 99999999999);
         $data["requestor_id"] = "sa12345";
+        $data["requestor_dept_id"] = 1;
         $this->insert($data);
 
         return $data["tracking_id"];
@@ -32,7 +33,7 @@ class DT_RequestModel
     {
         $query = "select * from $this->view_table";
 
-        $query .= " order by tracking_id $this->order_type";
+        $query .= " order by date_created $this->order_type";
 
 		return $this->query($query);
     }

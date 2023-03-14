@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Request Document</title>
+  <title>Incoming Documents</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,12 +23,13 @@
 
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
-
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
@@ -36,32 +37,18 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 </head>
-
-<style>
-  input[type="radio"] {
-    display: none;
-  }
-
-  /* Style the label to look like a clickable element */
-  label {
-    cursor: pointer;
-    /* Add any additional styling you want for your label */
-  }
-
-  input[type="radio"]:checked+label {
-    border: 1px solid #6571ff;
-    border-radius: 4px;
-    user-select: none;
-  }
-</style>
 
 <body>
   <div class="main-wrapper">
 
     <div class="page-wrapper">
+
+      <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar">
         <a href="#" class="sidebar-toggler">
           <i data-feather="menu"></i>
@@ -298,7 +285,7 @@
                     </a>
                   </li>
                   <li class="dropdown-item py-2">
-                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
+                    <a href="javascript:;" class="text-body ms-0">
                       <i class="me-2 icon-md" data-feather="log-out"></i>
                       <span>Log Out</span>
                     </a>
@@ -309,194 +296,788 @@
           </ul>
         </div>
       </nav>
+      <!-- partial -->
+
       <div class="page-content">
-        <div class="card">
+
+        <div class="card grid-margin">
           <div class="card-body">
             <div class="mb-3">
               <div class="d-flex align-items-center justify-content-between">
                 <div>
-                  <h6 class="fw-bold"></h6>
-                  <small class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</small>
+                  <h6>MANAGE DELIVERIES</h6>
+                  <small class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim.</small>
                 </div>
                 <div>
+                  <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i data-feather="plus" class="btn-icon-prepend"></i>
+                    Create Delivery
+                  </button>
 
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Create Document</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Create Delivery</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                         </div>
                         <div class="modal-body">
 
-
                           <div class="mb-3">
-                            <label for="request_purpose" class="form-label">
-                              <p>Select Department</p>
-                              <small class="text-muted">Select your document type.</small>
-                            </label>
-                            <select name="department_id" class="form-select">
-                              <option selected disabled>...</option>
-                              <option value="1">Administrative</option>
-                              <option value="2">Finance</option>
-                              <option value="3">Human Resource</option>
-                              <option value="3">Logistic</option>
-                            </select>
+                            <label for="" class="form-label">Contact</label>
+                            <input type="text" name="" id="" class="form-control" placeholder="Full Name">
                           </div>
                           <div class="mb-3">
-                            <label for="request_purpose" class="form-label">
-                              <p>Select Document Type</p>
-                              <small class="text-muted">Select your document type.</small>
-                            </label>
-                            <select name="category_id" class="form-select" id="documentCategory">
-                              <option selected disabled>...</option>
-                              <option value="1">Employment Certificate</option>
-                              <option value="2">Purchase Order</option>
-                              <option value="3">Invoice</option>
-                            </select>
+                            <input type="text" name="" id="" class="form-control" placeholder="Phone Number">
                           </div>
-                          <div class="mb-3">
-                            <div class="form-check form-switch mb-2">
-                              <input type="checkbox" class="form-check-input" id="formSwitch1">
-                              <label class="form-check-label" for="formSwitch1">If the document is not in category, Please specify below.</label>
+                          <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pickup Location</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Drop-off Location</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="attachments-line-tab" data-bs-toggle="tab" href="#attachments" role="tab" aria-controls="attachments" aria-selected="false">Attachments</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content my-3" id="lineTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                              <div class="mb-3">
+                                <label for="" class="form-label">Address</label>
+                                <input type="text" name="" id="" class="form-control" placeholder="Region, Province City, Barangay">
+                              </div>
+                              <div class="mb-3">
+                                <input type="text" name="" id="" class="form-control" placeholder="Postal Code">
+                              </div>
+                              <div class="mb-3">
+                                <input type="text" name="" id="" class="form-control" placeholder="Street Name, Building, House No.">
+                              </div>
                             </div>
-                            <input type="text" name="option_category" id="inputForm" class="form-control d-none" placeholder="Type something...">
-                          </div>
-                          <div>
-                            <label for="request_purpose" class="form-label">
-                              <p>Purpose</p>
-                              <small class="text-muted">Write a purpose for requesting a document.</small>
-                            </label>
-                            <textarea name="request_purpose" class="form-control" cols="30" rows="5" placeholder="Type something..."></textarea>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                              <div class="mb-3">
+                                <label for="" class="form-label">Address</label>
+                                <input type="text" name="" id="" class="form-control" placeholder="Region, Province City, Barangay">
+                              </div>
+                              <div class="mb-3">
+                                <input type="text" name="" id="" class="form-control" placeholder="Postal Code">
+                              </div>
+                              <div class="mb-3">
+                                <input type="text" name="" id="" class="form-control" placeholder="Street Name, Building, House No.">
+                              </div>
+                            </div>
+                            <div class="tab-pane fade" id="attachments" role="tabpanel" aria-labelledby="attachments-line-tab">
+
+                              <div class="alert alert-danger" role="alert">
+                                A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                              </div>
+                              <div class="mb-3">
+                                <input type="file" name="" id="" class="form-control">
+                              </div>
+                              <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Note"></textarea>
+                            </div>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary" id="sendRequest">Send Request</button>
+                          <button type="button" class="btn btn-primary">Continue</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="modal fade" id="qrCodeModal" tabindex="-1" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-body">
-                          <div class="d-flex flex-column align-items-center">
-                            <p>Your tracking number</p>
-                            <h5 id="qrcodeValue"></h5>
-                          </div>
-                          <div class="d-flex justify-content-center py-3">
-                            <div id="qrcode"></div>
-                          </div>
 
-                          <div>
-                            <button type="button" class="btn btn-primary w-100 mb-2" id="downloadQRCode">Download QR</button>
-                            <button type="button" class="btn btn-outline-secondary w-100" data-bs-dismiss="modal">Close</button>
-                          </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion grid-margin" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pendingRequest" aria-expanded="false" aria-controls="pendingRequest">
+                    <i data-feather="more-horizontal" class="icon-lg me-2"></i>
+                    <span class="me-2">Pending</span>
+                    <small class="text-muted">(2)</small>
+                  </button>
+                </h2>
+                <div id="pendingRequest" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="table-responsive">
+                      <table id="PendingTable" class="table display">
+                        <thead>
+                          <tr>
+                            <th>Tracking Id</th>
+                            <th>Category</th>
+                            <th>Option Category</th>
+                            <th>Purpose</th>
+                            <th>Author</th>
+                            <th>Date Created</th>
+                            <th>Status</th>
+                            <th data-orderable="false">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($requests)) :
+                            foreach ($requests as $data) :
+                              if ($data->status_name == "review") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                  <td><?= $data->tracking_id ?></td>
+                                  <td>
+                                    <p><?= ucwords($data->category_name) ?></p>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    if (!empty($data->option_category)) {
+                                      echo $data->option_category;
+                                    } else {
+                                      echo "--";
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <?= $data->purpose ?>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/40x40" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <span class="text-muted"><?= ucwords($data->department_name) ?></span>
+                                      </div>
+                                    </div>
 
+                                  </td>
+                                  <td>
+                                    <p>
+                                      <?= date("d M Y", strtotime($data->date_created)) ?>
+                                    </p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    switch ($data->status_name) {
+                                      case "received":
+                                        echo '<span class="badge bg-primary">Received</span>';
+                                        break;
+                                      case "review":
+                                        echo '<span class="badge bg-success">Review</span>';
+                                        break;
+                                      case "work in progress":
+                                        echo '<span class="badge bg-warning">Work in progress</span>';
+                                        break;
+                                      case "released":
+                                        echo '<span class="badge bg-danger">Released</span>';
+                                        break;
+                                      case "declined":
+                                        echo '<span class="badge bg-secondart">Declined</span>';
+                                        break;
+                                      default:
+                                        echo 'Unknown status';
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Work in progress
+                                    </button>
 
-                        </div>
+                                    <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary workingBtn">Continue</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-icon">
+                                      <i data-feather="trash-2"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prepareRequest" aria-expanded="false" aria-controls="prepareRequest">
+                    <i data-feather="package" class="icon-lg me-2"></i>
+                    <span class="me-2">Preparing Shipment</span>
+                    <small class="text-muted">(2)</small>
+                  </button>
+                </h2>
+                <div id="prepareRequest" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="table-responsive">
+                      <table id="PendingTable" class="table display">
+                        <thead>
+                          <tr>
+                            <th>Tracking Id</th>
+                            <th>Category</th>
+                            <th>Option Category</th>
+                            <th>Purpose</th>
+                            <th>Author</th>
+                            <th>Date Created</th>
+                            <th>Status</th>
+                            <th data-orderable="false">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($requests)) :
+                            foreach ($requests as $data) :
+                              if ($data->status_name == "review") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                  <td><?= $data->tracking_id ?></td>
+                                  <td>
+                                    <p><?= ucwords($data->category_name) ?></p>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    if (!empty($data->option_category)) {
+                                      echo $data->option_category;
+                                    } else {
+                                      echo "--";
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <?= $data->purpose ?>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/40x40" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <span class="text-muted"><?= ucwords($data->department_name) ?></span>
+                                      </div>
+                                    </div>
 
+                                  </td>
+                                  <td>
+                                    <p>
+                                      <?= date("d M Y", strtotime($data->date_created)) ?>
+                                    </p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    switch ($data->status_name) {
+                                      case "received":
+                                        echo '<span class="badge bg-primary">Received</span>';
+                                        break;
+                                      case "review":
+                                        echo '<span class="badge bg-success">Review</span>';
+                                        break;
+                                      case "work in progress":
+                                        echo '<span class="badge bg-warning">Work in progress</span>';
+                                        break;
+                                      case "released":
+                                        echo '<span class="badge bg-danger">Released</span>';
+                                        break;
+                                      case "declined":
+                                        echo '<span class="badge bg-secondart">Declined</span>';
+                                        break;
+                                      default:
+                                        echo 'Unknown status';
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Work in progress
+                                    </button>
 
-                      </div>
+                                    <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary workingBtn">Continue</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-icon">
+                                      <i data-feather="trash-2"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#outForDelivery" aria-expanded="false" aria-controls="outForDelivery">
+                    <i data-feather="truck" class="icon-lg me-2"></i>
+                    <span class="me-2">Out for Delivery</span>
+                    <small class="text-muted">(2)</small>
+                  </button>
+                </h2>
+                <div id="outForDelivery" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="table-responsive">
+                      <table id="PendingTable" class="table display">
+                        <thead>
+                          <tr>
+                            <th>Tracking Id</th>
+                            <th>Category</th>
+                            <th>Option Category</th>
+                            <th>Purpose</th>
+                            <th>Author</th>
+                            <th>Date Created</th>
+                            <th>Status</th>
+                            <th data-orderable="false">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($requests)) :
+                            foreach ($requests as $data) :
+                              if ($data->status_name == "review") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                  <td><?= $data->tracking_id ?></td>
+                                  <td>
+                                    <p><?= ucwords($data->category_name) ?></p>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    if (!empty($data->option_category)) {
+                                      echo $data->option_category;
+                                    } else {
+                                      echo "--";
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <?= $data->purpose ?>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/40x40" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <span class="text-muted"><?= ucwords($data->department_name) ?></span>
+                                      </div>
+                                    </div>
+
+                                  </td>
+                                  <td>
+                                    <p>
+                                      <?= date("d M Y", strtotime($data->date_created)) ?>
+                                    </p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    switch ($data->status_name) {
+                                      case "received":
+                                        echo '<span class="badge bg-primary">Received</span>';
+                                        break;
+                                      case "review":
+                                        echo '<span class="badge bg-success">Review</span>';
+                                        break;
+                                      case "work in progress":
+                                        echo '<span class="badge bg-warning">Work in progress</span>';
+                                        break;
+                                      case "released":
+                                        echo '<span class="badge bg-danger">Released</span>';
+                                        break;
+                                      case "declined":
+                                        echo '<span class="badge bg-secondart">Declined</span>';
+                                        break;
+                                      default:
+                                        echo 'Unknown status';
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Work in progress
+                                    </button>
+
+                                    <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary workingBtn">Continue</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-icon">
+                                      <i data-feather="trash-2"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#toReceived" aria-expanded="false" aria-controls="toReceived">
+                    <i data-feather="coffee" class="icon-lg me-2"></i>
+                    <span class="me-2">To Received</span>
+                    <small class="text-muted">(2)</small>
+                  </button>
+                </h2>
+                <div id="toReceived" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="table-responsive">
+                      <table id="PendingTable" class="table display">
+                        <thead>
+                          <tr>
+                            <th>Tracking Id</th>
+                            <th>Category</th>
+                            <th>Option Category</th>
+                            <th>Purpose</th>
+                            <th>Author</th>
+                            <th>Date Created</th>
+                            <th>Status</th>
+                            <th data-orderable="false">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($requests)) :
+                            foreach ($requests as $data) :
+                              if ($data->status_name == "review") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                  <td><?= $data->tracking_id ?></td>
+                                  <td>
+                                    <p><?= ucwords($data->category_name) ?></p>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    if (!empty($data->option_category)) {
+                                      echo $data->option_category;
+                                    } else {
+                                      echo "--";
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <?= $data->purpose ?>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/40x40" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <span class="text-muted"><?= ucwords($data->department_name) ?></span>
+                                      </div>
+                                    </div>
+
+                                  </td>
+                                  <td>
+                                    <p>
+                                      <?= date("d M Y", strtotime($data->date_created)) ?>
+                                    </p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    switch ($data->status_name) {
+                                      case "received":
+                                        echo '<span class="badge bg-primary">Received</span>';
+                                        break;
+                                      case "review":
+                                        echo '<span class="badge bg-success">Review</span>';
+                                        break;
+                                      case "work in progress":
+                                        echo '<span class="badge bg-warning">Work in progress</span>';
+                                        break;
+                                      case "released":
+                                        echo '<span class="badge bg-danger">Released</span>';
+                                        break;
+                                      case "declined":
+                                        echo '<span class="badge bg-secondart">Declined</span>';
+                                        break;
+                                      default:
+                                        echo 'Unknown status';
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Work in progress
+                                    </button>
+
+                                    <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary workingBtn">Continue</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-icon">
+                                      <i data-feather="trash-2"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#delivered" aria-expanded="false" aria-controls="delivered">
+                    <i data-feather="check" class="icon-lg me-2"></i>
+                    <span class="me-2">Delivered</span>
+                    <small class="text-muted">(2)</small>
+                  </button>
+                </h2>
+                <div id="delivered" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="table-responsive">
+                      <table id="PendingTable" class="table display">
+                        <thead>
+                          <tr>
+                            <th>Tracking Id</th>
+                            <th>Category</th>
+                            <th>Option Category</th>
+                            <th>Purpose</th>
+                            <th>Author</th>
+                            <th>Date Created</th>
+                            <th>Status</th>
+                            <th data-orderable="false">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($requests)) :
+                            foreach ($requests as $data) :
+                              if ($data->status_name == "review") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                  <td><?= $data->tracking_id ?></td>
+                                  <td>
+                                    <p><?= ucwords($data->category_name) ?></p>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    if (!empty($data->option_category)) {
+                                      echo $data->option_category;
+                                    } else {
+                                      echo "--";
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <?= $data->purpose ?>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/40x40" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <span class="text-muted"><?= ucwords($data->department_name) ?></span>
+                                      </div>
+                                    </div>
+
+                                  </td>
+                                  <td>
+                                    <p>
+                                      <?= date("d M Y", strtotime($data->date_created)) ?>
+                                    </p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                                  </td>
+                                  <td>
+                                    <?php
+                                    switch ($data->status_name) {
+                                      case "received":
+                                        echo '<span class="badge bg-primary">Received</span>';
+                                        break;
+                                      case "review":
+                                        echo '<span class="badge bg-success">Review</span>';
+                                        break;
+                                      case "work in progress":
+                                        echo '<span class="badge bg-warning">Work in progress</span>';
+                                        break;
+                                      case "released":
+                                        echo '<span class="badge bg-danger">Released</span>';
+                                        break;
+                                      case "declined":
+                                        echo '<span class="badge bg-secondart">Declined</span>';
+                                        break;
+                                      default:
+                                        echo 'Unknown status';
+                                    }
+                                    ?>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text " data-bs-toggle="modal" data-bs-target="#req-<?= $data->tracking_id ?>">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Work in progress
+                                    </button>
+
+                                    <div class="modal fade" id="req-<?= $data->tracking_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <textarea name="text_area" class="form-control text-area" id="textArea-<?= $data->tracking_id ?>" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary workingBtn">Continue</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-outline-primary btn-icon">
+                                      <i data-feather="trash-2"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="table-responsive mt-3">
-              <table id="requestTable" class="table display">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-3">
+              <h6 class="fw-bold">DELIVERY LOGS</h6>
+              <small class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</small>
+            </div>
+            <div class="table-responsive">
+              <table id="PendingTable" class="table display">
                 <thead>
                   <tr>
                     <th>Tracking Id</th>
-                    <th>Category</th>
-                    <th>Option Category</th>
-                    <th>Purpose</th>
-                    <th>Department</th>
-                    <th>Date Created</th>
+                    <th>Driver</th>
+                    <th>Pickup Location</th>
+                    <th>Drop-off Location</th>
                     <th>Status</th>
                     <th data-orderable="false">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  if (!empty($requests)) :
-                    foreach ($requests as $data) :
-                  ?>
-                      <tr class="align-middle">
-                        <td><?= $data->tracking_id ?></td>
-                        <td>
-                          <p><?= ucwords($data->category_name) ?></p>
-                        </td>
-                        <td>
-                          <?php
-                          if (!empty($data->option_category)) {
-                            echo $data->option_category;
-                          } else {
-                            echo "--";
-                          }
-                          ?>
-                        </td>
-                        <td>
-                          <?= $data->purpose ?>
-                        </td>
-                        <td>
-                          <?= ucwords($data->receiver) ?>
-                        </td>
-                        <td>
-                          <p>
-                            <?= date("d M Y", strtotime($data->date_created)) ?>
-                          </p>
-                          <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
-                        </td>
-                        <td>
-
-                          <?php
-                          switch ($data->current_status_name) {
-                            case "received":
-                              echo '<span class="badge bg-primary">Received</span>';
-                              break;
-                            case "review":
-                              echo '<span class="badge bg-success">Review</span>';
-                              break;
-                            case "work in progress":
-                              echo '<span class="badge bg-warning">Work in progress</span>';
-                              break;
-                            case "released":
-                              echo '<span class="badge bg-danger">Released</span>';
-                              break;
-                            case "declined":
-                              echo '<span class="badge bg-secondart">Declined</span>';
-                              break;
-                            default:
-                              echo 'Unknown status';
-                          }
-                          ?>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text">
-                            <i data-feather="search" class="btn-icon-prepend"></i>
-                            Track Document
-                          </button>
-                        </td>
-                      </tr>
-                  <?php
-                    endforeach;
-                  endif;
-                  ?>
+                  <tr class="align-middle">
+                    <td>
+                      00000001
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <img src="https://via.placeholder.com/40x40" alt="" class="rounded-circle">
+                        <div>
+                          <p>Cristianber Gordora</p>
+                          <small class="text-muted">gcristianber@gmail.com</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p>416 Sta. Catalina St. Brgy. Holy Spirit Quezon City</p>
+                      <small class="text-muted">Philippines</small>
+                    </td>
+                    <td>
+                      <p>416 Sta. Catalina St. Brgy. Holy Spirit Quezon City</p>
+                      <small class="text-muted">Philippines</small>
+                    </td>
+                    <td>
+                      <span class="badge bg-success">Success</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-primary btn-icon-text">
+                        <i data-feather="eye" class="btn-icon-prepend"></i>
+                        View Details
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
-
-
           </div>
         </div>
       </div>
-
-
-
     </div>
+
 
   </div>
   </div>
@@ -508,6 +1089,8 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -516,110 +1099,9 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(function() {
-
-      const currentUrl = $(location).attr('href');
-
-      $("#formSwitch1").change(function() {
-        var selectCategory = $("#documentCategory")
-        var defaultOption = $("#documentCategory option:selected")
-        if (this.checked) {
-          $("#inputForm").addClass("d-block")
-          $("#inputForm").removeClass("d-none")
-          $("#documentCategory").val(defaultOption.val());
-          selectCategory.prop("disabled", true)
-        } else {
-          $("#inputForm").addClass("d-none")
-          $("#inputForm").val("")
-          selectCategory.prop("disabled", false)
-        }
-      });
-
-      $("#sendRequest").on("click", function() {
-
-        console.log("Hello")
-        let department_id = $('select[name="department_id"]').val()
-        let category_id = $('select[name="category_id"]').val()
-        let option_category = $('input[name="option_category"]').val()
-        let request_purpose = $('textarea[name="request_purpose"]').val()
-
-        let formData = {
-          "receiver_id": department_id,
-          "category_id": category_id,
-          "option_category": option_category,
-          "purpose": request_purpose,
-        }
-        $.ajax({
-          url: currentUrl + '/send_data',
-          type: 'POST',
-          data: formData,
-          success: function(response) {
-
-            console.log(response)
-            generateQR(response)
-            $('#exampleModal').modal("hide")
-            $('#qrCodeModal').modal("show")
-          }
-        })
-      })
-
-      $("#downloadQRCode").on("click", function() {
-        downloadQR()
-      })
-
-      function generateQR(qrValue) {
-        var qr = qrcode(0, "L");
-        qr.addData(qrValue);
-        qr.make();
-        var qrCodeImage = qr.createImgTag(10, 5);
-
-        var qrCodeDiv = document.getElementById("qrcode");
-        var qrCodeVal = document.getElementById("qrcodeValue")
-        qrCodeDiv.innerHTML = qrCodeImage;
-        qrCodeVal.innerHTML = qrValue;
-
-        window.qrCodeImageData = qrCodeImage.replace(/^data:image\/(png|jpg);base64,/, "");
-
-        var downloadBtn = document.getElementById("downloadQRCode");
-
-        downloadBtn.addEventListener("click", function() {
-          var canvas = document.createElement("canvas");
-          var context = canvas.getContext("2d");
-          var img = new Image();
-          img.onload = function() {
-            canvas.width = img.width * 5;
-            canvas.height = img.height * 5;
-            context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(function(blob) {
-              var link = document.createElement("a");
-              link.download = "qrcode.png";
-              link.href = URL.createObjectURL(blob);
-              link.click();
-            }, "image/png");
-          };
-          img.src = qr.createDataURL();
-        });
-
-      }
-
-      function downloadQR() {
-        var downloadLink = document.createElement("a");
-        downloadLink.href = "data:image/png;base64," + window.qrCodeImageData;
-        downloadLink.download = "qrcode.png";
-
-        // Trigger download
-        downloadLink.click();
-      }
-
-
-
-    });
-  </script>
-  </script>
 </body>
 
 </html>

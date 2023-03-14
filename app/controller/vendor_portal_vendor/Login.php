@@ -6,13 +6,18 @@ class Login
 {
     use Controller;
 
+    protected $attempts = 0;
+    protected $max_attempts = 4;
+
     public function index()
     {
         $VPVendors = new VPVendors;
+        
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $arr["vendor_id"] = $_POST["vendor_id"];
             $row = $VPVendors->searchViewByCriteria($arr);
+          
 
             if ($row) {
                 if ($row->password == $_POST["password"]) {
@@ -52,10 +57,21 @@ class Login
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }
+                }else{
+                    $this->attempts++;
+
+                    if($this->attempts >= $this->max_attempts){
+                        echo "Attempt max";
+                    }else{
+                        echo $this->attempts;
+                        echo 'Incorrect password. Please try again.';
+                    }
                 }
 
+                
 
             }
+
         }
 
         $this->view('vendor_portal/vendor/login');

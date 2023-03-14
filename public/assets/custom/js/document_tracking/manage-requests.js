@@ -47,6 +47,7 @@ $(document).ready(()=>{
 
     $(".releaseBtn").on("click", function(){
         var dataId = $(this).closest("tr").data("id")
+        var categoryId = $(this).closest("tr").data("category")
         var selfTextArea = $('#req-' + dataId + ' #textArea-' + dataId)
         var textareaValue = selfTextArea.val();
 
@@ -54,6 +55,7 @@ $(document).ready(()=>{
 
         
         console.log(dataId)
+        console.log(categoryId)
 
         
         selfTextArea.val("")
@@ -63,7 +65,8 @@ $(document).ready(()=>{
             data: {
                 tracking_id: dataId,
                 remarks: textareaValue,
-                content: content
+                content: content,
+                category_id: categoryId
             },
             success: function(response){
                 console.log(response)

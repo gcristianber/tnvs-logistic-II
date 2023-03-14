@@ -65,15 +65,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/vehicle_reservation_reports" class="nav-link">
+                <a href="<?= ROOT ?>vehicle_reservation/feedbacks" class="nav-link">
                     <i class="link-icon" data-feather="star"></i>
                     <span class="link-title">Feedbacks</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
-                    <i class="link-icon" data-feather="flag"></i>
-                    <span class="link-title">Reports</span>
                 </a>
             </li>
             <li class="nav-item nav-category">vendor portal</li>

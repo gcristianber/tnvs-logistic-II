@@ -325,7 +325,7 @@
                       <?php
                       if (!empty($requests)) :
                         foreach ($requests as $data) :
-                          if ($data->current_status_name == "received") :
+                          if ($data->status_name == "received") :
                       ?>
                             <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
@@ -349,7 +349,7 @@
                                   <img src="https://via.placeholder.com/40x40" alt="">
                                   <div>
                                     <p><?= $data->requestor_name ?></p>
-                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                    <span class="text-muted"><?= ucwords($data->department_name) ?></span>
                                   </div>
                                 </div>
 
@@ -362,7 +362,7 @@
                               </td>
                               <td>
                                 <?php
-                                switch ($data->current_status_name) {
+                                switch ($data->status_name) {
                                   case "received":
                                     echo '<span class="badge bg-primary">Received</span>';
                                     break;
@@ -450,7 +450,7 @@
                       <?php
                       if (!empty($requests)) :
                         foreach ($requests as $data) :
-                          if ($data->current_status_name == "review") :
+                          if ($data->status_name == "review") :
                       ?>
                             <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
@@ -474,7 +474,7 @@
                                   <img src="https://via.placeholder.com/40x40" alt="">
                                   <div>
                                     <p><?= $data->requestor_name ?></p>
-                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                    <span class="text-muted"><?= ucwords($data->department_name) ?></span>
                                   </div>
                                 </div>
 
@@ -487,7 +487,7 @@
                               </td>
                               <td>
                                 <?php
-                                switch ($data->current_status_name) {
+                                switch ($data->status_name) {
                                   case "received":
                                     echo '<span class="badge bg-primary">Received</span>';
                                     break;
@@ -575,9 +575,9 @@
                       <?php
                       if (!empty($requests)) :
                         foreach ($requests as $data) :
-                          if ($data->current_status_name == "work in progress") :
+                          if ($data->status_name == "work in progress") :
                       ?>
-                            <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                            <tr class="align-middle" data-id="<?= $data->tracking_id ?>" data-category="<?= $data->category_id ?>">
                               <td><?= $data->tracking_id ?></td>
                               <td>
                                 <p><?= ucwords($data->category_name) ?></p>
@@ -599,7 +599,7 @@
                                   <img src="https://via.placeholder.com/40x40" alt="">
                                   <div>
                                     <p><?= $data->requestor_name ?></p>
-                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                    <span class="text-muted"><?= ucwords($data->department_name) ?></span>
                                   </div>
                                 </div>
 
@@ -612,7 +612,7 @@
                               </td>
                               <td>
                                 <?php
-                                switch ($data->current_status_name) {
+                                switch ($data->status_name) {
                                   case "received":
                                     echo '<span class="badge bg-primary">Received</span>';
                                     break;
@@ -739,7 +739,7 @@
                       <?php
                       if (!empty($requests)) :
                         foreach ($requests as $data) :
-                          if ($data->current_status_name == "released") :
+                          if ($data->status_name == "released") :
                       ?>
                             <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
                               <td><?= $data->tracking_id ?></td>
@@ -763,7 +763,7 @@
                                   <img src="https://via.placeholder.com/40x40" alt="">
                                   <div>
                                     <p><?= $data->requestor_name ?></p>
-                                    <span class="text-muted"><?= ucwords($data->requestor_role) ?></span>
+                                    <span class="text-muted"><?= ucwords($data->department_name) ?></span>
                                   </div>
                                 </div>
 
@@ -776,7 +776,7 @@
                               </td>
                               <td>
                                 <?php
-                                switch ($data->current_status_name) {
+                                switch ($data->status_name) {
                                   case "received":
                                     echo '<span class="badge bg-primary">Received</span>';
                                     break;
@@ -845,31 +845,31 @@
                           <th>Category</th>
                           <th>Author</th>
                           <th>Date Created</th>
-                          <th>Status</th>
                           <th data-orderable="false">Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php
+                        if(!empty($files)):
+                          foreach($files as $data):                   
+                        ?>
                         <tr class="align-middle">
-                          <td>12303105382704989</td>
+                          <td><?= $data->document_id ?></td>
                           <td>
-                            <p>Invoice</p>
+                            <p><?= $data->category_name ?></p>
                           </td>
                           <td>
                             <div class="d-flex align-items-center gap-2">
                               <img src="https://via.placeholder.com/40x40" alt="">
                               <div>
-                                <p>Aldion Belo</p>
-                                <small class="text-muted">HR Staff</small>
+                                <p><?= $data->display_name ?></p>
+                                <small class="text-muted"><?= $data->account_type_name ?></small>
                               </div>
                             </div>
                           </td>
                           <td>
-                            <p>21 Jan 2023</p>
-                            <small class="text-muted">4:22 AM</small>
-                          </td>
-                          <td>
-                            <span class="badge bg-secondary">Pending</span>
+                            <p><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                            <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
                           </td>
                           <td>
                             <button class="btn btn-primary btn-icon-text">
@@ -884,6 +884,10 @@
                             </button>
                           </td>
                         </tr>
+                        <?php
+                            endforeach;
+                          endif;
+                        ?>
                       </tbody>
                     </table>
                   </div>
