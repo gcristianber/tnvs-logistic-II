@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Track_deliver{
 
     use Controller;

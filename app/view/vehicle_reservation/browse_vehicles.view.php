@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +37,7 @@
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
@@ -44,421 +47,241 @@
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-      <nav class="navbar">
-        <a href="#" class="sidebar-toggler">
-          <i data-feather="menu"></i>
-        </a>
-        <div class="navbar-content">
-          <form class="search-form">
-            <div class="input-group">
-              <div class="input-group-text">
-                <i data-feather="search"></i>
-              </div>
-              <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-            </div>
-          </form>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="grid"></i>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="appsDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p class="mb-0 fw-bold">Web Apps</p>
-                  <a href="javascript:;" class="text-muted">Edit</a>
-                </div>
-                <div class="row g-0 p-1">
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Chat</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Calendar</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Email</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Profile</p>
-                    </a>
-                  </div>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="mail"></i>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>9 New Messages</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Leonardo Payne</p>
-                        <p class="tx-12 text-muted">Project status</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Carl Henson</p>
-                        <p class="tx-12 text-muted">Client meeting</p>
-                      </div>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Jensen Combs</p>
-                        <p class="tx-12 text-muted">Project updates</p>
-                      </div>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Amiah Burton</p>
-                        <p class="tx-12 text-muted">Project deatline</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Yaretzi Mayo</p>
-                        <p class="tx-12 text-muted">New record</p>
-                      </div>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="bell"></i>
-                <div class="indicator">
-                  <div class="circle"></div>
-                </div>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>6 New Notifications</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="gift"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New Order Recieved</p>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="alert-circle"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Server Limit Reached!</p>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New customer registered</p>
-                      <p class="tx-12 text-muted">2 sec ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="layers"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Apps are ready for update</p>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="download"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Download completed</p>
-                      <p class="tx-12 text-muted">6 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="profile">
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
-                <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
-                  <div class="mb-3">
-                    <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
-                  </div>
-                  <div class="text-center">
-                    <p class="tx-16 fw-bolder">Amiah Burton</p>
-                    <p class="tx-12 text-muted">amiahburton@gmail.com</p>
-                  </div>
-                </div>
-                <ul class="list-unstyled p-1">
-                  <li class="dropdown-item py-2">
-                    <a href="../../pages/general/profile.html" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="user"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="edit"></i>
-                      <span>Edit Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="repeat"></i>
-                      <span>Switch User</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="log-out"></i>
-                      <span>Log Out</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
       <div class="page-content">
 
-        <div class="card">
-          <div class="card-body">
 
-            <div class="mb-3 d-flex justify-content-between align-items-center">
-              <div>
-                <h6>BROWSE VEHICLES</h6>
-                <small class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</small>
+        <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+          <strong>Success!</strong> We've already email you, Please check your inbox.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
+        </div>
+
+
+
+        <div class="card grid-margin">
+          <div class="card-body">
+            <div class="mb-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <h6>MANAGE VEHICLES</h6>
+                  <p class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                </div>
               </div>
             </div>
-
-            <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="sedan-line-tab" data-bs-toggle="tab" href="#sedan" role="tab" aria-controls="sedan" aria-selected="true">Sedan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="vans-line-tab" data-bs-toggle="tab" href="#vans" role="tab" aria-controls="vans" aria-selected="false">Vans</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="trucks-line-tab" data-bs-toggle="tab" href="#trucks" role="tab" aria-controls="trucks" aria-selected="false">Trucks</a>
-              </li>
-            </ul>
-
-
-            <div class="tab-content mt-3" id="lineTabContent">
-              <div class="tab-pane fade show active" id="sedan" role="tabpanel" aria-labelledby="sedan-line-tab">
-                <div class="mb-3 d-flex align-items-center gap-3">
-                  <input type="text" name="" id="searchSedan" class="form-control search-box" placeholder="Search vehicle">
-                  <button class="btn btn-outline-primary">
-                    Search
-                  </button>
-                </div>
-
-                <div class="row" class="vehicle-list">
-                  <?php
-                  foreach ($vehicles as $data) :
-                    if (!empty($vehicles) && $data->model_type_name == "sedan") :
-                  ?>
-                      <div class="col-md-12 grid-margin">
-                        <div class="d-flex justify-content-between">
-                          <div class="d-flex gap-2">
-                            <img class="rounded-2" src="<?= ROOT ?>uploads/images/vehicles/<?= $data->img_name ?>" alt="" style="height: 150px; width: 250px;">
-                            <div class="d-flex flex-column justify-content-between">
-                              <div>
-                                <div class="d-flex align-items-center gap-2">
-                                  <h3><?= ucwords($data->make) ?></h3>
-
-                                  <?php if ($data->status_name == "available") :
-                                  ?>
-                                    <span class="badge bg-success">Available</span>
-                                  <?php
-                                  endif;  ?>
-                                  <?php if ($data->status_name == "reserved") :
-                                  ?>
-                                    <span class="badge bg-secondary">Reserved</span>
-                                  <?php
-                                  endif;  ?>
-                                  <?php if ($data->status_name == "dispatched") :
-                                  ?>
-                                    <span class="badge bg-danger">Dispatched</span>
-                                  <?php
-                                  endif;  ?>
-                                </div>
-                                <p class="text-muted"><?= ucwords($data->plate) ?></p>
-                              </div>
-                              <div class="d-flex align-items-center gap-4">
-                                <div>
-                                  <i data-feather="sliders" class="icon-md text-primary"></i>
-                                  <?= ucwords($data->gearbox_type_name) ?>
-                                </div>
-                                <div>
-                                  <i data-feather="users" class="icon-md text-primary"></i>
-                                  <?= $data->no_seaters ?> Seaters
-                                </div>
-                                <div>
-                                  <i data-feather="battery" class="icon-md text-primary"></i>
-                                  <?= $data->odometer ?> KMP/H
-                                </div>
-                                <div>
-                                  <i data-feather="anchor" class="icon-md text-primary"></i>
-                                  <?= $data->dimensions ?>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="d-flex">
-                            <div>
-                              <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>">
-                                <i data-feather="plus" class="btn-icon-prepend"></i>
-                                Reserve Vehicle
-                              </button>
-                              <button class="btn btn-outline-primary btn-icon">
-                                <i data-feather="external-link"></i>
-                              </button>
-
-                              <div class="modal fade" id="<?= $data->vehicle_id ?>" data-id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Reserve Vehicle</h5>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                    </div>
-                                    <div class="modal-body">
-
-
-                                      <div class="alert alert-primary" role="alert">
-                                        <i data-feather="alert-circle"></i>
-                                        A simple primary alert—check it out!
-                                      </div>
-
-
-                                      <div class="d-flex align-items-center mb-3">
-                                        <div class="w-100">
-                                          <label for="datePickerExample" class="form-label px-1">Pick-up Date</label>
-                                          <div class="d-flex align-items-center">
-                                            <div class="input-group date datepicker datePickerExample" id="">
-                                              <input type="text" name="pickup_date" class="form-control">
-                                              <span class="input-group-text input-group-addon"><i data-feather="calendar"></i></span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="w-100">
-                                          <label for="datePickerExample" class="form-label">Return Date</label>
-                                          <div class="d-flex align-items-center">
-                                            <div class="input-group date datepicker datePickerExample" id="">
-                                              <input type="text" name="return_date" class="form-control">
-                                              <span class="input-group-text input-group-addon"><i data-feather="calendar"></i></span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="d-flex align-items-center gap-2 px-1 mb-3">
-                                        <div class="w-100">
-                                          <label for="name">Email Address</label>
-                                          <input type="email" name="email_address" id="name" class="form-control">
-                                        </div>
-                                        <div class="w-100">
-                                          <label for="name">Contact Number</label>
-                                          <input type="text" name="contact_number" id="contact" class="form-control">
-                                        </div>
-                                      </div>
-                                      <div class="px-1">
-                                        <label for="reason">Reason</label>
-                                        <textarea name="reason" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
-                                      </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary reserve-vehicle">Save changes</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  <?php
-
-                    endif;
-                  endforeach;
-                  ?>
-                </div>
+            <input type="text" name="" id="" class="form-control" placeholder="Search vehicle...">
+            <div class="d-flex align-items-center gap-2 mt-4">
+              <div>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">All</label>
+              </div>
+              <div>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio2">Sedan</label>
+              </div>
+              <div>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">Vans</label>
+              </div>
+              <div>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">Trucks</label>
               </div>
             </div>
           </div>
+
         </div>
+        <div class="row" id="vehicleList">
+          <?php
+          if (!empty($vehicles)) :
+            foreach ($vehicles as $data) :
+          ?>
+              <div class="col-md-6 grid-margin" data-id="<?= $data->vehicle_id ?>">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div>
+                        <div class="d-flex align-items-center gap-2">
+                          <h3><?= strtoupper($data->make) ?></h3>
+                          <?php
+                          switch ($data->status_name) {
+                            case 'available':
+                              echo '<span class="badge border border-success text-success">Available</span>';
+                              break;
+                            case 'unavailable':
+                              echo '<span class="badge border border-danger text-danger">Unavailable</span>';
+                              break;
+                            case 'maintenance':
+                              echo '<span class="badge border border-secondary text-secondary">Maintenance</span>';
+                              break;
+                          }
+                          ?>
+                        </div>
+                        <p class="text-muted"><?= strtoupper($data->plate) ?> - <?= ucwords($data->vehicle_type) ?></p>
+                      </div>
+                      <div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<?= $data->vehicle_id ?>">
+                          Reserve Vehicle
+                        </button>
+                        <div class="modal fade" id="<?= $data->vehicle_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                              </div>
+                              <form class="reserveVehicle">
+                                <div class="modal-body">
+                                  <div class="mb-3 text-center">
+                                    <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="ht-100 wd-250" style="object-fit: contain;" alt="">
+                                    <div class="mt-3 mb-5">
+                                      <h5><?= strtoupper($data->make) ?></h5>
+                                      <small class="text-muted"><?= strtoupper($data->plate) ?> - <?= ucwords($data->vehicle_type) ?></small>
+                                    </div>
+
+                                    <div class="row">
+                                      <div class="col-md-3">
+                                        <div class="text-center">
+                                          <i data-feather="sliders" class="icon-md text-primary"></i>
+                                          <p class="text-muted"> <?= ucwords($data->trans_type) ?></p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="text-center">
+                                          <i data-feather="users" class="icon-md text-info"></i>
+                                          <p class="text-muted"><?= $data->number_of_seats ?> Seaters</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="text-center">
+                                          <i data-feather="battery" class="icon-md text-danger"></i>
+                                          <p class="text-muted"><?= $data->odometer ?> KMP/H</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="text-center">
+                                          <i data-feather="box" class="icon-md text-primary"></i>
+                                          <p class="text-muted"><?= $data->dimensions ?></p>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Full Name</label>
+                                    <input type="text" name="full_name" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Email Address</label>
+                                    <input type="email" name="email_address" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+
+                                      <div class="w-100">
+                                        <label for="" class="form-label">Pick-up date</label>
+                                        <div class="input-group flatpickr" id="flatpickr-date">
+                                          <span class="input-group-text input-group-addon" data-toggle="">
+                                            <i data-feather="calendar"></i>
+                                          </span>
+                                          <input type="text" name="pickup_date" id="" class="form-control date-input">
+                                        </div>
+                                      </div>
+                                      <div class="w-100">
+                                        <label for="" class="form-label">Return date</label>
+                                        <div class="input-group flatpickr" id="flatpickr-date">
+                                          <span class="input-group-text input-group-addon" data-toggle="">
+                                            <i data-feather="calendar"></i>
+                                          </span>
+                                          <input type="text" name="return_date" id="" class="form-control date-input">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Reason for reservation</label>
+                                    <textarea name="reason" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Attach file</label>
+                                    <input type="file" class="form-control" name="attach_file" id="">
+                                  </div>
+                                  <div class="mb-3">
+                                    <div class="form-check form-check-inline">
+                                      <input type="checkbox" name="" class="form-check-input" id="agree_check">
+                                      <label class="form-check-label" for="checkInline1">
+                                        Agree with the <a href="" class="link-primary">Terms and Conditions</a> and <a href="" class="link-primary">Privacy Policy</a>.
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Continue</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="btn-check" id="bookmark-<?= $data->vehicle_id ?>" autocomplete="off">
+                        <label class="btn btn-outline-primary btn-icon" for="bookmark-<?= $data->vehicle_id ?>">
+                          <i data-feather="bookmark"></i>
+                        </label>
+
+                      </div>
+                    </div>
+                    <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="img-fluid rounded-2 mt-3" style="height: 500px; width: 100%; object-fit: contain;" alt="">
+
+                    <p class="bg-gray-100 p-3 my-3 rounded-2">
+                      <?= $data->description ?>
+                    </p>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="text-start">
+                          <p class="d-flex align-items-center gap-1">
+                            <i data-feather="sliders" class="icon-sm text-primary"></i>
+                            Transmission
+                          </p>
+                          <p class="text-muted"> <?= ucwords($data->trans_type) ?></p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-start">
+                          <p class="d-flex align-items-center gap-1">
+                            <i data-feather="users" class="icon-sm text-info"></i>
+                            Number of seats
+                          </p>
+                          <p class="text-muted"><?= $data->number_of_seats ?> Seaters</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-start">
+                          <p class="d-flex align-items-center gap-1">
+                            <i data-feather="battery" class="icon-sm text-danger"></i>
+                            Odometer
+                          </p>
+                          <p class="text-muted"><?= $data->odometer ?> KMP/H</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-start">
+                          <p class="d-flex align-items-center gap-1">
+                            <i data-feather="box" class="icon-sm text-primary"></i>
+                            Dimensions
+                          </p>
+                          <p class="text-muted"><?= $data->dimensions ?></p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <?php
+            endforeach;
+          endif;
+          ?>
+        </div>
+
 
       </div>
     </div>
@@ -473,12 +296,7 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/moment/moment.min.js"></script>
-  <script src="<?= ROOT ?>assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.js"></script>
-
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -487,26 +305,28 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/reserve-vehicle.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/reserve-vehicle.js"></script>
   <!-- End custom js for this page -->
 
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
   <script>
-    $(document).ready(() => {
-      $('.datePickerExample').datepicker('setDate', 'yyy-dd-mm');
+    // Get the input element
 
-      $('.timepicker').on('click', function() {
-        console.log("hello")
-      })
-
-      // $('#datetimepickerExample1').datetimepicker({
-      //   format: 'LT'
-      // });
-    })
+    const myInput = document.querySelectorAll(".date-input");
+    const flatpickrInstance = flatpickr(myInput, {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      defaultDate: new Date(),
+      minDate: "today",
+      allowInput: true
+    });
   </script>
 
 </body>
+
+
 
 </html>

@@ -9,8 +9,6 @@ class Dashboard{
     public function index(){
 
         $data = [];
-
-
         
         $this->view('partials/navbar');
         $this->view('general/dashboard', $data);

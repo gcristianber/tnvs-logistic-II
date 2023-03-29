@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Delivery_requests{
 
     use Controller;

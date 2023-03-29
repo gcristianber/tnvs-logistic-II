@@ -1,20 +1,18 @@
 <?php
 
-class Audit_logs{
+session_start();
+
+class Audit_logs
+{
 
     use Controller;
 
-    public function index(){
+    public function index()
+    {
+        $data = [];
 
-        $AuditReportModel = new AMAuditReports;
-        $data["audit_reports"] = $AuditReportModel->renderView();
-
-        // print_r($data["audit_reports"]);
-        
+        $this->view('partials/navbar');
         $this->view("audit_management/audit_logs", $data);
         $this->view("partials/sidebar");
-        $this->view('partials/navbar');
     }
-
-
 }

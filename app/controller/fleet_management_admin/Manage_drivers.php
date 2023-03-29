@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Manage_drivers{
 
     use Controller;

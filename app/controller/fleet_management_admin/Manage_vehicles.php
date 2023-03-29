@@ -1,35 +1,33 @@
 <?php
 
+session_start();
+
 class Manage_vehicles{
 
     use Controller;
 
     public function index(){
-
-        $FMVehicles = new FMVehicles;
         
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $check = $FMVehicles->checkForm($_POST, $_FILES);
+        $data = [];
 
-            if (!$check) {
-                $error_alert = implode(",", $FMVehicles->errors);
-                echo $error_alert;
-            } else {
-                header('Content-Type: application/json');
-                echo json_encode(["success" => true]);
-            }
-
-            exit();
-        }
-
-
-        $data["vehicles"] = $FMVehicles->renderViewData();
-        
+        $data["vehicles"] = $this->fetch();
 
         $this->view('partials/navbar');
         $this->view("fleet_management/admin/manage_vehicles", $data);
         $this->view("partials/sidebar");
         
+    }
+
+    public function insert(){      
+        $vehicles = new FM_Vehicles;
+        $vehicles->insert_vehicle($_POST, $_FILES);
+    }
+
+    public function fetch(){
+        $vehicles = new FM_Vehicles;
+        $data = $vehicles->renderView();
+
+        return $data;
     }
 
 

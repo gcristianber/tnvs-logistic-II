@@ -12,129 +12,343 @@
     </div>
     <div class="sidebar-body">
         <ul class="nav">
-            <li class="nav-item nav-category">Main</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>general/dashboard" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Dashboard</span>
-                </a>
-            </li>
+            <?php if ($_SESSION["user"]->user_role == 'super admin') : ?>
+                <li class="nav-item nav-category">Main</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>general/dashboard" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Dashboard</span>
+                    </a>
+                </li>
 
-            <li class="nav-item nav-category">document tracking</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
-                    <i class="link-icon" data-feather="search"></i>
-                    <span class="link-title">Track Document</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/request_document" class="nav-link">
-                    <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">Request Document</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/incoming_documents" class="nav-link">
-                    <i class="link-icon" data-feather="file-text"></i>
-                    <span class="link-title">Incoming Documents</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>document_tracking/document_templates" class="nav-link">
-                    <i class="link-icon" data-feather="file-text"></i>
-                    <span class="link-title">Document Templates</span>
-                </a>
-            </li>
-            <li class="nav-item nav-category">vehicle reservation</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
-                    <i class="link-icon" data-feather="grid"></i>
-                    <span class="link-title">Browse Vehicles</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/my_reservations" class="nav-link">
-                    <i class="link-icon" data-feather="list"></i>
-                    <span class="link-title">My Reservations</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/manage_reservations" class="nav-link">
-                    <i class="link-icon" data-feather="settings"></i>
-                    <span class="link-title">Manage Reservations</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vehicle_reservation/feedbacks" class="nav-link">
-                    <i class="link-icon" data-feather="star"></i>
-                    <span class="link-title">Feedbacks</span>
-                </a>
-            </li>
-            <li class="nav-item nav-category">vendor portal</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/purchase_requests" class="nav-link">
-                    <i class="link-icon" data-feather="shopping-cart"></i>
-                    <span class="link-title">Purchase Requests</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/auction_requests" class="nav-link">
-                    <i class="link-icon" data-feather="tag"></i>
-                    <span class="link-title">Auction Requests</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/vendor_contracts" class="nav-link">
-                    <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">Vendor Contracts</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Manage Vendors</span>
-                </a>
-            </li>
+                <li class="nav-item nav-category">document tracking</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
+                        <i class="link-icon" data-feather="search"></i>
+                        <span class="link-title">Track Document</span>
+                    </a>
+                </li>
 
-            <li class="nav-item nav-category">audit management</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
-                    <i class="link-icon" data-feather="search"></i>
-                    <span class="link-title">Create Report</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
-                    <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">Audit Reports</span>
-                </a>
-            </li>
-            <li class="nav-item nav-category">fleet management</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management_admin/track_deliver" class="nav-link">
-                    <i class="link-icon" data-feather="package"></i>
-                    <span class="link-title">Track Deliver</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management_admin/delivery_requests" class="nav-link">
-                    <i class="link-icon" data-feather="mail"></i>
-                    <span class="link-title">Delivery Requests</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management_admin/manage_vehicles" class="nav-link">
-                    <i class="link-icon" data-feather="truck"></i>
-                    <span class="link-title">Manage Vehicles</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>fleet_management_admin/manage_drivers" class="nav-link">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Manage Drivers</span>
-                </a>
-            </li>
+                <li class="nav-item nav-category">vehicle reservation</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
+                        <i class="link-icon" data-feather="grid"></i>
+                        <span class="link-title">Browse Vehicles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/my_reservations" class="nav-link">
+                        <i class="link-icon" data-feather="send"></i>
+                        <span class="link-title">My Reservations</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+                        <i class="link-icon" data-feather="bookmark"></i>
+                        <span class="link-title">Bookmarks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/manage_reservations" class="nav-link">
+                        <i class="link-icon" data-feather="settings"></i>
+                        <span class="link-title">Manage Reservations</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">vendor portal</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/" class="nav-link">
+                        <i class="link-icon" data-feather="plus"></i>
+                        <span class="link-title">Create Listing</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/post" class="nav-link">
+                        <i class="link-icon" data-feather="hash"></i>
+                        <span class="link-title">Posts</span>
+                    </a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/requests" class="nav-link">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Requests</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/documents" class="nav-link">
+                        <i class="link-icon" data-feather="file-text"></i>
+                        <span class="link-title">Documents</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/manage_vendors" class="nav-link">
+                        <i class="link-icon" data-feather="users"></i>
+                        <span class="link-title">Vendors</span>
+                    </a>
+                </li>
 
+                <li class="nav-item nav-category">audit management</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/cycle_count" class="nav-link">
+                        <i class="link-icon" data-feather="calendar"></i>
+                        <span class="link-title">Cycle Count</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/audit_requests" class="nav-link">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Audit Requests</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
+                        <i class="link-icon" data-feather="clock"></i>
+                        <span class="link-title">Audit Logs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/request_documents" class="nav-link">
+                        <i class="link-icon" data-feather="file-text"></i>
+                        <span class="link-title">Request Documents</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">fleet management</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/track_deliver" class="nav-link">
+                        <i class="link-icon" data-feather="navigation"></i>
+                        <span class="link-title">Track Deliver</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/shipment_management" class="nav-link">
+                        <i class="link-icon" data-feather="package"></i>
+                        <span class="link-title">Shipment Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/delivery_requests" class="nav-link">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Delivery Requests</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/manage_vehicles" class="nav-link">
+                        <i class="link-icon" data-feather="truck"></i>
+                        <span class="link-title">Manage Vehicles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/maintenance" class="nav-link">
+                        <i class="link-icon" data-feather="settings"></i>
+                        <span class="link-title">Maintenance</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">Legal Policy</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">Terms and Condition</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="anchor"></i>
+                        <span class="link-title">Privacy and Policy</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="info"></i>
+                        <span class="link-title">About Us</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="list"></i>
+                        <span class="link-title">FAQs</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+            <?php if ($_SESSION["user"]->user_role == 'audit manager') : ?>
+                <li class="nav-item nav-category">Main</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>general/dashboard" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">document tracking</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
+                        <i class="link-icon" data-feather="search"></i>
+                        <span class="link-title">Track Document</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">vehicle reservation</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
+                        <i class="link-icon" data-feather="grid"></i>
+                        <span class="link-title">Browse Vehicles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/my_reservations" class="nav-link">
+                        <i class="link-icon" data-feather="send"></i>
+                        <span class="link-title">My Reservations</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+                        <i class="link-icon" data-feather="bookmark"></i>
+                        <span class="link-title">Bookmarks</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">audit management</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/create_report" class="nav-link">
+                        <i class="link-icon" data-feather="search"></i>
+                        <span class="link-title">Create Report</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">Audit Reports</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">Legal Policy</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">Terms and Condition</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="anchor"></i>
+                        <span class="link-title">Privacy and Policy</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="info"></i>
+                        <span class="link-title">About Us</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="list"></i>
+                        <span class="link-title">FAQs</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+            <?php if ($_SESSION["user"]->user_role == 'fleet manager') : ?>
+                <li class="nav-item nav-category">Main</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>general/dashboard" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">document tracking</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>document_tracking/track_documents" class="nav-link">
+                        <i class="link-icon" data-feather="search"></i>
+                        <span class="link-title">Track Document</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">vehicle reservation</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/browse_vehicles" class="nav-link">
+                        <i class="link-icon" data-feather="grid"></i>
+                        <span class="link-title">Browse Vehicles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
+                        <i class="link-icon" data-feather="bookmark"></i>
+                        <span class="link-title">Bookmarks</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/manage_reservations" class="nav-link">
+                        <i class="link-icon" data-feather="settings"></i>
+                        <span class="link-title">Manage Reservations</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">fleet management</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/track_deliver" class="nav-link">
+                        <i class="link-icon" data-feather="navigation"></i>
+                        <span class="link-title">Track Deliver</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/delivery_requests" class="nav-link">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Delivery Requests</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/manage_vehicles" class="nav-link">
+                        <i class="link-icon" data-feather="truck"></i>
+                        <span class="link-title">Manage Vehicles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/manage_drivers" class="nav-link">
+                        <i class="link-icon" data-feather="users"></i>
+                        <span class="link-title">Manage Drivers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/maintenance" class="nav-link">
+                        <i class="link-icon" data-feather="settings"></i>
+                        <span class="link-title">Maintenance</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/shipment_management" class="nav-link">
+                        <i class="link-icon" data-feather="package"></i>
+                        <span class="link-title">Shipment Management</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-category">Legal Policy</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">Terms and Condition</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="anchor"></i>
+                        <span class="link-title">Privacy and Policy</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="info"></i>
+                        <span class="link-title">About Us</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>" class="nav-link">
+                        <i class="link-icon" data-feather="list"></i>
+                        <span class="link-title">FAQs</span>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

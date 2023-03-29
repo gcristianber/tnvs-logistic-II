@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Browse_vehicles
 {
 
@@ -10,29 +12,22 @@ class Browse_vehicles
 
         $data = [];
 
-        $FMVehicles = new FMVehicles;
-
-        $data["vehicles"] = $FMVehicles->renderViewData();
-
-        // print_r($data["vehicles"]);
+        $data["vehicles"] = $this->fetch();
 
         $this->view('partials/navbar');
         $this->view('vehicle_reservation/browse_vehicles', $data);
         $this->view('partials/sidebar');
     }
 
-    public function reserve_vehicle()
-    {
+    public function fetch(){
+        $vehicles = new FM_Vehicles;
+        $data = $vehicles->renderView();
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        return $data;
+    }
 
-            $_POST["reservation_id"] = uniqid("rsv");
-            $_POST["hirer_id"] = "sa12345";
-
-            $ReservationModel = new VRReservations;
-            $ReservationModel->insert($_POST);
-
-           
-        }
+    public function reserve(){
+        $reserve = new VR_Reservations;
+        $reserve->insert_request($_POST, $_FILES);
     }
 }
