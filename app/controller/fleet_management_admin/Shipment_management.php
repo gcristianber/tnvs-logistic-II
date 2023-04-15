@@ -14,4 +14,10 @@ class Shipment_management{
         
     }
 
+    public function add_new(){
+        $this->view('partials/navbar');
+        $this->view("fleet_management/admin/add_new_delivery");
+        $this->view("partials/sidebar");
+    }
+
 }

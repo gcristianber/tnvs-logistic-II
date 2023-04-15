@@ -289,66 +289,126 @@
         </div>
       </nav>
       <div class="page-content">
-
-
-
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= ROOT ?>general/dashboard">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Profile</li>
-          </ol>
-        </nav>
-
-
-        <div class="card">
+        <div class="card h-100">
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="border-end h-100 pe-3">
-                  
-                  <div class="d-flex align-items-center justify-content-center flex-column">
-                    <img src="https://via.placeholder.com/100x100" alt="" class="rounded-circle mb-3">
-                    <div class="text-center">
-                      <p class="text-uppercase fw-bold">Cristianber Gordora</p>
-                      <small class="text-muted">Super Admin</small>
+            <div class="row h-100">
+              <div class="col-md-4 border-end">
+                <div class="text-center">
+                  <div class="position-relative">
+                    <img src="https://via.placeholder.com/100x100" class="ht-100 wd-100 rounded-circle" alt="">
+                    <div class=" d-inline-block p-2 rounded-circle bg-light bg-opacity-50 position-absolute top-50 start-50 translate-middle cursor-pointer">
+                      <div class="d-flex align-items-center justify-content-center">
+                        <i data-feather="camera" class="icon-md text-dark"></i>
+                      </div>
                     </div>
                   </div>
-
-
+                  <div class="mt-3">
+                    <h3 class="text-uppercase">Cristianber Gordora</h3>
+                    <p class="text-muted">Super Admin</p>
+                  </div>
+                </div>
+                <div class="list-group mt-4">
+                  <a href="#" class="list-group-item list-group-item-action active">
+                    <div class="d-flex align-items-center gap-3">
+                      <i data-feather="user" class="icon-lg link-icon"></i>
+                      <div>
+                        <p>Account</p>
+                        <small>Manage your public profile and private information</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex align-items-center gap-3">
+                      <i data-feather="lock" class="icon-lg link-icon"></i>
+                      <div>
+                        <p>Security</p>
+                        <small>Manage your password</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex align-items-center gap-3">
+                      <i data-feather="briefcase" class="icon-lg link-icon"></i>
+                      <div>
+                        <p>ESS Account</p>
+                        <small>Manage your ESS Account</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex align-items-center gap-3">
+                      <i data-feather="list" class="icon-lg link-icon"></i>
+                      <div>
+                        <p>Activity Log</p>
+                        <small>Manage your logs</small>
+                      </div>
+                    </div>
+                  </a>
                 </div>
               </div>
-              <div class="col-md-8">
-                <div class="mb-3">
-                  <label for="display_name" class="form-label">Display Name</label>
-                  <input type="text" name="display_name" id="display_name" class="form-control" value="Cristianber Gordora">
-                </div>
-                <div class="mb-3">
-                  <div class="d-flex align-items-center gap-3">
-                    <div class="w-100">
-                      <label for="email_address" class="form-label">Email Address</label>
-                      <input type="text" name="email_address" id="email_address" class="form-control" value="gcristianber@gmail.com">
-                    </div>
-                    <div class="w-100">
-                      <label for="contact_number" class="form-label">Contact Number</label>
-                      <input type="text" name="contact_number" id="contact_number" class="form-control" value="09995645382">
-                    </div>
+              <div class="col-md-8 mt-4 mt-md-0">
+                <div class="row perfect-scrollbar-example position-relative">
+                  <div class="col-md-12 grid-margin">
+                    <p class="fs-3">Profile</p>
+                    <small class="text-muted">Following information is publicly displayed.</small>
                   </div>
-                </div>
-                <div class="mb-3">
-                  <div class="d-flex flex-column">
-                    <label for="display_name" class="form-label">ESS Account</label>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <input type="text" name="" id="" class="form-control">
-                      <button type="button" class="btn btn-outline-primary">Link</button>
-                    </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">First Name</label>
+                    <input type="text" name="" id="" class="form-control" value="Cristianber">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Middle Name</label>
+                    <input type="text" name="" id="" class="form-control" value="">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Last Name</label>
+                    <input type="text" name="" id="" class="form-control" value="Gordora">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Suffix</label>
+                    <input type="text" name="" id="" class="form-control" value="">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Username</label>
+                    <input type="text" name="" id="" class="form-control" value="super_admin@logistic">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Role</label>
+                    <select name="" class="form-select" id="">
+                      <option value="1" selected>Super Admin</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Employee ID</label>
+                    <input type="text" name="" id="" class="form-control" value="">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Department</label>
+                    <select name="" class="form-select" id="">
+                      <option value="1" selected>Logistic</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12 grid-margin">
+                    <p class="fs-3">Personal Information</p>
+                    <small class="text-muted">Communication details in case we want to connect with you.</small>
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Email</label>
+                    <input type="text" name="" id="" class="form-control" value="gcristianber@gmail.com">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Secondary Email</label>
+                    <input type="text" name="" id="" class="form-control" value="">
+                  </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">Contact Number</label>
+                    <input type="text" name="" id="" class="form-control" value="">
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
 
 
@@ -369,6 +429,10 @@
 
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
+  <script>
+    // javascript
+    var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+  </script>
 
 </body>
 

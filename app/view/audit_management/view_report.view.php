@@ -50,52 +50,124 @@
     <div class="page-wrapper">
 
       <div class="page-content">
-        <div class="card">
-          <div class="card-body">
-            <div class="table-responsive">
-              <table id="receivedTable" class="table display">
-                <thead>
-                  <tr>
-                    <th>report number</th>
-                    <th>reference number</th>
-                    <th>product category</th>
-                    <th>selection</th>
-                    <th>department</th>
-                    <th>date performed</th>
-                    <th>status</th>
-                    <th>action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="align-middle">
-                    <td>JDK024A4DK1</td>
-                    <td>HT-872AFD10</td>
-                    <td>Office Supplies</td>
-                    <td>All</td>
-                    <td>
-                      <p>Administrative</p>
-                      <small class="text-muted">super.admin@lulan.com</small>
-                    </td>
-                    <td>
-                      <p>23 Jan 2023</p>
-                      <small class="text-muted">06:44 AM</small>
-                    </td>
-                    <td>
-                      <badge class="badge bg-primary">Audited</badge>
-                    </td>
-                    <td>
-                      <button class="btn btn-primary btn-icon-text">
-                        <i data-feather="external-link" class="btn-icon-prepend"></i>
-                        View Report
-                      </button>
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="container-fluid">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <a href="" class="link-primary">
+                      <i data-feather="chevron-left" class="icon-md"></i>
+                      Back to Audit Requests
+                    </a>
+
+                    <div>
+                      <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_requests/download_as_file?reference_number=<?= $report->reference_number ?>">
+                        <i data-feather="printer" class="btn-icon-prepend"></i>
+                        Print Report
+                      </a>
                       <button class="btn btn-outline-primary btn-icon-text">
-                        <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                        Download
+                        <i data-feather="edit" class="btn-icon-prepend"></i>
+                        Edit Report
                       </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid mt-4">
+                  <div class="d-flex gap-3 justify-content-center align-items-center">
+                    <img src="<?= ROOT ?>assets/images/favicon.png" class="ht-50 mb-2" alt="">
+                    <div class="text-start">
+                      <h5>LULAN INCORPORATION</h5>
+                      <p>Quezon City, Philippines</p>
+                      <small>202-555-0163</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-fluid mt-4">
+                  <div class="text-center">
+                    <h4>INVENTORY AUDIT FOR</h4>
+                    <p><?= $report->reference_number ?></p>
+                  </div>
+                </div>
+                <div class="container-fluid">
+                  <div class="text-center">
+                    <small><?= date("d M Y", strtotime($report->date_created)) ?></small>
+                  </div>
+                </div>
+                <div class="container-fluid mt-4">
+                  <div class="text-wrap p-3 bg-gray-100">
+                    <?= $report->report ?>
+                  </div>
+                </div>
+
+                <div class="container-fluid mt-5">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>product name</th>
+                        <th>quantity</th>
+                        <th>unit cost</th>
+                        <th>total</th>
+                        <th>actual count</th>
+                        <th>variance</th>
+                        <th>accuracy</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+
+                      if (!empty($table_report)) :
+                        foreach ($table_report as $data) :
+
+                      ?>
+                          <tr>
+                            <td><?= $data->product_id ?></td>
+                            <td><?= $data->product_name ?></td>
+                            <td class="text-end"><?= $data->quantity ?></td>
+                            <td class="text-end"><?= $data->unit_cost ?></td>
+                            <td class="text-end"><?= $data->total ?></td>
+                            <td class="text-end"><?= $data->actual_count ?></td>
+                            <td class="text-end"><?= $data->variance ?></td>
+                            <td class="text-end"><?= $data->accuracy ?></td>
+                          </tr>
+                      <?php
+
+                        endforeach;
+                      endif;
+
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="container-fluid mt-4">
+                  <div class="text-center">
+                    <small class="text-muted">Overall Accuracy (%) :</small>
+                    <h4 class="text-dark" id="overallAccuracy"><?= $report->overall_accuracy ?></h4>
+                  </div>
+                </div>
+                <div class="container-fluid mt-5">
+                  <label for="" class="form-label d-flex flex-column">
+                    Additional File(s)
+                    <small class="text-muted">This may include additional information and supporting documentation, such as inventory counts, inventory records, and other relevant data used during the audit.</small>
+                  </label>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <p>Invoice Sample.docx</p>
+                      <small class="text-muted">1.2 MB</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <p>Purchase Order.docx</p>
+                      <small class="text-muted">200 KB</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <p>Inventory Stock January to March.pdf</p>
+                      <small class="text-muted">1.5 MB</small>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

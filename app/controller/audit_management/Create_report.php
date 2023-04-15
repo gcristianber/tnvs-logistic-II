@@ -9,9 +9,11 @@ class Create_report{
     public function index(){
         $data = [];
 
-        $this->view('partials/navbar');
+        
         $this->view("audit_management/create_report", $data);
+        $this->view('partials/navbar');
         $this->view('partials/sidebar');
     }
+    
 
 }

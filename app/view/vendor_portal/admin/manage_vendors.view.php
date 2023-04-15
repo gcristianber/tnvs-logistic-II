@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Manage Reservaitons</title>
+  <title>Maintenance</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
@@ -30,18 +29,17 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <!-- endinject -->
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 
 </head>
 <style>
@@ -56,29 +54,34 @@
     <div class="page-wrapper">
 
       <div class="page-content">
-        <div class="row">
+        <div class="row h-100">
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="mb-4">
-                  <h3 class="mb-1">My Reservations (3)</h3>
+                  <h3 class="mb-1">Manage Vendors</h3>
                   <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
                 </div>
                 <div class="row mb-3">
                   <div class="col">
-                    <div class="input-group flatpickr" id="flatpickr-date">
-                      <span class="input-group-text input-group-addon" data-toggle="">
-                        <i data-feather="calendar"></i>
-                      </span>
-                      <input type="text" name="return_date" id="" class="form-control date-input">
-                    </div>
+                    <select name="" id="" class="form-select">
+                      <option selected disabled>Service Type</option>
+                      <option value="">Office Supplies</option>
+                    </select>
                   </div>
                   <div class="col">
                     <select name="" id="" class="form-select">
-                      <option selected disabled>Vehicle Type</option>
-                      <option value="">Sedan</option>
-                      <option value="">Vans</option>
-                      <option value="">Trucks</option>
+                      <option selected disabled>Company Type</option>
+                      <option value="">Private (LTD)</option>
+                      <option value="">Public</option>
+                      <option value="">Government</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <select name="" id="" class="form-select">
+                      <option selected disabled>Account Type</option>
+                      <option value="">Basic</option>
+                      <option value="">Verified</option>
                     </select>
                   </div>
                   <div class="col">
@@ -86,7 +89,6 @@
                       <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
                       <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
                     </div>
-
                   </div>
                 </div>
                 <div class="row">
@@ -104,35 +106,23 @@
                       <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
                     </div>
                     <div class="d-inline">
-                      <input type="radio" class="btn-check" value="cancelled" name="btnradio" id="btnradio4" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio4">Cancelled</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio5" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio5">Declined</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="returned" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Returned</label>
+                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio6" autocomplete="off">
+                      <label class="btn btn-outline-primary" for="btnradio6">Declined</label>
                     </div>
                   </div>
                   <div class="col text-end">
                     <button class="btn btn-outline-primary btn-icon-text" disabled>
+                      <i data-feather="upload" class="btn-icon-prepend"></i>
+                      Import Data
+                    </button>
+                    <button class="btn btn-outline-primary btn-icon-text" disabled>
                       <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                      Export as CSV
+                      Download
                     </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                      Cancel
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="edit-2" class="btn-icon-prepend"></i>
-                      Modify
-                    </button>
-                    <button class="btn btn-primary btn-icon-text">
+                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
                       <i data-feather="plus" class="btn-icon-prepend"></i>
                       Add New
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -141,90 +131,60 @@
                     <thead>
                       <tr>
                         <th data-orderable="false"></th>
-                        <th>request id</th>
-                        <th>vehicle</th>
-                        <th>vehicle type</th>
-                        <th>request date</th>
-                        <th>pickup date</th>
-                        <th>return date</th>
-                        <th>remarks</th>
-                        <th>status</th>
-                        <th>action</th>
+                        <th>company name</th>
+                        <th>username</th>
+                        <th>company type</th>
+                        <th>service type</th>
+                        <th>phone number</th>
+                        <th>date joined</th>
+                        <th>account type</th>
+                        <th class="text-center" data-orderable="false">action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-
-                      if (!empty($userReservations)) :
-                        foreach ($userReservations as $data) :
-
-                      ?>
-                          <tr class="align-middle" data-status="<?= $data->reservation_status ?>">
-                            <td>
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkDefault">
-                              </div>
-                            </td>
-                            <td><?= $data->reservation_id ?></td>
-                            <td>
-                              <div class="d-flex align-items-center gap-2">
-                                <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                <div>
-                                  <p class="text-uppercase"><?= $data->make ?></p>
-                                  <small class="text-muted"><?= $data->plate ?></small>
-                                </div>
-                              </div>
-                            </td>
-                            <td><?= ucwords($data->vehicle_type) ?></td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->date_requested)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
-                            </td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->pickup_date)) ?></small>
-                            </td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->return_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->return_date)) ?></small>
-                            </td>
-                            <td>--</td>
-                            <td>
-                              <?php
-                              switch ($data->reservation_status) {
-                                case 'pending':
-                                  echo '<span class="badge bg-warning">Pending</span>';
-                                  break;
-                                case 'approved':
-                                  echo '<span class="badge bg-success">Approved</span>';
-                                  break;
-                                case 'cancelled':
-                                  echo '<span class="badge bg-secondary">Cancelled</span>';
-                                  break;
-                                case 'declined':
-                                  echo '<span class="badge bg-danger">Declined</span>';
-                                  break;
-                                case 'returned':
-                                  echo '<span class="badge bg-primary">Returned</span>';
-                                  break;
-                              }
-                              ?>
-                            </td>
-                            <td>
-                              <button class="btn btn-primary btn-icon">
-                                <i data-feather="edit-2"></i>
-                              </button>
-                              <button class="btn btn-danger btn-icon">
-                                <i data-feather="trash-2"></i>
-                              </button>
-                            </td>
-                          </tr>
-
-                      <?php
-
-                        endforeach;
-                      endif;
-                      ?>
+                      <tr class="align-middle" data-status="verified">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <img src="https://via.placeholder.com/100x100" class="ht-100 wd-100 rounded-2" alt="">
+                            <div>
+                              <p>National Bookstore</p>
+                              <small class="text-muted">
+                                <a href="https://www.nationalbookstore.com" class="link-primary">https://www.nationalbookstore.com</a>
+                              </small>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p>nationalbookstore.vendor</p>
+                          <small class="text-muted">corpsales@nationalbookstore.com.ph</small>
+                        </td>
+                        <td>Private LTD</td>
+                        <td>Office Supplies</td>
+                        <td>
+                          <p>+(632) 8255 2685</p>
+                        </td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Verified</span>
+                        </td>
+                        <td>
+                          <a class="btn btn-primary btn-icon-text" href="javascript:;">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Invite to Bid
+                          </a>
+                          <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/manage_vendors/manage_account">
+                            <i data-feather="settings" class="btn-icon-prepend"></i>
+                            Manage Account
+                          </a>
+                        </td>
+                      </tr>
                     </tbody>
 
                   </table>
@@ -259,23 +219,10 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(function() {
-      var rows = $("table tbody tr").get();
-      rows.sort(function(a, b) {
-        var dateA = new Date($(a).find("td:eq(4)").text());
-        var dateB = new Date($(b).find("td:eq(4)").text());
-        return (dateA > dateB) ? -1 : (dateA < dateB) ? 1 : 0;
-      });
-      $.each(rows, function(index, row) {
-        $("table").children("tbody").append(row);
-      });
-    });
-  </script>
-  
+  <!-- Flat Picker -->
   <script>
     const myInput = document.querySelectorAll(".date-input");
     const flatpickrInstance = flatpickr(myInput, {
@@ -291,6 +238,7 @@
       var table = $('#request_tbl').DataTable({
         lengthChange: false, // Disable length menu
         bInfo: false, // Disable "Showing X of Y entries" label
+
       });
 
       $('#search').on('keyup', function(event) {
@@ -327,10 +275,7 @@
         'all': rows.length,
         'pending': 0,
         'approved': 0,
-        'cancelled': 0,
-        'completed': 0,
-        'declined': 0,
-        'returned': 0
+        'declined': 0
       };
 
       rows.each(function() {

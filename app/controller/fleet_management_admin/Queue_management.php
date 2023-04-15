@@ -2,15 +2,15 @@
 
 session_start();
 
-class Requests{
+class Queue_management{
 
     use Controller;
 
     public function index(){
 
         $this->view('partials/navbar');
-        $this->view("vendor_portal/admin/requests");
-        $this->view('partials/sidebar');
+        $this->view("fleet_management/admin/queue_management");
+        $this->view("partials/sidebar");
         
     }
 

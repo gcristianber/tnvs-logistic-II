@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Delivery Requests</title>
+  <title>Maintenance</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,93 +59,15 @@
             <div class="card">
               <div class="card-body">
                 <div class="mb-4">
-                  <h3 class="mb-1">Delivery Requests</h3>
+                  <h3 class="mb-1">Document Log</h3>
                   <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
-                <div class="row mt-4">
-                  <div class="col-3 grid-margin text-center border-end">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="package"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        11
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">Preparing Package</p>
-                  </div>
-                  <div class="col-3 grid-margin text-center border-end">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="truck"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        2
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">In Transit</p>
-                  </div>
-                  <div class="col-3 grid-margin text-center border-end">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="check-circle"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        10
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">Delivered</p>
-                  </div>
-                  <div class="col-3 grid-margin text-center">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="x-circle"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        1
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">Failed To Deliver</p>
-                  </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col">
                     <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search delivery">
+                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search tracking id">
                       <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
                     </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">Pending</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="approved" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Declined</label>
-                    </div>
-                  </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="upload" class="btn-icon-prepend"></i>
-                      Import Data
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                      Decline
-                    </button>
-                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add New
-                    </a>
                   </div>
                 </div>
 
@@ -155,53 +77,186 @@
                       <tr>
                         <th data-orderable="false"></th>
                         <th>tracking id</th>
-                        <th>requestor</th>
-                        <th>delivery type</th>
-                        <th>recipient</th>
-                        <th>date requested</th>
-                        <th>delivery date</th>
+                        <th>file name</th>
+                        <th>to</th>
+                        <th>from</th>
+                        <th>date/time</th>
                         <th>status</th>
-                        <th class="text-center" data-orderable="false">action</th>
+                        <th>action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle" data-status="pending">
+                      <tr class="align-middle" data-status="scheduled">
                         <td>
                           <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="checkDefault">
                           </div>
                         </td>
-                        <td>FDELI-244ACDFK</td>
+                        <td>DOC-74AFD3A</td>
                         <td>
-                          <p>Cristianber Gordora</p>
-                          <small class="text-muted">Warehouse Staff</small>
+                          <div>
+                            <p>File Text 1.pdf</p>
+                            <small class="text-muted">200 KB</small>
+                          </div>
                         </td>
-                        <td>Delivery</td>
-                        <td>
-                          <p>Richelyn Villasor</p>
-                        </td>
+                        <td>Administrative</td>
+                        <td>Logistic</td>
                         <td>
                           <p>06 Apr 2023</p>
                           <small class="text-muted">12:26 AM</small>
                         </td>
                         <td>
-                          <p>07 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
+                          <span class="badge bg-primary">Created</span>
                         </td>
                         <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td>
-                          <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/listing/create_list">
-                            <i data-feather="package" class="btn-icon-prepend"></i>
-                            Prepare Shipment
-                          </a>
                           <button class="btn btn-light btn-icon-text">
                             <i data-feather="external-link" class="btn-icon-prepend"></i>
                             Preview
                           </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>DOC-123ABCD</td>
+                        <td>
+                          <div>
+                            <p>File Text 2.pptx</p>
+                            <small class="text-muted">128 MB</small>
+                          </div>
+                        </td>
+                        <td>Administrative</td>
+                        <td>Human Resource</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Approved</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>DOC-224ACCD</td>
+                        <td>
+                          <div>
+                            <p>File Text 2.pptx</p>
+                            <small class="text-muted">128 MB</small>
+                          </div>
+                        </td>
+                        <td>Administrative</td>
+                        <td>Human Resource</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-secondary">On Hold</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>DOC-224ACCD</td>
+                        <td>
+                          <div>
+                            <p>File Text 2.pptx</p>
+                            <small class="text-muted">128 MB</small>
+                          </div>
+                        </td>
+                        <td>Administrative</td>
+                        <td>Human Resource</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Reviewed</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>DOC-224ACCD</td>
+                        <td>
+                          <div>
+                            <p>File Text 2.pptx</p>
+                            <small class="text-muted">128 MB</small>
+                          </div>
+                        </td>
+                        <td>Administrative</td>
+                        <td>Human Resource</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-info">Forwarded</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>DOC-224ACCD</td>
+                        <td>
+                          <div>
+                            <p>File Text 2.pptx</p>
+                            <small class="text-muted">128 MB</small>
+                          </div>
+                        </td>
+                        <td>Administrative</td>
+                        <td>Human Resource</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-danger">Archived</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
                           </button>
                         </td>
                       </tr>
@@ -258,7 +313,6 @@
       var table = $('#request_tbl').DataTable({
         lengthChange: false, // Disable length menu
         bInfo: false, // Disable "Showing X of Y entries" label
-
       });
 
       $('#search').on('keyup', function(event) {
@@ -294,8 +348,11 @@
       var statusCounts = {
         'all': rows.length,
         'pending': 0,
-        'approved': 0,
-        'declined': 0
+        'in progress': 0,
+        'scheduled': 0,
+        'completed': 0,
+        'cancelled': 0,
+        'delayed': 0
       };
 
       rows.each(function() {

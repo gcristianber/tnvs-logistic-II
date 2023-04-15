@@ -11,7 +11,7 @@ class VR_Reservations
 
     public function insert_request($data, $attach_file)
     {
-        $prefix = "VR";
+        $prefix = "VR-";
         $date = date("ymd");
         $random_str = strtoupper(substr(str_shuffle(md5(microtime())), 0, 5)); // generate a random string of 5 characters
 

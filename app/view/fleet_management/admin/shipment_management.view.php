@@ -60,10 +60,10 @@
                     <small class="text-muted">Lorem ipsum dolor sit amet consectetur.</small>
                   </div>
                   <div>
-                    <button class="btn btn-primary btn-icon-text">
+                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>fleet_management_admin/shipment_management/add_new">
                       <i data-feather="plus" class="btn-icon-prepend"></i>
                       Add New Delivery
-                    </button>
+                    </a>
                   </div>
                 </div>
                 <div class="input-group mb-3">

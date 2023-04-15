@@ -2,17 +2,16 @@
 
 session_start();
 
-class Audit_logs
-{
+class Maintenance{
 
     use Controller;
 
-    public function index()
-    {
-        $data = [];
+    public function index(){
 
         $this->view('partials/navbar');
-        $this->view("audit_management/audit_logs", $data);
+        $this->view("fleet_management/admin/maintenance");
         $this->view("partials/sidebar");
+        
     }
+
 }

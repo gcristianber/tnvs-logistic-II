@@ -43,12 +43,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vehicle_reservation/" class="nav-link">
-                        <i class="link-icon" data-feather="bookmark"></i>
-                        <span class="link-title">Bookmarks</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="<?= ROOT ?>vehicle_reservation/manage_reservations" class="nav-link">
                         <i class="link-icon" data-feather="settings"></i>
                         <span class="link-title">Manage Reservations</span>
@@ -56,28 +50,22 @@
                 </li>
                 <li class="nav-item nav-category">vendor portal</li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/" class="nav-link">
-                        <i class="link-icon" data-feather="plus"></i>
-                        <span class="link-title">Create Listing</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/post" class="nav-link">
+                    <a href="<?= ROOT ?>vendor_portal_admin/listing" class="nav-link">
                         <i class="link-icon" data-feather="hash"></i>
-                        <span class="link-title">Posts</span>
+                        <span class="link-title">Listing</span>
                     </a>
                 </li>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/requests" class="nav-link">
+                    <a href="<?= ROOT ?>vendor_portal_admin/procurement_requests" class="nav-link">
                         <i class="link-icon" data-feather="mail"></i>
                         <span class="link-title">Requests</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/documents" class="nav-link">
-                        <i class="link-icon" data-feather="file-text"></i>
-                        <span class="link-title">Documents</span>
+                    <a href="<?= ROOT ?>vendor_portal_admin/" class="nav-link">
+                        <i class="link-icon" data-feather="award"></i>
+                        <span class="link-title">Awardings</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -100,29 +88,11 @@
                         <span class="link-title">Audit Requests</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= ROOT ?>audit_management/audit_logs" class="nav-link">
-                        <i class="link-icon" data-feather="clock"></i>
-                        <span class="link-title">Audit Logs</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= ROOT ?>audit_management/request_documents" class="nav-link">
-                        <i class="link-icon" data-feather="file-text"></i>
-                        <span class="link-title">Request Documents</span>
-                    </a>
-                </li>
                 <li class="nav-item nav-category">fleet management</li>
                 <li class="nav-item">
                     <a href="<?= ROOT ?>fleet_management_admin/track_deliver" class="nav-link">
                         <i class="link-icon" data-feather="navigation"></i>
                         <span class="link-title">Track Deliver</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= ROOT ?>fleet_management_admin/shipment_management" class="nav-link">
-                        <i class="link-icon" data-feather="package"></i>
-                        <span class="link-title">Shipment Management</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -143,6 +113,7 @@
                         <span class="link-title">Maintenance</span>
                     </a>
                 </li>
+                
 
                 <li class="nav-item nav-category">Legal Policy</li>
                 <li class="nav-item">

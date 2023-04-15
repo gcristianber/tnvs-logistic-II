@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
 </head>
 
 
@@ -93,22 +94,39 @@
                     </small>
                     <p><?= ucwords($request->category_name) ?></p>
                   </div>
+                </div>
+                <div class="container-fluid mt-4">
+                  <div class="text-wrap p-3 bg-gray-100">
+                    <?= $request->description ?>
+                  </div>
+                </div>
+                <div class="container-fluid mt-5">
+                  <label for="" class="form-label d-flex flex-column">
+                    Appendices
+                    <small class="text-muted">This may include additional information and supporting documentation, such as inventory counts, inventory records, and other relevant data used during the audit.</small>
+                  </label>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <p>Invoice Sample.docx</p>
+                      <small class="text-muted">1.2 MB</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <p>Purchase Order.docx</p>
+                      <small class="text-muted">200 KB</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <p>Inventory Stock January to March.pdf</p>
+                      <small class="text-muted">1.5 MB</small>
+                    </a>
+                  </div>
+                </div>
 
-                </div>
-                <div class="container-fluid mt-4">
-                  <label for="" class="form-label">Overview</label>
-                  <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Describe the purpose of the report"></textarea>
-                </div>
-                <div class="container-fluid mt-4">
-                  <label for="" class="form-label">Category</label>
-                  <select name="" class="form-select" id="selectCategory">
-                    <option selected disabled>...</option>
-                    <option value="all">All</option>
-                    <option value="1">Office Supplies</option>
-                    <option value="2">Electronics</option>
-                    <option value="3">Foods & Beverages</option>
-                  </select>
-                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
                 <div class="container-fluid mt-4 d-flex justify-content-center w-100">
                   <div class="table-responsive w-100">
                     <table class="table table-bordered" id="auditTable">
@@ -125,46 +143,54 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php
+                        if (!empty($products)) :
+                          foreach ($products as $data) :
+                        ?>
+                            <tr>
+                              <td><?= $data->product_id ?></td>
+                              <td><?= $data->product_name ?></td>
+                              <td class="text-end"><?= $data->quantity ?></td>
+                              <td class="text-end">P <?= number_format($data->unit_cost) ?></td>
+                              <td class="text-end">P <?= number_format($data->total) ?></td>
+                              <td><input type="number" name="" class="form-control" id=""></td>
+                              <td class="text-end">--</td>
+                              <td class="text-end">--</td>
+                            </tr>
+                        <?php
+                          endforeach;
+                        endif;
+                        ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
                 <div class="container-fluid mt-4">
-                  <table class="table">
-                    <tr>
-                      <td class="text-center">
-                        <small class="text-muted">Overall Accuracy (%) :</small>
-                        <!-- <h4 class="text-success">100%</h4> -->
-                        <h4 class="text-dark" id="overallAccuracy">--</h4>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <div class="container-fluid mt-4">
-                  <label for="" class="form-label">Recommendations</label>
-                  <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Write your recommendations"></textarea>
-                </div>
-                <div class="container-fluid mt-4">
-                  <label for="" class="form-label">Conclusions</label>
-                  <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Summarize your key findings"></textarea>
+                  <div class="text-center">
+                    <small class="text-muted">Overall Accuracy (%) :</small>
+                    <h4 class="text-dark" id="overallAccuracy">--</h4>
+                  </div>
                 </div>
                 <div class="container-fluid mt-4">
                   <label for="" class="form-label d-flex flex-column">
-                    Appendices
-                    <small class="text-muted">This section may include additional information and supporting documentation, such as inventory counts, inventory records, and other relevant data used during the audit.</small>
+                    Report
+                    <small class="text-muted">This section describes the procedure have done with this report.</small>
                   </label>
+                  <textarea class="form-control tinymceExample" name="tinymce" id="reportTinyMCE" rows="10" placeholder="Type something..."></textarea>
+                </div>
+                <div class="container-fluid mt-4">
+                  <label for="" class="form-label">Additional</label>
                   <input type="file" name="" class="form-control" id="">
                 </div>
                 <div class="container-fluid w-100">
-                  <a href="javascript:;" class="btn btn-primary float-end mt-4 ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send me-3 icon-md">
-                      <line x1="22" y1="2" x2="11" y2="13"></line>
-                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>Create Report</a>
-                  <a href="javascript:;" class="btn btn-outline-primary float-end mt-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer me-2 icon-md">
-                      <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                      <rect x="6" y="14" width="12" height="8"></rect>
-                    </svg>Print</a>
+                  <button id="generate_report" class="btn btn-primary float-end mt-4 ms-2">
+                    <i data-feather="send" class="icon-md me-2"></i>
+                    Generate Report
+                  </button>
+                  <button id="download_as_file" class="btn btn-outline-primary float-end mt-4">
+                    <i data-feather="download-cloud" class="icon-md me-2"></i>
+                    Download
+                  </button>
                 </div>
               </div>
             </div>
@@ -179,7 +205,6 @@
 
       <!-- Plugin js for this page -->
       <script src="<?= ROOT ?>assets/vendors/tinymce/tinymce.min.js"></script>
-      <script src="<?= ROOT ?>assets/vendors/select2/select2.min.js"></script>
       <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
       <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
       <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
@@ -194,10 +219,35 @@
 
       <!-- Custom js for this page -->
       <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-      <script src="<?= ROOT ?>assets/custom/js/audit_management/fetch-data.js"></script>
-      <!-- <script src="<?= ROOT ?>assets/js/data-table.js"></script> -->
-      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script src="<?= ROOT ?>assets/custom/js/audit_management/get-product-accuracy.js"></script>
+      <script src="<?= ROOT ?>assets/custom/js/audit_management/download-as-file.js"></script>
+      <script src="<?= ROOT ?>assets/custom/js/audit_management/generate-report.js"></script>
+      <!-- <script src="<?= ROOT ?>assets/js/tinymce.js"></script> -->
       <!-- End custom js for this page -->
+      <script>
+        tinymce.init({
+          selector: '.tinymceExample',
+          menubar: false,
+          height: 400,
+          plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'template' // add the template plugin
+          ],
+          toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | template', // add the template button to the toolbar
+          templates: [{
+              title: 'Template 1',
+              description: 'Description of template 1',
+              content: '<h1>Heading</h1><p>Paragraph</p>'
+            },
+            {
+              title: 'Template 2',
+              description: 'Description of template 2',
+              content: '<ul><li>Item 1</li><li>Item 2</li></ul>'
+            }
+          ]
+        });
+      </script>
 
 </body>
 

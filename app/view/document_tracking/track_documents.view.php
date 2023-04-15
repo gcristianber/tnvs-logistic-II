@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Request Document</title>
+  <title>Maintenance</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
@@ -34,6 +33,7 @@
   <!-- endinject -->
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
@@ -41,118 +41,110 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-
 </head>
+<style>
+  .dataTables_filter {
+    display: none;
+  }
+</style>
 
 <body>
   <div class="main-wrapper">
 
     <div class="page-wrapper">
+
       <div class="page-content">
-        <div class="row">
+        <div class="row h-100">
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">TRACK DOCUMENTS</h6>
-                <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+                <div class="mb-4">
+                  <h3 class="mb-1">Track Document</h3>
+                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
+                </div>
+                <div class="row mb-3">
+                  <div class="col">
+                    <div class="btn-group w-100" role="group" aria-label="Basic example">
+                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search tracking id">
+                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="table-responsive">
-                  <table id="dataTableExample" class="table display">
+                  <table id="request_tbl" class="table display">
                     <thead>
                       <tr>
-                        <th>reference number</th>
-                        <th>subject</th>
-                        <th>category</th>
-                        <th>date filed</th>
-                        <th>author</th>
-                        <th>receiver</th>
+                        <th data-orderable="false"></th>
+                        <th>tracking id</th>
+                        <th>to</th>
+                        <th>from</th>
+                        <th>date/time</th>
                         <th>status</th>
                         <th>action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>SE14401DAF3910</td>
-                        <td>
-                          <div class="mb-3">
-                            <p class="fw-bold text-uppercase">Contract Approval</p>
-                            <small class="text-muted">Lorem ipsum dolor sit amet.</small>
-                          </div>
-                          <a href="" class="link-primary">
-                            <i data-feather="search" class="icon-sm"></i>
-                            View submitted documents
-                          </a>
-                        </td>
-                        <td>
-                          Contract
-                        </td>
-                        <td>
-                          <p>03 Mar 2023</p>
-                          <small class="text-muted">04:57 AM</small>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-circle" alt="">
-                            <div>
-                              <p>Richelyn Villasor</p>
-                              <small class="text-muted">Logistic Manager</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          Human Resource
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Approved</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <i data-feather="list" class="btn-icon-prepend"></i>
-                            View Updates
-                          </button>
-                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                </div>
-                                <div class="modal-body">
-
-
-                                  <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-                                    <li class="nav-item">
-                                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                                        Evaluation
-                                      </a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a class="nav-link disabled" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Review</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a class="nav-link disabled" id="disabled-line-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" aria-selected="false">Download</a>
-                                    </li>
-                                  </ul>
-                                  <div class="tab-content mt-3" id="lineTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">...</div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
-                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
-                                    <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">...</div>
-                                  </div>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                      <?php
+                      if (!empty($documents)) :
+                        foreach ($documents as $data) :
+                      ?>
+                          <tr class="align-middle" data-status="scheduled">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
                               </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-
+                            </td>
+                            <td><?= $data->tracking_id ?></td>
+                            <td><?= ucwords($data->sender_dept) ?></td>
+                            <td><?= ucwords($data->receiver_dept) ?></td>
+                            <td>
+                              <p><?= date("d M Y", strtotime($data->sent_date)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->sent_date)) ?></small>
+                            </td>
+                            <td>
+                              <?php
+                              switch ($data->current_status) {
+                                case 'created':
+                                  echo '<span class="badge bg-primary">Created</span>';
+                                  break;
+                                case 'sent':
+                                  echo '<span class="badge bg-light text-dark">Sent</span>';
+                                  break;
+                                case 'received':
+                                  echo '<span class="badge bg-info">Received</span>';
+                                  break;
+                                case 'forwarded':
+                                  echo '<span class="badge bg-dark">Forwarded</span>';
+                                  break;
+                                case 'on hold':
+                                  echo '<span class="badge bg-secondary">On Hold</span>';
+                                  break;
+                                case 'reviewed':
+                                  echo '<span class="badge bg-warning">Reviewed</span>';
+                                  break;
+                                case 'completed':
+                                  echo '<span class="badge bg-success">Completed</span>';
+                                  break;
+                                case 'archived':
+                                  echo '<span class="badge bg-danger">Archived</span>';
+                                  break;
+                              }
+                              ?>
+                            </td>
+                            <td>
+                              <button class="btn btn-light btn-icon-text">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </button>
+                            </td>
+                          </tr>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
+
                   </table>
                 </div>
               </div>
@@ -185,10 +177,88 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
+  <!-- Flat Picker -->
+  <script>
+    const myInput = document.querySelectorAll(".date-input");
+    const flatpickrInstance = flatpickr(myInput, {
+      enableTime: true,
+      dateFormat: "d M Y",
+      defaultDate: new Date(),
+      minDate: "today",
+      allowInput: true
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      var table = $('#request_tbl').DataTable({
+        lengthChange: false, // Disable length menu
+        bInfo: false, // Disable "Showing X of Y entries" label
+      });
 
+      $('#search').on('keyup', function(event) {
+        if (event.keyCode === 13) { // Check if "Enter" key is pressed
+          var query = $('#search').val();
+          table.search(query).draw();
+        }
+      });
+
+      $('#customSearchBtn').on('click', function() {
+        var query = $('#search').val();
+        table.search(query).draw();
+      });
+
+      var rows = $('table tbody tr');
+
+      // listen for changes to the radio buttons
+      $('input[name="btnradio"]').on('change', function() {
+        // get the value of the selected radio button
+        var value = $(this).val();
+
+        // hide all rows by default
+        rows.hide();
+
+        // show the rows that match the selected status
+        if (value === 'all') {
+          rows.show();
+        } else {
+          rows.filter('[data-status="' + value + '"]').show();
+        }
+      });
+
+      var statusCounts = {
+        'all': rows.length,
+        'pending': 0,
+        'in progress': 0,
+        'scheduled': 0,
+        'completed': 0,
+        'cancelled': 0,
+        'delayed': 0
+      };
+
+      rows.each(function() {
+        var status = $(this).data('status');
+        statusCounts[status]++;
+      });
+
+      $('input[type=radio][name=btnradio]').each(function() {
+        var status = $(this).val();
+        if (status !== 'all') {
+          var count = statusCounts[status];
+          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
+        }
+      });
+
+      function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+
+
+    });
+  </script>
 </body>
 
 </html>
