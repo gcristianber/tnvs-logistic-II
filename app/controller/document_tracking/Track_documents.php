@@ -38,8 +38,6 @@ class Track_documents
         return $Documents->findRowView(["tracking_id" => $tracking_id]);
     }
 
-
-
     public function update_status($tracking_id = '')
     {
         $Documents = new DT_Documents;

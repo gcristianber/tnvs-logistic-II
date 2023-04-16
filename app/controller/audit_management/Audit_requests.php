@@ -39,7 +39,7 @@ class Audit_requests
             $table_data = $_POST["table_data"];
             $overall_accuracy = $_POST["overall_accuracy"];
             $Reports->insertReport($reference_number, $report_body, $overall_accuracy);
-
+            $Requests->update($reference_number, ["status_id" => 2], "reference_number");
             // Check if $table_data is an array
             if (is_array($table_data)) {
                 foreach ($table_data as $key => $audited_item) {
@@ -49,8 +49,7 @@ class Audit_requests
                 }
             }
 
-            $Requests->update($reference_number, ["status_id" => 3], "reference_number");
-
+            
             exit;
         }
 

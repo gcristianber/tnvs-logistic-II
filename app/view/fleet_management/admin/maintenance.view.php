@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
@@ -45,6 +46,13 @@
 <style>
   .dataTables_filter {
     display: none;
+  }
+
+
+
+  .perfect-scrollbar-example {
+    position: relative;
+    max-height: 250px;
   }
 </style>
 
@@ -131,10 +139,89 @@
                       <i data-feather="edit-2" class="btn-icon-prepend"></i>
                       Modify
                     </button>
-                    <button class="btn btn-primary btn-icon-text">
+                    <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#add_new">
                       <i data-feather="plus" class="btn-icon-prepend"></i>
                       Add New
                     </button>
+
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="add_new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                        </div>
+                        <form id="add_new_maintenance">
+                          <div class="modal-body">
+                            <div class="mb-3">
+                          
+                              <div class="input-group mb-3">
+                                <div class="input-group-text">
+                                  <i data-feather="search"></i>
+                                </div>
+                                <input type="text" id="search_input" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                                <button class="btn btn-primary" id="search_vehicle">
+                                  Search
+                                </button>
+                              </div>
+                              <div id="vehicle_list" class="perfect-scrollbar-example">
+                                <?php
+                                if (!empty($vehicles)) :
+                                  foreach ($vehicles as $data) :
+                                ?>
+                                    <div class="d-flex justify-content-between mb-3" data-id="<?= $data->vehicle_id ?>" data-name="<?= $data->make ?>">
+                                      <div class="d-flex gap-2">
+                                        <img src="<?= ROOT . '/uploads/images/thumbnails/' . $data->thumbnail_path ?>" class="ht-75 wd-75" alt="">
+                                        <div>
+                                          <p class="fw-bold text-uppercase"><?= $data->make ?></p>
+                                          <small><?= $data->plate ?> - <?= ucwords($data->vehicle_type) ?></small>
+                                        </div>
+                                      </div>
+                                      <div class="form-check mb-2">
+                                        <input type="radio" class="form-check-input" name="vehicle_id" value="<?= $data->vehicle_id ?>" id="radioDefault">
+                                      </div>
+                                    </div>
+                                <?php
+                                  endforeach;
+                                endif;
+                          
+                                ?>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <select name="type_id" class="form-select" id="">
+                                <option selected disabled>Select Maintenance Type</option>
+                                <option value="1">Cleaning</option>
+                                <option value="2">Change Oil</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <textarea name="remarks" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                              <label for="" class="form-label">
+                                Mechanic Name
+                              </label>
+                              <input type="text" name="mechanic_name" id="" class="form-control" placeholder="Input name">
+                            </div>
+                            <div class="mb-3">
+                              <div class="input-group flatpickr" id="flatpickr-date">
+                                <span class="input-group-text input-group-addon" data-toggle="">
+                                  <i data-feather="calendar"></i>
+                                </span>
+                                <input type="text" name="date_schedule" id="" class="form-control date-input">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Entry</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -154,251 +241,67 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Cleaning</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-info">Scheduled</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="cancelled">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Change Oil</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-danger">Cancelled</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="pending">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Change Oil</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="in progress">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Change Oil</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-primary">In Progress</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="completed">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Change Oil</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-success">Completed</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="delayed">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Change Oil</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-secondary">Delayed</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="delayed">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>MNT-74AFD3A</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>CHEVY EXPRESS 2022</p>
-                              <small class="text-muted">FTN-577</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Change Oil</td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>Just a normal cleaning.</td>
-                        <td>
-                          <span class="badge bg-secondary">Delayed</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit-2"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($maintenance)) :
+                        foreach ($maintenance as $data) :
+
+                      ?>
+                          <tr class="align-middle" data-status="<?= $data->maintenance_status ?>">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td><?= $data->maintenance_id ?></td>
+                            <td>
+                              <div class="d-flex align-items-center gap-2">
+                                <div>
+                                  <p><?= $data->make ?></p>
+                                  <small class="text-muted"><?= $data->plate ?></small>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= $data->maintenance_type ?></td>
+                            <td><?= $data->mechanic_name ?></td>
+                            <td>
+                              <p><?= $data->date_schedule ?></p>
+                            </td>
+                            <td><?= $data->remarks ?></td>
+                            <td>
+                              <?php
+                              switch ($data->maintenance_status) {
+                                case 'pending':
+                                  echo '<span class="badge bg-warning">Pending</span>';
+                                  break;
+                                case 'in progress':
+                                  echo '<span class="badge bg-warning">In Progress</span>';
+                                  break;
+                                case 'scheduled':
+                                  echo '<span class="badge bg-info">Scheduled</span>';
+                                  break;
+                                case 'delayed':
+                                  echo '<span class="badge bg-secondary">Delayed</span>';
+                                  break;
+                                case 'completed':
+                                  echo '<span class="badge bg-success">Completed</span>';
+                                  break;
+                                case 'cancelled':
+                                  echo '<span class="badge bg-danger">Cancelled</span>';
+                                  break;
+                              }
+                              ?>
+                            </td>
+                            <td>
+                              <button class="btn btn-light btn-icon-text">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </button>
+                            </td>
+                          </tr>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
 
                   </table>
@@ -433,15 +336,44 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-maintenance.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
+  <script>
+    $(document).ready(function() {
+      $('#search_input').on('keyup', function() {
+        var input = $('#search_input').val().toLowerCase();
+        $('#vehicle_list > div').each(function() {
+          var name = $(this).find('div:nth-child(1) > div:nth-child(2) > p').text().toLowerCase();
+          if (name.includes(input)) {
+            $(this).addClass("d-block");
+          } else {
+            $(this).removeClass("d-block");
+            $(this).addClass("d-none");
+          }
+        });
+      });
+
+      $('input[name="selected_vehicle"]').on('change', function() {
+        console.log(this.value)
+      })
+
+      $('#search_input').on('keyup', function() {
+        if ($(this).val() === '') {
+          $('#vehicle_list > div').removeClass("d-none");
+          $('#vehicle_list > div').addClass("d-block");
+        }
+      });
+
+    });
+  </script>
   <!-- Flat Picker -->
   <script>
+    var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
     const myInput = document.querySelectorAll(".date-input");
     const flatpickrInstance = flatpickr(myInput, {
       enableTime: true,
-      dateFormat: "d M Y",
+      dateFormat: "Y-m-d",
       defaultDate: new Date(),
       minDate: "today",
       allowInput: true

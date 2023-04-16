@@ -54,13 +54,15 @@ $(document).ready(() => {
           },
           success: function (response) {
             console.log(response);
-            Swal.fire(
-              "Deleted!",
-              "Your file has been deleted.",
-              "success"
-            ).then(() => {
-                window.location.href = BASE_URL + 'audit_management/audit_requests';
-            });
+            console.log("Test")
+            // Swal.fire(
+            //   "Deleted!",
+            //   "Your file has been deleted.",
+            //   "success"
+            // ).then(() => {
+            //     // window.location.href = BASE_URL + 'audit_management/audit_requests';
+                
+            // });
           },
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {

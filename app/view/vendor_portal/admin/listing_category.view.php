@@ -59,167 +59,92 @@
             <div class="card">
               <div class="card-body">
                 <div class="mb-4">
-                  <h3 class="mb-1">Procurement Requests</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
+                  <h3 class="mb-1">Vendor Opportunities</h3>
+                  <p>Category : Office Supplies</p>
                 </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="input-group flatpickr" id="flatpickr-date">
-                      <span class="input-group-text input-group-addon" data-toggle="">
-                        <i data-feather="calendar"></i>
-                      </span>
-                      <input type="text" name="return_date" id="" class="form-control date-input">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>List Type</option>
-                      <option value="">Purchase</option>
-                      <option value="">Auction</option>
-                    </select>
-                  </div>
-                  <div class="col">
+
+
+                <div class="row">
+                  <div class="col-lg-10 grid-margin">
                     <div class="btn-group w-100" role="group" aria-label="Basic example">
                       <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
                       <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
                     </div>
-
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
+                  <div class="col-lg-2 grid-margin">
+                    <div class="d-flex gap-2">
+                      <a class="btn btn-primary btn-icon-text flex-grow-1" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
+                        <i data-feather="plus" class="btn-icon-prepend"></i>
+                        Add New
+                      </a>
                     </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">Pending</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="approved" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Declined</label>
-                    </div>
-                  </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="upload" class="btn-icon-prepend"></i>
-                      Import Data
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                      Decline
-                    </button>
-                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add New
-                    </a>
                   </div>
                 </div>
 
                 <div class="table-responsive">
-                  <table id="request_tbl" class="table display">
+                  <table id="request_tbl" class="table table-hover display">
                     <thead>
                       <tr>
-                        <th data-orderable="false"></th>
-                        <th>request id</th>
-                        <th>subject</th>
-                        <th>list type</th>
-                        <th>start bid</th>
-                        <th>requested by</th>
-                        <th>request date</th>
-                        <th>due date</th>
+                        <th>#</th>
+                        <th>publish date</th>
+                        <th>closing date</th>
+                        <th>title</th>
+                        <th>date created</th>
+                        <th>created by</th>
                         <th>status</th>
-                        <th class="text-center" data-orderable="false">action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle" data-status="pending">
+                      <tr class="align-middle">
+                        <td>1</td>
                         <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>VREQ-244ACDFK</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <div class="wd-250 text-truncate">
-                              <p class="text-uppercase">Intel i5 4th Gen Computers</p>
-                              <small class="text-muted">Hello, We are requesting a Lorem, ipsum dolor sit amet consectetur adipisicing elit.</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Purchase</td>
-                        <td>
-                          <p>P 50, 000</p>
-                        </td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
+                          <p>16 Apr 2023</p>
+                          <small class="text-muted">09:26 AM</small>
                         </td>
                         <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
+                          <p>16 Apr 2023</p>
+                          <small class="text-muted">09:26 AM</small>
                         </td>
                         <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                        <td>
-                          <a class="btn btn-primary btn-icon-text"  href="<?= ROOT ?>vendor_portal_admin/listing/create_list">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Create List
+                          <a href="#" class="link-primary text-decoration-underline text-uppercase">
+                            Intel i5 Computers : Need a supply for our office supplies
                           </a>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
-                          </button>
+                        </td>
+                        <td>
+                          <p>16 Apr 2023</p>
+                          <small class="text-muted">09:26 AM</small>
+                        </td>
+                        <td>
+                          <p>Leandro Quisado</p>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Active</span>
                         </td>
                       </tr>
-                      <tr class="align-middle" data-status="approved">
+                      <tr class="align-middle">
+                        <td>2</td>
                         <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>VREQ-244ACDFK</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <div class="wd-250 text-truncate">
-                              <p class="text-uppercase">Intel i5 4th Gen Computers</p>
-                              <small class="text-muted">Hello, We are requesting a Lorem, ipsum dolor sit amet consectetur adipisicing elit.</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Purchase</td>
-                        <td>
-                          <p>P 50, 000</p>
-                        </td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
+                          <p>16 Apr 2023</p>
+                          <small class="text-muted">09:26 AM</small>
                         </td>
                         <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
+                          <p>16 Apr 2023</p>
+                          <small class="text-muted">09:26 AM</small>
                         </td>
                         <td>
-                          <span class="badge bg-success">Approved</span>
+                          <a href="<?= ROOT ?>vendor_portal_admin/listing/view_request" class="link-primary text-decoration-underline text-uppercase">
+                            Intel i5 Computers : Need a supply for our office supplies
+                          </a>
                         </td>
-                        <td class="text-center">
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
+                        <td>
+                          <p>16 Apr 2023</p>
+                          <small class="text-muted">09:26 AM</small>
+                        </td>
+                        <td>
+                          <p>Leandro Quisado</p>
+                        </td>
+                        <td>
+                          <span class="badge bg-danger">Inactive</span>
                         </td>
                       </tr>
                     </tbody>

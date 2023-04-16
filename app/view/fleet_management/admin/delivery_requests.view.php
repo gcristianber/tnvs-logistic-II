@@ -58,10 +58,6 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Delivery Requests</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
                 <div class="row mt-4">
                   <div class="col-3 grid-margin text-center border-end">
                     <div class="d-inline p-2 position-relative">
@@ -142,7 +138,7 @@
                       <i data-feather="trash-2" class="btn-icon-prepend"></i>
                       Decline
                     </button>
-                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
+                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>fleet_management_admin/delivery_requests/add_new_delivery">
                       <i data-feather="plus" class="btn-icon-prepend"></i>
                       Add New
                     </a>
@@ -155,9 +151,9 @@
                       <tr>
                         <th data-orderable="false"></th>
                         <th>tracking id</th>
-                        <th>requestor</th>
+                        <th>contact person</th>
+                        <th>phone number</th>
                         <th>delivery type</th>
-                        <th>recipient</th>
                         <th>date requested</th>
                         <th>delivery date</th>
                         <th>status</th>
@@ -174,12 +170,9 @@
                         <td>FDELI-244ACDFK</td>
                         <td>
                           <p>Cristianber Gordora</p>
-                          <small class="text-muted">Warehouse Staff</small>
                         </td>
+                        <td>09995645382</td>
                         <td>Delivery</td>
-                        <td>
-                          <p>Richelyn Villasor</p>
-                        </td>
                         <td>
                           <p>06 Apr 2023</p>
                           <small class="text-muted">12:26 AM</small>
@@ -189,19 +182,102 @@
                           <small class="text-muted">12:26 AM</small>
                         </td>
                         <td>
-                          <span class="badge bg-warning">Pending</span>
+                          <span class="badge bg-primary">In Transit</span>
                         </td>
                         <td>
-                          <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/listing/create_list">
-                            <i data-feather="package" class="btn-icon-prepend"></i>
-                            Prepare Shipment
-                          </a>
                           <button class="btn btn-light btn-icon-text">
                             <i data-feather="external-link" class="btn-icon-prepend"></i>
                             Preview
                           </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="trash-2"></i>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="pending">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>FDELI-244ACDFK</td>
+                        <td>
+                          <p>Cristianber Gordora</p>
+                        </td>
+                        <td>09995645382</td>
+                        <td>Delivery</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <p>07 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Preparing</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="pending">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>FDELI-244ACDFK</td>
+                        <td>
+                          <p>Cristianber Gordora</p>
+                        </td>
+                        <td>09995645382</td>
+                        <td>Delivery</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <p>07 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Delivered</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="pending">
+                        <td>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                          </div>
+                        </td>
+                        <td>FDELI-244ACDFK</td>
+                        <td>
+                          <p>Cristianber Gordora</p>
+                        </td>
+                        <td>09995645382</td>
+                        <td>Delivery</td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <p>07 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-danger">Delivery Failed</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
                           </button>
                         </td>
                       </tr>

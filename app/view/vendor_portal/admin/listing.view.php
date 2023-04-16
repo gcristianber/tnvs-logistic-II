@@ -43,9 +43,9 @@
 
 </head>
 <style>
-  .dataTables_filter {
+  /* .dataTables_filter {
     display: none;
-  }
+  } */
 </style>
 
 <body>
@@ -59,130 +59,43 @@
             <div class="card">
               <div class="card-body">
                 <div class="mb-4">
-                  <h3 class="mb-1">Listing</h3>
+                  <h3 class="mb-1">Vendor Opportunities</h3>
                   <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="input-group flatpickr" id="flatpickr-date">
-                      <span class="input-group-text input-group-addon" data-toggle="">
-                        <i data-feather="calendar"></i>
-                      </span>
-                      <input type="text" name="return_date" id="" class="form-control date-input">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>List Type</option>
-                      <option value="">Purchase</option>
-                      <option value="">Auction</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
-                    </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">Pending</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="approved" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Declined</label>
-                    </div>
-                  </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="upload" class="btn-icon-prepend"></i>
-                      Import Data
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                      Decline
-                    </button>
-                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add New
-                    </a>
-                  </div>
                 </div>
 
                 <div class="table-responsive">
-                  <table id="request_tbl" class="table display">
+                  <table id="request_tbl" class="table table-bordered display">
                     <thead>
                       <tr>
-                        <th data-orderable="false"></th>
-                        <th>request id</th>
-                        <th>subject</th>
-                        <th>list type</th>
-                        <th>start bid</th>
-                        <th>requested by</th>
-                        <th>date published</th>
-                        <th>participants</th>
-                        <th>status</th>
+                        <th>#</th>
+                        <th>category</th>
+                        <th>description</th>
+                        <th>no. opportunities</th>
                         <th class="text-center" data-orderable="false">action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle" data-status="pending">
+                      <tr class="align-middle">
+                        <td rowspan="2">1</td>
+                        <td rowspan="2">Office Supplies</td>
+                        <td rowspan="2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, tenetur!</td>
                         <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>VREQ-244ACDFK</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/100x100" class="ht-100 wd-100 rounded-2" alt="">
-                            <div class="wd-250 text-truncate">
-                              <p class="text-uppercase">Intel i5 4th Gen Computers</p>
-                              <small class="text-muted">Hello, We are requesting a Lorem, ipsum dolor sit amet consectetur adipisicing elit.</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Purchase</td>
-                        <td>
-                          <p>P 50, 000</p>
-                        </td>
-                        <td>Cristianber Gordora</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
+                          <p class="fw-bold">69</p>
                         </td>
                         <td>
-                          26
-                        </td>
-                        <td>
-                          <span class="badge bg-primary">In Progress</span>
-                        </td>
-                        <td>
-                          <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/listing/manage_bid">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Invite Vendors
-                          </a>
-                          <button class="btn btn-light btn-icon-text">
+                          <button class="btn btn-primary btn-icon-text">
+                            <i data-feather="edit" class="btn-icon-prepend"></i>
+                            Edit Category
+                          </button>
+                          <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/listing/category/1">
                             <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="stop-circle"></i>
-                          </button>
+                            Open Category
+                          </a>
                         </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
                       </tr>
                     </tbody>
 

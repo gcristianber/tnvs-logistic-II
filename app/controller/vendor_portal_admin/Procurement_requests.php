@@ -19,4 +19,11 @@ class Procurement_requests{
         $this->view("partials/sidebar");
     }
 
+    public function update_request_status(){
+        $request_status = $_POST["status_name"];
+        switch($request_status){
+            
+        }
+    }
+
 }

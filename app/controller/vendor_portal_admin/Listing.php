@@ -1,26 +1,29 @@
-<?php 
+<?php
 
 session_start();
 
-class Listing{
+class Listing
+{
 
     use Controller;
 
-    public function index(){
+    public function index()
+    {
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/listing");
-        $this->view("partials/sidebar");
-        
+        $this->view("partials/sidebar");    
     }
 
-    public function create_list(){
-        
-        $this->view("vendor_portal/admin/create_list");
+    public function category()
+    {
+        $this->view('partials/navbar');
+        $this->view("vendor_portal/admin/listing_category");
         $this->view("partials/sidebar");
     }
 
-    public function manage_bid(){
-        $this->view("vendor_portal/admin/manage_bid");
+    public function view_request(){
+        $this->view('partials/navbar');
+        $this->view("vendor_portal/admin/view_request");
         $this->view("partials/sidebar");
     }
 }

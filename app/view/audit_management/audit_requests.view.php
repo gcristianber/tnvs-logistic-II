@@ -165,27 +165,10 @@
                               switch ($data->status_name) {
                                 case 'pending':
                                   echo '
-                                  <button class="btn btn-primary btn-icon-text">
-                                    <i data-feather="search" class="btn-icon-prepend"></i>
-                                    Review Request
-                                  </button>
-                                  <button class="btn btn-outline-primary btn-icon receive-request">
-                                    <i data-feather="plus"></i>
-                                  </button>
-                                  <button class="btn btn-outline-primary btn-icon" data-bs-toggle="modal" data-bs-target="#DECLINE-' . $data->reference_number . '">
-                                    <i data-feather="trash-2"></i>
-                                  </button>';
-                                  break;
-                                case 'received':
-                                  echo '
-                                  <a class="btn btn-primary btn-icon-text" href="audit_requests/create?reference_number=' . $data->reference_number . '">
+                                  <a class="btn btn-primary btn-icon-text" href="'. ROOT .'audit_management/audit_requests/create?reference_number=' . $data->reference_number . '">
                                     <i data-feather="plus" class="btn-icon-prepend"></i>
-                                    Create Report
+                                    Create Request
                                   </a>
-                                  <button class="btn btn-light btn-icon-text">
-                                    <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                    Preview
-                                  </button>
                                   ';
                                   break;
                                 case 'completed':
@@ -193,22 +176,8 @@
                                   <a class="btn btn-primary btn-icon-text" href="'. ROOT .'audit_management/audit_requests/view_report?reference_number=' . $data->reference_number . '">
                                     <i data-feather="external-link" class="btn-icon-prepend"></i>
                                     View Report
-                                  </a>
-                                  <button class="btn btn-light btn-icon-text">
-                                    <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                    Preview
-                                  </button>
-                                  <button class="btn btn-danger btn-icon">
-                                    <i data-feather="trash-2"></i>
-                                  </button>'
+                                  </a>'
                                   ;
-                                  break;
-                                case 'declined':
-                                  echo '
-                                  <a class="btn btn-danger btn-icon-text" href="audit_requests/create/' . $data->reference_number . '">
-                                      <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                      View Remarks
-                                  </a>';
                                   break;
                               }
                               ?>

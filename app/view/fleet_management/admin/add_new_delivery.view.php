@@ -44,7 +44,7 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
 </head>
 <style>
   body {
@@ -74,115 +74,130 @@
                 <div id="map" class="rounded-2"></div>
               </div>
               <div class="col-md-7 grid-margin">
-                <div class="mt-4">
-                  <label for="" class="form-label">Contact</label>
-                  <input type="text" name="" id="" class="form-control mb-3" placeholder="Full Name">
-                  <input type="text" name="" id="" class="form-control" placeholder="Telephone number">
-                </div>
-                <div class="mt-4">
-                  <div>
-                    <label for="" class="form-label">Destination</label>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <select name="" class="form-select mb-3" id="">
-                          <option selected disabled>Select City</option>
-                          <option value="">Quezon City</option>
-                        </select>
-                      </div>
+                <form id="delivery_form">
+                  <div class="">
+                    <select name="delivery_type" class="form-select" id="">
+                      <option selected disabled>Delivery Type</option>
+                      <option value="1">Delivery</option>
+                      <option value="2">Pickup</option>
+                    </select>
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label">Contact</label>
+                    <input type="text" name="contact_person" id="" class="form-control mb-3" placeholder="Full Name">
+                    <input type="text" name="phone_number" id="" class="form-control" placeholder="Phone number">
+                  </div>
+                  <div class="mt-4">
 
-                      <div class="col-md-6">
-                        <select name="" class="form-select mb-3" id="">
-                          <option selected disabled>Select Barangay</option>
-                          <option value="">Quezon City</option>
-                        </select>
-                      </div>
+                    <div class="alert alert-primary" role="alert">
+                      Please provide the specific address for delivery.
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">
+                        <p>Pickup Address</p>
+                      </label>
+                      <textarea name="pickup_address" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">
+                        <p>Drop-off Address</p>
+                      </label>
+                      <textarea name="dropoff_address" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
                     </div>
                   </div>
-                  <textarea name="" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
-                </div>
-                <div class="mt-4">
-                  <div class="form-check form-switch mb-2">
-                    <input type="checkbox" class="form-check-input" id="formSwitch1">
-                    <label class="form-check-label" for="formSwitch1">Schedule Delivery</label>
-                  </div>
-                  <div class="input-group flatpickr" id="flatpickr-date">
-                    <span class="input-group-text input-group-addon" data-toggle="">
-                      <i data-feather="calendar"></i>
-                    </span>
-                    <input type="text" name="pickup_date" id="" class="form-control date-input">
-                  </div>
-                </div>
-                <div class="mt-4">
-                  <label for="notes" class="form-label">Products to deliver</label>
-                  <div class="mb-3">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <input type="text" name="" id="" class="form-control" placeholder="Product ID">
-                      </div>
-                      <div class="col-md-3">
-                        <input type="text" name="" id="" class="form-control" placeholder="Product Name">
-                      </div>
-                      <div class="col-md-3">
-                        <input type="number" name="" id="" class="form-control" placeholder="Quantity">
-                      </div>
-                      <div class="col-md-3">
-                        <button class="btn btn-primary btn-icon-text w-100">
-                          <i data-feather="plus" class="btn-icon-prepend"></i>
-                          Add Data
-                        </button>
+                  <div class="mt-4">
+                    <label for="notes" class="form-label">Products to deliver</label>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <input type="text" name="" id="" class="form-control" placeholder="Product ID">
+                        </div>
+                        <div class="col-md-3">
+                          <input type="text" name="" id="" class="form-control" placeholder="Product Name">
+                        </div>
+                        <div class="col-md-3">
+                          <input type="number" name="" id="" class="form-control" placeholder="Quantity">
+                        </div>
+                        <div class="col-md-3">
+                          <button class="btn btn-primary btn-icon-text w-100">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Add Data
+                          </button>
+                        </div>
                       </div>
                     </div>
+                    <table class="table table-bordered" id="delivery_products">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>product id</th>
+                          <th>product name</th>
+                          <th>quantity</th>
+                          <th>action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle">
+                          <td>1</td>
+                          <td>456</td>
+                          <td>Chips</td>
+                          <td>56</td>
+                          <td>
+                            <button class="btn btn-primary btn-icon">
+                              <i data-feather="edit"></i>
+                            </button>
+                            <button class="btn btn-danger btn-icon">
+                              <i data-feather="minus-circle"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td>2</td>
+                          <td>456</td>
+                          <td>Chocolates</td>
+                          <td>100</td>
+                          <td>
+                            <button class="btn btn-primary btn-icon">
+                              <i data-feather="edit"></i>
+                            </button>
+                            <button class="btn btn-danger btn-icon">
+                              <i data-feather="minus-circle"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>product id</th>
-                        <th>product name</th>
-                        <th>quantity</th>
-                        <th>action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>1</td>
-                        <td>456</td>
-                        <td>Chips</td>
-                        <td>56</td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="minus-circle"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle">
-                        <td>2</td>
-                        <td>456</td>
-                        <td>Chocolates</td>
-                        <td>100</td>
-                        <td>
-                          <button class="btn btn-primary btn-icon">
-                            <i data-feather="edit"></i>
-                          </button>
-                          <button class="btn btn-danger btn-icon">
-                            <i data-feather="minus-circle"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="mt-4">
-                  <label for="notes" class="form-label">Notes for the driver</label>
-                  <textarea name="" class="form-control" id="notes" cols="30" rows="5" placeholder="Type something..."></textarea>
-                </div>
-                <div class="mt-4">
-                  <label for="" class="form-label">Additional File(s)</label>
-                  <input type="file" name="" id="" class="form-control">
-                </div>
+                  <div class="mt-4">
+                    <label for="notes" class="form-label">Notes for the driver</label>
+                    <textarea name="notes_for_driver" class="form-control" id="notes" cols="30" rows="5" placeholder="Type something..."></textarea>
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label">
+                      <p>Delivery Date</p>
+                    </label>
+                    <div class="input-group flatpickr" id="flatpickr-date">
+                      <span class="input-group-text input-group-addon" data-toggle="">
+                        <i data-feather="calendar"></i>
+                      </span>
+                      <input type="text" name="delivery_date" id="" class="form-control date-input">
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label">Additional File(s)</label>
+                    <input type="file" name="shipping_document" id="" class="form-control">
+                  </div>
+                  <div class="text-end mt-4">
+                    <button class="btn btn-light btn-icon-text">
+                      <i data-feather="clock" class="btn-icon-prepend"></i>
+                      Schedule Delivery
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-icon-text">
+                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                      Add Delivery
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -209,6 +224,7 @@
 
   <!-- Custom js for this page -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-delivery-request.js"></script>
   <!-- End custom js for this page -->
 
   <script>

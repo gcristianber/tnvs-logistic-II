@@ -23,6 +23,11 @@ class Manage_vehicles{
         $vehicles->insert_vehicle($_POST, $_FILES);
     }
 
+    public function edit_vehicle(){
+        $vehicle_id = $_POST["vehicle_id"];
+        $Vehicles = new FM_Vehicles;
+    }
+
     public function fetch(){
         $vehicles = new FM_Vehicles;
         $data = $vehicles->renderView();

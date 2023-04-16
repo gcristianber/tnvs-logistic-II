@@ -14,4 +14,21 @@ class Delivery_requests{
         
     }
 
+    public function add_new_delivery(){
+
+        $this->view('partials/navbar');
+        $this->view("fleet_management/admin/add_new_delivery");
+        $this->view("partials/sidebar");
+    }
+
+    public function insert_delivery(){
+        // $Delivery = new FM_Delivery;
+        // $Delivery->insert([
+
+        // ])
+
+        print_r($_POST);
+        print_r($_FILES);
+    }
+
 }
