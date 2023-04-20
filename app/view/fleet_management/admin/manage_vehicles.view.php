@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -292,285 +293,240 @@
         </div>
       </nav>
       <div class="page-content">
-
-
-
-        <div class="card grid-margin">
+        <div class="card">
           <div class="card-body">
-            <div class="mb-3">
-              <div class="d-flex align-items-center justify-content-between">
-                <div>
-                  <h6>MANAGE VEHICLES</h6>
-                  <p class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+            <div class="row mb-3">
+              <div class="col">
+                <div class="input-group flatpickr" id="flatpickr-date">
+                  <span class="input-group-text input-group-addon" data-toggle="">
+                    <i data-feather="calendar"></i>
+                  </span>
+                  <input type="text" name="return_date" id="" class="form-control date-input">
                 </div>
-                <div>
-                  <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#addNewVehicle">
-                    <i data-feather="plus" class="btn-icon-prepend"></i>
-                    Add new vehicle
-                  </button>
-                  <div class="modal fade" id="addNewVehicle" tabindex="-1" aria-labelledby="addNewVehicle" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <form id="addVehicle" enctype="multipart/form-data">
-                          <div class="modal-body">
-                            <div class="mb-3">
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="w-100">
-                                  <label for="" class="form-label">Make <span class="text-danger">*</span> </label>
-                                  <input type="text" name="make" id="" class="form-control">
-                                </div>
-                                <div class="w-100">
-                                  <label for="" class="form-label">Plate <span class="text-danger">*</span> </label>
-                                  <input type="text" name="plate" id="" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="mb-3">
-                              <div>
-                                <label for="" class="form-label">Type <span class="text-danger">*</span> </label>
-                                <select name="vehicle_type_id" id="" class="form-select">
-                                  <option selected disabled>...</option>
-                                  <option value="1">Sedan</option>
-                                  <option value="2">Vans</option>
-                                  <option value="3">Trucks</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="mb-3">
-                              <label for="" class="form-label">Description <span class="text-danger">*</span> </label>
-                              <textarea name="description" id="" cols="30" rows="5" class="form-control" placeholder="Type something..."></textarea>
-                            </div>
-                            <div class="mb-3">
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="w-100">
-                                  <label for="" class="form-label">Transmission <span class="text-danger">*</span> </label>
-                                  <select name="trans_type_id" id="" class="form-select">
-                                    <option selected disabled>...</option>
-                                    <option value="1">Automatic</option>
-                                    <option value="2">Manual</option>
-                                  </select>
-                                </div>
-                                <div class="w-100">
-                                  <label for="" class="form-label">Number of seats <span class="text-danger">*</span> </label>
-                                  <input type="number" name="number_of_seats" id="" class="form-control">
-                                </div>
-                                <div class="w-100">
-                                  <label for="" class="form-label">Odometer <span class="text-danger">*</span> </label>
-                                  <input type="text" name="odometer" id="" class="form-control" placeholder="KMP/H">
-                                </div>
-                                <div class="w-100">
-                                  <label for="" class="form-label">Dimensions <span class="text-danger">*</span> </label>
-                                  <input type="text" name="dimensions" id="" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="mb-3">
-                              <label for="" class="form-label">Thumbnail <span class="text-danger">*</span> </label>
-                              <input type="file" name="thumbnail" id="thumbnail" class="form-control">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </form>
-                      </div>
+              </div>
+              <div class="col">
+                <select name="" id="" class="form-select">
+                  <option selected disabled>Maintenance Type</option>
+                  <option value="">Change Oil</option>
+                  <option value="">Cleaning</option>
+                </select>
+              </div>
+              <div class="col">
+                <div class="btn-group w-100" role="group" aria-label="Basic example">
+                  <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
+                  <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col">
+                <div class="d-inline">
+                  <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="btnradio1">All</label>
+                </div>
+                <div class="d-inline">
+                  <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio2">Sedan</label>
+                </div>
+                <div class="d-inline">
+                  <input type="radio" class="btn-check" value="in progress" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio3">Van</label>
+                </div>
+                <div class="d-inline">
+                  <input type="radio" class="btn-check" value="scheduled" name="btnradio" id="btnradio4" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio4">Truck</label>
+                </div>
+              </div>
+              <div class="col text-end">
+                <button class="btn btn-outline-primary btn-icon-text" disabled>
+                  <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                  Export as CSV
+                </button>
+                <button class="btn btn-outline-primary btn-icon-text" disabled>
+                  <i data-feather="trash-2" class="btn-icon-prepend"></i>
+                  Cancel
+                </button>
+                <button class="btn btn-outline-primary btn-icon-text" disabled>
+                  <i data-feather="edit-2" class="btn-icon-prepend"></i>
+                  Modify
+                </button>
+                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#add_new">
+                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                  Add New
+                </button>
+
+              </div>
+              <!-- Modal -->
+              <div class="modal fade" id="add_new" tabindex="-1" aria-labelledby="addNewVehicle" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                     </div>
-                  </div>
-                  <button class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#maintenanceVehicle">
-                    <i data-feather="settings" class="btn-icon-prepend"></i>
-                    Maintenance
-                  </button>
-                  <div class="modal fade" id="maintenanceVehicle" tabindex="-1" aria-labelledby="maintenanceVehicle" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="mb-3">
-                            <div>
-                              <label for="" class="form-label">Select Type <span class="text-danger">*</span> </label>
-                              <select name="" id="" class="form-select">
-                                <option selected disabled>...</option>
-                                <option value="">Sedan</option>
-                                <option value="">Vans</option>
-                                <option value="">Trucks</option>
-                              </select>
+                    <form id="addVehicle" enctype="multipart/form-data">
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <div class="d-flex align-items-center gap-2">
+                            <div class="w-100">
+                              <label for="" class="form-label">Make <span class="text-danger">*</span> </label>
+                              <input type="text" name="make" id="" class="form-control">
                             </div>
-                          </div>
-                          <div class="mb-3">
-                            <div>
-                              <label for="" class="form-label">Select Vehicle <span class="text-danger">*</span> </label>
-                              <select name="" id="" class="form-select">
-                                <option selected disabled>...</option>
-                                <option value="">TYT-023</option>
-                              </select>
+                            <div class="w-100">
+                              <label for="" class="form-label">Plate <span class="text-danger">*</span> </label>
+                              <input type="text" name="plate" id="" class="form-control">
                             </div>
-                          </div>
-                          <div class="mb-3">
-                            <div>
-                              <label for="" class="form-label">Select Maintenance <span class="text-danger">*</span> </label>
-                              <select name="" id="" class="form-select">
-                                <option selected disabled>...</option>
-                                <option value="">Oil change</option>
-                                <option value="">Tire rotation</option>
-                                <option value="">Brake inspection/replacement</option>
-                                <option value="">Air filter replacement</option>
-                                <option value="">Fuel filter replacement</option>
-                                <option value="">Transmission fluid change</option>
-                                <option value="">Coolant system flush</option>
-                                <option value="">Battery inspection/replacement</option>
-                                <option value="">Spark plug replacement</option>
-                                <option value="">Timing belt replacement</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                          <label for="" class="form-label">Cost <span class="text-danger">*</span> </label>
-                            <div class="input-group">
-                              <div class="px-3 py-2 fs-5 border rounded-start bg-gray-100">
-                                ₱
-                              </div>
-                              <input type="text" placeholder="Price" class="form-control">
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <label for="" class="form-label">Notes <span class="text-danger">*</span> </label>
-                            <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="Type something..."></textarea>
-                          </div>
-                          <div class="mb-3">
-                            <label for="" class="form-label">Attach a photo (Optional)</label>
-                            <input type="file" name="" id="" class="form-control">
                           </div>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Continue</button>
+                        <div class="mb-3">
+                          <div>
+                            <label for="" class="form-label">Type <span class="text-danger">*</span> </label>
+                            <select name="vehicle_type_id" id="" class="form-select">
+                              <option selected disabled>...</option>
+                              <option value="1">Sedan</option>
+                              <option value="2">Vans</option>
+                              <option value="3">Trucks</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="" class="form-label">Description <span class="text-danger">*</span> </label>
+                          <textarea name="description" id="" cols="30" rows="5" class="form-control" placeholder="Type something..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                          <div class="d-flex align-items-center gap-2">
+                            <div class="w-100">
+                              <label for="" class="form-label">Transmission <span class="text-danger">*</span> </label>
+                              <select name="trans_type_id" id="" class="form-select">
+                                <option selected disabled>...</option>
+                                <option value="1">Automatic</option>
+                                <option value="2">Manual</option>
+                              </select>
+                            </div>
+                            <div class="w-100">
+                              <label for="" class="form-label">Number of seats <span class="text-danger">*</span> </label>
+                              <input type="number" name="number_of_seats" id="" class="form-control">
+                            </div>
+                            <div class="w-100">
+                              <label for="" class="form-label">Odometer <span class="text-danger">*</span> </label>
+                              <input type="text" name="odometer" id="" class="form-control" placeholder="KMP/H">
+                            </div>
+                            <div class="w-100">
+                              <label for="" class="form-label">Dimensions <span class="text-danger">*</span> </label>
+                              <input type="text" name="dimensions" id="" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="" class="form-label">Thumbnail <span class="text-danger">*</span> </label>
+                          <input type="file" name="thumbnail" id="thumbnail" class="form-control">
                         </div>
                       </div>
-                    </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-            <input type="text" name="" id="" class="form-control" placeholder="Search vehicle...">
-            <div class="d-flex align-items-center gap-2 mt-4">
-              <div>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="btnradio1">All</label>
-              </div>
-              <div>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio2">Sedan</label>
-              </div>
-              <div>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">Vans</label>
-              </div>
-              <div>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">Trucks</label>
-              </div>
+
+            <div class="row" id="vehicleList">
+              <?php
+              if (!empty($vehicles)) :
+                foreach ($vehicles as $data) :
+              ?>
+                  <div class="col-md-6 grid-margin">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <div class="d-flex align-items-center gap-2">
+                              <h3><?= strtoupper($data->make) ?></h3>
+                              <?php
+                              switch ($data->status_name) {
+                                case 'available':
+                                  echo '<span class="badge bg-success">Available</span>';
+                                  break;
+                                case 'unavailable':
+                                  echo '<span class="badge bg-danger">Unavailable</span>';
+                                  break;
+                                case 'maintenance':
+                                  echo '<span class="badge border border-secondary text-secondary">Maintenance</span>';
+                                  break;
+                              }
+                              ?>
+                            </div>
+                            <p class="text-muted"><?= strtoupper($data->plate) ?> - <?= ucwords($data->vehicle_type) ?></p>
+                          </div>
+                          <div>
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="edit" class="btn-icon-prepend"></i>
+                              Edit Details
+                            </button>
+                            <button class="btn btn-light btn-icon-text">
+                              <i data-feather="tool" class="btn-icon-prepend"></i>
+                              Maintenance
+                            </button>
+                          </div>
+                        </div>
+                        <div class="d-flex gap-3 my-3">
+                          <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="rounded-2" style="height: 100px; object-fit: contain;" alt="">
+                          <div>
+                            <p><?= $data->description ?></p>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="text-start">
+                              <p class="d-flex align-items-center gap-1">
+                                <i data-feather="sliders" class="icon-sm text-primary"></i>
+                                Transmission
+                              </p>
+                              <p class="text-muted"> <?= ucwords($data->trans_type) ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="text-start">
+                              <p class="d-flex align-items-center gap-1">
+                                <i data-feather="users" class="icon-sm text-info"></i>
+                                Number of seats
+                              </p>
+                              <p class="text-muted"><?= $data->number_of_seats ?> Seaters</p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="text-start">
+                              <p class="d-flex align-items-center gap-1">
+                                <i data-feather="battery" class="icon-sm text-danger"></i>
+                                Odometer
+                              </p>
+                              <p class="text-muted"><?= $data->odometer ?> KMP/H</p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="text-start">
+                              <p class="d-flex align-items-center gap-1">
+                                <i data-feather="box" class="icon-sm text-primary"></i>
+                                Dimensions
+                              </p>
+                              <p class="text-muted"><?= $data->dimensions ?></p>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <?php
+                endforeach;
+              endif;
+              ?>
             </div>
           </div>
-
-        </div>
-
-        <div class="row" id="vehicleList">
-          <?php
-          if (!empty($vehicles)) :
-            foreach ($vehicles as $data) :
-          ?>
-              <div class="col-md-6 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div>
-                        <div class="d-flex align-items-center gap-2">
-                          <h3><?= strtoupper($data->make) ?></h3>
-                          <?php
-                          switch($data->status_name){
-                            case 'available':
-                              echo '<span class="badge border border-success text-success">Available</span>';
-                            break;
-                            case 'unavailable':
-                              echo '<span class="badge border border-danger text-danger">Unavailable</span>';
-                            break;
-                            case 'maintenance':
-                              echo '<span class="badge border border-secondary text-secondary">Maintenance</span>';
-                            break;
-                          }
-                          ?>
-                        </div>
-                        <p class="text-muted"><?= strtoupper($data->plate) ?> - <?= ucwords($data->vehicle_type) ?></p>
-                      </div>
-                      <div>
-                        <button class="btn btn-primary">
-                          Set Maintenance
-                        </button>
-                        <button class="btn btn-outline-primary btn-icon">
-                          <i data-feather="edit"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="img-fluid rounded-2 mt-3" style="height: 500px; width: 100%; object-fit: contain;" alt="">
-
-                    <p class="bg-gray-100 p-3 my-3 rounded-2">
-                      <?= $data->description ?>
-                    </p>
-
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="text-start">
-                          <p class="d-flex align-items-center gap-1">
-                            <i data-feather="sliders" class="icon-sm text-primary"></i>
-                            Transmission
-                          </p>
-                          <p class="text-muted"> <?= ucwords($data->trans_type) ?></p>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="text-start">
-                          <p class="d-flex align-items-center gap-1">
-                            <i data-feather="users" class="icon-sm text-info"></i>
-                            Number of seats
-                          </p>
-                          <p class="text-muted"><?= $data->number_of_seats ?> Seaters</p>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="text-start">
-                          <p class="d-flex align-items-center gap-1">
-                            <i data-feather="battery" class="icon-sm text-danger"></i>
-                            Odometer
-                          </p>
-                          <p class="text-muted"><?= $data->odometer ?> KMP/H</p>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="text-start">
-                          <p class="d-flex align-items-center gap-1">
-                            <i data-feather="box" class="icon-sm text-primary"></i>
-                            Dimensions
-                          </p>
-                          <p class="text-muted"><?= $data->dimensions ?></p>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-          <?php
-            endforeach;
-          endif;
-          ?>
         </div>
 
 
@@ -599,8 +555,18 @@
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-vehicle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
-
+  <script>
+    const myInput = document.querySelectorAll(".date-input");
+    const flatpickrInstance = flatpickr(myInput, {
+      enableTime: true,
+      dateFormat: "Y-m-d",
+      defaultDate: new Date(),
+      minDate: "today",
+      allowInput: true
+    });
+  </script>
 
 </body>
 

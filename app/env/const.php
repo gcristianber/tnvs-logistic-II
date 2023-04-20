@@ -2,12 +2,11 @@
 
 
 const DB_HOST = "localhost";
-const DB_USER = "root";
-const DB_PASS = "";
-const DB_NAME = "the_new_logi_db";
+const DB_USER = "lula_lulan_db";
+const DB_PASS = "123";
+const DB_NAME = "lula_lulan_db";
 
-// const ROOT = "http://localhost/ASADASDASDA/TNVS-LOGISTIC2/public/";
-const ROOT = "http://localhost/TNVS-LOGISTIC2/public/";
+const ROOT = "https://logistic-2.lulan-tnvs.com/";
 
 
 //Server settings                                       //Send using SMTP

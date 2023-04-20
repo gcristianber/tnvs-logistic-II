@@ -10,7 +10,7 @@ class Manage_vendors{
 
         $test = $this->get_all_vendors();
 
-        print_r($test);
+        // print_r($test);
 
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/manage_vendors");

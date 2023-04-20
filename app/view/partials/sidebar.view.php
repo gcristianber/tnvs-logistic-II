@@ -50,16 +50,9 @@
                 </li>
                 <li class="nav-item nav-category">vendor portal</li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/listing" class="nav-link">
-                        <i class="link-icon" data-feather="hash"></i>
-                        <span class="link-title">Listing</span>
-                    </a>
-                </li>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/procurement_requests" class="nav-link">
+                    <a href="<?= ROOT ?>vendor_portal_admin/tenders" class="nav-link">
                         <i class="link-icon" data-feather="mail"></i>
-                        <span class="link-title">Requests</span>
+                        <span class="link-title">Tenders</span>
                     </a>
                 </li>
                 <li class="nav-item">

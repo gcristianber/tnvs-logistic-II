@@ -48,8 +48,6 @@ class Audit_requests
                     $Audited_items->insert($audited_item);
                 }
             }
-
-            
             exit;
         }
 

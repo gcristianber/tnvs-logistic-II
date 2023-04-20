@@ -58,136 +58,213 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Manage Vendors</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>Service Type</option>
-                      <option value="">Office Supplies</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>Company Type</option>
-                      <option value="">Private (LTD)</option>
-                      <option value="">Public</option>
-                      <option value="">Government</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>Account Type</option>
-                      <option value="">Basic</option>
-                      <option value="">Verified</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
+                  <div class="col-3 border-end">
+                    <div class="mb-3 border-bottom pb-3">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <p class="fs-4">Filters</p>
+                        <p>Companies: <strong>35</strong></p>
+                      </div>
                     </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">Pending</label>
+                    <div class="mb-3">
+                      <div class="mb-2">
+                        <p class="fs-5">Categories</p>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Office Supplies</label>
+                        </div>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Food and Beverages</label>
+                        </div>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Transportation</label>
+                        </div>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Services</label>
+                        </div>
+                      </div>
                     </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="approved" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
+                    <div class="mb-3">
+                      <div class="mb-2">
+                        <p class="fs-5">Company Types</p>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Public Company</label>
+                        </div>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Private Company (LTD)</label>
+                        </div>
+                      </div>
                     </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Declined</label>
+                    <div class="mb-3">
+                      <div class="mb-2">
+                        <p class="fs-5">Status</p>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Active</label>
+                        </div>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Inactive</label>
+                        </div>
+                      </div>
+                      <div class="mb-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="checkDefault">
+                          <label for="checkDefault" class="form-label">Expired</label>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="upload" class="btn-icon-prepend"></i>
-                      Import Data
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                      Download
-                    </button>
-                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add New
-                    </a>
+                  <div class="col-9">
+                    <div class="mb-3">
+                      <div class="d-flex gap-2">
+                        <div class="input-group">
+                          <div class="input-group-text" id="btnGroupAddon2">
+                            <i data-feather="search"></i>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Search Vendor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                        </div>
+
+                        <button class="btn btn-primary btn-icon-text  flex-shrink-0" disabled>
+                          <i data-feather="plus" class="btn-icon-prepend"></i>
+                          Create Message
+                        </button>
+
+                      </div>
+                    </div>
+                    <div class="">
+                      <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+                        <div class="flex-grow-1">
+                          <label for="" class="form-label">Choose message template</label>
+                          <select name="" class="form-select" id="">
+                            <option selected disabled>Select template</option>
+                            <option value="">Invitation to Bid</option>
+                            <option value="">Notification</option>
+                            <option value="">RFQ</option>
+                            <option value="">RFP</option>
+                          </select>
+                        </div>
+                        <div class="flex-grow-1">
+                          <label for="" class="form-label">Select Tender</label>
+                          <select name="" class="form-select" id="">
+                            <option selected disabled>Select Tender</option>
+                            <option value="">Invitation to Bid</option>
+                            <option value="">Notification</option>
+                            <option value="">RFQ</option>
+                            <option value="">RFP</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="" class="form-label">Subject</label>
+                        <input type="text" name="" id="" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                      <label for="" class="form-label">Message</label>
+                        <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+                      </div>
+                      <div class="mb-3 text-end">
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="send" class="btn-icon-prepend"></i>
+                          Send message
+                        </button>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table id="request_tbl" class="table display table-hover">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>company name</th>
+                            <th>category</th>
+                            <th>location</th>
+                            <th>status</th>
+                            <th>rate</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="align-middle" data-status="verified">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>National Bookstore</td>
+                            <td>Office Supplies</td>
+                            <td>Quezon City, Philippines</td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="d-inline">
+                                8/10 <i data-feather="star" fill="currentColor" class="icon-lg text-warning"></i>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr class="align-middle" data-status="verified">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>SM Supermalls</td>
+                            <td>Office Supplies</td>
+                            <td>Quezon City, Philippines</td>
+                            <td>
+                              <span class="badge bg-danger">Expired</span>
+                            </td>
+                            <td>
+                              <div class="d-inline">
+                                8/10 <i data-feather="star" fill="currentColor" class="icon-lg text-warning"></i>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr class="align-middle" data-status="verified">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>National Bookstore</td>
+                            <td>Office Supplies</td>
+                            <td>Quezon City, Philippines</td>
+                            <td>
+                              <span class="badge bg-success">Active</span>
+                            </td>
+                            <td>
+                              <div class="d-inline">
+                                8/10 <i data-feather="star" fill="currentColor" class="icon-lg text-warning"></i>
+                              </div>
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+
+                      </table>
+                    </div>
                   </div>
-                </div>
-
-                <div class="table-responsive">
-                  <table id="request_tbl" class="table display">
-                    <thead>
-                      <tr>
-                        <th data-orderable="false"></th>
-                        <th>company name</th>
-                        <th>username</th>
-                        <th>company type</th>
-                        <th>service type</th>
-                        <th>phone number</th>
-                        <th>date joined</th>
-                        <th>account type</th>
-                        <th class="text-center" data-orderable="false">action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle" data-status="verified">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/100x100" class="ht-100 wd-100 rounded-2" alt="">
-                            <div>
-                              <p>National Bookstore</p>
-                              <small class="text-muted">
-                                <a href="https://www.nationalbookstore.com" class="link-primary">https://www.nationalbookstore.com</a>
-                              </small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p>nationalbookstore.vendor</p>
-                          <small class="text-muted">corpsales@nationalbookstore.com.ph</small>
-                        </td>
-                        <td>Private LTD</td>
-                        <td>Office Supplies</td>
-                        <td>
-                          <p>+(632) 8255 2685</p>
-                        </td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Verified</span>
-                        </td>
-                        <td>
-                          <a class="btn btn-primary btn-icon-text" href="javascript:;">
-                            <i data-feather="plus" class="btn-icon-prepend"></i>
-                            Invite to Bid
-                          </a>
-                          <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/manage_vendors/manage_account">
-                            <i data-feather="settings" class="btn-icon-prepend"></i>
-                            Manage Account
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </table>
                 </div>
               </div>
             </div>

@@ -58,99 +58,108 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Vendor Opportunities</h3>
-                  <p>Category : Office Supplies</p>
-                </div>
 
 
-                <div class="row">
-                  <div class="col-lg-10 grid-margin">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 grid-margin">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tenders</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests</a>
+                  </li>
+                </ul>
+                <div class="tab-content border border-top-0 p-3" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="d-flex gap-2">
-                      <a class="btn btn-primary btn-icon-text flex-grow-1" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
+                      <div class="btn-group flex-grow-1" role="group" aria-label="Basic example">
+                        <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
+                        <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
+                      </div>
+                      <button class="btn btn-outline-primary btn-icon-text">
+                        <i data-feather="upload" class="btn-icon-prepend"></i>
+                        Import Data
+                      </button>
+                      <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Sort by
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                          <a class="dropdown-item" href="#">Dropdown link</a>
+                          <a class="dropdown-item" href="#">Dropdown link</a>
+                        </div>
+                      </div>
+                      <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
                         <i data-feather="plus" class="btn-icon-prepend"></i>
                         Add New
                       </a>
                     </div>
+
+                    <div class="table-responsive">
+                      <table id="request_tbl" class="table display">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>#</th>
+                            <th>title</th>
+                            <th>category</th>
+                            <th>mode</th>
+                            <th>closing date</th>
+                            <th>delivery date</th>
+                            <th>status</th>
+                            <th class="text-center" data-orderable="false">action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="align-middle" data-status="pending">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>1</td>
+                            <td>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="wd-250 text-truncate">
+                                  <p class="text-uppercase">Intel i5 4th Gen Computers</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td>Office Supplies</td>
+                            <td>Open Bidding</td>
+                            <td>
+                              <p>06 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <p>06 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-secondary">Closed</span>
+                            </td>
+                            <td>
+                              <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/tenders/preview_tender">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+
+                      </table>
+                    </div>
                   </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                  </div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                  <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">...</div>
                 </div>
 
-                <div class="table-responsive">
-                  <table id="request_tbl" class="table table-hover display">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>publish date</th>
-                        <th>closing date</th>
-                        <th>title</th>
-                        <th>date created</th>
-                        <th>created by</th>
-                        <th>status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>1</td>
-                        <td>
-                          <p>16 Apr 2023</p>
-                          <small class="text-muted">09:26 AM</small>
-                        </td>
-                        <td>
-                          <p>16 Apr 2023</p>
-                          <small class="text-muted">09:26 AM</small>
-                        </td>
-                        <td>
-                          <a href="#" class="link-primary text-decoration-underline text-uppercase">
-                            Intel i5 Computers : Need a supply for our office supplies
-                          </a>
-                        </td>
-                        <td>
-                          <p>16 Apr 2023</p>
-                          <small class="text-muted">09:26 AM</small>
-                        </td>
-                        <td>
-                          <p>Leandro Quisado</p>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Active</span>
-                        </td>
-                      </tr>
-                      <tr class="align-middle">
-                        <td>2</td>
-                        <td>
-                          <p>16 Apr 2023</p>
-                          <small class="text-muted">09:26 AM</small>
-                        </td>
-                        <td>
-                          <p>16 Apr 2023</p>
-                          <small class="text-muted">09:26 AM</small>
-                        </td>
-                        <td>
-                          <a href="<?= ROOT ?>vendor_portal_admin/listing/view_request" class="link-primary text-decoration-underline text-uppercase">
-                            Intel i5 Computers : Need a supply for our office supplies
-                          </a>
-                        </td>
-                        <td>
-                          <p>16 Apr 2023</p>
-                          <small class="text-muted">09:26 AM</small>
-                        </td>
-                        <td>
-                          <p>Leandro Quisado</p>
-                        </td>
-                        <td>
-                          <span class="badge bg-danger">Inactive</span>
-                        </td>
-                      </tr>
-                    </tbody>
 
-                  </table>
-                </div>
+
+
               </div>
             </div>
           </div>

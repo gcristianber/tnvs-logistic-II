@@ -81,6 +81,7 @@
                         <th>from</th>
                         <th>date/time</th>
                         <th>status</th>
+                        <th>created by</th>
                         <th>action</th>
                       </tr>
                     </thead>
@@ -105,11 +106,8 @@
                             <td>
                               <?php
                               switch ($data->current_status) {
-                                case 'created':
-                                  echo '<span class="badge bg-primary">Created</span>';
-                                  break;
                                 case 'sent':
-                                  echo '<span class="badge bg-light text-dark">Sent</span>';
+                                  echo '<span class="badge bg-primary">Sent</span>';
                                   break;
                                 case 'received':
                                   echo '<span class="badge bg-info">Received</span>';
@@ -133,10 +131,14 @@
                               ?>
                             </td>
                             <td>
-                              <button class="btn btn-light btn-icon-text">
+                              <p>Cristianber Gordora</p>
+                              <small class="text-muted">Super Admin</small>
+                            </td>
+                            <td>
+                              <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>document_tracking/track_documents/track">
                                 <i data-feather="external-link" class="btn-icon-prepend"></i>
                                 Preview
-                              </button>
+                              </a>
                             </td>
                           </tr>
                       <?php

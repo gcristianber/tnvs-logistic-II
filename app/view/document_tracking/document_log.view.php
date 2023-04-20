@@ -58,16 +58,56 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Document Log</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
+                <div class="mb-3">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <a href="#" class="link-primary">
+                      <i data-feather="chevron-left" class="icon-md"></i>
+                      Back
+                    </a>
+
+                    <button class="btn btn-primary btn-icon-text">
+                      <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                      Export as Excel
+                    </button>
+                  </div>
                 </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search tracking id">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
-                    </div>
+                <div class="mb-3">
+                  <div class="table-responsive">
+                    <table class="table border-white">
+                      <tbody>
+                        <tr>
+                          <td>Reference Number:</td>
+                          <td>DOC-74AFD3A</td>
+                          <td>Date:</td>
+                          <td>19/04/2023 - 5:02 AM</td>
+                        </tr>
+                        <tr>
+                          <td>Title:</td>
+                          <td>SM Supermalls 2023-2025 Contract : Office Supplies</td>
+                          <td>Last Activity:</td>
+                          <td>Just now</td>
+                        </tr>
+                        <tr>
+                          <td>Published by:</td>
+                          <td>Procurement Department</td>
+                        </tr>
+                        <tr>
+                          <td>Issued to:</td>
+                          <td>Legal Management</td>
+                        </tr>
+                        <tr>
+                          <td>Attachments:</td>
+                          <td>
+                            <p class="mb-2"><a href="#" class="link-primary">File Text 1.pdf</a></p>
+                            <p class="mb-2"><a href="#" class="link-primary">File Text 2.pdf</a></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Remarks:</td>
+                          <td class="text-wrap">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam vitae tenetur, quae fugit sed dolores. Fugit aperiam consectetur officia aliquid? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam earum expedita, eaque, quod, harum adipisci est dolorum recusandae rerum nisi ea! Exercitationem consequatur aliquid ab, aliquam labore quos officiis accusamus, asperiores reprehenderit, magnam omnis velit quod aperiam porro ratione provident hic adipisci perspiciatis qui fugit eligendi voluptates quisquam. Deleniti, praesentium.</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
 
@@ -75,189 +115,80 @@
                   <table id="request_tbl" class="table display">
                     <thead>
                       <tr>
-                        <th data-orderable="false"></th>
-                        <th>tracking id</th>
-                        <th>file name</th>
-                        <th>to</th>
-                        <th>from</th>
-                        <th>date/time</th>
+                        <th data-orderable="false">#</th>
+                        <th>action date</th>
+                        <th>action by</th>
+                        <th>action taken</th>
                         <th>status</th>
-                        <th>action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="align-middle" data-status="scheduled">
                         <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
+                          1
                         </td>
-                        <td>DOC-74AFD3A</td>
-                        <td>
-                          <div>
-                            <p>File Text 1.pdf</p>
-                            <small class="text-muted">200 KB</small>
-                          </div>
-                        </td>
-                        <td>Administrative</td>
-                        <td>Logistic</td>
                         <td>
                           <p>06 Apr 2023</p>
                           <small class="text-muted">12:26 AM</small>
                         </td>
                         <td>
-                          <span class="badge bg-primary">Created</span>
+                          <p>Richelyn Villasor</p>
+                          <small class="text-muted">Procurement Manager</small>
                         </td>
+                        <td>Document has been sent to Legal Management</td>
                         <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
+                          <span class="badge bg-primary">Sent</span>
                         </td>
                       </tr>
                       <tr class="align-middle" data-status="scheduled">
                         <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
+                          2
                         </td>
-                        <td>DOC-123ABCD</td>
-                        <td>
-                          <div>
-                            <p>File Text 2.pptx</p>
-                            <small class="text-muted">128 MB</small>
-                          </div>
-                        </td>
-                        <td>Administrative</td>
-                        <td>Human Resource</td>
                         <td>
                           <p>06 Apr 2023</p>
                           <small class="text-muted">12:26 AM</small>
                         </td>
+                        <td>
+                          <p>Kent Rillo</p>
+                          <small class="text-muted">Legal Manager</small>
+                        </td>
+                        <td>Document has been received by the department</td>
+                        <td>
+                          <span class="badge bg-warning">Received</span>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          3
+                        </td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <p>Kent Rillo</p>
+                          <small class="text-muted">Legal Manager</small>
+                        </td>
+                        <td>Document has been reviewed by the department</td>
+                        <td>
+                          <span class="badge bg-info">Reviewed</span>
+                        </td>
+                      </tr>
+                      <tr class="align-middle" data-status="scheduled">
+                        <td>
+                          4
+                        </td>
+                        <td>
+                          <p>06 Apr 2023</p>
+                          <small class="text-muted">12:26 AM</small>
+                        </td>
+                        <td>
+                          <p>Kent Rillo</p>
+                          <small class="text-muted">Legal Manager</small>
+                        </td>
+                        <td>Document has been approved by the department</td>
                         <td>
                           <span class="badge bg-success">Approved</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>DOC-224ACCD</td>
-                        <td>
-                          <div>
-                            <p>File Text 2.pptx</p>
-                            <small class="text-muted">128 MB</small>
-                          </div>
-                        </td>
-                        <td>Administrative</td>
-                        <td>Human Resource</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-secondary">On Hold</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>DOC-224ACCD</td>
-                        <td>
-                          <div>
-                            <p>File Text 2.pptx</p>
-                            <small class="text-muted">128 MB</small>
-                          </div>
-                        </td>
-                        <td>Administrative</td>
-                        <td>Human Resource</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Reviewed</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>DOC-224ACCD</td>
-                        <td>
-                          <div>
-                            <p>File Text 2.pptx</p>
-                            <small class="text-muted">128 MB</small>
-                          </div>
-                        </td>
-                        <td>Administrative</td>
-                        <td>Human Resource</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-info">Forwarded</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>DOC-224ACCD</td>
-                        <td>
-                          <div>
-                            <p>File Text 2.pptx</p>
-                            <small class="text-muted">128 MB</small>
-                          </div>
-                        </td>
-                        <td>Administrative</td>
-                        <td>Human Resource</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-danger">Archived</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -313,6 +244,7 @@
       var table = $('#request_tbl').DataTable({
         lengthChange: false, // Disable length menu
         bInfo: false, // Disable "Showing X of Y entries" label
+        paging: false,
       });
 
       $('#search').on('keyup', function(event) {

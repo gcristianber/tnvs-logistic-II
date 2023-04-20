@@ -17,12 +17,12 @@ class Track_documents
         $this->view('partials/sidebar');
     }
 
-    public function track_document($tracking_id = ''){
+    public function track($tracking_id = ''){
         $Track = new DT_Track;
         $data["track"] = $Track->renderViewByCriteria(["tracking_id"=>$tracking_id]);
 
         $this->view('partials/navbar');
-        $this->view("document_tracking/track_documents", $data);
+        $this->view("document_tracking/document_log", $data);
         $this->view('partials/sidebar');
     }
 
