@@ -1,12 +1,20 @@
 <?php
 
+// *WEB SERVER DATABASE
+// const DB_HOST = "localhost";
+// const DB_USER = "lula_lulan_db";
+// const DB_PASS = "123";
+// const DB_NAME = "lula_lulan_db";
 
+// const ROOT = "https://logistic-2.lulan-tnvs.com/";
+
+// *LOCAL SERVER DATABASE
 const DB_HOST = "localhost";
-const DB_USER = "lula_lulan_db";
-const DB_PASS = "123";
-const DB_NAME = "lula_lulan_db";
+const DB_USER = "root";
+const DB_PASS = "";
+const DB_NAME = "the_new_logi_db";
 
-const ROOT = "https://logistic-2.lulan-tnvs.com/";
+const ROOT = "http://localhost/TNVS-LOGISTIC2/public/";
 
 
 //Server settings                                       //Send using SMTP

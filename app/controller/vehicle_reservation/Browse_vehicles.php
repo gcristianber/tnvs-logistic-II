@@ -12,7 +12,7 @@ class Browse_vehicles
 
         $data = [];
 
-        $data["vehicles"] = $this->fetch();
+        $data["vehicles"] = $this->get_all_vehicles();
 
         $this->view('partials/navbar');
         $this->view('vehicle_reservation/browse_vehicles', $data);
@@ -26,13 +26,13 @@ class Browse_vehicles
         if (isset($session_id)) {
             $arr["user_id"] = $_SESSION["user_id"];
 
-            $Users = new Users;
-            $row = $Users->findRowView($arr);
+            $Users = new Accounts;
+            $row = $Users->fetch_user($arr);
 
             if ($row) {
                 $_SESSION["user"] = $row;
 
-                $data["vehicles"] = $this->fetch();
+                $data["vehicles"] = $this->get_all_vehicles();
 
                 $this->view('partials/navbar');
                 $this->view('vehicle_reservation/browse_vehicles', $data);
@@ -41,17 +41,8 @@ class Browse_vehicles
         }
     }
 
-    public function fetch()
-    {
-        $vehicles = new FM_Vehicles;
-        $data = $vehicles->renderView();
-
-        return $data;
-    }
-
-    public function reserve()
-    {
-        $reserve = new VR_Reservations;
-        $reserve->insert_request($_POST, $_FILES);
+    public function get_all_vehicles(){
+        $Vehicles = new Vehicles;
+        return $Vehicles->fetch_all_vehicles();
     }
 }

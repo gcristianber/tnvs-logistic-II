@@ -9,7 +9,7 @@ $(document).ready(() => {
     let formData = new FormData(form);
 
     $.ajax({
-      url: currentUrl + "/insert",
+      url: currentUrl + "/put_vehicle",
       type: "POST",
       data: formData,
       processData: false,
@@ -17,7 +17,6 @@ $(document).ready(() => {
       success: function (response) {
         console.log(response);
 
-        
       },
     });
   });

@@ -2,38 +2,31 @@
 
 session_start();
 
-class Manage_vehicles{
+class Manage_vehicles
+{
 
     use Controller;
 
-    public function index(){
-        
+    public function index()
+    {
+
         $data = [];
 
-        $data["vehicles"] = $this->fetch();
+        $Vehicles = new Vehicles;
+        $data["vehicles"] = $Vehicles->fetch_all_vehicles();
 
         $this->view('partials/navbar');
         $this->view("fleet_management/admin/manage_vehicles", $data);
         $this->view("partials/sidebar");
-        
     }
 
-    public function insert(){      
-        $vehicles = new FM_Vehicles;
-        $vehicles->insert_vehicle($_POST, $_FILES);
+    public function get_all_vehicles(){
+        $Vehicles = new Vehicles;
+        return $Vehicles->fetch_all_vehicles();
     }
 
-    public function edit_vehicle(){
-        $vehicle_id = $_POST["vehicle_id"];
-        $Vehicles = new FM_Vehicles;
+    public function put_vehicle(){
+        $Vehicles = new Vehicles;
+        $Vehicles->insert_vehicle($_POST, $_FILES);
     }
-
-    public function fetch(){
-        $vehicles = new FM_Vehicles;
-        $data = $vehicles->renderView();
-
-        return $data;
-    }
-
-
 }
