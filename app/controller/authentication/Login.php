@@ -13,10 +13,14 @@ class Login
         $data = [];
 
         $Users = new Accounts;
-        $arr["username"] = "super_admin@logistic";
+        $arr["username"] = $_POST["username"];
         $row = $Users->fetch_accounts($arr);
 
-        echo "Hellosss";
+        if ($row->password == $_POST["password"]) {
+            
+        }
+
+
         print_r($row);
 
 

@@ -8,7 +8,6 @@ class Accounts{
 
 
     public function fetch_accounts(){
-
         $query = 'SELECT
         admin_um_accounts.user_id,
         admin_um_accounts.display_name,
