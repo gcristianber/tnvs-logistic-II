@@ -31,17 +31,17 @@ class Track_documents
     }
     
     public function fetch_all_documents(){
-        $Documents = new Documents;
+        $Documents = new DocumentsModel;
         return $Documents->fetch_all_documents();
     }
 
     public function fetch_document($tracking_id){
-        $Documents = new Documents;
+        $Documents = new DocumentsModel;
         return $Documents->fetch_document(["tracking_id"=>$tracking_id]);
     }
 
     public function get_all_tracks($tracking_id){
-        $Documents = new Documents;
+        $Documents = new DocumentsModel;
         return $Documents->get_all_tracks(["tracking_id"=>$tracking_id]);
     }
 

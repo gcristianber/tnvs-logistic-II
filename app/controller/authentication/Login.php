@@ -12,7 +12,7 @@ class Login
 
         $data = [];
 
-        $Users = new Accounts;
+        $Users = new AccountsModel;
         $arr["username"] = $_POST["username"];
         $arr["password"] = $_POST["password"];
 

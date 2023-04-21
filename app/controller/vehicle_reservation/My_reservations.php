@@ -19,8 +19,12 @@ class My_reservations
     }
 
     public function getUserReservations(){
-        $Reservations = new VR_Reservations;
-        return $Reservations->renderViewByCriteria(["requestor_id"=>$_SESSION["user"]->user_id]);
+        $Reservations = new ReservationsModel;
+        return $Reservations->fetch_user_reservations(["requestor_id"=>$_SESSION["user"]->user_id]);
+    }
+
+    public function fetch_user_reservations(){
+
     }
 
 }

@@ -66,7 +66,6 @@
                 <div class="mb-3 border-bottom pb-3">
                   <div class="d-flex align-items-center justify-content-between">
                     <p class="fs-4">Filters</p>
-                    <p>Vehicles: <strong>60</strong></p>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -120,6 +119,23 @@
                     <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkDefault">
                       <label for="checkDefault" class="form-label">Maintenance</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="mb-2">
+                    <p class="fs-5">Transmission</p>
+                  </div>
+                  <div class="mb-2">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkDefault">
+                      <label for="checkDefault" class="form-label">Automatic</label>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkDefault">
+                      <label for="checkDefault" class="form-label">Manual</label>
                     </div>
                   </div>
                 </div>

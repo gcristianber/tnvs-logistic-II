@@ -20,7 +20,7 @@ class Manage_reservations
 
     public function fetch_all_reservations()
     {
-        $Reservations = new Reservations;
+        $Reservations = new ReservationsModel;
         return $Reservations->fetch_all_reservations();
     }
 

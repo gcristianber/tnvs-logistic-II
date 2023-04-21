@@ -7,7 +7,7 @@ $(document).ready(function() {
     var formData = new FormData(form)
 
     $.ajax({
-        url: BASE_URL + 'fleet_management_admin/maintenance/add_new',
+        url: BASE_URL + 'fleet_management_admin/maintenance/insert_new_maintenance',
         type: 'POST',
         data: formData,
         processData: false,

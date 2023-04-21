@@ -1,6 +1,6 @@
 <?php
 
-class Accounts
+class AccountsModel
 {
 
     use Model;

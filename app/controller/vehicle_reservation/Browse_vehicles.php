@@ -26,7 +26,7 @@ class Browse_vehicles
         if (isset($session_id)) {
             $arr["user_id"] = $_SESSION["user_id"];
 
-            $Users = new Accounts;
+            $Users = new AccountsModel;
             $row = $Users->fetch_user($arr);
 
             if ($row) {
@@ -42,12 +42,12 @@ class Browse_vehicles
     }
 
     public function insert_reservation(){
-        $Reservations = new Reservations;
+        $Reservations = new ReservationsModel;
         $Reservations->insert_reservation($_POST, $_FILES);
     }
 
     public function get_all_vehicles(){
-        $Vehicles = new Vehicles;
+        $Vehicles = new VehiclesModel;
         return $Vehicles->fetch_all_vehicles();
     }
 }

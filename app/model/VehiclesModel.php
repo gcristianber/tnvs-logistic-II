@@ -1,6 +1,6 @@
 <?php
 
-class Vehicles
+class VehiclesModel
 {
 
     use Model;
@@ -22,13 +22,13 @@ class Vehicles
         $file_temp = $file["thumbnail"]["tmp_name"];
 
         move_uploaded_file($file_temp, $upload_dir . $file_name);
-        $Vehicles = new Vehicles;
-        $Vehicles->insert($data);
+        $this->insert($data);
     }
+
+    
 
     public function fetch_all_vehicles()
     {
-
         $query = 'SELECT
         log2_fm_vehicles.vehicle_id,
         log2_fm_vehicles.make,
@@ -55,32 +55,5 @@ class Vehicles
         return $this->query($query);
     }
 
-    public function fetch_all_maintenance()
-    {
 
-        $query = 'SELECT
-        maintenance.maintenance_id,
-        /* vehicle data */
-        vehicle.vehicle_id,
-        vehicle.make,
-        vehicle.plate,
-        /* maintenance type */
-        maintenance_type.maintenance_type,
-        /* status */
-        maintenance_status.maintenance_status,
-        maintenance.mechanic_name,
-        maintenance.date_schedule,
-        maintenance.remarks
-        
-        FROM log2_fm_maintenance maintenance
-        LEFT JOIN log2_fm_vehicles vehicle ON
-        maintenance.vehicle_id = vehicle.vehicle_id
-        LEFT JOIN log2_fm_maintenance_type maintenance_type ON
-        maintenance.type_id = maintenance_type.maintenance_type_id
-        LEFT JOIN log2_fm_maintenance_status maintenance_status ON
-        maintenance.status_id = maintenance_status.maintenance_status_id';
-
-
-        return $this->query($query);
-    }
 }

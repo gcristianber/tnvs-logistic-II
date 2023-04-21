@@ -1,6 +1,6 @@
 <?php
 
-class Documents
+class DocumentsModel
 {
 
     use Model;
