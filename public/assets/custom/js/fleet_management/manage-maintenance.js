@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+  var currentUrl = $(location).attr("href");
   $('#add_new_maintenance').submit(function(e) {
     e.preventDefault(); // Prevent the form from reloading the page
 
@@ -7,7 +8,7 @@ $(document).ready(function() {
     var formData = new FormData(form)
 
     $.ajax({
-        url: BASE_URL + 'fleet_management_admin/maintenance/insert_new_maintenance',
+        url: currentUrl + 'fleet_management_admin/maintenance/insert_new_maintenance',
         type: 'POST',
         data: formData,
         processData: false,
