@@ -13,7 +13,7 @@ class Audit_requests
     {
         $data = [];
 
-        $data["requests"] = $this->getAllRequests();
+        // $data["requests"] = $this->getAllRequests();
 
         $this->view('partials/navbar');
         $this->view("audit_management/audit_requests", $data);
@@ -57,22 +57,13 @@ class Audit_requests
         $this->view('partials/sidebar');
     }
 
-    public function generateReport()
-    {
-    }
-
-    public function view_report()
+    public function preview_request()
     {
 
         $data = [];
-        $reference_number = $_GET["reference_number"];
-        $Reports = new AM_Reports;
-        $Items = new AM_Audited_items;
-        $data["report"] = $Reports->first(["reference_number" => $reference_number]);
-        $data["table_report"] = $Items->where(["reference_number" => $reference_number]);
 
         $this->view('partials/navbar');
-        $this->view("audit_management/view_report", $data);
+        $this->view("audit_management/preview_request", $data);
         $this->view("partials/sidebar");
     }
 

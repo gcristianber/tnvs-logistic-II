@@ -59,10 +59,6 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Requests (3)</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
                 <div class="row mb-3">
                   <div class="col">
                     <select name="" id="" class="form-select">
@@ -85,142 +81,42 @@
                   </div>
                 </div>
 
-                <div class="d-flex align-items-center gap-2 mb-3">
-                  <div>
-                    <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-primary" for="btnradio1">All</label>
-                  </div>
-                  <div>
-                    <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio2">Pending (1)</label>
-                  </div>
-                  <div>
-                    <input type="radio" class="btn-check" value="received" name="btnradio" id="btnradio3" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio3">Received (1)</label>
-                  </div>
-                  <div>
-                    <input type="radio" class="btn-check" value="completed" name="btnradio" id="btnradio4" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio4">Completed (1)</label>
-                  </div>
-                  <div>
-                    <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio5" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio5">Declined</label>
-                  </div>
-                </div>
-
                 <div class="table-responsive">
                   <table id="request_tbl" class="table display">
                     <thead>
                       <tr>
                         <th data-orderable="false"></th>
                         <th>reference number</th>
-                        <th>product category</th>
-                        <th>department</th>
+                        <th>location</th>
+                        <th>requestor</th>
                         <th>request date</th>
                         <th>status</th>
                         <th>action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php
-                      if (!empty($requests)) :
-                        foreach ($requests as $data) :
-                      ?>
-                          <tr class="align-middle" data-status="<?= $data->status_name ?>" data-id="<?= $data->reference_number ?>">
-                            <td>
-                              <input type="checkbox" name="" class="form-check-input" id="">
-                            </td>
-                            <td>
-                              <?= $data->reference_number ?>
-                            </td>
-                            <td><?= ucwords($data->category_name) ?></td>
-                            <td>
-                              <p><?= ucwords($data->department_name) ?></p>
-                              <small class="text-muted">super.admin@lulan.com</small>
-                            </td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->request_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->request_date)) ?></small>
-                            </td>
-                            <td>
-                              <?php
-                              switch ($data->status_name) {
-                                case 'pending':
-                                  echo '<span class="badge bg-warning">Pending</span>';
-                                  break;
-                                case 'received':
-                                  echo '<span class="badge bg-primary">Received</span>';
-                                  break;
-                                case 'completed':
-                                  echo '<span class="badge bg-success">Completed</span>';
-                                  break;
-                                case 'declined':
-                                  echo '<span class="badge bg-danger">Declined</span>';
-                                  break;
-                              }
-                              ?>
-                            </td>
-                            <td>
-                              <?php
-                              switch ($data->status_name) {
-                                case 'pending':
-                                  echo '
-                                  <a class="btn btn-primary btn-icon-text" href="'. ROOT .'audit_management/audit_requests/create?reference_number=' . $data->reference_number . '">
-                                    <i data-feather="plus" class="btn-icon-prepend"></i>
-                                    Create Request
-                                  </a>
-                                  ';
-                                  break;
-                                case 'completed':
-                                  echo '
-                                  <a class="btn btn-primary btn-icon-text" href="'. ROOT .'audit_management/audit_requests/view_report?reference_number=' . $data->reference_number . '">
-                                    <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                    View Report
-                                  </a>'
-                                  ;
-                                  break;
-                              }
-                              ?>
-
-                            </td>
-                          </tr>
-                          <div class="modal fade" id="DECLINE-<?= $data->reference_number ?>" data-id="<?= $data->reference_number ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">
-                                    <div class="d-flex align-items-center gap-2">
-                                      <i data-feather="alert-triangle" class="icon-lg text-danger"></i>
-                                      Declining the request
-                                    </div>
-                                  </h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="mb-3">
-                                    <p>You are declining <strong><?= $data->reference_number ?></strong></p>
-                                  </div>
-                                  <select value="" class="form-select mb-3">
-                                    <option selected disabled>Select reason</option>
-                                    <option value="">Lack of Provided Information</option>
-                                    <option value="">Uncleared Instructions</option>
-                                    <option value="">No Content</option>
-                                    <option value="">Others</option>
-                                  </select>
-                                  <label for="" class="form-label">Specified why you decline:</label>
-                                  <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                  <button type="button" class="btn btn-danger decline-request">Decline Request</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                      <?php
-                        endforeach;
-                      endif;
-                      ?>
+                      <tr class="align-middle">
+                        <td></td>
+                        <td>RFID-224AH182</td>
+                        <td>Section A</td>
+                        <td>
+                          <p>Lisly Delacruz</p>
+                          <small class="text-muted">Administrative Head</small>
+                        </td>
+                        <td>
+                          <p>21 Apr 2023</p>
+                          <small class="text-muted">11:46 PM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-warning">Pending</span>
+                        </td>
+                        <td>
+                          <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>/audit_management/audit_requests/preview_request">
+                            <i data-feather="external-link" class="btn-icon-prepend"></i>
+                            Preview
+                          </a>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
