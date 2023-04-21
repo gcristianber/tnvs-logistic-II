@@ -41,6 +41,11 @@ class Browse_vehicles
         }
     }
 
+    public function insert_reservation(){
+        $Reservations = new Reservations;
+        $Reservations->insert_reservation($_POST, $_FILES);
+    }
+
     public function get_all_vehicles(){
         $Vehicles = new Vehicles;
         return $Vehicles->fetch_all_vehicles();

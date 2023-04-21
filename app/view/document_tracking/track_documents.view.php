@@ -135,7 +135,7 @@
                               <small class="text-muted">Super Admin</small>
                             </td>
                             <td>
-                              <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>document_tracking/track_documents/track">
+                              <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>document_tracking/track_documents/track/<?= $data->tracking_id ?>">
                                 <i data-feather="external-link" class="btn-icon-prepend"></i>
                                 Preview
                               </a>

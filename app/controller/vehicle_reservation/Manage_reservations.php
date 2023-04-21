@@ -11,17 +11,17 @@ class Manage_reservations
     {
         $data = [];
 
-        $data["userReservations"] = $this->getReservations();
+        $data["reservations"] = $this->fetch_all_reservations();
 
         $this->view('partials/navbar');
         $this->view("vehicle_reservation/manage_reservations", $data);
         $this->view("partials/sidebar");
     }
 
-    public function getReservations()
+    public function fetch_all_reservations()
     {
-        $Reservations = new VR_Reservations;
-        return $Reservations->renderView();
+        $Reservations = new Reservations;
+        return $Reservations->fetch_all_reservations();
     }
 
     public function update_status()

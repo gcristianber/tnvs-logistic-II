@@ -76,24 +76,42 @@
                     <table class="table border-white">
                       <tbody>
                         <tr>
-                          <td>Reference Number:</td>
-                          <td>DOC-74AFD3A</td>
+                          <td>Tracking Number:</td>
+                          <td><?= $document->tracking_id ?></td>
                           <td>Date:</td>
-                          <td>19/04/2023 - 5:02 AM</td>
+                          <td><?= date("d/m/Y - h:i A", strtotime($document->sent_date)) ?></td>
                         </tr>
                         <tr>
-                          <td>Title:</td>
-                          <td>SM Supermalls 2023-2025 Contract : Office Supplies</td>
+                          <td>Subject:</td>
+                          <td><?= $document->subject ?></td>
                           <td>Last Activity:</td>
-                          <td>Just now</td>
+                          <td>
+                            <?php
+                            $date = new DateTime($document->sent_date);
+                            $now = new DateTime();
+
+                            $interval = $now->diff($date);
+
+                            if ($interval->days > 0) {
+                              echo $interval->format('%d day(s) ago');
+                            } else if ($interval->h > 0) {
+                              echo $interval->format('%h hour(s) ago');
+                            } else if ($interval->i > 0) {
+                              echo $interval->format('%i minute(s) ago');
+                            } else {
+                              echo 'Just now';
+                            }
+                            ?>
+
+                          </td>
                         </tr>
                         <tr>
                           <td>Published by:</td>
-                          <td>Procurement Department</td>
+                          <td><?= ucwords($document->sender_dept) ?></td>
                         </tr>
                         <tr>
                           <td>Issued to:</td>
-                          <td>Legal Management</td>
+                          <td><?= ucwords($document->receiver_dept) ?></td>
                         </tr>
                         <tr>
                           <td>Attachments:</td>
@@ -104,7 +122,7 @@
                         </tr>
                         <tr>
                           <td>Remarks:</td>
-                          <td class="text-wrap">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam vitae tenetur, quae fugit sed dolores. Fugit aperiam consectetur officia aliquid? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam earum expedita, eaque, quod, harum adipisci est dolorum recusandae rerum nisi ea! Exercitationem consequatur aliquid ab, aliquam labore quos officiis accusamus, asperiores reprehenderit, magnam omnis velit quod aperiam porro ratione provident hic adipisci perspiciatis qui fugit eligendi voluptates quisquam. Deleniti, praesentium.</td>
+                          <td class="text-wrap"><?= $document->remarks ?></td>
                         </tr>
                       </tbody>
                     </table>
@@ -119,78 +137,55 @@
                         <th>action date</th>
                         <th>action by</th>
                         <th>action taken</th>
+                        <th>ip address</th>
+                        <th>user agent</th>
                         <th>status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>Richelyn Villasor</p>
-                          <small class="text-muted">Procurement Manager</small>
-                        </td>
-                        <td>Document has been sent to Legal Management</td>
-                        <td>
-                          <span class="badge bg-primary">Sent</span>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>Kent Rillo</p>
-                          <small class="text-muted">Legal Manager</small>
-                        </td>
-                        <td>Document has been received by the department</td>
-                        <td>
-                          <span class="badge bg-warning">Received</span>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>Kent Rillo</p>
-                          <small class="text-muted">Legal Manager</small>
-                        </td>
-                        <td>Document has been reviewed by the department</td>
-                        <td>
-                          <span class="badge bg-info">Reviewed</span>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="scheduled">
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>Kent Rillo</p>
-                          <small class="text-muted">Legal Manager</small>
-                        </td>
-                        <td>Document has been approved by the department</td>
-                        <td>
-                          <span class="badge bg-success">Approved</span>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($tracks)) :
+                        $row = 1;
+                        foreach ($tracks as $data) :
+                      ?>
+                          <tr class="align-middle">
+                            <td>
+                              <?= $row++ ?>
+                            </td>
+                            <td>
+                              <p><?= date("d/m/Y", strtotime($data->action_date)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->action_date)) ?></small>
+                            </td>
+                            <td>
+                              <p><?= $data->display_name ?></p>
+                              <small class="text-muted"><?= $data->role_name ?></small>
+                            </td>
+                            <td><?= $data->remarks ?></td>
+                            <td><?= $data->ip_address ?></td>
+                            <td><?= $data->user_agent ?></td>
+                            <td>
+                              <?php
+                              switch ($data->status_name) {
+                                case 'sent':
+                                  echo '<span class="badge bg-warning">Sent</span>';
+                                  break;
+                                case 'received':
+                                  echo '<span class="badge bg-primary">Received</span>';
+                                  break;
+                                case 'approved':
+                                  echo '<span class="badge bg-success">Approved</span>';
+                                  break;
+                                case 'archived':
+                                  echo '<span class="badge bg-danger">Archived</span>';
+                                  break;
+                              }
+                              ?>
+                            </td>
+                          </tr>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
 
                   </table>

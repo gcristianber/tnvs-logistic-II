@@ -7,8 +7,6 @@ class Dashboard{
     use Controller;
 
     public function index(){
-
-        print_r($_SESSION);
         $data = [];
         
         $this->view('partials/navbar');

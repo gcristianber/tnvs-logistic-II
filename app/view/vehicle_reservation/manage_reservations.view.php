@@ -151,8 +151,8 @@
                     <tbody>
                       <?php
 
-                      if (!empty($userReservations)) :
-                        foreach ($userReservations as $data) :
+                      if (!empty($reservations)) :
+                        foreach ($reservations as $data) :
 
                       ?>
                           <tr class="align-middle" data-status="<?= $data->reservation_status ?>" data-id="<?= $data->reservation_id ?>">

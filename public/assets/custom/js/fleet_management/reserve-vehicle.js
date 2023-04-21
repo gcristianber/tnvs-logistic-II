@@ -15,16 +15,16 @@ $(document).ready(() => {
     var form_data = new FormData(form);
     form_data.append("vehicle_id", dataId);
 
-    console.log(form_data);
-
     $.ajax({
-      url: currentUrl + "/reserve",
+      url: currentUrl + "/insert_reservation",
       type: "POST",
       data: form_data,
       processData: false,
       contentType: false,
-      success: function () {
+      success: function (response) {
         form.reset()
+        console.log(response)
+
         $(".modal").modal("hide")
 
         // TODO: Do an alert!
