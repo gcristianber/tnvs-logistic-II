@@ -58,169 +58,230 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <a href="<?= ROOT ?>audit_management/cycle_count" class="link-primary">
-                    <i data-feather="arrow-left" class="icon-md"></i>
-                    Back to Cycle Count
-                  </a>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-4 grid-margin">
-                    <div class="text-center">
-                      <small>Product ID</small>
-                      <p class="fs-4"><?= $product->product_id ?></p>
-                    </div>
-                  </div>
-                  <div class="col-md-4 grid-margin">
-                    <div class="text-center">
-                      <small>Product Name</small>
-                      <p class="fs-4"><?= $product->product_name ?></p>
-                    </div>
-                  </div>
-                  <div class="col-md-4 grid-margin">
-                    <div class="text-center">
-                      <small>Manufacturer</small>
-                      <p class="fs-4"><?= $product->supplier_id ?></p>
-                    </div>
-                  </div>
-                  <div class="col-md-4 grid-margin">
-                    <div class="text-center">
-                      <small>Purchase Date</small>
-                      <p class="fs-4"><?= date("d M Y", strtotime($product->purchase_date)) ?></p>
-                    </div>
-                  </div>
-                  <div class="col-md-4 grid-margin">
-                    <div class="text-center">
-                      <small>Inbound Date</small>
-                      <p class="fs-4"><?= date("d M Y", strtotime($product->inbound_date)) ?></p>
-                    </div>
-                  </div>
-                  <div class="col-md-4 grid-margin">
-                    <div class="text-center">
-                      <small>Frequency Count</small>
-                      <p class="fs-4"><?= ucwords($product->frequency_count) ?></p>
-                    </div>
+                <div class="d-flex gap-2 mb-3">
+                  <img src="https://via.placeholder.com/100x100" class="rounded-2" alt="">
+                  <div>
+                    <p class="fs-3"><?= ucwords($product->product_name) ?></p>
+                    <p class="text-muted">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime suscipit quis deserunt dolores recusandae facere saepe unde reiciendis voluptate! Aperiam.
+                    </p>
                   </div>
                 </div>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Details</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cycle Count</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Settings</a>
+                  </li>
+                </ul>
+                <div class="tab-content border border-top-0 p-3" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                <form id="cycleForm">
-                  <div class="row mb-3">
-                    <div class="col-6 grid-margin">
-                      <label for="" class="form-label">Actual Count</label>
-                      <input type="number" name="actual_count" id="" class="form-control">
-                    </div>
-                    <div class="col-6 grid-margin">
-                      <label for="" class="form-label">Current Quantity</label>
-                      <div class="border py-2 px-3 rounded-2 bg-gray-100" id="currentQty">
-                        <?= $product->quantity ?>
+                    <div class="row">
+                      <div class="col col-lg-6">
+                        <div class="row">
+                          <div class="col-6 grid-margin">Product ID:</div>
+                          <div class="col-6 grid-margin"><?= ucwords($product->product_id) ?></div>
+                          <div class="col-6 grid-margin">Category:</div>
+                          <div class="col-6 grid-margin"><?= ucwords($product->category_name) ?></div>
+                          <div class="col-6 grid-margin">Supplier Name</div>
+                          <div class="col-6 grid-margin"><?= $product->supplier_name ?></div>
+                          <div class="col-6 grid-margin">Location:</div>
+                          <div class="col-6 grid-margin"><?= ucwords($product->location_name) ?></div>
+                          <div class="col-6 grid-margin">Frequency Count:</div>
+                          <div class="col-6 grid-margin"><?= ucwords($product->frequency_count) ?></div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-6 grid-margin">
-                      <label for="" class="form-label">Variance</label>
-                      <div class="border py-2 px-3 rounded-2 bg-gray-100" id="variance">
-                        --
-                      </div>
-                    </div>
-                    <div class="col-6 grid-margin">
-                      <label for="" class="form-label">Accuracy</label>
-                      <div class="border py-2 px-3 rounded-2 bg-gray-100" id="accuracy">
-                        --%
-                      </div>
-                    </div>
-                    <div class="col-12 grid-margin">
-                      <label for="" class="form-label">Remarks</label>
-                      <textarea name="remarks" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
-                    </div>
-                    <div class="col">
-                      <div class="float-end">
-                        <button class="btn btn-light">
-                          Clear Field
-                        </button>
-                        <button type="submit" class="btn btn-primary btn-icon-text">
-                          <i data-feather="plus" class="btn-icon-prepend"></i>
-                          Add Entry
-                        </button>
-                      </div>
-                    </div>
-                </form>
 
-              </div>
-              <div class="table-responsive">
-                <table id="request_tbl" class="table display">
-                  <thead>
-                    <tr>
-                      <th data-orderable="false"></th>
-                      <th>actual count</th>
-                      <th>variance</th>
-                      <th>accuracy</th>
-                      <th>last count</th>
-                      <th>next count</th>
-                      <th>remarks</th>
-                      <th>status</th>
-                      <th>action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    if (!empty($cycle_count)) :
-                      foreach ($cycle_count as $data) :
-                    ?>
-                        <tr class="align-middle">
-                          <td>
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="checkDefault">
+
+
+                    <p class="mb-3">Attachment/s:</p>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <div>
+                          <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                              <p>PID-001-Invoice-Slip-2023.pdf</p>
+                              <small class="text-muted">200 KB</small>
                             </div>
-                          </td>
-                          <td><?= $data->actual_count ?></td>
-                          <td><?= $data->variance ?></td>
-                          <td><?= $data->accuracy ?></td>
-                          <td>
-                            <p><?= date("d M Y", strtotime($data->last_count_date)) ?></p>
-                            <small class="text-muted"><?= date("h:i A", strtotime($data->last_count_date)) ?></small>
-                          </td>
-                          <td>
-                            <p><?= date("d M Y", strtotime($data->next_count_date)) ?></p>
-                            <small class="text-muted"><?= date("h:i A", strtotime($data->next_count_date)) ?></small>
-                          </td>
-                          <td>
-                            <?= $data->remarks ?>
-                          </td>
-                          <td>
-                            <?php
-                            switch ($data->status_name) {
-                              case 'completed':
-                                echo '<span class="badge bg-success">Completed</span>';
-                                break;
-                              case 'missed':
-                                echo '<span class="badge bg-danger">Missed</span>';
-                                break;
-                              case 'delayed':
-                                echo '<span class="badge bg-secondary">Delayed</span>';
-                                break;
-                            }
-                            ?>
-                          </td>
-                          <td>
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="edit" class="btn-icon-prepend"></i>
-                              Edit Details
-                            </button>
-                          </td>
-                        </tr>
-                    <?php
-                      endforeach;
-                    endif;
-                    ?>
-                  </tbody>
+                            <a href="" class="link-primary">
+                              Download
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
 
-                </table>
+
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="d-flex gap-2 align-items-center mb-3">
+                      <div class="input-group">
+                        <div class="input-group-text" id="btnGroupAddon2">@</div>
+                        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                      </div>
+                      <div class="flex-shrink-0">
+                        <button class="btn btn-primary btn-icon">
+                          <i data-feather="plus"></i>
+                        </button>
+                        <button class="btn btn-light btn-icon-text">
+                          <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2">
+                        <div>
+                          <input type="number" name="" id="" class="form-control" placeholder="0">
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-grow-1">
+                          <input type="text" name="" id="" class="form-control" placeholder="Summary (required)">
+                          <a class="link-danger" href="">
+                            <i data-feather="info" class="icon-md"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table id="request_tbl" class="table display">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>actual count</th>
+                            <th>variance</th>
+                            <th>accuracy</th>
+                            <th>last count</th>
+                            <th>next count</th>
+                            <th>remarks</th>
+                            <th>status</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($cycle_count)) :
+                            foreach ($cycle_count as $data) :
+                          ?>
+                              <tr class="align-middle">
+                                <td>
+                                  <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="checkDefault">
+                                  </div>
+                                </td>
+                                <td><?= $data->actual_count ?></td>
+                                <td><?= $data->variance ?></td>
+                                <td><?= $data->accuracy ?></td>
+                                <td>
+                                  <p><?= date("d M Y", strtotime($data->last_count_date)) ?></p>
+                                  <small class="text-muted"><?= date("h:i A", strtotime($data->last_count_date)) ?></small>
+                                </td>
+                                <td>
+                                  <p><?= date("d M Y", strtotime($data->next_count_date)) ?></p>
+                                  <small class="text-muted"><?= date("h:i A", strtotime($data->next_count_date)) ?></small>
+                                </td>
+                                <td>
+                                  <?= $data->remarks ?>
+                                </td>
+                                <td>
+                                  <?php
+                                  switch ($data->status_name) {
+                                    case 'completed':
+                                      echo '<span class="badge bg-success">Completed</span>';
+                                      break;
+                                    case 'missed':
+                                      echo '<span class="badge bg-danger">Missed</span>';
+                                      break;
+                                    case 'delayed':
+                                      echo '<span class="badge bg-secondary">Delayed</span>';
+                                      break;
+                                  }
+                                  ?>
+                                </td>
+                                <td>
+                                  <button class="btn btn-primary btn-icon-text">
+                                    <i data-feather="edit" class="btn-icon-prepend"></i>
+                                    Edit Details
+                                  </button>
+                                </td>
+                              </tr>
+                          <?php
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+
+                      </table>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="mb-3">
+                      <label for="" class="form-label">Product Name:</label>
+                      <input type="text" name="" id="" class="form-control" value="Hard Copy Bond Paper">
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Description:</label>
+                      <textarea name="" class="form-control" id="" cols="30" rows="5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime suscipit quis deserunt dolores recusandae facere saepe unde reiciendis voluptate! Aperiam.</textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Location:</label>
+                      <select name="" class="form-select" id="">
+                        <option value="1">Section A</option>
+                        <option value="1">Section B</option>
+                        <option value="1">Section C</option>
+                        <option value="1">Section D</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <div class="form-check form-switch mb-2">
+                        <input type="checkbox" class="form-check-input" id="formSwitch1">
+                        <label class="form-check-label" for="formSwitch1">Notify me for the next count</label>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+
+                      <ul class="list-group mb-3">
+                        <li class="list-group-item">
+                          <div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <div>
+                                <p>PID-001-Invoice-Slip-2023.pdf</p>
+                                <small class="text-muted">200 KB</small>
+                              </div>
+                              <button class="btn btn-danger btn-icon">
+                                <i data-feather="trash-2" class="icon-lg"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <button class="btn btn-outline-primary btn-icon-text w-100">
+                        <i data-feather="plus" class="btn-icon-prepend"></i>
+                        Add attachment
+                      </button>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
   </div>
   </div>

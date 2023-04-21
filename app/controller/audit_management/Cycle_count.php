@@ -11,7 +11,7 @@ class Cycle_count
     {
         $data = [];
 
-        $data["products"] =  $this->get_all_products();
+        $data["products"] =  $this->fetch_all_products();
 
         $this->view('partials/navbar');
         $this->view("audit_management/cycle_count", $data);
@@ -21,9 +21,11 @@ class Cycle_count
     public function preview()
     {
         $product_id = $_GET["product_id"];
-        $data["cycle_count"] = $this->get_cycle_count($product_id);
-        $Inventory = new WHS_Inventory;
-        $data["product"] = $Inventory->findRowView(["product_id" => $product_id]);
+        // $data["cycle_count"] = $this->get_cycle_count($product_id);
+        $Inventory = new InventoryModel;
+        $data["product"] = $Inventory->fetch_product(["product_id" => $product_id]);
+
+        // print_r($data["product"]);
 
         $this->view('partials/navbar');
         $this->view("audit_management/cycle_sheet", $data);
@@ -84,22 +86,9 @@ class Cycle_count
         return $Cycle_count->renderViewByCriteria(["product_id" => $product_id]);
     }
 
-    public function get_all_products()
+    public function fetch_all_products()
     {
-        $inventory_model = new WHS_Inventory;
-        return $inventory_model->renderView();
-    }
-
-    public function get_all_products_by_category($category)
-    {
-        $inventory_model = new WHS_Inventory;
-        return $inventory_model->renderViewByCriteria(["category_name" => $category]);
-    }
-
-
-    public function get_product($product_id)
-    {
-        $inventory_model = new WHS_Inventory;
-        return $inventory_model->findRowView(["product_id" => $product_id]);
+        $Inventory = new InventoryModel;
+        return $Inventory->fetch_all_products();
     }
 }

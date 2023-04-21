@@ -58,64 +58,12 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Cycle Count</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
                 <div class="row mb-3">
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>Category</option>
-                      <option value="">Office Supplies</option>
-                      <option value="">Foods and Beverages</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>Frequency Count</option>
-                      <option value="">Weekly</option>
-                      <option value="">Monthly</option>
-                      <option value="">Quarterly</option>
-                      <option value="">Annually</option>
-                    </select>
-                  </div>
                   <div class="col">
                     <div class="btn-group w-100" role="group" aria-label="Basic example">
                       <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search product id">
                       <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
                     </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="to do" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">To Do</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="completed" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Completed</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="missed" name="btnradio" id="btnradio4" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio4">Missed</label>
-                    </div>
-                  </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="edit" class="btn-icon-prepend"></i>
-                      Edit Data
-                    </button>
-                    <button class="btn btn-primary btn-icon-text">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add New
-                    </button>
                   </div>
                 </div>
 
@@ -126,10 +74,11 @@
                         <th data-orderable="false"></th>
                         <th>product id</th>
                         <th>product name</th>
+                        <th>quantity</th>
                         <th>category</th>
                         <th>frequency count</th>
-                        <th>last count date</th>
-                        <th>next count date</th>
+                        <th>location</th>
+                        <th>supplier name</th>
                         <th>action</th>
                       </tr>
                     </thead>
@@ -146,28 +95,18 @@
                             </td>
                             <td><?= $data->product_id ?></td>
                             <td>
-                              <p><?= $data->product_name ?></p>
+                              <p><?= ucwords($data->product_name) ?></p>
                             </td>
+                            <td><?= $data->quantity ?></td>
                             <td><?= ucwords($data->category_name) ?></td>
                             <td><?= ucwords($data->frequency_count) ?></td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->last_count_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->last_count_date)) ?></small>
-                            </td>
-                            <td>
-                              <p>
-                                <?= $data->next_count_date !== null ? date("d M Y", strtotime($data->next_count_date)) : '--' ?>
-                              </p>
-                            </td>
+                            <td><?= ucwords($data->location_name)?></td>
+                            <td><?= $data->supplier_name ?></td>
                             <td>
                               <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/cycle_count/preview?product_id=<?= $data->product_id ?>">
                                 <i data-feather="external-link" class="btn-icon-prepend"></i>
                                 Preview
                               </a>
-                              <button class="btn btn-light btn-icon-text">
-                                <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                                Download Sheet
-                              </button>
                             </td>
                           </tr>
                       <?php

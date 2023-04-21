@@ -147,7 +147,6 @@
                         <th>request date</th>
                         <th>pickup date</th>
                         <th>return date</th>
-                        <th>remarks</th>
                         <th>status</th>
                         <th>action</th>
                       </tr>
@@ -167,13 +166,8 @@
                             </td>
                             <td><?= $data->reservation_id ?></td>
                             <td>
-                              <div class="d-flex align-items-center gap-2">
-                                <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                <div>
-                                  <p class="text-uppercase"><?= $data->make ?></p>
-                                  <small class="text-muted"><?= $data->plate ?></small>
-                                </div>
-                              </div>
+                              <p class="text-uppercase"><?= $data->make ?></p>
+                              <small class="text-muted"><?= $data->plate ?></small>
                             </td>
                             <td><?= ucwords($data->vehicle_type) ?></td>
                             <td>
@@ -188,7 +182,6 @@
                               <p><?= date("d M Y", strtotime($data->return_date)) ?></p>
                               <small class="text-muted"><?= date("h:i A", strtotime($data->return_date)) ?></small>
                             </td>
-                            <td>--</td>
                             <td>
                               <?php
                               switch ($data->reservation_status) {
@@ -211,11 +204,9 @@
                               ?>
                             </td>
                             <td>
-                              <button class="btn btn-primary btn-icon">
-                                <i data-feather="edit-2"></i>
-                              </button>
-                              <button class="btn btn-danger btn-icon">
-                                <i data-feather="trash-2"></i>
+                              <button class="btn btn-primary btn-icon-text">
+                                <i data-feather="edit" class="btn-icon-prepend"></i>
+                                Edit Details
                               </button>
                             </td>
                           </tr>
@@ -275,7 +266,7 @@
       });
     });
   </script>
-  
+
   <script>
     const myInput = document.querySelectorAll(".date-input");
     const flatpickrInstance = flatpickr(myInput, {
