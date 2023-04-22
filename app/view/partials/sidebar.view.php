@@ -101,6 +101,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= ROOT ?>fleet_management_admin/manage_drivers" class="nav-link">
+                        <i class="link-icon" data-feather="users"></i>
+                        <span class="link-title">Manage Drivers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= ROOT ?>fleet_management_admin/maintenance" class="nav-link">
                         <i class="link-icon" data-feather="settings"></i>
                         <span class="link-title">Maintenance</span>
