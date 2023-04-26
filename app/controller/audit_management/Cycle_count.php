@@ -11,7 +11,8 @@ class Cycle_count
     {
         $data = [];
 
-        $data["products"] =  $this->fetch_all_products();
+        $Inventory = new InventoryModel;
+        $data["products"] =  $Inventory->fetch_all_products();
 
         $this->view('partials/navbar');
         $this->view("audit_management/cycle_count", $data);
@@ -27,23 +28,37 @@ class Cycle_count
 
         // print_r($data["product"]);
 
+        if (!empty($_POST)) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $_POST["product_id"] = $product_id;
+                $this->add_cycle_count($_POST);
+                die;
+            }
+        }
+
         $this->view('partials/navbar');
         $this->view("audit_management/cycle_sheet", $data);
         $this->view('partials/sidebar');
     }
 
-    public function insert_cycle_count()
+    public function add_cycle_count($data)
     {
-        $Cycle_count = new AM_Cycle_count;
-        $product_id = $_POST["product_id"];
-        $product = $this->get_product($product_id);
-        $frequency_count = $product->frequency_count;
-        $current_count_date = new DateTime();
+        $CycleCount = new CycleCountModel;
+        $Inventory = new InventoryModel;
 
-        // Calculate the next count date based on the frequency count
+        $row = $Inventory->fetch_product(["product_id" => $data["product_id"]]);
+
+        $current_date = new DateTime('now');
+
+        $frequency_count = $row->frequency_count;
+
+        // Calculate the cycle count date based on the frequency count
         switch ($frequency_count) {
+            case 'daily':
+                $interval = new DateInterval('P1D');
+                break;
             case 'weekly':
-                $interval = new DateInterval('P7D');
+                $interval = new DateInterval('P1W');
                 break;
             case 'monthly':
                 $interval = new DateInterval('P1M');
@@ -55,40 +70,15 @@ class Cycle_count
                 $interval = new DateInterval('P1Y');
                 break;
             default:
-                // Handle invalid frequency counts here
-                break;
+                throw new Exception('Invalid frequency count specified');
         }
-        $current_count_date->add($interval);
-        $next_count_date = $current_count_date->format('y-m-d h:i:s');
 
-        $Cycle_count->insert([
-            "cc_id" => uniqid("cc-"),
-            "product_id" => $product_id,
-            "actual_count" => $_POST["actual_count"],
-            "variance" => $_POST["variance"],
-            "remarks" => $_POST["remarks"],
-            "accuracy" => $_POST["accuracy"],
-            "next_count_date" => $next_count_date
-        ]);
+        $cycle_count_date = clone $current_date;
+        $cycle_count_date->add($interval);
 
-        
+        $data["last_count_date"] = $current_date->format('d-m-y h:i:s');
+        $data["next_count_date"] = $cycle_count_date->format('d-m-y');
 
-        $Inventory = new WHS_Inventory;
-        $Inventory->update($product_id, [
-            "last_count_date"=>date("y-m-d h:i:s"),
-            "next_count_date"=>$next_count_date
-        ], "product_id");
-    }
-
-    public function get_cycle_count($product_id)
-    {
-        $Cycle_count = new AM_Cycle_count;
-        return $Cycle_count->renderViewByCriteria(["product_id" => $product_id]);
-    }
-
-    public function fetch_all_products()
-    {
-        $Inventory = new InventoryModel;
-        return $Inventory->fetch_all_products();
+        print_r($data);
     }
 }

@@ -12,20 +12,48 @@ class Login
 
         $data = [];
 
-        $Users = new AccountsModel;
-        $arr["username"] = $_POST["username"];
-        $arr["password"] = $_POST["password"];
+        if (!empty($_POST)) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $arr["username"] = $_POST["username"];
+                $arr["password"] = $_POST["password"];
 
-        $row = $Users->fetch_user($arr);
+                $Users = new AccountsModel;
+                $row = $Users->fetch_user($arr);
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if ($row && $row->password == $_POST["password"]) {
-                $_SESSION["user"] = $row;
+                if ($row && $row->password == $_POST["password"]) {
+                    $_SESSION["user"] = $row;
 
-                redirect("general/dashboard");
+                    redirect("general/dashboard");
+                    exit();
+                }
             }
         }
 
         $this->view("auth/login", $data);
+    }
+
+    public function authenticate()
+    {
+        $arr["username"] = $_POST["username"];
+        $arr["password"] = $_POST["password"];
+
+        $Users = new AccountsModel;
+        $row = $Users->fetch_user($arr);
+
+        if ($row && $row->password == $_POST["password"]) {
+            $_SESSION["user"] = $row;
+
+            // Construct dashboard URL using ROOT constant
+            $dashboardUrl = ROOT . "general/dashboard";
+
+            // Send redirect response
+            header("Location: $dashboardUrl");
+            exit();
+        } else {
+            // Authentication failed, display error message
+            $response = array("status" => "error", "message" => "Authentication failed.");
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
     }
 }

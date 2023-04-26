@@ -177,46 +177,53 @@
                   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="d-flex align-items-center gap-2">
                       <div class="input-group">
-                        <div class="input-group-text" id="btnGroupAddon2">@</div>
-                        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                        <div class="input-group-text" id="btnGroupAddon2"><i data-feather="search"></i></div>
+                        <input type="text" class="form-control" placeholder="Search bidder" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                       </div>
                       <button class="btn btn-primary btn-icon-text flex-shrink-0" disabled>
                         <i data-feather="plus" class="btn-icon-prepend"></i>
-                        Award Selected
+                        Add New
                       </button>
                     </div>
-                    <div>
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Sort by
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <a class="dropdown-item" href="#">Dropdown link</a>
-                          <a class="dropdown-item" href="#">Dropdown link</a>
-                        </div>
-                      </div>
+                    <div class="mt-4">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <td></td>
+                            <td>
+                              <p>ABC Company</p>
+                              <small class="text-muted">abc@company.com</small>
+                            </td>
+                            <td>
+                              <p>SM Supermalls</p>
+                              <small class="text-muted">sm@supermalls.com</small>
+                            </td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Bid</td>
+                            <td>PHP 200,000.00</td>
+                            <td>PHP 200,000.00</td>
+                          </tr>
+                          <tr>
+                            <td>Location</td>
+                            <td>Quezon City, Philippines</td>
+                            <td>Kuala Lumphur, Malaysia</td>
+                          </tr>
+                          <tr>
+                            <td>Quality</td>
+                            <td>100%</td>
+                            <td>100%</td>
+                          </tr>
+                          <tr>
+                            <td>Discount</td>
+                            <td>20%</td>
+                            <td>No Discount</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                    <table class="mt-4 table table-bordered">
-                      <thead>
-                        <tr>
-                          <th class="text-center">items / services</th>
-                          <th>company name</th>
-                          <th>bid offer</th>
-                        </tr>
-                        <tr>
-                          <td rowspan="2" class="align-middle text-center">Bond Paper</td>
-                          <td>National Bookstore</td>
-                          <td>PHP 200,000.00</td>
-                        </tr>
-                        <tr>
-                          <td>SM Supermalls</td>
-                          <td>PHP 190,000.00</td>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                      </thead>
-                    </table>
                   </div>
                   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="d-flex align-items-center gap-2">

@@ -1,1 +1,3 @@
-const BASE_URL = 'http://localhost/TNVS-LOGISTIC2/public/';
+const config = {
+    baseUrl: 'http://localhost/ASADASDASDA/TNVS-LOGISTIC2/public/'
+};

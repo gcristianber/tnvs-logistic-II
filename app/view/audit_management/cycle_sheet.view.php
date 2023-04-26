@@ -120,34 +120,37 @@
 
                   </div>
                   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div class="d-flex gap-2 align-items-center mb-3">
-                      <div class="input-group">
-                        <div class="input-group-text" id="btnGroupAddon2">@</div>
-                        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                      </div>
-                      <div class="flex-shrink-0">
-                        <button class="btn btn-primary btn-icon">
-                          <i data-feather="plus"></i>
-                        </button>
-                        <button class="btn btn-light btn-icon-text">
-                          <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                          Download
-                        </button>
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <div class="d-flex align-items-center gap-2">
-                        <div>
-                          <input type="number" name="" id="" class="form-control" placeholder="0">
+                    <form id="add_cycle_count">
+                      <div class="d-flex gap-2 align-items-center mb-3">
+                        <div class="input-group">
+                          <div class="input-group-text" id="btnGroupAddon2">@</div>
+                          <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                         </div>
-                        <div class="d-flex align-items-center gap-2 flex-grow-1">
-                          <input type="text" name="" id="" class="form-control" placeholder="Summary (required)">
-                          <a class="link-danger" href="">
-                            <i data-feather="info" class="icon-md"></i>
-                          </a>
+                        <div class="flex-shrink-0">
+                          <button type="submit" class="btn btn-primary btn-icon-text">
+                            <i data-feather="plus" class="btn-icon-prepend"></i>
+                            Add Entry
+                          </button>
+                          <button class="btn btn-light btn-icon-text">
+                            <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                            Export as CSV
+                          </button>
                         </div>
                       </div>
-                    </div>
+                      <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                          <div>
+                            <input type="number" name="actual_count" id="" class="form-control" placeholder="0">
+                          </div>
+                          <div class="d-flex align-items-center gap-2 flex-grow-1">
+                            <input type="text" name="remarks" id="" class="form-control" placeholder="Summary (required)">
+                            <a class="link-danger" href="">
+                              <i data-feather="info" class="icon-md"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                     <div class="table-responsive">
                       <table id="request_tbl" class="table display">
                         <thead>
@@ -159,11 +162,45 @@
                             <th>last count</th>
                             <th>next count</th>
                             <th>remarks</th>
+                            <th>audited by</th>
                             <th>status</th>
                             <th>action</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <tr class="align-middle">
+                            <td>
+
+                            </td>
+                            <td>500</td>
+                            <td>
+                              0
+                            </td>
+                            <td>
+                              100%
+                            </td>
+                            <td>
+                              26/04/2023
+                            </td>
+                            <td>
+                              26/05/2023
+                            </td>
+                            <td>
+                              None
+                            </td>
+                            <td>
+                              Cristianber Gordora
+                            </td>
+                            <td>
+                              <span class="badge bg-danger">Late</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-primary btn-icon-text">
+                                <i data-feather="edit" class="btn-icon-prepend"></i>
+                                Edit details
+                              </button>
+                            </td>
+                          </tr>
                           <?php
                           if (!empty($cycle_count)) :
                             foreach ($cycle_count as $data) :
@@ -310,85 +347,6 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
   <!-- Flat Picker -->
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "d M Y",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      var table = $('#request_tbl').DataTable({
-        lengthChange: false, // Disable length menu
-        bInfo: false, // Disable "Showing X of Y entries" label
-        paging: false
-      });
-
-      $('#search').on('keyup', function(event) {
-        if (event.keyCode === 13) { // Check if "Enter" key is pressed
-          var query = $('#search').val();
-          table.search(query).draw();
-        }
-      });
-
-      $('#customSearchBtn').on('click', function() {
-        var query = $('#search').val();
-        table.search(query).draw();
-      });
-
-      var rows = $('table tbody tr');
-
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
-
-        // hide all rows by default
-        rows.hide();
-
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
-      });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'in progress': 0,
-        'scheduled': 0,
-        'completed': 0,
-        'cancelled': 0,
-        'delayed': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-
-
-
-    });
-  </script>
 </body>
 
 </html>

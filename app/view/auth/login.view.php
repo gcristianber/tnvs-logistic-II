@@ -41,40 +41,45 @@
     <div class="page-wrapper full-page">
       <div class="page-content d-flex align-items-center justify-content-center">
 
-        <div class="row w-100 mx-0 auth-page">
-          <div class="col-md-8 col-xl-6 mx-auto">
-            <div class="card">
-              <div class="card-body">
+        <div class="card wd-md-500">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
                 <div class="mb-3">
-                  <h4 class="">LOGIN</h4>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                  <div class="text-center">
+                    <img src="<?= ROOT ?>assets/images/favicon.png" class="ht-50 wd-50 mb-3" alt="">
+                    <h4>Welcome Back!</h4>
+                    <p class="text-muted">Sign in to get started.</p>
+                  </div>
                 </div>
-                <div class="d-flex align-items-center gap-5">
-                  <img src="<?= ROOT ?>assets/images/thumbnails/login_thumbnail.svg" class="wd-250" alt="">
-                  <form class="forms-sample w-100" method="POST">
-                    <div class="mb-3">
-                      <label for="username" class="form-label">Username</label>
-                      <input type="email" class="form-control" id="username" name="username" placeholder="Username">
-                    </div>
-                    <div class="mb-3">
-                      <label for="userPassword" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="userPassword" name="password" autocomplete="current-password" placeholder="Password">
-                    </div>
-                    <div class="form-check mb-3">
-                      <input type="checkbox" class="form-check-input" id="authCheck">
-                      <label class="form-check-label" for="authCheck">
-                        Remember me
-                      </label>
-                    </div>
-                    <div>
-                      <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</button>
-                      <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                        <i class="btn-icon-prepend" data-feather="twitter"></i>
-                        Login with twitter
+                <form method="POST">
+                  <div class="mb-3">
+                    <label for="" class="form-label">Username</label>
+                    <input type="text" name="username" id="" class="form-control" placeholder="Username" autofocus>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <div class="input-group">
+                      <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                      <button type="button" class="btn btn-light btn-icon">
+                        <i data-feather="eye"></i>
                       </button>
                     </div>
-                  </form>
-                </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkDefault">
+                      <label class="form-check-label" for="checkDefault">
+                        Keep me signed in
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-primary w-100">
+                      Sign in
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -98,7 +103,6 @@
 
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
-
 </body>
 
 </html>

@@ -120,19 +120,19 @@
                       <div class="mb-2">
                         <div class="form-check">
                           <input type="checkbox" class="form-check-input" id="checkDefault">
-                          <label for="checkDefault" class="form-label">Active</label>
+                          <label for="checkDefault" class="form-label">Verified</label>
                         </div>
                       </div>
                       <div class="mb-2">
                         <div class="form-check">
                           <input type="checkbox" class="form-check-input" id="checkDefault">
-                          <label for="checkDefault" class="form-label">Inactive</label>
+                          <label for="checkDefault" class="form-label">Pending</label>
                         </div>
                       </div>
                       <div class="mb-2">
                         <div class="form-check">
                           <input type="checkbox" class="form-check-input" id="checkDefault">
-                          <label for="checkDefault" class="form-label">Expired</label>
+                          <label for="checkDefault" class="form-label">Declined</label>
                         </div>
                       </div>
                     </div>
@@ -182,7 +182,7 @@
                         <input type="text" name="" id="" class="form-control">
                       </div>
                       <div class="mb-3">
-                      <label for="" class="form-label">Message</label>
+                        <label for="" class="form-label">Message</label>
                         <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
                       </div>
                       <div class="mb-3 text-end">
@@ -205,61 +205,53 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr class="align-middle" data-status="verified">
-                            <td>
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkDefault">
-                              </div>
-                            </td>
-                            <td>National Bookstore</td>
-                            <td>Office Supplies</td>
-                            <td>Quezon City, Philippines</td>
-                            <td>
-                              <span class="badge bg-success">Active</span>
-                            </td>
-                            <td>
-                              <div class="d-inline">
-                                8/10 <i data-feather="star" fill="currentColor" class="icon-lg text-warning"></i>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr class="align-middle" data-status="verified">
-                            <td>
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkDefault">
-                              </div>
-                            </td>
-                            <td>SM Supermalls</td>
-                            <td>Office Supplies</td>
-                            <td>Quezon City, Philippines</td>
-                            <td>
-                              <span class="badge bg-danger">Expired</span>
-                            </td>
-                            <td>
-                              <div class="d-inline">
-                                8/10 <i data-feather="star" fill="currentColor" class="icon-lg text-warning"></i>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr class="align-middle" data-status="verified">
-                            <td>
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkDefault">
-                              </div>
-                            </td>
-                            <td>National Bookstore</td>
-                            <td>Office Supplies</td>
-                            <td>Quezon City, Philippines</td>
-                            <td>
-                              <span class="badge bg-success">Active</span>
-                            </td>
-                            <td>
-                              <div class="d-inline">
-                                8/10 <i data-feather="star" fill="currentColor" class="icon-lg text-warning"></i>
-                              </div>
-                            </td>
-                          </tr>
-                          
+                          <?php
+
+                          if (!empty($vendors)) :
+                            foreach ($vendors as $data) :
+                          ?>
+                              <tr class="align-middle" data-status="verified">
+                                <td>
+                                  <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="checkDefault" value="<?= $data->vendor_id ?>">
+                                  </div>
+                                </td>
+                                <td><?= $data->company_name ?></td>
+                                <td><?= ucwords($data->supply_category_name) ?></td>
+                                <td><?= $data->location ?></td>
+                                <td>
+
+                                  <?php
+
+                                  switch ($data->user_status_name) {
+                                    case 'verified':
+                                      echo '<span class="badge bg-success">Verified</span>';
+                                      break;
+                                    case 'pending':
+                                      echo '<span class="badge bg-warning">Pending</span>';
+                                      break;
+                                    case 'declined':
+                                      echo '<span class="badge bg-danger">Declined</span>';
+                                      break;
+                                  }
+
+
+                                  ?>
+                                  
+                                </td>
+                                <td>
+                                  <button class="btn btn-primary btn-icon-text">
+                                    <i data-feather="eye" class="btn-icon-prepend"></i>
+                                    Preview
+                                  </button>
+                                </td>
+                              </tr>
+
+                          <?php
+                            endforeach;
+                          endif;
+                          ?>
+
                         </tbody>
 
                       </table>
@@ -296,20 +288,10 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/vendor_portal/manage-vendors.js"></script>
   <!-- End custom js for this page -->
   <!-- Flat Picker -->
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "d M Y",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
   <script>
     $(document).ready(function() {
       var table = $('#request_tbl').DataTable({
@@ -317,63 +299,6 @@
         bInfo: false, // Disable "Showing X of Y entries" label
 
       });
-
-      $('#search').on('keyup', function(event) {
-        if (event.keyCode === 13) { // Check if "Enter" key is pressed
-          var query = $('#search').val();
-          table.search(query).draw();
-        }
-      });
-
-      $('#customSearchBtn').on('click', function() {
-        var query = $('#search').val();
-        table.search(query).draw();
-      });
-
-      var rows = $('table tbody tr');
-
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
-
-        // hide all rows by default
-        rows.hide();
-
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
-      });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'approved': 0,
-        'declined': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-
-
-
     });
   </script>
 </body>

@@ -8,24 +8,21 @@ class Manage_vendors{
 
     public function index(){
 
-        $test = $this->get_all_vendors();
-
-        // print_r($test);
+        $data["vendors"] = $this->get_all_vendors();
 
         $this->view('partials/navbar');
-        $this->view("vendor_portal/admin/manage_vendors");
+        $this->view("vendor_portal/admin/manage_vendors", $data);
         $this->view("partials/sidebar");
         
     }
 
     public function get_all_vendors(){
-        $Vendors = new VP_Vendors;
-        return $Vendors->findAll();
+        $Vendors = new VendorsModel;
+        return $Vendors->fetch_all_vendors();
     }
 
-    public function manage_account($account_id=''){
-        $this->view('partials/navbar');
-        $this->view("vendor_portal/admin/manage_account");
-        $this->view("partials/sidebar");
+    public function create_invite(){
+        
     }
+
 }
