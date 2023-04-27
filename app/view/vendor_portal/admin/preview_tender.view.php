@@ -57,21 +57,18 @@
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item"><a href="#">Tender</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Preview</li>
           </ol>
         </nav>
 
         <div class="card grid-margin h-100">
           <div class="card-body">
             <div class="row h-100">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Summary</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Analysis</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bids</a>
@@ -82,6 +79,7 @@
                 </ul>
                 <div class="tab-content border border-top-0 p-3 h-100" id="myTabContent">
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
                     <table class="table border-white mb-3">
                       <tbody>
                         <tr>
@@ -132,7 +130,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <table class="table dataTable">
+                    <table class="table table-bordered dataTable">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -149,8 +147,9 @@
                           <td>200</td>
                           <td>PHP 10,000.00</td>
                           <td>
-                            <button class="btn btn-primary btn-icon">
-                              <i data-feather="edit"></i>
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="edit" class="btn-icon-prepend"></i>
+                              Edit Details
                             </button>
                             <button class="btn btn-danger btn-icon">
                               <i data-feather="trash-2"></i>
@@ -163,8 +162,9 @@
                           <td>200</td>
                           <td>PHP 10,000.00</td>
                           <td>
-                            <button class="btn btn-primary btn-icon">
-                              <i data-feather="edit"></i>
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="edit" class="btn-icon-prepend"></i>
+                              Edit Details
                             </button>
                             <button class="btn btn-danger btn-icon">
                               <i data-feather="trash-2"></i>
@@ -174,67 +174,18 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div class="d-flex align-items-center gap-2">
-                      <div class="input-group">
-                        <div class="input-group-text" id="btnGroupAddon2"><i data-feather="search"></i></div>
-                        <input type="text" class="form-control" placeholder="Search bidder" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                      </div>
-                      <button class="btn btn-primary btn-icon-text flex-shrink-0" disabled>
-                        <i data-feather="plus" class="btn-icon-prepend"></i>
-                        Add New
-                      </button>
-                    </div>
-                    <div class="mt-4">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <td></td>
-                            <td>
-                              <p>ABC Company</p>
-                              <small class="text-muted">abc@company.com</small>
-                            </td>
-                            <td>
-                              <p>SM Supermalls</p>
-                              <small class="text-muted">sm@supermalls.com</small>
-                            </td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Bid</td>
-                            <td>PHP 200,000.00</td>
-                            <td>PHP 200,000.00</td>
-                          </tr>
-                          <tr>
-                            <td>Location</td>
-                            <td>Quezon City, Philippines</td>
-                            <td>Kuala Lumphur, Malaysia</td>
-                          </tr>
-                          <tr>
-                            <td>Quality</td>
-                            <td>100%</td>
-                            <td>100%</td>
-                          </tr>
-                          <tr>
-                            <td>Discount</td>
-                            <td>20%</td>
-                            <td>No Discount</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
                   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="d-flex align-items-center gap-2">
                       <div class="input-group">
                         <div class="input-group-text" id="btnGroupAddon2">@</div>
                         <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                       </div>
-                      <button class="btn btn-primary btn-icon-text flex-shrink-0" disabled>
-                        <i data-feather="plus" class="btn-icon-prepend"></i>
-                        Award Selected
-                      </button>
+                      <div class="d-flex gap-2 flex-shrink-0">
+                        <button class="btn btn-primary btn-icon-text" disabled>
+                          <i data-feather="repeat" class="btn-icon-prepend"></i>
+                          Compare Selected
+                        </button>
+                      </div>
                     </div>
                     <table class="table mt-4 dataTable" id="">
                       <thead>
@@ -276,34 +227,90 @@
 
                       </tbody>
                     </table>
+                    <div class="table-responsive">
+                      <table class="table mt-4 table-bordered">
+                        <tbody>
+                          <tr class="bg-gray-100">
+                            <td></td>
+                            <td>
+                              <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                  <p>ABC Company</p>
+                                  <small class="text-muted">abc@company.com</small>
+                                </div>
+                                <div>
+                                  <button class="btn btn-primary btn-icon-text">
+                                    <i data-feather="plus" class="btn-icon-prepend"></i>
+                                    Award
+                                  </button>
+                                  <button class="btn btn-danger btn-icon">
+                                    <i data-feather="trash-2"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                  <p>EFG Company</p>
+                                  <small class="text-muted">efg@company.com</small>
+                                </div>
+                                <div>
+                                  <button class="btn btn-primary btn-icon-text">
+                                    <i data-feather="plus" class="btn-icon-prepend"></i>
+                                    Award
+                                  </button>
+                                  <button class="btn btn-danger btn-icon">
+                                    <i data-feather="trash-2"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Bid</td>
+                            <td>PHP 250,000</td>
+                            <td>PHP 225,000</td>
+                          </tr>
+                          <tr>
+                            <td>Quality</td>
+                            <td>Excellent</td>
+                            <td>Excellent</td>
+                          </tr>
+                          <tr>
+                            <td>Discount</td>
+                            <td>20%</td>
+                            <td>15%</td>
+                          </tr>
+                          <tr>
+                            <td>Location</td>
+                            <td>Quezon City, Philippines</td>
+                            <td>Cavite City, Philippines</td>
+                          </tr>
+                          <tr>
+                            <td>Delivery Time</td>
+                            <td>1-2 Days</td>
+                            <td>1-3 Days</td>
+                          </tr>
+                          <tr>
+                            <td>Overall</td>
+                            <td class="text-center"><strong>4.00/5.00</strong></td>
+                            <td class="text-center"><strong>2.00/5.00</strong></td>
+                          </tr>
+                          <tr>
+                            <td colspan="3" class="text-center">
+                              <strong>
+                                <i>ABC Company</i>
+                              </strong>
+                              has more cheaper than EFG Company
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">...</div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <p class="fs-5">Activities</p>
-                <ul class="list-group mt-4">
-                  <li class="list-group-item">
-                    <p>Tender closed</p>
-                    <small class="text-muted">22/04/2023</small>
-                  </li>
-                  <li class="list-group-item">
-                    <p>New bid submitted</p>
-                    <h5 class="text-primary">National Bookstore</h5>
-                    <small class="text-muted">20/04/2023</small>
-                  </li>
-                  <li class="list-group-item">
-                    <p>New bid submitted</p>
-                    <h5 class="text-primary">SM Supermalls</h5>
-                    <small class="text-muted">20/04/2023</small>
-                  </li>
-                  <li class="list-group-item">
-                    <p>Tender opened</p>
-                    <small class="text-muted">20/04/2023</small>
-                  </li>
-                </ul>
-
-
               </div>
             </div>
           </div>

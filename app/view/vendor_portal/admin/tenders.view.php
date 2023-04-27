@@ -58,8 +58,6 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-
-
                 <div class="d-flex gap-2">
                   <div class="btn-group flex-grow-1" role="group" aria-label="Basic example">
                     <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
@@ -99,39 +97,61 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle" data-status="pending">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>1</td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <div class="wd-250 text-truncate">
-                              <p class="text-uppercase">Intel i5 4th Gen Computers</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Office Supplies</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Active</span>
-                        </td>
-                        <td>
-                          <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/tenders/preview_tender">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </a>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($tenders)) :
+                        foreach ($tenders as $data) :
+                      ?>
+                          <tr class="align-middle" data-status="pending">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>1</td>
+                            <td>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="wd-250 text-truncate">
+                                  <p class="text-uppercase"><?= $data->subject ?></p>
+                                </div>
+                              </div>
+                            </td>
+                            <td><?= ucwords($data->supply_category_name) ?></td>
+                            <td>
+                              <p><?= date("d M Y", strtotime($data->date_created)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_created)) ?></small>
+                            </td>
+                            <td>
+                              <p><?= date("d M Y", strtotime($data->closing_date)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->closing_date)) ?></small>
+                            </td>
+                            <td>
+                              
+                              <?php
+
+                              switch ($data->tender_status_name) {
+                                case 'pending':
+                                  echo '<span class="badge bg-warning">Pending</span>';
+                                  break;
+                                case 'in progress':
+                                  echo '<span class="badge bg-primary">In Progress</span>';
+                                  break;
+                                case 'completed':
+                                  echo '<span class="badge bg-success">Completed</span>';
+                                  break;
+                              }
+                              ?>
+                            </td>
+                            <td>
+                              <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/tenders/preview_tender?tender_id=<?= $data->tender_id ?>">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </a>
+                            </td>
+                          </tr>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
 
                   </table>
