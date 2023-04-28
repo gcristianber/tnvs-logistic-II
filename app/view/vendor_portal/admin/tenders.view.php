@@ -76,10 +76,85 @@
                       <a class="dropdown-item" href="#">Dropdown link</a>
                     </div>
                   </div>
-                  <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/post/create_list">
+                  <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i data-feather="plus" class="btn-icon-prepend"></i>
                     Add New
-                  </a>
+                  </button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="" class="form-label">Subject</label>
+                            <input type="text" class="form-control" name="" id="">
+                          </div>
+                          <div class="mb-3">
+                            <label for="" class="form-label">Description</label>
+                            <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label for="" class="form-label">Closing Date</label>
+                            <div class="input-group flatpickr" id="flatpickr-date">
+                              <span class="input-group-text input-group-addon" data-toggle="">
+                                <i data-feather="calendar"></i>
+                              </span>
+                              <input type="text" name="return_date" id="" class="form-control date-input">
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="" class="form-label">Budget (PHP)</label>
+                            <input type="text" name="" id="" class="form-control" placeholder="PHP 0.00">
+                          </div>
+                          <div class="mb-3">
+                            <label for="" class="form-label">Line Items</label>
+                            <div class="mb-3">
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="flex-grow-1">
+                                  <input type="text" name="" id="" class="form-control" placeholder="Item Name">
+                                </div>
+                                <div class="flex-grow-1">
+                                  <input type="number" name="" id="" class="form-control" placeholder="0">
+                                </div>
+                                <div class="flex-grow-1">
+                                  <input type="text" name="" id="" class="form-control" placeholder="PHP 0.00">
+                                </div>
+                                <div class="flex-grow-1">
+                                  <button class="btn btn-primary btn-icon-text w-100">
+                                    <i data-feather="plus" class="btn-icon-prepend"></i>
+                                    Add Item
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>item / services</th>
+                                  <th>quantity</th>
+                                  <th>budget</th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                          <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="checkDefault">
+                            <label class="form-check-label" for="checkDefault">
+                              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur. <a href="" class="link-primary">Lorem, ipsum.</a>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="table-responsive">
@@ -125,7 +200,7 @@
                               <small class="text-muted"><?= date("h:i A", strtotime($data->closing_date)) ?></small>
                             </td>
                             <td>
-                              
+
                               <?php
 
                               switch ($data->tender_status_name) {

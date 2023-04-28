@@ -52,143 +52,80 @@
     <div class="page-wrapper">
 
       <div class="page-content">
-        <div class="card">
+        <div class="card h-100">
           <div class="card-body">
 
-            <div class="mb-3">
-              <div class="mb-3">
-                <p>Reference Number:</p>
-                <p>RFID-0001</p>
-              </div>
-              <div class="mb-3">
-                <p>Subject:</p>
-                <p>AUDIT INVENTORY : REQUESTING AN AUDIT REQUEST FOR SECTION A</p>
-              </div>
-              <div class="mb-3">
-                <p>Description:</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, veritatis doloremque consequuntur sint nostrum eaque enim nihil! Aspernatur, itaque repellat.</p>
-              </div>
+            <div class="table-responsive">
+              <table class="table border border-white">
+                <tbody>
+                  <tr>
+                    <td>
+                      <table class="table border border-white">
+                        <tr>
+                          <td>Reference Number:</td>
+                          <td>RFID-0441A</td>
+                        </tr>
+                        <tr>
+                          <td>Subject:</td>
+                          <td>INVENTORY AUDIT REQUEST FOR SECTION A APRIL 2023</td>
+                        </tr>
+                        <tr>
+                          <td>Description:</td>
+                          <td class="text-wrap">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae quas incidunt neque aperiam, voluptatibus accusantium dolore odio quaerat doloribus voluptas?</td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td>
+                      <table class="table border border-white">
+                        <tr>
+                          <td>Date Requested:</td>
+                          <td>27/04/2023 - 09:38 PM</td>
+                        </tr>
+                        <tr>
+                          <td>Status:</td>
+                          <td><span class="badge bg-warning">Pending</span></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Procedures</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Attachments</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Analysis</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="disabled-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" aria-selected="false">Activity</a>
-              </li>
-            </ul>
-            <div class="tab-content border border-top-0 p-3" id="myTabContent">
-
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="mb-3">
-                  <p class="fs-5">Audit Evidence Collection Procedure</p>
-                  <p class="text-muted">Evidence collection for performing inventory audit.</p>
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Inventory Audit Progress:</label>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                  </div>
-                </div>
-                <table class="table table-bordered">
-                  <thead>
-                    <tr class="bg-gray-100">
-                      <th>Procedure</th>
-                      <th>Method</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Inspection of Records</td>
-                      <td>Put samples of records and trace/verify/match</td>
-                      <td class="text-center">
-                        <input type="checkbox" class="form-check-input" id="checkDefault">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Inspection of Tangible Assets</td>
-                      <td>Physical Inventory, walk through, open boxes</td>
-                      <td class="text-center">
-                        <input type="checkbox" class="form-check-input" id="checkDefault">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Recalculation</td>
-                      <td>Extract and recalculate figures to verify</td>
-                      <td class="text-center">
-                        <input type="checkbox" class="form-check-input" id="checkDefault">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-              <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">
-                <div class="mb-3">
-                  <p class="fs-5">Activity Logs</p>
-                  <p class="text-muted">Keep tracking the audit activities.</p>
-                </div>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                    <div class="ms-2 d-flex align-items-center gap-3">
-                      <i data-feather="arrow-right" class="icon-md text-success"></i>
-                      <div>
-                        <p>Request has been received by the auditor.</p>
-                        <small class="text-muted">22/04/2023 - 12:15 PM</small>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="ms-2 d-flex align-items-center gap-3">
-                      <i data-feather="arrow-right" class="icon-md text-success"></i>
-                      <div>
-                        <p>Auditor added an attachment.</p>
-                        <small class="text-muted">22/04/2023 - 12:15 PM</small>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="ms-2 d-flex align-items-center gap-3">
-                      <i data-feather="arrow-right" class="icon-md text-success"></i>
-                      <div>
-                        <p>Auditor performed physical counting.</p>
-                        <small class="text-muted">22/04/2023 - 12:15 PM</small>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="ms-2 d-flex align-items-center gap-3">
-                      <i data-feather="arrow-right" class="icon-md text-success"></i>
-                      <div>
-                        <p>Auditor adjusted the inventory product counts.</p>
-                        <small class="text-muted">22/04/2023 - 12:15 PM</small>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="ms-2 d-flex align-items-center gap-3">
-                      <i data-feather="arrow-right" class="icon-md text-success"></i>
-                      <div>
-                        <p>Inventory audit has been completed</p>
-                        <small class="text-muted">22/04/2023 - 12:15 PM</small>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-
-
-              </div>
-            </div>
+           <div class="container">
+             <div class="table-responsive">
+               <table class="table table-bordered dataTable">
+                 <thead>
+                   <tr>
+                     <th>#</th>
+                     <th>product no.</th>
+                     <th>product name</th>
+                     <th>category</th>
+                     <th>system count</th>
+                     <th>actual count</th>
+                     <th>status</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr class="align-middle">
+                     <td>1</td>
+                     <td>PID-04A</td>
+                     <td>Coke Zero</td>
+                     <td>Foods & Beverages</td>
+                     <td>
+                       25
+                     </td>
+                     <td>
+                       <input type="number" name="" id="" class="form-control">
+                     </td>
+                     <td>
+                       <span class="badge bg-success">Completed</span>
+                     </td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+           </div>
 
 
           </div>
@@ -216,33 +153,15 @@
 
       <!-- Custom js for this page -->
       <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-      <script src="<?= ROOT ?>assets/custom/js/audit_management/get-product-accuracy.js"></script>
-      <script src="<?= ROOT ?>assets/custom/js/audit_management/download-as-file.js"></script>
-      <script src="<?= ROOT ?>assets/custom/js/audit_management/generate-report.js"></script>
-      <!-- <script src="<?= ROOT ?>assets/js/tinymce.js"></script> -->
       <!-- End custom js for this page -->
+
       <script>
-        tinymce.init({
-          selector: '.tinymceExample',
-          menubar: false,
-          height: 400,
-          plugins: [
-            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-            'searchreplace wordcount visualblocks visualchars code fullscreen',
-            'template' // add the template plugin
-          ],
-          toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | template', // add the template button to the toolbar
-          templates: [{
-              title: 'Template 1',
-              description: 'Description of template 1',
-              content: '<h1>Heading</h1><p>Paragraph</p>'
-            },
-            {
-              title: 'Template 2',
-              description: 'Description of template 2',
-              content: '<ul><li>Item 1</li><li>Item 2</li></ul>'
-            }
-          ]
+        $(document).ready(function() {
+          var table = $('.dataTable').DataTable({
+            lengthChange: false, // Disable length menu
+            bInfo: false, // Disable "Showing X of Y entries" label
+            paging: false,
+          });
         });
       </script>
 

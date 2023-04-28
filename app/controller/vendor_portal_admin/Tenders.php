@@ -18,6 +18,14 @@ class Tenders{
 
     public function preview_tender(){
         $data = [];
+
+        $tender_id = $_GET["tender_id"];
+
+        $Tenders = new TendersModel;
+        $data["tender"] = $Tenders->fetch_tender(["tender_id"=>$tender_id]);
+        $Bids = new TenderBidsModel;
+        $data["bids"] = $Bids->fetch_bids(["tender_id"=>$tender_id]);
+
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/preview_tender", $data);
         $this->view('partials/sidebar');
@@ -27,5 +35,11 @@ class Tenders{
         $TendersModel = new TendersModel;
         return $TendersModel->fetch_all_tenders();
     }
+
+    public function fetch_bids_by_criteria(){
+        $data = $_POST;
+        $Bids = new TenderBidsModel;
+    }
+    
 
 }

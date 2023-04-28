@@ -64,124 +64,46 @@
 
         <div class="card grid-margin h-100">
           <div class="card-body">
+            <div class="mb-3">
+              <div class="mb-3">
+                <p>Reference Number:</p>
+                <p><?= $tender->tender_id ?></p>
+              </div>
+              <div class="mb-3">
+                <p>Subject:</p>
+                <p class="text-uppercase"><?= $tender->subject ?></p>
+              </div>
+              <div class="mb-3">
+                <p>Description:</p>
+                <p><?= $tender->description ?></p>
+              </div>
+              <div class="mb-3">
+                <p>Budget for Contract:</p>
+                <p>PHP <?= number_format($tender->contract_budget) ?></p>
+              </div>
+            </div>
             <div class="row h-100">
               <div class="col-md-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Summary</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bids</a>
+                    <a class="nav-link active" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Bids</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="disabled-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" aria-selected="false">Award</a>
                   </li>
                 </ul>
                 <div class="tab-content border border-top-0 p-3 h-100" id="myTabContent">
-                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                    <table class="table border-white mb-3">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <strong>Tender ID:</strong>
-                          </td>
-                          <td>TND-488AFH1</td>
-                          <td>
-                            <strong>Date published:</strong>
-                          </td>
-                          <td>20/04/2023</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <strong>Subject:</strong>
-                          </td>
-                          <td>Intel I5 Computer Supplies</td>
-                          <td>
-                            <strong>Status:</strong>
-                          </td>
-                          <td>
-                            <span class="badge bg-success">Active</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <strong>Description:</strong>
-                          </td>
-                          <td>
-                            <p class="text-wrap">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque odit tenetur eaque quis a aliquid, dolor fugit ipsa error minus.</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <strong>Category:</strong>
-                          </td>
-                          <td>
-                            <p>Office Supplies</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <strong>Budget for contract:</strong>
-                          </td>
-                          <td>
-                            <p>PHP 20,000.00</p>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table class="table table-bordered dataTable">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>item / services</th>
-                          <th>quantity</th>
-                          <th>budget</th>
-                          <th>action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="align-middle">
-                          <td>1</td>
-                          <td>Bond Paper</td>
-                          <td>200</td>
-                          <td>PHP 10,000.00</td>
-                          <td>
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="edit" class="btn-icon-prepend"></i>
-                              Edit Details
-                            </button>
-                            <button class="btn btn-danger btn-icon">
-                              <i data-feather="trash-2"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr class="align-middle">
-                          <td>2</td>
-                          <td>Mongol Pencil 2</td>
-                          <td>200</td>
-                          <td>PHP 10,000.00</td>
-                          <td>
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="edit" class="btn-icon-prepend"></i>
-                              Edit Details
-                            </button>
-                            <button class="btn btn-danger btn-icon">
-                              <i data-feather="trash-2"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="d-flex align-items-center gap-2">
                       <div class="input-group">
                         <div class="input-group-text" id="btnGroupAddon2">@</div>
-                        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="search">
                       </div>
                       <div class="d-flex gap-2 flex-shrink-0">
-                        <button class="btn btn-primary btn-icon-text" disabled>
+                        <button class="btn btn-primary">
+                          Search
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon-text" id="compare_selected" disabled>
                           <i data-feather="repeat" class="btn-icon-prepend"></i>
                           Compare Selected
                         </button>
@@ -194,36 +116,50 @@
                           <th>#</th>
                           <th>Vendor</th>
                           <th>bid offer</th>
+                          <th>quality</th>
+                          <th>discount</th>
+                          <th>delivery time</th>
                           <th>date submitted</th>
+                          <th>action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="align-middle">
-                          <td>
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="checkDefault">
-                            </div>
-                          </td>
-                          <td>1</td>
-                          <td>
-                            <p>SM Supermalls</p>
-                          </td>
-                          <td>PHP 190,000.00</td>
-                          <td>20/04/2023</td>
-                        </tr>
-                        <tr class="align-middle">
-                          <td>
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="checkDefault">
-                            </div>
-                          </td>
-                          <td>2</td>
-                          <td>
-                            <p>National Bookstore</p>
-                          </td>
-                          <td>PHP 200,000.00</td>
-                          <td>20/04/2023</td>
-                        </tr>
+                        <?php
+                        if (!empty($bids)) :
+                          $row = 1;
+                          foreach ($bids as $data) :
+                        ?>
+                            <tr class="align-middle">
+                              <td>
+                                <div class="form-check">
+                                  <input type="checkbox" class="checkboxes form-check-input" id="checkDefault" value="<?= $data->vendor_id ?>">
+                                </div>
+                              </td>
+                              <td><?= $row++ ?></td>
+                              <td>
+                                <p><?= $data->company_name ?></p>
+                                <small class="text-muted"><?= $data->company_name ?></small>
+                              </td>
+                              <td>PHP <?= number_format($data->bid) ?></td>
+                              <td><?= $data->quality ?></td>
+                              <td><?= $data->discount ?></td>
+                              <td><?= $data->delivery_time ?></td>
+                              <td><?= date("d/m/Y", strtotime($data->date_submitted)) ?></td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Award Bidder
+                                </button>
+                                <button class="btn btn-light btn-icon-text">
+                                  <i data-feather="send" class="btn-icon-prepend"></i>
+                                  Modify request
+                                </button>
+                              </td>
+                            </tr>
+                        <?php
+                          endforeach;
+                        endif;
+                        ?>
 
                       </tbody>
                     </table>
@@ -309,7 +245,56 @@
                       </table>
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">...</div>
+                  <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-tab">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                      <div class="input-group">
+                        <div class="input-group-text" id="btnGroupAddon2">@</div>
+                        <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                      </div>
+                      <div class="d-flex gap-2 flex-shrink-0">
+                        <button class="btn btn-primary btn-icon-text">
+                          <i data-feather="search" class="btn-icon-prepend"></i>
+                          Search
+                        </button>
+                        <button class="btn btn-outline-primary btn-icon-text">
+                          <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                          Export as CSV
+                        </button>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>vendor name</th>
+                            <th>date awarded</th>
+                            <th>sent date</th>
+                            <th>sent to</th>
+                            <th>contract status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="align-middle">
+                            <td>1</td>
+                            <td>ABC Company</td>
+                            <td>
+                              <p>27 Apr 2023</p>
+                              <small class="text-muted">05:22 AM</small>
+                            </td>
+                            <td>
+                              <p>27 Apr 2023</p>
+                              <small class="text-muted">05:22 AM</small>
+                            </td>
+                            <td>Legal Management</td>
+                            <td>
+                              <span class="badge bg-success">Completed</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -341,20 +326,9 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <!-- End custom js for this page -->
   <!-- Flat Picker -->
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "d M Y",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
   <script>
     $(document).ready(function() {
       var table = $('.dataTable').DataTable({
@@ -375,47 +349,22 @@
         table.search(query).draw();
       });
 
-      var rows = $('table tbody tr');
+      const checkboxes = document.querySelectorAll('.checkboxes')
+      const compareSelectedBtn = document.getElementById("compare_selected")
 
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
+      const comparedSelection = [];
 
-        // hide all rows by default
-        rows.hide();
+      checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function(event) {
+          let checkedCount = document.querySelectorAll('.checkboxes:checked').length;
+          compareSelectedBtn.disabled = (checkedCount === 0);
+          
+          let selected = event.target.value;
+          comparedSelection.push(selected)
 
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
+          console.log(comparedSelection)
+        });
       });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'approved': 0,
-        'declined': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
 
 
 

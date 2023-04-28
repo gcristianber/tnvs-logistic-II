@@ -58,232 +58,157 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="row mt-4">
-                  <div class="col-3 grid-margin text-center border-end">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="package"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        11
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">Preparing Package</p>
-                  </div>
-                  <div class="col-3 grid-margin text-center border-end">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="truck"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        2
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">In Transit</p>
-                  </div>
-                  <div class="col-3 grid-margin text-center border-end">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="check-circle"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        10
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">Delivered</p>
-                  </div>
-                  <div class="col-3 grid-margin text-center">
-                    <div class="d-inline p-2 position-relative">
-                      <i data-feather="x-circle"></i>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        1
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
-                    </div>
-                    <p class="mt-2">Failed To Deliver</p>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search delivery">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
-                    </div>
 
-                  </div>
-                </div>
 
                 <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
+                  <div class="col-12">
+                    <div class="mb-3">
+                      <div class="d-flex align-items-center gap-2">
+                        <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search delivery">
+                        <button type="button" class="btn btn-primary" id="customSearchBtn">Search</button>
+                      </div>
                     </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">Pending</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="approved" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Declined</label>
+                    <div class="table-responsive">
+                      <table id="request_tbl" class="table table-bordered display">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>tracking id</th>
+                            <th>contact person</th>
+                            <th>phone number</th>
+                            <th>delivery type</th>
+                            <th>date requested</th>
+                            <th>delivery date</th>
+                            <th>status</th>
+                            <th class="text-center" data-orderable="false">action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="align-middle" data-status="pending">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>FDELI-244ACDFK</td>
+                            <td>
+                              <p>Cristianber Gordora</p>
+                            </td>
+                            <td>09995645382</td>
+                            <td>Delivery</td>
+                            <td>
+                              <p>06 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <p>07 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-primary">In Transit</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-light btn-icon-text">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </button>
+                            </td>
+                          </tr>
+                          <tr class="align-middle" data-status="pending">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>FDELI-244ACDFK</td>
+                            <td>
+                              <p>Cristianber Gordora</p>
+                            </td>
+                            <td>09995645382</td>
+                            <td>Delivery</td>
+                            <td>
+                              <p>06 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <p>07 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-warning">Preparing</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-light btn-icon-text">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </button>
+                            </td>
+                          </tr>
+                          <tr class="align-middle" data-status="pending">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>FDELI-244ACDFK</td>
+                            <td>
+                              <p>Cristianber Gordora</p>
+                            </td>
+                            <td>09995645382</td>
+                            <td>Delivery</td>
+                            <td>
+                              <p>06 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <p>07 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-success">Delivered</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-light btn-icon-text">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </button>
+                            </td>
+                          </tr>
+                          <tr class="align-middle" data-status="pending">
+                            <td>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkDefault">
+                              </div>
+                            </td>
+                            <td>FDELI-244ACDFK</td>
+                            <td>
+                              <p>Cristianber Gordora</p>
+                            </td>
+                            <td>09995645382</td>
+                            <td>Delivery</td>
+                            <td>
+                              <p>06 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <p>07 Apr 2023</p>
+                              <small class="text-muted">12:26 AM</small>
+                            </td>
+                            <td>
+                              <span class="badge bg-danger">Delivery Failed</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-light btn-icon-text">
+                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                Preview
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+
+                      </table>
                     </div>
                   </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="upload" class="btn-icon-prepend"></i>
-                      Import Data
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                      Decline
-                    </button>
-                    <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>fleet_management_admin/delivery_requests/add_new_delivery">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add New
-                    </a>
-                  </div>
-                </div>
-
-                <div class="table-responsive">
-                  <table id="request_tbl" class="table display">
-                    <thead>
-                      <tr>
-                        <th data-orderable="false"></th>
-                        <th>tracking id</th>
-                        <th>contact person</th>
-                        <th>phone number</th>
-                        <th>delivery type</th>
-                        <th>date requested</th>
-                        <th>delivery date</th>
-                        <th>status</th>
-                        <th class="text-center" data-orderable="false">action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle" data-status="pending">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>FDELI-244ACDFK</td>
-                        <td>
-                          <p>Cristianber Gordora</p>
-                        </td>
-                        <td>09995645382</td>
-                        <td>Delivery</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>07 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-primary">In Transit</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="pending">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>FDELI-244ACDFK</td>
-                        <td>
-                          <p>Cristianber Gordora</p>
-                        </td>
-                        <td>09995645382</td>
-                        <td>Delivery</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>07 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Preparing</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="pending">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>FDELI-244ACDFK</td>
-                        <td>
-                          <p>Cristianber Gordora</p>
-                        </td>
-                        <td>09995645382</td>
-                        <td>Delivery</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>07 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Delivered</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="align-middle" data-status="pending">
-                        <td>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="checkDefault">
-                          </div>
-                        </td>
-                        <td>FDELI-244ACDFK</td>
-                        <td>
-                          <p>Cristianber Gordora</p>
-                        </td>
-                        <td>09995645382</td>
-                        <td>Delivery</td>
-                        <td>
-                          <p>06 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <p>07 Apr 2023</p>
-                          <small class="text-muted">12:26 AM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-danger">Delivery Failed</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-light btn-icon-text">
-                            <i data-feather="external-link" class="btn-icon-prepend"></i>
-                            Preview
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </table>
                 </div>
               </div>
             </div>
