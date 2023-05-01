@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/" class="nav-link">
+                    <a href="<?= ROOT ?>vendor_portal_admin/awardings" class="nav-link">
                         <i class="link-icon" data-feather="award"></i>
                         <span class="link-title">Awardings</span>
                     </a>
@@ -70,15 +70,15 @@
 
                 <li class="nav-item nav-category">audit management</li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>audit_management/cycle_count" class="nav-link">
-                        <i class="link-icon" data-feather="calendar"></i>
-                        <span class="link-title">Cycle Count</span>
+                    <a href="<?= ROOT ?>audit_management/inventory" class="nav-link">
+                        <i class="link-icon" data-feather="list"></i>
+                        <span class="link-title">Inventory</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>audit_management/audit_requests" class="nav-link">
-                        <i class="link-icon" data-feather="mail"></i>
-                        <span class="link-title">Audit Requests</span>
+                    <a href="" class="nav-link">
+                        <i class="link-icon" data-feather="file-text"></i>
+                        <span class="link-title">Reports</span>
                     </a>
                 </li>
                 <li class="nav-item nav-category">fleet management</li>
@@ -91,7 +91,7 @@
                 <li class="nav-item">
                     <a href="<?= ROOT ?>fleet_management_admin/delivery_requests" class="nav-link">
                         <i class="link-icon" data-feather="mail"></i>
-                        <span class="link-title">Delivery Requests</span>
+                        <span class="link-title">Deliveries</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -112,7 +112,26 @@
                         <span class="link-title">Maintenance</span>
                     </a>
                 </li>
-                
+
+                <li class="nav-item nav-category">logistic driver</li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="link-icon" data-feather="package"></i>
+                        <span class="link-title">Deliveries</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="link-icon" data-feather="message-circle"></i>
+                        <span class="link-title">Messages</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="link-icon" data-feather="clock"></i>
+                        <span class="link-title">Activity Logs</span>
+                    </a>
+                </li>
 
                 <li class="nav-item nav-category">Legal Policy</li>
                 <li class="nav-item">

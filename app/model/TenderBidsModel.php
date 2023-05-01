@@ -40,9 +40,6 @@ class TenderBidsModel
 
         $query = trim($query, " && ");
 
-        $query .= " limit $this->limit offset $this->offset";
-        $data = array_merge($data, $data_not);
-
         return $this->query($query, $data);
     }
 

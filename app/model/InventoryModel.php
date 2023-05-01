@@ -8,7 +8,6 @@ class InventoryModel
     protected $table = "log1_whs_inventory";
 
     public function fetch_all_products(){
-
         $query = 'SELECT inventory.product_id,
         inventory.product_name,
         inventory.quantity,

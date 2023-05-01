@@ -1,7 +1,8 @@
 $(document).ready(function () {
   // ? THIS WILL ALLOW ALL TABLES TO HAVE A SEARCH FIELD
-  $("table.display").DataTable({
+  var table = $('.dataTable').DataTable({
     lengthChange: false, // Disable length menu
-    bInfo: false, // Disable "Showing X of Y entries" labe
+    bInfo: false, // Disable "Showing X of Y entries" label
+    paging: false,
   });
 });

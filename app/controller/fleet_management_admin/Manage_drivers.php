@@ -17,9 +17,20 @@ class Manage_drivers{
         
     }
 
+    public function add_driver(){
+        $Drivers = new DriversModel;
+        $_POST["avatar_thumbnail"] = $_FILES["avatar_thumbnail"];
+        $Drivers->add_driver($_POST, $_FILES);
+    }
+
     public function fetch_all_drivers(){
         $Drivers = new DriversModel;
         return $Drivers->fetch_all_drivers();
+    }
+
+    public function export_csv(){
+        $Drivers = new DriversModel;
+        $Drivers->export_csv();
     }
 
 }

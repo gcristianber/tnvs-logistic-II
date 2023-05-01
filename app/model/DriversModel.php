@@ -7,7 +7,8 @@ class DriversModel
 
     protected $table = 'log2_fm_drivers';
 
-    protected function view_query(){
+    protected function view_query()
+    {
         $query = 'SELECT 
         driver.driver_id,
         driver.driver_name,
@@ -15,7 +16,6 @@ class DriversModel
         driver.username,
         driver.password,
         driver.last_active,
-        driver.account_age,
         driver.date_created,
         driver.avatar_thumbnail,
         driver_status.status_name
@@ -29,5 +29,67 @@ class DriversModel
     public function fetch_all_drivers()
     {
         return $this->query($this->view_query());
+    }
+
+    public function add_driver($data, $files)
+    {
+        $data["driver_id"] = strtoupper('FMD-' . substr(uniqid(), 0, 8));
+        $target_dir = "uploads/fleet_management/users/" . $data["driver_id"] . "/";
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+        $subfolders = array('documents', 'images', 'videos');
+        foreach ($subfolders as $subfolder) {
+            $subfolder_path = $target_dir . $subfolder . '/';
+            if (!file_exists($subfolder_path)) {
+                mkdir($subfolder_path, 0777, true);
+            }
+        }
+
+        $target_file = $target_dir . time() . '_' . basename($_FILES["avatar_thumbnail"]["name"]);
+        move_uploaded_file($data["avatar_thumbnail"]["tmp_name"], $target_file);
+
+        $data["avatar_thumbnail"] = $target_file;
+        unset($data["confirm_password"]);
+
+        $this->insert($data);
+        // print_r($data);
+
+        // print_r($files["attachments"]["name"]);
+        // print_r($files["attachments"]["tmp_name"]);
+
+    }
+
+    public function export_csv()
+    {
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $data = $this->fetch_all_drivers();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $data = array_map(function ($row) {
+            return (array) $row;
+        }, $data);
+
+        $headers = array_keys(array_slice($data[0], 1));
+
+        $col = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($col, 1, $header);
+            $col++;
+        }
+
+        $row = 2;
+        foreach ($data as $data_row) {
+            $col = 1; // start from third column
+            foreach (array_slice($data_row, 1) as $value) { // exclude primary key column
+                $sheet->setCellValueByColumnAndRow($col, $row, $value);
+                $col++;
+            }
+            $row++;
+        }
+
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('test.xlsx');
+
     }
 }

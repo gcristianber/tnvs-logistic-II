@@ -30,10 +30,10 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropzone/dropzone.min.css">
   <!-- endinject -->
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
@@ -44,6 +44,26 @@
 </head>
 <style>
   .dataTables_filter {
+    display: none;
+  }
+
+  .dropify-wrapper {
+    height: 150px;
+    width: 150px;
+    border-radius: 8px;
+  }
+
+  .dropify-wrapper .dropify-preview .dropify-render img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .dropify-wrapper .dropify-message span:before {
+    font-size: 8px;
+  }
+
+  .dropify-wrapper .dropify-message span p {
     display: none;
   }
 </style>
@@ -66,28 +86,110 @@
                     </div>
                   </div>
                   <div class="mt-3 mt-md-0">
-                    <button class="btn btn-primary btn-icon-text">
+                    <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       <i data-feather="plus" class="btn-icon-prepend"></i>
                       Add Entry
                     </button>
-                    <button class="btn btn-outline-primary btn-icon-text">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Driver</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                          </div>
+                          <form id="addDriverForm">
+                            <div class="modal-body">
+                              <div class="d-flex gap-2 mb-3">
+                                <div class="">
+                                  <input type="file" name="avatar_thumbnail" id="myDropify" />
+                                </div>
+                                <div class="w-100">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Driver Name:</label>
+                                    <input type="text" name="driver_name" id="" class="form-control">
+                                  </div>
+                                  <div class="">
+                                    <label for="" class="form-label">Email Address:</label>
+                                    <input type="email" name="email_address" id="" class="form-control">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                                <li class="nav-item">
+                                  <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Account</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Attachments</a>
+                                </li>
+                              </ul>
+                              <div class="tab-content mt-3" id="lineTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Username</label>
+                                    <input type="text" name="username" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Password</label>
+                                    <input type="password" name="password" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Confirm Password</label>
+                                    <input type="password" name="confirm_password" id="" class="form-control">
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Phone Number</label>
+                                    <input type="text" name="phone_number" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Emergency Number</label>
+                                    <input type="text" name="emergency_number" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Address</label>
+                                    <textarea name="address" class="form-control" id="" cols="30" rows="5"></textarea>
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">
+                                  <div class="mb-3">
+                                    <input type="file" name="attachments[]" class="form-control" multiple>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="userAgreement">
+                                <label class="form-check-label" for="checkDefault">
+                                  By creating the account, you understand and agree to the Fleet Management System Services <a href="" class="link-primary">Terms of Conditions</a> and <a href="" class="link-primary">Policy Statement</a>.
+                                </label>
+                              </div>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-icon-text" id="exportCSV">
                       <i data-feather="download-cloud" class="btn-icon-prepend"></i>
                       Export as CSV
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text">
-                      <i data-feather="upload" class="btn-icon-prepend"></i>
-                      Import Data
                     </button>
                   </div>
                 </div>
 
                 <div class="table-responsive">
-                  <table id="request_tbl" class="table table-bordered display">
+                  <table class="table table-bordered dataTable">
                     <thead>
                       <tr>
-                        <th data-orderable="false">
-
-                        </th>
+                        <th data-orderable="false"></th>
                         <th>#</th>
                         <th>driver id</th>
                         <th>driver name</th>
@@ -115,15 +217,26 @@
                             </td>
                             <td>
                               <div class="d-flex gap-2">
-                                <img src="https://via.placeholder.com/100x100" alt="">
+                                <img src="<?= ROOT . $data->avatar_thumbnail ?>" class="ht-100 wd-100 rounded-2 object-fit-cover" alt="">
                                 <div>
                                   <p><?= $data->driver_name ?></p>
                                   <small class="text-muted"><?= $data->email_address ?></small>
                                 </div>
                               </div>
                             </td>
-                            <td>Just now</td>
-                            <td></td>
+                            <td>--</td>
+                            <td>
+                              <?php
+                              $createdDate = $data->date_created;
+                              $currentDate = date('Y-m-d H:i:s');
+                              $createdDateTime = new DateTime($createdDate);
+                              $currentDateTime = new DateTime($currentDate);
+
+                              $diff = $currentDateTime->diff($createdDateTime);
+                              $days = $diff->days;
+                              echo "$days days";
+                              ?>
+                            </td>
                             <td class="text-center">
                               <?php
 
@@ -183,6 +296,7 @@
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropzone/dropzone.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -191,90 +305,12 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/dropzone.js"></script>
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <!-- End custom js for this page -->
-  <!-- Flat Picker -->
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "d M Y",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      var table = $('#request_tbl').DataTable({
-        lengthChange: false, // Disable length menu
-        bInfo: false, // Disable "Showing X of Y entries" label
-      });
-
-      $('#search').on('keyup', function(event) {
-        if (event.keyCode === 13) { // Check if "Enter" key is pressed
-          var query = $('#search').val();
-          table.search(query).draw();
-        }
-      });
-
-      $('#customSearchBtn').on('click', function() {
-        var query = $('#search').val();
-        table.search(query).draw();
-      });
-
-      var rows = $('table tbody tr');
-
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
-
-        // hide all rows by default
-        rows.hide();
-
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
-      });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'in progress': 0,
-        'scheduled': 0,
-        'completed': 0,
-        'cancelled': 0,
-        'delayed': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-
-
-
-    });
-  </script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-drivers.js"></script>
 </body>
 
 </html>

@@ -8,27 +8,22 @@ class Delivery_requests{
 
     public function index(){
 
+        $Delivery = new DeliveryModel;
+
+        $data["deliveries"] = $Delivery->fetch_all_delivery();
+
         $this->view('partials/navbar');
-        $this->view("fleet_management/admin/delivery_requests");
+        $this->view("fleet_management/admin/delivery_requests", $data);
         $this->view("partials/sidebar");
         
     }
 
-    public function add_new_delivery(){
-
-        $this->view('partials/navbar');
-        $this->view("fleet_management/admin/add_new_delivery");
-        $this->view("partials/sidebar");
+    public function preview(){
+        
     }
 
-    public function insert_delivery(){
-        // $Delivery = new FM_Delivery;
-        // $Delivery->insert([
+    public function navigate(){
 
-        // ])
-
-        print_r($_POST);
-        print_r($_FILES);
     }
 
 }
