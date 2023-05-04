@@ -146,4 +146,29 @@ class ReservationsModel
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
+
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'pending':
+                $this->update($id, ["status_id" => 1], 'reservation_id');
+                break;
+            case 'approve':
+                $this->update($id, ["status_id" => 2], 'reservation_id');
+                break;
+            case 'dispatch':
+                $this->update($id, ["status_id" => 3], 'reservation_id');
+                break;
+            case 'return':
+                $this->update($id, ["status_id" => 4], 'reservation_id');
+                break;
+            case 'cancel':
+                $this->update($id, ["status_id" => 5], 'reservation_id');
+                break;              
+            case 'decline':
+                $this->update($id, ["status_id" => 6], 'reservation_id');
+                break;
+        }
+    }
 }

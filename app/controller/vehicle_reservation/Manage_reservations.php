@@ -26,19 +26,30 @@ class Manage_reservations
 
     public function update_status()
     {
-        print_r($_POST);
-        $Reservations = new VR_Reservations;
-        $id = $_POST["id"];
-        $status_type = $_POST["status_type"];
-
-        switch ($status_type) {
-            case "approve":
-                $Reservations->update($id, ["status_id" => 2], "reservation_id");
+        $Reservations = new ReservationsModel;
+        switch ($_POST["status"]) {
+            case 'pending':
+                $Reservations->update_status($_POST["id"], 'pending');
+                print_r("pending");
                 break;
-            case "decline":
-                $Reservations->update($id, [
-                    "status_id" => 3,
-                ], "reservation_id");
+            case 'approve':
+                $Reservations->update_status($_POST["id"], 'approve');
+                print_r("Approve");
+                break;
+            case 'dispatch':
+                $Reservations->update_status($_POST["id"], 'dispatch');
+                print_r("dispatch");
+                break;
+            case 'return':
+                $Reservations->update_status($_POST["id"], 'return');
+                print_r("return");
+                break;
+            case 'decline':
+                $Reservations->update_status($_POST["id"], 'decline');
+                print_r("decline");
+                break;
+            default:
+                # code...
                 break;
         }
     }

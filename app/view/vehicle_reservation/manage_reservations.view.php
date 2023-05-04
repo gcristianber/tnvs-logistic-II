@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Manage Reservaitons</title>
+  <title>Vehicle Reservation | Manage Reservations</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,9 +40,6 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
 </head>
 <style>
   .dataTables_filter {
@@ -56,301 +53,533 @@
     <div class="page-wrapper">
 
       <div class="page-content">
-        <div class="row">
-          <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="mb-4">
-                  <h3 class="mb-1">Manage Reservations (3)</h3>
-                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="input-group flatpickr" id="flatpickr-date">
-                      <span class="input-group-text input-group-addon" data-toggle="">
-                        <i data-feather="calendar"></i>
-                      </span>
-                      <input type="text" name="return_date" id="" class="form-control date-input">
-                    </div>
+        <div class="row h-100">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <h3>
+                      <i data-feather="tool" class="d-inline text-warning"></i>
+                      Reservation Requests
+                    </h3>
+                    <small class="text-secondary">Manage your received vehicle reservation requests.</small>
                   </div>
-                  <div class="col">
-                    <select name="" id="" class="form-select">
-                      <option selected disabled>Vehicle Type</option>
-                      <option value="">Sedan</option>
-                      <option value="">Vans</option>
-                      <option value="">Trucks</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search id">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="flex-shrink-0">
+                      <button class="btn btn-primary btn-icon-text">
+                        <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                        Download as CSV
+                      </button>
                     </div>
+                    <div class="flex-shrink-0">
+                      <button class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i data-feather="trash-2" class="btn-icon-prepend"></i>
+                        Decline Selected
+                      </button>
+                    </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Decline Modal</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="mb-3">
+                              <label for="" class="form-label">Your response:</label>
+                              <textarea class="form-control" name="" id="" cols="30" rows="7" placeholder="Type something..."></textarea>
+                            </div>
+                            <div>
+                              <input type="checkbox" name="" class="form-check-input" id="">
+                              <label for="" class="form-label d-inline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet!</label>
+                            </div>
 
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="mb-3 col">
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="all" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                      <label class="btn btn-outline-primary" for="btnradio1">All</label>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger">Submit</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="pending" name="btnradio" id="btnradio2" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio2">Pending</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="approved" name="btnradio" id="btnradio3" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio3">Approved</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="cancelled" name="btnradio" id="btnradio4" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio4">Cancelled</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="declined" name="btnradio" id="btnradio5" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio5">Declined</label>
-                    </div>
-                    <div class="d-inline">
-                      <input type="radio" class="btn-check" value="returned" name="btnradio" id="btnradio6" autocomplete="off">
-                      <label class="btn btn-outline-primary" for="btnradio6">Returned</label>
-                    </div>
-                  </div>
-                  <div class="col text-end">
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                      Export as CSV
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text" disabled>
-                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                      Decline
-                    </button>
-                    <button class="btn btn-primary btn-icon-text" disabled>
-                      <i data-feather="settings" class="btn-icon-prepend"></i>
-                      Manage
-                    </button>
                   </div>
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="flex-grow-1">
+                      <div class="input-group">
+                        <div class="input-group-text" id="btnGroupAddon2">@</div>
+                        <input type="text" class="form-control" placeholder="Search Id, Name, Date or Requestor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                        <button type="button" class="btn btn-primary btn-icon-text">
+                          <i data-feather="search" class="btn-icon-prepend"></i>
+                          Search data
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
-                <div class="table-responsive">
-                  <table id="request_tbl" class="table display">
-                    <thead>
-                      <tr>
-                        <th data-orderable="false"></th>
-                        <th>request id</th>
-                        <th>vehicle</th>
-                        <th>vehicle type</th>
-                        <th>request date</th>
-                        <th>pickup date</th>
-                        <th>return date</th>
-                        <th>requestor</th>
-                        <th>status</th>
-                        <th>action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
 
-                      if (!empty($reservations)) :
-                        foreach ($reservations as $data) :
-
-                      ?>
-                          <tr class="align-middle" data-status="<?= $data->reservation_status ?>" data-id="<?= $data->reservation_id ?>">
-                            <td>
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkDefault">
-                              </div>
-                            </td>
-                            <td><?= $data->reservation_id ?></td>
-                            <td>
-                              <div class="d-flex align-items-center gap-2">
-                                <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                <div>
-                                  <p class="text-uppercase"><?= $data->make ?></p>
-                                  <small class="text-muted"><?= $data->plate ?></small>
-                                </div>
-                              </div>
-                            </td>
-                            <td><?= ucwords($data->vehicle_type) ?></td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->date_requested)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
-                            </td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->pickup_date)) ?></small>
-                            </td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->return_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->return_date)) ?></small>
-                            </td>
-                            <td>
-                              <div class="d-flex align-items-center gap-2">
-                                <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-circle" alt="">
-                                <div>
-                                  <p><?= $data->requestor_name ?></p>
-                                  <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <?php
-                              switch ($data->reservation_status) {
-                                case 'pending':
-                                  echo '<span class="badge bg-warning">Pending</span>';
-                                  break;
-                                case 'approved':
-                                  echo '<span class="badge bg-success">Approved</span>';
-                                  break;
-                                case 'cancelled':
-                                  echo '<span class="badge bg-secondary">Cancelled</span>';
-                                  break;
-                                case 'declined':
-                                  echo '<span class="badge bg-danger">Declined</span>';
-                                  break;
-                                case 'returned':
-                                  echo '<span class="badge bg-primary">Returned</span>';
-                                  break;
-                              }
-                              ?>
-                            </td>
-                            <td>
-                              <button class="btn btn-primary btn-icon" data-bs-toggle="modal" data-bs-target="#manage_<?= $data->reservation_id ?>">
-                                <i data-feather="settings"></i>
-                              </button>
-                              <div class="modal fade" id="manage_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <div>
-                                        <h5 class="modal-title d-inline me-2" id="exampleModalLabel">Request Overview</h5>
-                                        <?php
-                                        switch ($data->reservation_status) {
-                                          case 'pending':
-                                            echo '<span class="badge bg-warning d-inline">Pending</span>';
-                                            break;
-                                          case 'approved':
-                                            echo '<span class="badge bg-success d-inline">Approved</span>';
-                                            break;
-                                          case 'cancelled':
-                                            echo '<span class="badge bg-secondary d-inline">Cancelled</span>';
-                                            break;
-                                          case 'declined':
-                                            echo '<span class="badge bg-danger d-inline">Declined</span>';
-                                            break;
-                                          case 'returned':
-                                            echo '<span class="badge bg-primary d-inline">Returned</span>';
-                                            break;
-                                        }
-                                        ?>
-                                      </div>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="row">
-                                        <div class="col-md-6 grid-margin">
-                                          <small class="text-muted">Requestor:</small>
-                                          <p><?= $data->full_name ?></p>
-                                        </div>
-                                        <div class="col-md-6 grid-margin">
-                                          <small class="text-muted">Email Address:</small>
-                                          <p><?= $data->email_address ?></p>
-                                        </div>
-                                        <div class="col-md-6 grid-margin">
-                                          <small class="text-muted">Reservation ID:</small>
-                                          <p><?= $data->reservation_id ?></p>
-                                        </div>
-                                        <div class="col-md-6 grid-margin">
-                                          <small class="text-muted">Request Date:</small>
-                                          <p><?= date("d M Y", strtotime($data->date_requested)) ?> - <?= date("h:i A", strtotime($data->date_requested)) ?></p>
-                                        </div>
-                                        <div class="col-md-6 grid-margin">
-                                          <small class="text-muted">Pickup Date:</small>
-                                          <p><?= date("d M Y", strtotime($data->pickup_date)) ?></p>
-                                        </div>
-                                        <div class="col-md-6 grid-margin">
-                                          <small class="text-muted">Return Date:</small>
-                                          <p><?= date("d M Y", strtotime($data->return_date)) ?></p>
-                                        </div>
-                                        <div class="col-md-12">
-                                          <small class="text-muted">Reason:</small>
-                                          <p class="text-wrap"><?= $data->reason ?></p>
+                  <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending
+                        <span class="ms-1 badge rounded-pill bg-danger">
+                          3
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Approved
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Declined
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="disabled-line-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" aria-selected="false">Dispatched
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="returned-line-tab" data-bs-toggle="tab" href="#returned" role="tab" aria-controls="returned" aria-selected="false">Returned
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="tab-content mt-3" id="lineTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                      <div class="table-responsive">
+                        <table class="table table-bordered dataTable">
+                          <thead>
+                            <tr>
+                              <th data-orderable="false"></th>
+                              <th>requestor</th>
+                              <th class="text-center">vehicle type</th>
+                              <th>request date</th>
+                              <th>vehicle</th>
+                              <th>status</th>
+                              <th>action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php
+                            if (!empty($reservations)) :
+                              foreach ($reservations as $data) :
+                                if ($data->reservation_status == "pending") :
+                            ?>
+                                  <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                    <td>
+                                      <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                    </td>
+                                    <td>
+                                      <div class="d-flex align-items-center gap-2">
+                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <div>
+                                          <p><?= $data->requestor_name ?></p>
+                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
                                         </div>
                                       </div>
-                                      <?php
-                                      if (!empty($data->file_path)) {
-                                      ?>
-                                        <ul class="list-group mt-4">
-                                          <div class="list-group">
-                                            <a href="<?= ROOT ?>uploads/documents/vehicle_reservation/<?= $data->file_path ?>" class="list-group-item list-group-item-action" download="<?= $data->file_path ?>">
-                                              <i data-feather="file-text" class="icon-lg d-inline me-2"></i>
-                                              <p class="d-inline"><?= $data->file_path ?></p>
-                                            </a>
+                                    </td>
+                                    <td class="text-center">
+                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                    </td>
+                                    <td>
+                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                    </td>
+                                    <td>
+                                      <div class="d-flex align-items-center gap-2">
+                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <div>
+                                          <p>Honda Accord 2020</p>
+                                          <small class="text-muted">QWE-223</small>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td>
+                                      <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#view_<?= $data->reservation_id ?>">
+                                        <i data-feather="edit" class="btn-icon-prepend"></i>
+                                        View Details
+                                      </button>
+                                      <div class="modal fade" id="view_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="view_<?= $data->reservation_id ?>Label" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Full Name:</label>
+                                                <div class="form-control">
+                                                  Cristianber Gordora
+                                                </div>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Email Address:</label>
+                                                <div class="form-control">
+                                                  gcristianber@gmail.com
+                                                </div>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Pickup & Return Date:</label>
+                                                <div class="row">
+                                                  <div class="col">
+                                                    <div class="input-group">
+                                                      <div class="input-group-text" id="btnGroupAddon">
+                                                        <i data-feather="calendar"></i>
+                                                      </div>
+                                                      <div class="form-control">
+                                                        05 May 2023
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="input-group">
+                                                      <div class="input-group-text" id="btnGroupAddon">
+                                                        <i data-feather="calendar"></i>
+                                                      </div>
+                                                      <div class="form-control">
+                                                        05 May 2023
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Message:</label>
+                                                <div class="form-control">
+                                                  <p class="text-wrap">
+                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum velit repellendus facilis expedita officiis sunt vero similique consequatur iste debitis?
+                                                  </p>
+                                                </div>
+                                              </div>
+                                              <div>
+                                                <label for="" class="form-label">Attachment/s:</label>
+                                                <div class="list-group">
+                                                  <div class="list-group-item">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                      <div>
+                                                        <p>Dummy_File.pdf</p>
+                                                        <small class="text-muted">1.2 MB</small>
+                                                      </div>
+                                                      <a href="" class="link-primary">Download</a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary approveBtn">Approve Request</button>
+                                            </div>
                                           </div>
-                                        </ul>
-                                      <?php
-                                      } else {
-                                        echo '<p class="text-center mt-4"> There is no file attached </p>';
-                                      }
-                                      ?>
-                                    </div>
-                                    <div class="modal-footer">
+                                        </div>
+                                      </div>
+                                      <button class="btn btn-danger btn-icon-text declineBtn">
+                                        <i data-feather="trash-2" class="btn-icon-prepend"></i>
+                                        Decline
+                                      </button>
+                                    </td>
 
-                                      <?php
-                                      switch ($data->reservation_status) {
-                                        case 'pending':
-                                          echo '
-                                          <button type="button" class="btn btn-danger btn-icon-text decline_btn">
-                                            <i data-feather="trash" class="btn-icon-prepend"></i>
-                                            Decline
-                                          </button>
-                                          <button type="button" class="btn btn-success btn-icon-text approve_btn">
-                                            <i data-feather="check" class="btn-icon-prepend"></i>
-                                            Approve
-                                          </button>
-                                          ';
-                                          break;
-                                        case 'approved':
-                                          echo '
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          ';
-                                          break;
-                                        case 'cancelled':
-                                          echo '
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          ';
-                                          break;
-                                        case 'declined':
-                                          echo '
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          ';
-                                          break;
-                                        case 'returned':
-                                          echo '
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          ';
-                                          break;
-                                      }
-                                      ?>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
+                                  </tr>
+                            <?php
+                                endif;
+                              endforeach;
+                            endif;
+                            ?>
+                          </tbody>
+
+                        </table>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>requestor</th>
+                            <th class="text-center">vehicle type</th>
+                            <th>request date</th>
+                            <th>vehicle</th>
+                            <th>status</th>
+                            <th>action</th>
                           </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($reservations)) :
+                            foreach ($reservations as $data) :
+                              if ($data->reservation_status == "approved") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <td>
+                                    <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="text-center">
+                                    <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                  </td>
+                                  <td>
+                                    <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p>Honda Accord 2020</p>
+                                        <small class="text-muted">QWE-223</small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><span class="badge bg-primary">Approved</span></td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text">
+                                      <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      View Details
+                                    </button>
+                                    <button class="btn btn-light btn-icon-text dispatchBtn">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Dispatch
+                                    </button>
+                                  </td>
 
-                      <?php
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
 
-                        endforeach;
-                      endif;
-                      ?>
-                    </tbody>
+                      </table>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>requestor</th>
+                            <th class="text-center">vehicle type</th>
+                            <th>request date</th>
+                            <th>vehicle</th>
+                            <th>status</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($reservations)) :
+                            foreach ($reservations as $data) :
+                              if ($data->reservation_status == "declined") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <td>
+                                    <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="text-center">
+                                    <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                  </td>
+                                  <td>
+                                    <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p>Honda Accord 2020</p>
+                                        <small class="text-muted">QWE-223</small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><span class="badge bg-warning">Pending</span></td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text">
+                                      <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      Edit Details
+                                    </button>
+                                  </td>
 
-                  </table>
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+
+                      </table>
+                    </div>
+                    <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>requestor</th>
+                            <th class="text-center">vehicle type</th>
+                            <th>request date</th>
+                            <th>vehicle</th>
+                            <th>status</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($reservations)) :
+                            foreach ($reservations as $data) :
+                              if ($data->reservation_status == "dispatched") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <td>
+                                    <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="text-center">
+                                    <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                  </td>
+                                  <td>
+                                    <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p>Honda Accord 2020</p>
+                                        <small class="text-muted">QWE-223</small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><span class="badge bg-warning">Pending</span></td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text">
+                                      <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      View Details
+                                    </button>
+                                    <button class="btn btn-light btn-icon-text returnBtn">
+                                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                                      Return
+                                    </button>
+                                  </td>
+
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+
+                      </table>
+                    </div>
+                    <div class="tab-pane fade" id="returned" role="tabpanel" aria-labelledby="returned-line-tab">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>requestor</th>
+                            <th class="text-center">vehicle type</th>
+                            <th>request date</th>
+                            <th>vehicle</th>
+                            <th>status</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($reservations)) :
+                            foreach ($reservations as $data) :
+                              if ($data->reservation_status == "returned") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <td>
+                                    <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="text-center">
+                                    <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                  </td>
+                                  <td>
+                                    <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p>Honda Accord 2020</p>
+                                        <small class="text-muted">QWE-223</small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><span class="badge bg-success">Returned</span></td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text">
+                                      <i data-feather="feather" class="btn-icon-prepend"></i>
+                                      Make report
+                                    </button>
+                                  </td>
+
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+
+                      </table>
+                    </div>
+                  </div>
+
+
+
+
+
                 </div>
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
     </div>
@@ -378,102 +607,10 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reservations.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
-
-  <script>
-    $(document).ready(function() {
-      var rows = $("table tbody tr").get();
-      rows.sort(function(a, b) {
-        var dateA = new Date($(a).find("td:eq(4)").text());
-        var dateB = new Date($(b).find("td:eq(4)").text());
-        return (dateA > dateB) ? -1 : (dateA < dateB) ? 1 : 0;
-      });
-      $.each(rows, function(index, row) {
-        $("table").children("tbody").append(row);
-      });
-    });
-  </script>
-
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "d M Y",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      var table = $('#request_tbl').DataTable({
-        lengthChange: false, // Disable length menu
-        bInfo: false, // Disable "Showing X of Y entries" label
-      });
-
-      $('#search').on('keyup', function(event) {
-        if (event.keyCode === 13) { // Check if "Enter" key is pressed
-          var query = $('#search').val();
-          table.search(query).draw();
-        }
-      });
-
-      $('#customSearchBtn').on('click', function() {
-        var query = $('#search').val();
-        table.search(query).draw();
-      });
-
-      var rows = $('table tbody tr');
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
-
-        // hide all rows by default
-        rows.hide();
-
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
-      });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'approved': 0,
-        'cancelled': 0,
-        'completed': 0,
-        'declined': 0,
-        'returned': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-
-
-
-    });
-  </script>
 </body>
 
 </html>
