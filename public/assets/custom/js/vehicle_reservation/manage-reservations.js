@@ -96,6 +96,30 @@ $(document).ready(function () {
     })
   });
 
+  const cancelBtns = document.querySelectorAll(".cancelBtn")
+  cancelBtns.forEach(btn => {
+    btn.addEventListener("click", event => {
+      var row = event.target.closest("tr")
+      var dataId = row.getAttribute("data-id")
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You are about to cancel your request!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonClass: "me-2",
+        confirmButtonText: "Yes, cancel my request!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.value) {
+          updateStatus(dataId, 'cancel')
+        }
+      })
+
+    })
+  });
+
   function updateStatus(id, status) {
     $.ajax({
       url: config.baseUrl + 'vehicle_reservation/manage_reservations/update_status',

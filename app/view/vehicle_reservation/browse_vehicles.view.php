@@ -61,6 +61,13 @@
 
         <div class="card">
           <div class="card-body">
+            <div class="mb-3">
+              <h3>
+                <i data-feather="truck" class="d-inline text-danger"></i>
+                Browse Vehicles
+              </h3>
+              <small class="text-secondary">Manage your received vehicle reservation requests.</small>
+            </div>
             <div class="row">
               <div class="col-3 d-none d-md-block border-end">
                 <div class="mb-3 border-bottom pb-3">

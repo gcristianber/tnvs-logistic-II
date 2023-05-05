@@ -18,13 +18,27 @@ class My_reservations
         $this->view("partials/sidebar");
     }
 
-    public function getUserReservations(){
+    public function update_status()
+    {
         $Reservations = new ReservationsModel;
-        return $Reservations->fetch_user_reservations(["requestor_id"=>$_SESSION["user"]->user_id]);
+        switch ($_POST["status"]) {
+            case 'cancel':
+                $Reservations->update_status($_POST["id"], 'cancel');
+                print_r("cancel");
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
-    public function fetch_user_reservations(){
-
+    public function getUserReservations()
+    {
+        $Reservations = new ReservationsModel;
+        return $Reservations->fetch_user_reservations(["requestor_id" => $_SESSION["user"]->user_id]);
     }
 
+    public function fetch_user_reservations()
+    {
+    }
 }
