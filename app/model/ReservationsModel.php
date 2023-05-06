@@ -147,6 +147,19 @@ class ReservationsModel
         }
     }
 
+    public function insert_report($data)
+    {
+        $prefix = "REPORT-";
+        $date = date("ymd");
+        $random_str = strtoupper(substr(str_shuffle(md5(microtime())), 0, 5));
+
+        $data["report_id"] = $prefix . $date . $random_str;
+
+        $this->insert($data);
+
+        print_r($data);
+    }
+
     public function update_status($id, $status)
     {
 
@@ -163,10 +176,10 @@ class ReservationsModel
             case 'return':
                 $this->update($id, ["status_id" => 4], 'reservation_id');
                 break;
-            case 'cancel':
-                $this->update($id, ["status_id" => 5], 'reservation_id');
-                break;              
             case 'decline':
+                $this->update($id, ["status_id" => 5], 'reservation_id');
+                break;
+            case 'cancel':
                 $this->update($id, ["status_id" => 6], 'reservation_id');
                 break;
         }

@@ -411,8 +411,9 @@
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
 
+  <script src="<?= ROOT ?>assets/custom/js/map.js" type="module"></script>
   <!-- #REALTIME GPS -->
-  <script type="module">
+  <!-- <script type="module">
     // Import the functions you need from the SDKs you need
 
     var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
@@ -557,7 +558,7 @@
         timestamp: new Date()
       })
     })
-  </script>
+  </script> -->
 
 
 </body>

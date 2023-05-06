@@ -48,6 +48,12 @@
                         <span class="link-title">Manage Reservations</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vehicle_reservation/reservation_reports" class="nav-link">
+                        <i class="link-icon" data-feather="flag"></i>
+                        <span class="link-title">Reports</span>
+                    </a>
+                </li>
                 <li class="nav-item nav-category">vendor portal</li>
                 <li class="nav-item">
                     <a href="<?= ROOT ?>vendor_portal_admin/tenders" class="nav-link">

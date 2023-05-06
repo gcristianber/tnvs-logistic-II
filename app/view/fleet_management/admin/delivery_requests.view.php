@@ -277,10 +277,10 @@
 
                                 </td>
                                 <td>
-                                  <button class="btn btn-light btn-icon-text">
+                                  <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>fleet_management_admin/delivery_requests/navigate?tracking_id=123">
                                     <i data-feather="external-link" class="btn-icon-prepend"></i>
                                     Preview
-                                  </button>
+                                  </a>
                                 </td>
                               </tr>
                           <?php

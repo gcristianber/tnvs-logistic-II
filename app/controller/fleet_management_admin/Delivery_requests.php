@@ -15,7 +15,6 @@ class Delivery_requests{
         $this->view('partials/navbar');
         $this->view("fleet_management/admin/delivery_requests", $data);
         $this->view("partials/sidebar");
-        
     }
 
     public function preview(){
@@ -23,7 +22,11 @@ class Delivery_requests{
     }
 
     public function navigate(){
-
+        $data =[];
+        
+        $this->view('partials/navbar');
+        $this->view("fleet_management/admin/navigate_delivery", $data);
+        $this->view("partials/sidebar");
     }
 
 }

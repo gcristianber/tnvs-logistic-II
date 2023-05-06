@@ -53,4 +53,18 @@ class Manage_reservations
                 break;
         }
     }
+
+    public function insert_maintenance(){
+        $MaintenanceModel = new MaintenanceModel;
+        $MaintenanceModel->insert_new_maintenance($_POST);
+
+        print_r($_POST);
+        print_r($_FILES);
+
+    }
+
+    public function insert_report(){
+        $ReservationReport = new ReservationReportModel;
+        $ReservationReport->insert_report($_POST);
+    }
 }

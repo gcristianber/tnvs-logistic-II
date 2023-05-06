@@ -120,6 +120,89 @@ $(document).ready(function () {
     })
   });
 
+  const reportForm = document.querySelectorAll(".reportForm")
+  reportForm.forEach(submit => {
+    submit.addEventListener("submit", event => {
+      event.preventDefault()
+      var row = event.target.closest("tr")
+      var dataId = row.getAttribute("data-id")
+
+      var form = event.target
+      var formData = new FormData(form)
+      formData.append("reservation_id", dataId)
+
+      console.log(formData)
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You are about to cancel your request!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonClass: "me-2",
+        confirmButtonText: "Yes, Submit it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url: config.baseUrl + 'vehicle_reservation/manage_reservations/insert_report',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (response) {
+              console.log(response)
+              location.reload()
+            }
+          })
+        }
+      })
+
+
+
+    })
+
+  });
+  const mntForm = document.querySelectorAll(".maintenanceForm")
+  mntForm.forEach(submit => {
+    submit.addEventListener("submit", event => {
+      event.preventDefault()
+      var dataId = submit.getAttribute("data-vehicle")
+
+      var form = event.target
+      var formData = new FormData(form)
+      formData.append("vehicle_id", dataId)
+
+      console.log(dataId)
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You are about to cancel your request!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonClass: "me-2",
+        confirmButtonText: "Yes, Submit it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url: config.baseUrl + 'vehicle_reservation/manage_reservations/insert_maintenance',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (response) {
+              console.log(response)
+              location.reload()
+            }
+          })
+        }
+      })
+
+    })
+  });
+
   function updateStatus(id, status) {
     $.ajax({
       url: config.baseUrl + 'vehicle_reservation/manage_reservations/update_status',
@@ -130,9 +213,10 @@ $(document).ready(function () {
       },
       success: function (response) {
         console.log(response)
-        location.reload()
+        // location.reload()
       }
     })
   }
+
 });
 

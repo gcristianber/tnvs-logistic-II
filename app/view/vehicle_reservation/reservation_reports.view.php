@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Vehicle Reservation | Manage Reservations</title>
+  <title>Vehicle Reservation | Reports</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,10 +61,10 @@
                 <div class="d-flex align-items-center justify-content-between">
                   <div>
                     <h3>
-                      <i data-feather="settings" class="d-inline text-warning"></i>
-                      Maintenance Requests
+                      <i data-feather="flag" class="d-inline text-danger"></i>
+                      Reports
                     </h3>
-                    <small class="text-secondary">Manage your issued vehicle maintenance requests.</small>
+                    <small class="text-secondary">Manage your received vehicle reservation requests.</small>
                   </div>
                   <div class="d-flex align-items-center gap-2">
                     <div class="flex-shrink-0">
@@ -81,15 +81,14 @@
                   <div class="d-flex align-items-center gap-2 mb-3">
                     <div class="flex-grow-1">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Id, Vehicle, Date or Mechanic Name" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                        <input type="text" class="form-control" placeholder="Search report id, date and vehicle" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                       </div>
                     </div>
                   </div>
-
-
                   <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending
+                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                        Issued
                         <span class="ms-1 badge rounded-pill bg-danger">
                           3
                           <span class="visually-hidden">unread messages</span>
@@ -101,7 +100,8 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Completed
+                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                        Solved
                       </a>
                     </li>
                   </ul>
@@ -112,137 +112,57 @@
                           <thead>
                             <tr>
                               <th data-orderable="false"></th>
+                              <th>report id</th>
                               <th>vehicle</th>
-                              <th class="text-center">vehicle type</th>
-                              <th>subject</th>
-                              <th>maintenance type</th>
-                              <th>date schedule</th>
+                              <th>report date</th>
+                              <th>last user</th>
                               <th>status</th>
                               <th>action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <?php
-                            if (!empty($maintenance)) :
-                              foreach ($maintenance as $data) :
-                                if ($data->maintenance_status == "pending") :
-                            ?>
-                                  <tr class="align-middle" data-id="<?= $data->maintenance_id ?>">
-                                    <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->maintenance_id ?>">
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->make ?></p>
-                                          <small class="text-muted"><?= $data->plate ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td class="text-center">
-                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
-                                    </td>
-                                    <td>
-                                      <p><?= $data->subject ?></p>
-                                    </td>
-                                    <td><?= ucwords($data->maintenance_type) ?></td>
-                                    <td>
-                                      <p><?= date("d M Y" ,strtotime($data->date_schedule)) ?></p>
-                                    </td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#view_<?= $data->reservation_id ?>">
-                                        <i data-feather="edit" class="btn-icon-prepend"></i>
-                                        View Details
-                                      </button>
-                                      <div class="modal fade" id="view_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="view_<?= $data->reservation_id ?>Label" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Full Name:</label>
-                                                <div class="form-control">
-                                                  Cristianber Gordora
-                                                </div>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Email Address:</label>
-                                                <div class="form-control">
-                                                  gcristianber@gmail.com
-                                                </div>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Pickup & Return Date:</label>
-                                                <div class="row">
-                                                  <div class="col">
-                                                    <div class="input-group">
-                                                      <div class="input-group-text" id="btnGroupAddon">
-                                                        <i data-feather="calendar"></i>
-                                                      </div>
-                                                      <div class="form-control">
-                                                        05 May 2023
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="col">
-                                                    <div class="input-group">
-                                                      <div class="input-group-text" id="btnGroupAddon">
-                                                        <i data-feather="calendar"></i>
-                                                      </div>
-                                                      <div class="form-control">
-                                                        05 May 2023
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Message:</label>
-                                                <div class="form-control">
-                                                  <p class="text-wrap">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum velit repellendus facilis expedita officiis sunt vero similique consequatur iste debitis?
-                                                  </p>
-                                                </div>
-                                              </div>
-                                              <div>
-                                                <label for="" class="form-label">Attachment/s:</label>
-                                                <div class="list-group">
-                                                  <div class="list-group-item">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                      <div>
-                                                        <p>Dummy_File.pdf</p>
-                                                        <small class="text-muted">1.2 MB</small>
-                                                      </div>
-                                                      <a href="" class="link-primary">Download</a>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                              <button type="button" class="btn btn-primary approveBtn">Approve Request</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <button class="btn btn-danger btn-icon-text declineBtn">
-                                        <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                                        Decline
-                                      </button>
-                                    </td>
-
-                                  </tr>
-                            <?php
-                                endif;
-                              endforeach;
-                            endif;
-                            ?>
+                            <tr class="align-middle">
+                              <td>
+                                <input type="checkbox" name="" class="form-check-input" id="">
+                              </td>
+                              <td>
+                                REPORT-0001
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Honda Civic Accord</p>
+                                  <small class="text-muted">TEST-123</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>05 May 2023</p>
+                                  <small class="text-muted">10:58 PM</small>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <img src="https://via.placeholder.com/40x40" class="ht-50 wd-50 rounded-2" alt="">
+                                  <div>
+                                    <p>Cristianber Gordora</p>
+                                    <small class="text-muted">Super Admin</small>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <span class="badge bg-danger">Issued</span>
+                              </td>
+                              <td>
+                                <button class="btn btn-primary btn-icon-text">
+                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                  View Details
+                                </button>
+                                <button class="btn btn-success btn-icon-text">
+                                  <i data-feather="plus" class="btn-icon-prepend"></i>
+                                  Mark as solved
+                                </button>
+                              </td>
+                            </tr>
                           </tbody>
 
                         </table>
@@ -264,9 +184,9 @@
                           </thead>
                           <tbody>
                             <?php
-                            if (!empty($maintenance)) :
-                              foreach ($maintenance as $data) :
-                                if ($data->maintenance_status == "in progress") :
+                            if (!empty($reservations)) :
+                              foreach ($reservations as $data) :
+                                if ($data->reservation_status == "approved") :
                             ?>
                                   <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
                                     <td>
@@ -336,9 +256,9 @@
                           </thead>
                           <tbody>
                             <?php
-                            if (!empty($maintenance)) :
-                              foreach ($maintenance as $data) :
-                                if ($data->maintenance_status == "completed") :
+                            if (!empty($reservations)) :
+                              foreach ($reservations as $data) :
+                                if ($data->reservation_status == "declined") :
                             ?>
                                   <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
                                     <td>
@@ -476,9 +396,9 @@
                           </thead>
                           <tbody>
                             <?php
-                            if (!empty($maintenance)) :
-                              foreach ($maintenance as $data) :
-                                if ($data->maintenance_status == "pending") :
+                            if (!empty($reservations)) :
+                              foreach ($reservations as $data) :
+                                if ($data->reservation_status == "returned") :
                             ?>
                                   <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
                                     <td>
@@ -511,53 +431,16 @@
                                     </td>
                                     <td><span class="badge bg-success">Returned</span></td>
                                     <td>
-                                      <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#report_<?= $data->reservation_id ?>">
+                                      <button class="btn btn-primary btn-icon-text">
                                         <i data-feather="feather" class="btn-icon-prepend"></i>
                                         Make report
                                       </button>
-                                      <div class="modal fade" id="report_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="mnt_<?= $data->reservation_id ?>Label" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                            </div>
-                                            <form class="reportForm" data-vehicle="<?= $data->vehicle_id ?>">
-                                              <div class="modal-body">
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Subject:</label>
-                                                  <input type="text" name="subject" id="" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Remarks:</label>
-                                                  <textarea name="remarks" id="" class="form-control" cols="30" rows="5"></textarea>
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Attachment/s:</label>
-                                                  <input type="file" name="attachment" id="" class="form-control">
-                                                </div>
-                                                <div>
-                                                  <input type="checkbox" name="" class="form-check-input" id="">
-                                                  <label for="" class="form-label text-wrap">
-                                                    By ticking this box, You will agree to the <a href="#">Terms and Conditions</a> and <a href="#">Legal Policy</a>.
-                                                  </label>
-                                                </div>
-
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Submit Report</button>
-                                              </div>
-                                            </form>
-                                          </div>
-                                        </div>
-                                      </div>
                                       <button class="btn btn-light btn-icon-text " data-bs-toggle="modal" data-bs-target="#mnt_<?= $data->reservation_id ?>">
                                         <i data-feather="tool" class="btn-icon-prepend"></i>
                                         Maintenance
                                       </button>
                                       <div class="modal fade" id="mnt_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="mnt_<?= $data->reservation_id ?>Label" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
+                                        <div class="modal-dialog">
                                           <div class="modal-content">
                                             <div class="modal-header">
                                               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -617,6 +500,11 @@
                       </div>
                     </div>
                   </div>
+
+
+
+
+
                 </div>
               </div>
             </div>
@@ -652,20 +540,7 @@
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-maintenance.js"></script>
-  <!-- End custom js for this page -->
-
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "Y-m-d",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
+  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reports.js"></script>
 </body>
 
 </html>

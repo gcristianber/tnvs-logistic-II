@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- endinject -->
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -72,37 +73,6 @@
                         Download as CSV
                       </button>
                     </div>
-                    <div class="flex-shrink-0">
-                      <button class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                        Decline Selected
-                      </button>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Decline Modal</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="mb-3">
-                              <label for="" class="form-label">Your response:</label>
-                              <textarea class="form-control" name="" id="" cols="30" rows="7" placeholder="Type something..."></textarea>
-                            </div>
-                            <div>
-                              <input type="checkbox" name="" class="form-check-input" id="">
-                              <label for="" class="form-label d-inline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet!</label>
-                            </div>
-
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger">Submit</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -111,12 +81,7 @@
                   <div class="d-flex align-items-center gap-2 mb-3">
                     <div class="flex-grow-1">
                       <div class="input-group">
-                        <div class="input-group-text" id="btnGroupAddon2">@</div>
                         <input type="text" class="form-control" placeholder="Search Id, Name, Date or Requestor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                        <button type="button" class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Search data
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -198,7 +163,7 @@
                                         </div>
                                       </div>
                                     </td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td><span class="badge bg-danger">Pending</span></td>
                                     <td>
                                       <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#view_<?= $data->reservation_id ?>">
                                         <i data-feather="edit" class="btn-icon-prepend"></i>
@@ -417,7 +382,7 @@
                                         </div>
                                       </div>
                                     </td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td><span class="badge bg-danger">Declined</span></td>
                                     <td>
                                       <button class="btn btn-primary btn-icon-text">
                                         <i data-feather="edit" class="btn-icon-prepend"></i>
@@ -559,46 +524,95 @@
                                     </td>
                                     <td><span class="badge bg-success">Returned</span></td>
                                     <td>
-                                      <button class="btn btn-primary btn-icon-text">
+                                      <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#report_<?= $data->reservation_id ?>">
                                         <i data-feather="feather" class="btn-icon-prepend"></i>
                                         Make report
                                       </button>
-                                      <button class="btn btn-light btn-icon-text mntBtn" data-bs-toggle="modal" data-bs-target="#mnt_<?= $data->reservation_id ?>">
-                                        <i data-feather="tool" class="btn-icon-prepend"></i>
-                                        Maintenance
-                                      </button>
-                                      <div class="modal fade" id="mnt_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="mnt_<?= $data->reservation_id ?>Label" aria-hidden="true">
-                                        <div class="modal-dialog">
+                                      <div class="modal fade" id="report_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="mnt_<?= $data->reservation_id ?>Label" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
                                           <div class="modal-content">
                                             <div class="modal-header">
                                               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Subject:</label>
-                                                <input type="text" class="form-control">
+                                            <form class="reportForm" data-vehicle="<?= $data->vehicle_id ?>">
+                                              <div class="modal-body">
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Subject:</label>
+                                                  <input type="text" name="subject" id="" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Remarks:</label>
+                                                  <textarea name="remarks" id="" class="form-control" cols="30" rows="5"></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Attachment/s:</label>
+                                                  <input type="file" name="attachment" id="" class="form-control">
+                                                </div>
+                                                <div>
+                                                  <input type="checkbox" name="" class="form-check-input" id="">
+                                                  <label for="" class="form-label text-wrap">
+                                                    By ticking this box, You will agree to the <a href="#">Terms and Conditions</a> and <a href="#">Legal Policy</a>.
+                                                  </label>
+                                                </div>
+
                                               </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Maintenance Type:</label>
-                                                <select name="" class="form-select" id="">
-                                                  <option value="">...</option>
-                                                  <option value=""></option>
-                                                </select>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Submit Report</button>
                                               </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Remarks:</label>
-                                                <textarea name="" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Attachment/s:</label>
-                                                <input type="file" name="" id="" class="form-control">
-                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <button class="btn btn-light btn-icon-text " data-bs-toggle="modal" data-bs-target="#mnt_<?= $data->reservation_id ?>">
+                                        <i data-feather="tool" class="btn-icon-prepend"></i>
+                                        Maintenance
+                                      </button>
+                                      <div class="modal fade" id="mnt_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="mnt_<?= $data->reservation_id ?>Label" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                             </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                              <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
+                                            <form class="maintenanceForm" data-vehicle="<?= $data->vehicle_id ?>">
+                                              <div class="modal-body">
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Subject:</label>
+                                                  <input type="text" class="form-control" name="subject">
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Maintenance Type:</label>
+                                                  <select name="maintenance_type_id" class="form-select" id="">
+                                                    <option value="">...</option>
+                                                    <option value="1">Cleaning</option>
+                                                    <option value="2">Change Oil</option>
+                                                  </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Schedule Date:</label>
+                                                  <div class="input-group flatpickr" id="flatpickr-date">
+                                                    <span class="input-group-text input-group-addon" data-toggle="">
+                                                      <i data-feather="calendar"></i>
+                                                    </span>
+                                                    <input type="text" name="date_schedule" id="" class="form-control date-input">
+                                                  </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Remarks:</label>
+                                                  <textarea name="remarks" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Attachment/s:</label>
+                                                  <input type="file" name="attachment" id="" class="form-control">
+                                                </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                              </div>
+                                            </form>
                                           </div>
                                         </div>
                                       </div>
@@ -658,6 +672,18 @@
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reservations.js"></script>
   <!-- End custom js for this page -->
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    const myInput = document.querySelectorAll(".date-input");
+    const flatpickrInstance = flatpickr(myInput, {
+      enableTime: true,
+      dateFormat: "Y-m-d",
+      defaultDate: new Date(),
+      minDate: "today",
+      allowInput: true
+    });
+  </script>
 </body>
 
 </html>

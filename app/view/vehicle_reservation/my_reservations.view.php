@@ -72,37 +72,6 @@
                         Download as CSV
                       </button>
                     </div>
-                    <div class="flex-shrink-0">
-                      <button class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i data-feather="trash-2" class="btn-icon-prepend"></i>
-                        Decline Selected
-                      </button>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Decline Modal</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="mb-3">
-                              <label for="" class="form-label">Your response:</label>
-                              <textarea class="form-control" name="" id="" cols="30" rows="7" placeholder="Type something..."></textarea>
-                            </div>
-                            <div>
-                              <input type="checkbox" name="" class="form-check-input" id="">
-                              <label for="" class="form-label d-inline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet!</label>
-                            </div>
-
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger">Submit</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -111,17 +80,10 @@
                   <div class="d-flex align-items-center gap-2 mb-3">
                     <div class="flex-grow-1">
                       <div class="input-group">
-                        <div class="input-group-text" id="btnGroupAddon2">@</div>
                         <input type="text" class="form-control" placeholder="Search Id, Name, Date or Requestor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                        <button type="button" class="btn btn-primary btn-icon-text">
-                          <i data-feather="search" class="btn-icon-prepend"></i>
-                          Search data
-                        </button>
                       </div>
                     </div>
                   </div>
-
-
                   <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending

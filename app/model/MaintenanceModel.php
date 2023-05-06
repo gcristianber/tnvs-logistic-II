@@ -28,19 +28,23 @@ class MaintenanceModel{
         vehicle.vehicle_id,
         vehicle.make,
         vehicle.plate,
+        vehicle_type.type_name,
         /* maintenance type */
         maintenance_type.maintenance_type,
         /* status */
         maintenance_status.maintenance_status,
         maintenance.mechanic_name,
         maintenance.date_schedule,
+        maintenance.subject,
         maintenance.remarks
         
         FROM log2_fm_maintenance maintenance
         LEFT JOIN log2_fm_vehicles vehicle ON
         maintenance.vehicle_id = vehicle.vehicle_id
+        LEFT JOIN log2_fm_vehicle_types vehicle_type ON
+        vehicle.vehicle_type_id = vehicle_type.vehicle_type_id
         LEFT JOIN log2_fm_maintenance_type maintenance_type ON
-        maintenance.type_id = maintenance_type.maintenance_type_id
+        maintenance.maintenance_type_id = maintenance_type.maintenance_type_id
         LEFT JOIN log2_fm_maintenance_status maintenance_status ON
         maintenance.status_id = maintenance_status.maintenance_status_id';
 
