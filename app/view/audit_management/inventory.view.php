@@ -110,7 +110,7 @@
                         if (!empty($locations)) :
                           foreach ($locations as $data) :
                         ?>
-                            <tr class="align-middle">
+                            <tr class="align-middle" data-location_id="<?= $data->location_id?>">
                               <td>
                                 <input type="checkbox" class="form-check-input" name="" id="">
                               </td>
@@ -158,10 +158,74 @@
                                 ?>
                               </td>
                               <td>
-                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/inventory/products">
+                                <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#location_<?=$data->location_id?>">
                                   <i data-feather="feather" class="btn-icon-prepend"></i>
                                   Create Report
-                                </a>
+                                </button>
+                                <div class="modal fade" id="location_<?=$data->location_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-xl modal-dialog-centered">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="row">
+                                          <div class="col">
+                                            <div class="table-responsive perfect-scrollbar-example">
+                                              <table class="table table-bordered" data-location_id = "<?=$data->location_id?>">
+                                                <thead>
+                                                  <tr>
+                                                    <th>product id</th>
+                                                    <th>product name</th>
+                                                    <th>quantity</th>
+                                                    <th>actual count</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <?php
+                                                  if (!empty($products)) :
+                                                    foreach ($products as $product) :
+                                                      if ($product->location_name == $data->location_name) :
+                                                  ?>
+                                                        <tr class="align-middle" data-product_id="<?= $product->product_id ?>">
+                                                          <td><?= $product->product_id ?></td>
+                                                          <td><?= $product->product_name ?></td>
+                                                          <td><?= $product->quantity ?></td>
+                                                          <td><input type="number" name="" id="" class="actualCount form-control"></td>
+                                                        </tr>
+                                                  <?php
+                                                      endif;
+                                                    endforeach;
+                                                  endif;
+                                                  ?>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="mb-3">
+                                              <label for="" class="form-label">Subject</label>
+                                              <input type="text" name="" id="" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                              <label for="" class="form-label">Remarks</label>
+                                              <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                              <label for="" class="form-label">Attachment/s</label>
+                                              <input type="file" name="" id="" class="form-control">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary submitReport">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                               </td>
                             </tr>
                         <?php

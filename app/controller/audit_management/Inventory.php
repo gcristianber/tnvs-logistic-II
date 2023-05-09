@@ -12,11 +12,17 @@ class Inventory{
         $Locations = new InventoryLocationModel;
         $data["products"] = $Inventory->fetch_all_products();
         $data["locations"] = $Locations->fetch_all_locations();
-        print_r($data["locations"]);
 
         $this->view('partials/navbar');
         $this->view("audit_management/inventory",$data);
         $this->view('partials/sidebar');
+    }
+    
+    public function insert_report(){
+        $LineItems = new LineItemsModel;
+        $LineItems->insert_line_items($_POST);
+
+        // print_r($_POST);
     }
 
     public function fetch_all_products(){
@@ -25,11 +31,12 @@ class Inventory{
     }
 
     public function products(){
-        $location_id = $_GET["location_id"];
         $data = [];
         $this->view('partials/navbar');
         $this->view("audit_management/products",$data);
         $this->view('partials/sidebar');
     }
+
+
 
 }
