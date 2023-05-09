@@ -203,6 +203,45 @@ $(document).ready(function () {
     })
   });
 
+  const updateForm = document.querySelectorAll(".updateForm")
+  updateForm.forEach(submit => {
+    submit.addEventListener("submit", event => {
+      event.preventDefault()
+      var row = event.target.closest("tr")
+      var dataId = row.getAttribute("data-id")
+
+      var form = event.target
+      var formData = new FormData(form)
+      formData.append("reservation_id", dataId)
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonClass: "me-2",
+        confirmButtonText: "Yes, Save it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url: config.baseUrl + 'vehicle_reservation/my_reservations/update_details',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              console.log(response)
+              location.reload()
+            }
+          })
+        }
+      })
+
+    })
+  })
+
   function updateStatus(id, status) {
     $.ajax({
       url: config.baseUrl + 'vehicle_reservation/manage_reservations/update_status',
@@ -216,6 +255,10 @@ $(document).ready(function () {
         // location.reload()
       }
     })
+  }
+
+  function updateDetails(id, form) {
+
   }
 
 });

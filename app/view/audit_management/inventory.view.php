@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Inventory</title>
+  <title>Audit Management | Inventory</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +22,7 @@
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- End plugin css for this page -->
@@ -29,6 +30,8 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- endinject -->
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -38,8 +41,17 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
-
 </head>
+<style>
+  .dataTables_filter {
+    display: none;
+  }
+
+  .perfect-scrollbar-example {
+    position: relative;
+    height: 425px;
+  }
+</style>
 
 <body>
   <div class="main-wrapper">
@@ -48,77 +60,124 @@
 
       <div class="page-content">
         <div class="row h-100">
-          <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-block d-md-flex align-items-center gap-2 mb-3">
-                  <div class="flex-grow-1">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search driver">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div>
+                    <h3>
+                      <i data-feather="archive" class="d-inline text-primary"></i>
+                      Inventory
+                    </h3>
+                    <small class="text-secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum.</small>
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="flex-shrink-0">
+
+                      <button class="btn btn-light btn-icon-text">
+                        <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                        Download as CSV
+                      </button>
                     </div>
                   </div>
-                  <div class="mt-3 mt-md-0">
-                    <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Add Entry
-                    </button>
-                    <button class="btn btn-outline-primary btn-icon-text">
-                      <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                      Export as CSV
-                    </button>
-                  </div>
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="flex-grow-1">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Id, Name, Date or Requestor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered dataTable">
+                      <thead>
+                        <tr>
+                          <th data-orderable="false"></th>
+                          <th>location</th>
+                          <th>ABC</th>
+                          <th>frequency count</th>
+                          <th>product category</th>
+                          <th>last audited</th>
+                          <th>status</th>
+                          <th>action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        if (!empty($locations)) :
+                          foreach ($locations as $data) :
+                        ?>
+                            <tr class="align-middle">
+                              <td>
+                                <input type="checkbox" class="form-check-input" name="" id="">
+                              </td>
+                              <td>
+                                <?= $data->location_name ?>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->abc) {
+                                  case 'a':
+                                    echo '<span class="badge bg-danger">A</span>';
+                                    break;
+                                  case 'b':
+                                    echo '<span class="badge bg-warning">B</span>';
+                                    break;
+                                  case 'c':
+                                    echo '<span class="badge bg-success">C</span>';
+                                    break;
+                                  default:
+                                    echo '<span class="badge bg-secondary">-</span>';
+                                    break;
+                                }
+                                ?>
+                              </td>
+                              <td><?= ucwords($data->frequency_count) ?></td>
+                              <td>
+                                <?= ucwords($data->category_name) ?>
+                              </td>
+                              <td>
+                                <p><?= date("d/m/Y - h:i A", strtotime($data->last_audit_date)) ?></p>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->location_status_name) {
+                                  case 'up to date':
+                                    echo '<span class="badge bg-success">Up to date</span>';
+                                    break;
+                                  case 'need an update':
+                                    echo '<span class="badge bg-danger">Need an update</span>';
+                                    break;
+                                  default:
+                                    echo '<span class="badge bg-secondary">Undefined</span>';
+                                    break;
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/inventory/products">
+                                  <i data-feather="feather" class="btn-icon-prepend"></i>
+                                  Create Report
+                                </a>
+                              </td>
+                            </tr>
+                        <?php
+                          endforeach;
+                        endif;
+                        ?>
+                      </tbody>
 
-                <div class="table-responsive">
-                  <table class="table table-bordered dataTable">
-                    <thead>
-                      <tr>
-                        <th data-orderable="false"></th>
-                        <th>#</th>
-                        <th>location</th>
-                        <th>description</th>
-                        <th>frequency count</th>
-                        <th>last audited</th>
-                        <th>status</th>
-                        <th>action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="align-middle">
-                        <td>
-                          <input type="checkbox" name="" class="form-check-input" id="">
-                        </td>
-                        <td>1</td>
-                        <td>A</td>
-                        <td>
-                          <p class="text-wrap">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error deserunt quod doloremque, dolore ab ratione?</p>
-                        </td>
-                        <td>Daily</td>
-                        <td>
-                          <p>29/04/2023 — 11:15 PM</p>
-                        </td>
-                        <td>
-                          <span class="badge bg-success">Up to date</span>
-                        </td>
-                        <td>
-                          <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/inventory/manage_location?">
-                            <i data-feather="settings" class="btn-icon-prepend"></i>
-                            Manage
-                          </a>
-                          <button class="btn btn-outline-primary btn-icon-text">
-                            <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                            Download Sheet
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </table>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
     </div>
@@ -133,7 +192,9 @@
   <!-- Plugin js for this page -->
   <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -142,9 +203,25 @@
   <!-- endinject -->
 
   <!-- Custom js for this page -->
+  <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/audit_management/inventory.js"></script>
+  <!-- End custom js for this page -->
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+    const myInput = document.querySelectorAll(".date-input");
+    const flatpickrInstance = flatpickr(myInput, {
+      enableTime: true,
+      dateFormat: "Y-m-d",
+      defaultDate: new Date(),
+      minDate: "today",
+      allowInput: true
+    });
+  </script>
 </body>
 
 </html>

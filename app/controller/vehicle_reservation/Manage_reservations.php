@@ -48,22 +48,27 @@ class Manage_reservations
                 $Reservations->update_status($_POST["id"], 'decline');
                 print_r("decline");
                 break;
+            case 'cancel':
+                $Reservations->update_status($_POST["id"], 'cancel');
+                print_r("cancel");
+                break;
             default:
                 # code...
                 break;
         }
     }
 
-    public function insert_maintenance(){
+    public function insert_maintenance()
+    {
         $MaintenanceModel = new MaintenanceModel;
         $MaintenanceModel->insert_new_maintenance($_POST);
 
         print_r($_POST);
         print_r($_FILES);
-
     }
 
-    public function insert_report(){
+    public function insert_report()
+    {
         $ReservationReport = new ReservationReportModel;
         $ReservationReport->insert_report($_POST);
     }

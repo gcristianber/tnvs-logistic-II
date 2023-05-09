@@ -184,4 +184,8 @@ class ReservationsModel
                 break;
         }
     }
+
+    public function update_details($id, $data){
+        $this->update($id, $data, 'reservation_id');
+    }
 }

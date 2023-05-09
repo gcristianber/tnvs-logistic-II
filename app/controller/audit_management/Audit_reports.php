@@ -2,18 +2,16 @@
 
 session_start();
 
-class Create_report{
+class Audit_reports{
 
     use Controller;
 
     public function index(){
         $data = [];
 
-        
-        $this->view("audit_management/create_report", $data);
         $this->view('partials/navbar');
+        $this->view("audit_management/audit_reports");
         $this->view('partials/sidebar');
     }
-    
 
 }

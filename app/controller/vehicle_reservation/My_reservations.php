@@ -32,6 +32,14 @@ class My_reservations
         }
     }
 
+    public function update_details()
+    {
+        $Reservations = new ReservationsModel;
+        $id = $_POST["reservation_id"];
+        unset($_POST["reservation_id"]);
+        $Reservations->update_details($id, $_POST);
+    }
+
     public function getUserReservations()
     {
         $Reservations = new ReservationsModel;

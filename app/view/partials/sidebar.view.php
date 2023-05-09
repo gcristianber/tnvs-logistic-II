@@ -77,12 +77,12 @@
                 <li class="nav-item nav-category">audit management</li>
                 <li class="nav-item">
                     <a href="<?= ROOT ?>audit_management/inventory" class="nav-link">
-                        <i class="link-icon" data-feather="list"></i>
+                        <i class="link-icon" data-feather="archive"></i>
                         <span class="link-title">Inventory</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
                         <i class="link-icon" data-feather="file-text"></i>
                         <span class="link-title">Reports</span>
                     </a>
@@ -121,7 +121,7 @@
 
                 <li class="nav-item nav-category">logistic driver</li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?= ROOT ?>fleet_management_driver/deliveries" class="nav-link">
                         <i class="link-icon" data-feather="package"></i>
                         <span class="link-title">Deliveries</span>
                     </a>

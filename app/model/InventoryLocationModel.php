@@ -1,21 +1,18 @@
 <?php
 
-class InventoryModel
+class InventoryLocationModel
 {
 
     use Model;
 
-    protected $table = "log1_whs_inventory";
+    protected $table = "log1_whs_locations";
 
-    public function fetch_all_products()
+    public function fetch_all_locations()
     {
-        $query = 'SELECT product.*,
-        product_location.location_name,
+        $query = 'SELECT product_location.*,
         location_category.category_name,
         location_status.location_status_name
-        FROM log1_whs_inventory product
-        LEFT JOIN log1_whs_locations product_location ON
-        product.location_id = product_location.location_id
+        FROM log1_whs_locations product_location
         LEFT JOIN log1_whs_category location_category ON
         product_location.product_category_id = location_category.category_id
         LEFT JOIN log1_whs_location_status location_status ON

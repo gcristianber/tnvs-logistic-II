@@ -98,15 +98,19 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Declined
-                      </a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link" id="disabled-line-tab" data-bs-toggle="tab" href="#disabled" role="tab" aria-controls="disabled" aria-selected="false">Dispatched
                       </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="returned-line-tab" data-bs-toggle="tab" href="#returned" role="tab" aria-controls="returned" aria-selected="false">Returned
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Declined
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="cancelled-line-tab" data-bs-toggle="tab" href="#cancelled" role="tab" aria-controls="cancelled" aria-selected="false">Cancelled
                       </a>
                     </li>
                   </ul>
@@ -155,8 +159,8 @@
                                       <div class="d-flex align-items-center gap-2">
                                         <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -164,7 +168,7 @@
                                     <td>
                                       <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#view_<?= $data->reservation_id ?>">
                                         <i data-feather="edit" class="btn-icon-prepend"></i>
-                                        View Details
+                                        Edit Details
                                       </button>
                                       <div class="modal fade" id="view_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="view_<?= $data->reservation_id ?>Label" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
@@ -173,71 +177,61 @@
                                               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Full Name:</label>
-                                                <div class="form-control">
-                                                  Cristianber Gordora
+                                            <form class="updateForm">
+                                              <div class="modal-body">
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Full Name:</label>
+                                                  <input type="text" name="full_name" id="" class="form-control" value="<?= $data->full_name ?>">
                                                 </div>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Email Address:</label>
-                                                <div class="form-control">
-                                                  gcristianber@gmail.com
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Email Address:</label>
+                                                  <input type="text" name="email_address" id="" class="form-control" value="<?= $data->email_address ?>">
                                                 </div>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Pickup & Return Date:</label>
-                                                <div class="row">
-                                                  <div class="col">
-                                                    <div class="input-group">
-                                                      <div class="input-group-text" id="btnGroupAddon">
-                                                        <i data-feather="calendar"></i>
-                                                      </div>
-                                                      <div class="form-control">
-                                                        05 May 2023
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Pickup & Return Date:</label>
+                                                  <div class="row">
+                                                    <div class="col">
+                                                      <div class="input-group flatpickr" id="flatpickr-date">
+                                                        <span class="input-group-text input-group-addon" data-toggle="">
+                                                          <i data-feather="calendar"></i>
+                                                        </span>
+                                                        <input type="text" name="pickup_date" id="" class="form-control date-input" value="<?= date("d M Y", strtotime($data->pickup_date)) ?>">
                                                       </div>
                                                     </div>
-                                                  </div>
-                                                  <div class="col">
-                                                    <div class="input-group">
-                                                      <div class="input-group-text" id="btnGroupAddon">
-                                                        <i data-feather="calendar"></i>
-                                                      </div>
-                                                      <div class="form-control">
-                                                        05 May 2023
+                                                    <div class="col">
+                                                    <div class="input-group flatpickr" id="flatpickr-date">
+                                                        <span class="input-group-text input-group-addon" data-toggle="">
+                                                          <i data-feather="calendar"></i>
+                                                        </span>
+                                                        <input type="text" name="pickup_date" id="" class="form-control date-input" value="<?= date("d M Y", strtotime($data->return_date)) ?>">
                                                       </div>
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </div>
-                                              <div class="mb-3">
-                                                <label for="" class="form-label">Message:</label>
-                                                <div class="form-control">
-                                                  <p class="text-wrap">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum velit repellendus facilis expedita officiis sunt vero similique consequatur iste debitis?
-                                                  </p>
+                                                <div class="mb-3">
+                                                  <label for="" class="form-label">Message:</label>
+                                                  <textarea class="form-control" name="reason" id="" cols="30" rows="5"><?= $data->reason ?></textarea>
                                                 </div>
-                                              </div>
-                                              <div>
-                                                <label for="" class="form-label">Attachment/s:</label>
-                                                <div class="list-group">
-                                                  <div class="list-group-item">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                      <div>
-                                                        <p>Dummy_File.pdf</p>
-                                                        <small class="text-muted">1.2 MB</small>
+                                                <div>
+                                                  <label for="" class="form-label">Attachment/s:</label>
+                                                  <div class="list-group">
+                                                    <div class="list-group-item">
+                                                      <div class="d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                          <p>Dummy_File.pdf</p>
+                                                          <small class="text-muted">1.2 MB</small>
+                                                        </div>
+                                                        <a href="" class="link-primary">Download</a>
                                                       </div>
-                                                      <a href="" class="link-primary">Download</a>
                                                     </div>
                                                   </div>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                              <button type="button" class="btn btn-primary approveBtn">Approve Request</button>
-                                            </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                              </div>
+                                            </form>
                                           </div>
                                         </div>
                                       </div>
@@ -530,6 +524,72 @@
 
                       </table>
                     </div>
+                    <div class="tab-pane fade" id="cancelled" role="tabpanel" aria-labelledby="cancelled-line-tab">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th data-orderable="false"></th>
+                            <th>requestor</th>
+                            <th class="text-center">vehicle type</th>
+                            <th>request date</th>
+                            <th>vehicle</th>
+                            <th>status</th>
+                            <th>action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          if (!empty($userReservations)) :
+                            foreach ($userReservations as $data) :
+                              if ($data->reservation_status == "cancelled") :
+                          ?>
+                                <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <td>
+                                    <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p><?= $data->requestor_name ?></p>
+                                        <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="text-center">
+                                    <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                  </td>
+                                  <td>
+                                    <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                    <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <div>
+                                        <p>Honda Accord 2020</p>
+                                        <small class="text-muted">QWE-223</small>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><span class="badge bg-secondary">Cancelled</span></td>
+                                  <td>
+                                    <button class="btn btn-primary btn-icon-text">
+                                      <i data-feather="star" class="btn-icon-prepend"></i>
+                                      Add Review
+                                    </button>
+                                  </td>
+
+                                </tr>
+                          <?php
+                              endif;
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+
+                      </table>
+                    </div>
                   </div>
 
 
@@ -573,6 +633,16 @@
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reservations.js"></script>
   <!-- End custom js for this page -->
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    const myInput = document.querySelectorAll(".date-input");
+    const flatpickrInstance = flatpickr(myInput, {
+      dateFormat: "d M Y",
+      minDate: "today",
+      allowInput: true
+    });
+  </script>
 </body>
 
 </html>
