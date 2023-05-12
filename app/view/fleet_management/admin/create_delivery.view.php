@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Add New Delivery</title>
+  <title>Fleet Management | Create New</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.css">
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.css">
   <!-- endinject -->
 
   <!-- Layout styles -->
@@ -44,7 +45,6 @@
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
 </head>
 <style>
   body {
@@ -74,9 +74,9 @@
                 <div id="map" class="rounded-2"></div>
               </div>
               <div class="col-md-7 grid-margin">
-                <form id="delivery_form">
+                <form id="deliveryForm">
                   <div class="">
-                    <select name="delivery_type" class="form-select" id="">
+                    <select name="delivery_type_id" id="deliveryType" class="form-select" id="">
                       <option selected disabled>Delivery Type</option>
                       <option value="1">Delivery</option>
                       <option value="2">Pickup</option>
@@ -88,7 +88,6 @@
                     <input type="text" name="phone_number" id="" class="form-control" placeholder="Phone number">
                   </div>
                   <div class="mt-4">
-
                     <div class="alert alert-primary" role="alert">
                       Please provide the specific address for delivery.
                     </div>
@@ -96,13 +95,13 @@
                       <label for="" class="form-label">
                         <p>Pickup Address</p>
                       </label>
-                      <textarea name="pickup_address" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
+                      <textarea name="pickup_location" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
                     </div>
                     <div class="mb-3">
                       <label for="" class="form-label">
                         <p>Drop-off Address</p>
                       </label>
-                      <textarea name="dropoff_address" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
+                      <textarea name="dropoff_location" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
                     </div>
                   </div>
                   <div class="mt-4">
@@ -110,16 +109,16 @@
                     <div class="mb-3">
                       <div class="row">
                         <div class="col-md-3">
-                          <input type="text" name="" id="" class="form-control" placeholder="Product ID">
+                          <input type="text" name="" id="product-id" class="form-control" placeholder="Product ID">
                         </div>
                         <div class="col-md-3">
-                          <input type="text" name="" id="" class="form-control" placeholder="Product Name">
+                          <input type="text" name="" id="product-name" class="form-control" placeholder="Product Name">
                         </div>
                         <div class="col-md-3">
-                          <input type="number" name="" id="" class="form-control" placeholder="Quantity">
+                          <input type="number" name="" id="quantity" class="form-control" placeholder="Quantity">
                         </div>
                         <div class="col-md-3">
-                          <button class="btn btn-primary btn-icon-text w-100">
+                          <button type="button" id="add-data" class="btn btn-primary btn-icon-text w-100">
                             <i data-feather="plus" class="btn-icon-prepend"></i>
                             Add Data
                           </button>
@@ -137,34 +136,6 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="align-middle">
-                          <td>1</td>
-                          <td>456</td>
-                          <td>Chips</td>
-                          <td>56</td>
-                          <td>
-                            <button class="btn btn-primary btn-icon">
-                              <i data-feather="edit"></i>
-                            </button>
-                            <button class="btn btn-danger btn-icon">
-                              <i data-feather="minus-circle"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr class="align-middle">
-                          <td>2</td>
-                          <td>456</td>
-                          <td>Chocolates</td>
-                          <td>100</td>
-                          <td>
-                            <button class="btn btn-primary btn-icon">
-                              <i data-feather="edit"></i>
-                            </button>
-                            <button class="btn btn-danger btn-icon">
-                              <i data-feather="minus-circle"></i>
-                            </button>
-                          </td>
-                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -181,6 +152,15 @@
                         <i data-feather="calendar"></i>
                       </span>
                       <input type="text" name="delivery_date" id="" class="form-control date-input">
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label">Select Driver</label>
+                    <div>
+                      <input type="text" name="" id="" class="form-control">
+                      <div>
+                        
+                      </div>
                     </div>
                   </div>
                   <div class="mt-4">
@@ -215,6 +195,7 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
+  <script src="<?= ROOT ?>assets/vendors/sweetalert2/sweetalert2.min.js"></script>
   <!-- End plugin js for this page -->
 
   <!-- inject:js -->
@@ -224,12 +205,15 @@
 
   <!-- Custom js for this page -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-delivery-request.js"></script>
+  <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <!-- End custom js for this page -->
 
-  <script>
-    // Get the input element
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-delivery.js" type="module"></script>
 
+
+
+  <script>
     const myInput = document.querySelectorAll(".date-input");
     const flatpickrInstance = flatpickr(myInput, {
       enableTime: true,
@@ -238,24 +222,6 @@
       minDate: "today",
       allowInput: true
     });
-  </script>
-
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
-    const map = new mapboxgl.Map({
-      container: 'map',
-      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-79.4512, 43.6568],
-      zoom: 13
-    });
-
-    map.addControl(
-      new MapboxDirections({
-        accessToken: mapboxgl.accessToken
-      }),
-      'top-left'
-    );
   </script>
 </body>
 

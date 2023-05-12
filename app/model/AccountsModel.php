@@ -7,6 +7,11 @@ class AccountsModel
 
     protected $table = 'admin_um_accounts';
 
+    protected $super_account = [
+        "username"=>"super_admin@logistic", 
+        "password"=>"l0gistic@!"
+    ];
+
     public function fetch_user($data, $data_not = [])
     {
         $keys = array_keys($data);

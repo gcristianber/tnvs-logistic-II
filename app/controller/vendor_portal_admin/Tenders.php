@@ -12,10 +12,12 @@ class Tenders
 
         $data["tenders"] = $this->fetch_all_tenders();
 
+        // print_r($data["tenders"]);
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/tenders", $data);
         $this->view('partials/sidebar');
     }
+
 
     public function preview_tender()
     {
@@ -25,6 +27,11 @@ class Tenders
 
         $Tenders = new TendersModel;
         $data["tender"] = $Tenders->fetch_tender(["tender_id" => $tender_id]);
+
+        $data["tenders"] = $Tenders->fetch_all_tenders();
+
+
+        print_r($data["tender"]);
         $Bids = new TenderBidsModel;
         $data["bids"] = $Bids->fetch_bids(["tender_id" => $tender_id]);
 

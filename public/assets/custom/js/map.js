@@ -45,10 +45,15 @@ const customGeoDocRef = doc(geoRef, "delivery-001");
 mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
 const map = new mapboxgl.Map({
     container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    center: [-74.5, 40], // starting position [lng, lat]
+    style: 'mapbox://styles/melon-dev/clhitoc5v01dx01r03l23cxyn', // style URL
     zoom: 17, // starting zoom
 });
+
+// Use the Geolocation API to get the user's current position
+navigator.geolocation.getCurrentPosition(position => {
+    // Update the center of the map with the user's current position
+    map.setCenter([position.coords.longitude, position.coords.latitude]);
+  });
 
 //* Create a default Marker and add it to the map.
 let currentMarker = null;

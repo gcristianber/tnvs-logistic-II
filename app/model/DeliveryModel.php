@@ -1,12 +1,14 @@
 <?php
 
-class DeliveryModel{
+class DeliveryModel
+{
 
     use Model;
 
     protected $table = 'log2_fm_delivery';
 
-    public function view(){
+    public function view()
+    {
         $query = 'SELECT 
         delivery.tracking_id,
         driver.driver_name,
@@ -37,9 +39,21 @@ class DeliveryModel{
         return $this->query($query);
     }
 
-    public function fetch_all_delivery(){
+    public function fetch_all_delivery()
+    {
         return $this->view();
     }
 
+    public function insert_new_delivery($data)
+    {
+        $prefix = "FM-";
+        $date = date("ymd");
+        $random_str = strtoupper(substr(str_shuffle(md5(microtime())), 0, 5));
+        $data["tracking_id"] = $prefix . $date . $random_str;
 
+        $this->insert($data);
+
+        return $data["tracking_id"];
+        
+    }
 }

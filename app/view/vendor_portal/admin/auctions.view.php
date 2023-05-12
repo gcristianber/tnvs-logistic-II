@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Vendor Portal | Tenders</title>
+  <title>Vendor Portal | Auctions</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,123 +90,18 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6 grid-margin">
-                <div class="border border-light py-2 px-3 rounded-2">
-                  <div class="d-flex align-items-center justify-content-between py-2">
-                    <div>
-                      <i data-feather="shopping-cart" class="me-1 icon-md"></i>
-                      <p class="d-inline align-middle">T123004124781</p>
-                    </div>
-                    <div>
-                      <span class="badge bg-warning">Invitation</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="mb-3">
-                      <p class="fw-bold">Procurement for the Laundry Services for the Athletes Village in New Clark City (NCC) Sports Complex</p>
-                    </div>
-                    <div class="mb-3">
-                      <p class="ht-60 text-wrap text-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque id quidem totam neque tenetur quaerat perferendis odit reprehenderit nihil. Temporibus enim sed libero possimus optio explicabo dolorum voluptatibus ab reiciendis autem aliquid odit error quo quia unde, cum laborum amet nihil at deleniti molestias ipsa qui doloremque! Reprehenderit, ipsum numquam.</p>
-                    </div>
-                  </div>
-                  <div class="py-2">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-none d-md-block">
-                        <p>11 May 2023</p>
-                        <small class="text-muted">07:30 PM</small>
-                      </div>
-                      <div class="flex-shrink-0">
-                        <button class="btn btn-outline-primary btn-icon-text">
-                          <i data-feather="external-link" class="btn-icon-prepend"></i>
-                          View Post
-                        </button>
-                        <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/tenders/preview_tender?tender_id=TND-488AFH1">
-                          <i data-feather="feather" class="btn-icon-prepend"></i>
-                          Submit Bid
-                        </a>
-                      </div>
-                    </div>
+
+
+              <div class="col-md-6">
+                <div class="card">
+                  <img src="" alt="">
+                  <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 grid-margin">
-                <div class="border border-light py-2 px-3 rounded-2">
-                  <div class="d-flex align-items-center justify-content-between py-2">
-                    <div>
-                      <i data-feather="shopping-cart" class="me-1 icon-md"></i>
-                      <p class="d-inline align-middle">T123004124781</p>
-                    </div>
-                    <div>
-                      <span class="badge bg-success">Awarded</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="mb-3">
-                      <p class="fw-bold">Procurement for the Laundry Services for the Athletes Village in New Clark City (NCC) Sports Complex</p>
-                    </div>
-                    <div class="mb-3">
-                      <p class="ht-60 text-wrap text-truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, architecto non.</p>
-                    </div>
-                  </div>
-                  <div class="py-2">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-none d-md-block">
-                        <p>11 May 2023</p>
-                        <small class="text-muted">07:30 PM</small>
-                      </div>
-                      <div class="flex-shrink-0">
-                        <button class="btn btn-outline-primary btn-icon-text">
-                          <i data-feather="external-link" class="btn-icon-prepend"></i>
-                          View Post
-                        </button>
-                        <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/tenders/preview_tender?tender_id=TND-488AFH1">
-                          <i data-feather="feather" class="btn-icon-prepend"></i>
-                          Submit Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 grid-margin">
-                <div class="border border-light py-2 px-3 rounded-2">
-                  <div class="d-flex align-items-center justify-content-between py-2">
-                    <div>
-                      <i data-feather="shopping-cart" class="me-1 icon-md"></i>
-                      <p class="d-inline align-middle">T123004124781</p>
-                    </div>
-                    <div>
-                      <span class="badge bg-success">Awarded</span>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="mb-3">
-                      <p class="fw-bold">Procurement for the Laundry Services for the Athletes Village in New Clark City (NCC) Sports Complex</p>
-                    </div>
-                    <div class="mb-3">
-                      <p class="ht-60 text-wrap text-truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, architecto non.</p>
-                    </div>
-                  </div>
-                  <div class="py-2">
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="d-none d-md-block">
-                        <p>11 May 2023</p>
-                        <small class="text-muted">07:30 PM</small>
-                      </div>
-                      <div class="flex-shrink-0">
-                        <button class="btn btn-outline-primary btn-icon-text">
-                          <i data-feather="external-link" class="btn-icon-prepend"></i>
-                          View Post
-                        </button>
-                        <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/tenders/preview_tender?tender_id=TND-488AFH1">
-                          <i data-feather="feather" class="btn-icon-prepend"></i>
-                          Submit Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+
             </div>
           </div>
         </div>

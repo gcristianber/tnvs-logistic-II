@@ -36,8 +36,6 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
 </head>
 
 <body>
@@ -58,54 +56,6 @@
             </div>
           </form>
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> French </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ms-1"> German </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ms-1"> Portuguese </span></a>
-                <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ms-1"> Spanish </span></a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="appsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="grid"></i>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="appsDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p class="mb-0 fw-bold">Web Apps</p>
-                  <a href="javascript:;" class="text-muted">Edit</a>
-                </div>
-                <div class="row g-0 p-1">
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/chat.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="message-square" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Chat</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/apps/calendar.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="calendar" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Calendar</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/email/inbox.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="mail" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Email</p>
-                    </a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <a href="../../pages/general/profile.html" class="dropdown-item d-flex flex-column align-items-center justify-content-center wd-70 ht-70"><i data-feather="instagram" class="icon-lg mb-1"></i>
-                      <p class="tx-12">Profile</p>
-                    </a>
-                  </div>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="mail"></i>
@@ -246,97 +196,10 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="profile">
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
-                <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
-                  <div class="mb-3">
-                    <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
-                  </div>
-                  <div class="text-center">
-                    <p class="tx-16 fw-bolder">Amiah Burton</p>
-                    <p class="tx-12 text-muted">amiahburton@gmail.com</p>
-                  </div>
-                </div>
-                <ul class="list-unstyled p-1">
-                  <li class="dropdown-item py-2">
-                    <a href="../../pages/general/profile.html" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="user"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="edit"></i>
-                      <span>Edit Profile</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="javascript:;" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="repeat"></i>
-                      <span>Switch User</span>
-                    </a>
-                  </li>
-                  <li class="dropdown-item py-2">
-                    <a href="<?= ROOT ?>authentication/logout" class="text-body ms-0">
-                      <i class="me-2 icon-md" data-feather="log-out"></i>
-                      <span>Log Out</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
           </ul>
         </div>
       </nav>
       <div class="page-content">
-
-
-        <div class="card">
-          <div class="card-body">
-
-            <div class="d-flex gap-2 mb-3">
-              <div class="ht-50 wd-50 rounded-2 d-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary">
-                <i data-feather="package"></i>
-              </div>
-              <div class="d-flex flex-column justify-content-between">
-                <div>
-                  <p class="text-muted">Tracking Number: <span class="text-dark fw-bold"> 12303105382704989</span> </p>
-                </div>
-                <div>
-                  <i data-feather="calendar" class="ht-20"></i>
-                  Mar 10 (Today) 3:18 PM
-                </div>
-                <!-- <div>
-                    <span class="badge bg-primary">Out for delivery</span>
-                  </div> -->
-              </div>
-            </div>
-
-            <div id="map" class="w-100 mb-3 rounded-2" style="height: 500px;">
-
-            </div>
-
-            <div class="d-flex gap-2 mb-3">
-              <img class="rounded-circle" src="https://via.placeholder.com/40x40" alt="">
-              <div>
-                <p>Leandro Quisado</p>
-                <small class="text-muted">leanleandroquisasdo@gmail.com</small>
-              </div>
-            </div>
-            <button class="btn btn-primary btn-icon-text w-100 mb-2">
-              <i data-feather="play" class="btn-icon-prepend"></i>
-              Start Trip
-            </button>
-            <button class="btn btn-outline-primary btn-icon-text w-100">
-              <i data-feather="message-circle" class="btn-icon-prepend"></i>
-              Message
-            </button>
-          </div>
-        </div>
-
       </div>
 
 
@@ -357,97 +220,6 @@
 
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
-
-  <script type="module">
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-    import {
-      getFirestore,
-      collection,
-      addDoc,
-      setDoc,
-      getDoc,
-      doc,
-      onSnapshot,
-      updateDoc,
-    } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCdE861SnlahEpGMerK9TrJAwAMUMfoRWs",
-      authDomain: "lulan-geo.firebaseapp.com",
-      projectId: "lulan-geo",
-      storageBucket: "lulan-geo.appspot.com",
-      messagingSenderId: "362524656961",
-      appId: "1:362524656961:web:592cc21b9a735594510dc0",
-    };
-
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
-    const map = new mapboxgl.Map({
-      container: 'map', // container ID
-      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-      style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-74.5, 40], // starting position [lng, lat]
-      zoom: 15 // starting zoom
-    });
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-
-    // Get a reference to the Firestore database
-    const db = getFirestore(app);
-
-    // Get a reference to the "geo" collection in the database
-    const geoRef = collection(db, "geo");
-
-    const customGeoDocRef = doc(geoRef, "delivery-001");
-
-    let currentMarker = null;
-
-    const success = (position) => {
-      const {
-        longitude,
-        latitude
-      } = position.coords;
-
-      const newGeoDoc = {
-        longitude: longitude, // replace with your longitude value
-        latitude: latitude, // replace with your latitude value
-      };
-
-      updateDoc(customGeoDocRef, newGeoDoc)
-        .then(() => {
-          console.log("Document updated");
-        })
-        .catch((error) => {
-          console.error("Error updating document: ", error);
-        });
-
-      console.log(`Longitude- ${longitude} and Latitude- ${latitude}`);
-
-      // remove the previous marker from the map
-    
-
-      if (currentMarker) {
-        currentMarker.remove();
-      }
-
-      currentMarker = new mapboxgl.Marker()
-        .setLngLat([longitude, latitude])
-        .addTo(map);
-
-      map.flyTo({
-        center: [longitude, latitude],
-        essential: true // this animation is considered essential with respect to prefers-reduced-motion
-      });
-    };
-
-    const error = (err) => {
-      console.log(err);
-    };
-
-    navigator.geolocation.watchPosition(success, error);
-  </script>
 
 </body>
 

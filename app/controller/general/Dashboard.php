@@ -8,6 +8,8 @@ class Dashboard{
 
     public function index(){
         $data = [];
+
+        $this->checkAccess();
         
         $this->view('partials/navbar');
         $this->view('general/dashboard', $data);

@@ -1,7 +1,7 @@
 <?php
 
-class App{
-
+class App
+{
 
     private $systems = [
         "authentication"            => "authentication",
@@ -11,7 +11,7 @@ class App{
         "vendor_portal_admin"       => "vendor_portal_admin",
         "vendor_portal_vendor"      => "vendor_portal_vendor",
         "fleet_management_admin"    => "fleet_management_admin",
-        "fleet_management_driver"   => "fleet_management_driver",
+        "driver"                    => "driver",
         "general"                   => "general",
         "templates"                 => "templates",
     ];
@@ -21,10 +21,11 @@ class App{
     protected $method       = "index";
     protected $params       = [];
 
-    public function __construct(){
+    public function __construct()
+    {
         $url = self::splitURL();
 
-        if(!array_key_exists($url[0], $this->systems)){
+        if (!array_key_exists($url[0], $this->systems)) {
             //! Handle error
             // echo "Hello";
         }
@@ -33,10 +34,10 @@ class App{
 
         unset($url[0]);
 
-        if(isset($url[1])){
-            $controllerPath = "../app/controller/".$subDirectory."/".ucfirst($url[1]).".php";
-            if(file_exists($controllerPath)){
-                require ($controllerPath);
+        if (isset($url[1])) {
+            $controllerPath = "../app/controller/" . $subDirectory . "/" . ucfirst($url[1]) . ".php";
+            if (file_exists($controllerPath)) {
+                require($controllerPath);
                 $this->controller = ucfirst($url[1]);
                 unset($url[1]);
             }
@@ -44,32 +45,26 @@ class App{
 
         $controller = new $this->controller;
 
-        if(isset($url[2])){
-            if(method_exists($this->controller, $url[2])){
-                $this->method =$url[2];
+        if (isset($url[2])) {
+            if (method_exists($this->controller, $url[2])) {
+                $this->method = $url[2];
                 unset($url[2]);
             }
         }
 
-        if(!empty($url)){
+        if (!empty($url)) {
             $this->params = array_values($url);
         }
 
-        
+
         // var_dump($controller);
         call_user_func_array([$controller, $this->method], $this->params);
-
-
-       
     }
 
     private function splitURL()
-	{
-		$URL = $_GET['url'] ?? 'authentication/login';
-		$URL = explode("/", trim($URL,"/"));
-		return $URL;	
-	}
-
-
+    {
+        $URL = $_GET['url'] ?? 'authentication/login';
+        $URL = explode("/", trim($URL, "/"));
+        return $URL;
+    }
 }
-

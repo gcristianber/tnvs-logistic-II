@@ -12,6 +12,6 @@ class Deliveries
 
         $this->view('partials/navbar');
         $this->view("fleet_management/driver/deliveries");
-        $this->view("partials/sidebar");
+        $this->view('partials/sidebar');
     }
 }

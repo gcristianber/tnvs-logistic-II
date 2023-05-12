@@ -63,7 +63,7 @@ $(document).ready(() => {
 
     compareSelectedBtn.addEventListener('click', function () {
         $.ajax({
-            url: config.baseUrl + 'vendor_portal_admin/tenders/compare_bid',
+            url: config.baseUrl + 'vendor_portal_admin/portal_requests/compare_bid',
             method: 'POST',
             data: {
                 array: comparedSelection
