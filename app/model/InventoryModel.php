@@ -23,4 +23,5 @@ class InventoryModel
 
         return $this->query($query);
     }
+
 }

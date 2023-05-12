@@ -156,12 +156,18 @@
                   </div>
                   <div class="mt-4">
                     <label for="" class="form-label">Select Driver</label>
-                    <div>
-                      <input type="text" name="" id="" class="form-control">
-                      <div>
-                        
-                      </div>
-                    </div>
+                    <select name="driver_id" class="form-select" id="">
+                      <option selected disabled>...</option>
+                      <?php
+                      if (!empty($drivers)) :
+                        foreach ($drivers as $data) :
+                      ?>
+                          <option value="<?= $data->driver_id ?>"><?= $data->driver_name ?></option>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
+                    </select>
                   </div>
                   <div class="mt-4">
                     <label for="" class="form-label">Additional File(s)</label>

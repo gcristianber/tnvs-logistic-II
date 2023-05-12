@@ -65,9 +65,9 @@
 
       <div class="page-content">
 
-        <div class="card">
+        <div class="card h-100">
           <div class="card-body">
-            <div class="row">
+            <div class="row h-100">
               <div class="col-md-4 grid-margin">
                 <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
                   <div class="flex-grow-1">
@@ -103,134 +103,62 @@
                     </select>
                   </div>
                 </div>
-
-
                 <div class="perfect-scrollbar-example">
                   <div class="list-group ">
-                    <a href="#" class="list-group-item list-group-item-action">
-                      <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div>
-                          <i data-feather="package" class="icon-md"></i>
-                          <p class="d-inline align-middle">FM-1230043782181143 </p>
-                        </div>
-                        <div>
-                          <span class="badge bg-primary">In Transit</span>
-                        </div>
-                      </div>
-                      <div class="d-flex gap-2 border-bottom pb-2">
-                        <div class="d-flex flex-column align-items-center gap-2">
-                          <div>
-                            <i data-feather="map-pin" class="icon-lg text-danger"></i>
+                    <?php
+                    if (!empty($deliveries)) :
+                      foreach ($deliveries as $data) :
+                    ?>
+                        <a href="<?= ROOT ?>fleet_management_admin/delivery_requests/navigate?tracking_id=<?= $data->tracking_id ?>" class="list-group-item list-group-item-action">
+                          <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div>
+                              <i data-feather="package" class="icon-md"></i>
+                              <p class="d-inline align-middle"><?= $data->tracking_id ?></p>
+                            </div>
+                            <div>
+                              <span class="badge bg-primary">In Transit</span>
+                            </div>
                           </div>
-                          <div class="flex-grow-1 wd-5 ht-50 bg-light rounded-pill"></div>
-                          <div>
-                            <i data-feather="map-pin" class="icon-lg text-success"></i>
+                          <div class="d-flex gap-2 border-bottom pb-2">
+                            <div class="d-flex flex-column align-items-center gap-2">
+                              <div>
+                                <i data-feather="map-pin" class="icon-lg text-danger"></i>
+                              </div>
+                              <div class="flex-grow-1 wd-5 ht-50 bg-light rounded-pill"></div>
+                              <div>
+                                <i data-feather="map-pin" class="icon-lg text-success"></i>
+                              </div>
+                            </div>
+                            <div class="d-flex flex-column justify-content-between">
+                              <div>
+                                <p>5 Mt Pleasant, Marikina</p>
+                                <small class="text-muted">Metro Manila Philippines</small>
+                              </div>
+                              <div>
+                                <p>Petunia Extension, Marikina</p>
+                                <small class="text-muted">Metro Manila Philippines</small>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between">
-                          <div>
-                            <p>5 Mt Pleasant, Marikina</p>
-                            <small class="text-muted">Metro Manila Philippines</small>
+                          <div class="d-flex align-items-center gap-2 mt-3">
+                            <img src="<?= ROOT . $data->avatar_thumbnail ?>" class="ht-40 wd-40 rounded-2" alt="">
+                            <div>
+                              <p><?= $data->driver_name ?></p>
+                              <small class="text-muted"><?= $data->email_address ?></small>
+                            </div>
                           </div>
-                          <div>
-                            <p>Petunia Extension, Marikina</p>
-                            <small class="text-muted">Metro Manila Philippines</small>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center gap-2 mt-3">
-                        <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                        <div>
-                          <p>Cristianber Gordora</p>
-                          <small class="text-muted">gcristianber@gmail.com</small>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                      <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div>
-                          <i data-feather="package" class="icon-md"></i>
-                          <p class="d-inline align-middle">FM-1230043782181143 </p>
-                        </div>
-                        <div>
-                          <span class="badge bg-primary">In Transit</span>
-                        </div>
-                      </div>
-                      <div class="d-flex gap-2 border-bottom pb-2">
-                        <div class="d-flex flex-column align-items-center gap-2">
-                          <div>
-                            <i data-feather="map-pin" class="icon-lg text-danger"></i>
-                          </div>
-                          <div class="flex-grow-1 wd-5 ht-50 bg-light rounded-pill"></div>
-                          <div>
-                            <i data-feather="map-pin" class="icon-lg text-success"></i>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between">
-                          <div>
-                            <p>5 Mt Pleasant, Marikina</p>
-                            <small class="text-muted">Metro Manila Philippines</small>
-                          </div>
-                          <div>
-                            <p>Petunia Extension, Marikina</p>
-                            <small class="text-muted">Metro Manila Philippines</small>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center gap-2 mt-3">
-                        <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                        <div>
-                          <p>Cristianber Gordora</p>
-                          <small class="text-muted">gcristianber@gmail.com</small>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                      <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div>
-                          <i data-feather="package" class="icon-md"></i>
-                          <p class="d-inline align-middle">FM-1230043782181143 </p>
-                        </div>
-                        <div>
-                          <span class="badge bg-primary">In Transit</span>
-                        </div>
-                      </div>
-                      <div class="d-flex gap-2 border-bottom pb-2">
-                        <div class="d-flex flex-column align-items-center gap-2">
-                          <div>
-                            <i data-feather="map-pin" class="icon-lg text-danger"></i>
-                          </div>
-                          <div class="flex-grow-1 wd-5 ht-50 bg-light rounded-pill"></div>
-                          <div>
-                            <i data-feather="map-pin" class="icon-lg text-success"></i>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between">
-                          <div>
-                            <p>5 Mt Pleasant, Marikina</p>
-                            <small class="text-muted">Metro Manila Philippines</small>
-                          </div>
-                          <div>
-                            <p>Petunia Extension, Marikina</p>
-                            <small class="text-muted">Metro Manila Philippines</small>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center gap-2 mt-3">
-                        <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                        <div>
-                          <p>Cristianber Gordora</p>
-                          <small class="text-muted">gcristianber@gmail.com</small>
-                        </div>
-                      </div>
-                    </a>
+                        </a>
+                    <?php
+                      endforeach;
+                    endif;
+                    ?>
                   </div>
                 </div>
 
 
               </div>
               <div class="col-md-8 grid-margin">
-                <div id='map' class="rounded-2 mb-3" style='width: 100%; height: 100%;'></div>
+                <!-- <div id='map' class="rounded-2 mb-3" style='width: 100%; height: 100%;'></div> -->
               </div>
             </div>
 

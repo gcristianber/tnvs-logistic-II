@@ -1,46 +1,69 @@
 $(document).ready(() => {
 
-    // Get all submitReport button elements
-    const submitButtons = document.querySelectorAll('.submitReport');
+    const auditForm = document.querySelectorAll(".auditForm")
 
-    // Loop through each submitReport button and add a click event listener
-    submitButtons.forEach((submitButton) => {
-        submitButton.addEventListener('click', event => {
+    auditForm.forEach(submit => {
+        submit.addEventListener("submit", event => {
+            event.preventDefault()
+
             var row = event.target.closest("tr")
             var dataId = row.getAttribute("data-location_id")
-            // Get all input elements with class "actualCount"
-            const inputElements = submitButton.closest('.modal-content').querySelectorAll('.actualCount');
+
+            const inputElements = submit.closest('.modal-content').querySelectorAll('.actualCount');
 
             // Create an object to hold the values of the input fields
-            const inputValues = {};
+            const inputValues = [];
 
-            // Loop through each input element and get its value and product_id
+            // Loop through each input element and get its value, product_id, and quantity
             inputElements.forEach((inputElement) => {
                 const inputValue = inputElement.value;
                 const productId = inputElement.closest('tr').dataset.product_id;
-                inputValues[productId] = inputValue;
+                const quantity = inputElement.closest('tr').querySelector('td[data-quantity]').getAttribute('data-quantity');
+                const productName = inputElement.closest('tr').querySelector('td[data-product_name]').getAttribute('data-product_name');
+
+                inputValues.push({
+                    productId: productId,
+                    productName: productName,
+                    inputValue: inputValue,
+                    quantity: quantity,
+                });
             });
 
-            // Log the object of input values to the console
-            console.log(inputValues);
-            console.log(`Location ID: ${dataId}`);
+            var form = event.target
+            var formData = new FormData(form)
+            formData.append('line_items', JSON.stringify(inputValues))
+            formData.append('location_id', dataId)
 
-            $.ajax({
-                url: config.baseUrl + 'audit_management/inventory/insert_report',
-                type: 'POST',
-                data: {
-                    location_id: dataId,
-                    line_items: inputValues
-                },
-                success: function(response){
-                    console.log(response)
+            console.log(formData)
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You are about to cancel your request!",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonClass: "me-2",
+                confirmButtonText: "Yes, Submit it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: config.baseUrl + 'audit_management/inventory/insert_report',
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+
+                    // console.log(formData);
+                    // location.reload()
                 }
             })
 
-            // Add your code here to submit the form or handle the input values
-        });
+
+        })
     });
-
-
-
 })

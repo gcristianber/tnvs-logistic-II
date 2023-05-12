@@ -19,10 +19,32 @@ class Inventory{
     }
     
     public function insert_report(){
+
+
+        $AuditReport = new AuditReportModel;
+        $_POST["report_id"] = $AuditReport->insert_report($_POST);
+
         $LineItems = new LineItemsModel;
         $LineItems->insert_line_items($_POST);
 
-        // print_r($_POST);
+        $Attachment = new AuditAttachmentModel;
+        $Attachment->insert_attachment($_POST["report_id"] ,$_FILES);
+
+        if($_POST["report_id"]){
+            $Location = new LocationsModel;
+            $data = $Location->where(["location_id" => $_POST["location_id"]]);
+            $frequency_count = $data[0]->frequency_count;
+            $Location->update_next_count($_POST["location_id"], $frequency_count);
+        }
+
+
+
+        print_r($_POST);
+
+
+
+
+
     }
 
     public function fetch_all_products(){

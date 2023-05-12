@@ -115,36 +115,46 @@
                               <th>report id</th>
                               <th>subject</th>
                               <th>location</th>
+                              <th>category</th>
                               <th>audit date</th>
                               <th>status</th>
                               <th>action</th>
                             </tr>
                           </thead>
                           <tbody>
+                            <?php 
+                            if(!empty($reports)):
+                            foreach($reports as $data):
+                            ?>
                             <tr class="align-middle">
                               <td>
                                 <input type="checkbox" name="" class="form-check-input" id="">
                               </td>
                               <td>
-                                REPORT-0001
+                                <?= $data->report_id ?>
                               </td>
-                              <td>SECTION A : MAY 2023</td>
-                              <td>Section A</td>
-                              <td>07/05/2023 - 01:47 PM</td>
+                              <td><?= $data->subject ?></td>
+                              <td><?= $data->location_name ?></td>
+                              <td><?= ucwords($data->category_name) ?></td>
+                              <td><?= date("d/m/Y h:i A",strtotime($data->report_date)) ?></td>
                               <td>
                                 <span class="badge bg-danger">Issued</span>
                               </td>
                               <td>
-                                <button class="btn btn-primary btn-icon-text">
+                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/view_report?report_id=<?= $data->report_id ?>">
                                   <i data-feather="external-link" class="btn-icon-prepend"></i>
                                   View Details
-                                </button>
+                                </a>
                                 <button class="btn btn-success btn-icon-text">
                                   <i data-feather="plus" class="btn-icon-prepend"></i>
                                   Mark as solved
                                 </button>
                               </td>
                             </tr>
+                            <?php 
+                            endforeach;
+                            endif;
+                            ?>
                           </tbody>
 
                         </table>

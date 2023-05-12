@@ -9,9 +9,10 @@ class Delivery_requests{
     public function index(){
 
         $Delivery = new DeliveryModel;
+        $data["deliveries"] = $Delivery->fetch_all_delivery();
 
         $this->view('partials/navbar');
-        $this->view("fleet_management/admin/delivery_requests");
+        $this->view("fleet_management/admin/delivery_requests", $data);
         $this->view("partials/sidebar");
     }
 
@@ -25,8 +26,11 @@ class Delivery_requests{
 
     public function create_new(){
 
+        $Drivers = new DriversModel;
+        $data["drivers"] = $Drivers->fetch_all_drivers();
+
         $this->view('partials/navbar');
-        $this->view("fleet_management/admin/create_delivery");
+        $this->view("fleet_management/admin/create_delivery", $data);
         $this->view("partials/sidebar");
     }
 
