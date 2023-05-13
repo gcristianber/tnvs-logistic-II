@@ -26,6 +26,41 @@ class DeliveryModel
         return $this->query($query);
     }
 
+    public function fetch_delivery($data, $data_not = [])
+    {
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+        $query = 'SELECT delivery.*,
+        driver.*,
+        vehicle.*,
+        delivery_type.delivery_type_name
+        FROM log2_fm_delivery delivery
+        LEFT JOIN log2_fm_delivery_type delivery_type ON
+        delivery.delivery_type_id = delivery_type.delivery_type_id
+        LEFT JOIN log2_fm_drivers driver ON
+        delivery.driver_id = driver.driver_id
+        LEFT JOIN log2_fm_vehicles vehicle ON
+        delivery.vehicle_id = vehicle.vehicle_id WHERE ';
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :" . $key . " && ";
+        }
+
+        foreach ($keys_not as $key) {
+            $query .= $key . " != :" . $key . " && ";
+        }
+
+        $query = trim($query, " && ");
+
+        $data = array_merge($data, $data_not);
+
+        $result = $this->query($query, $data);
+        if ($result)
+            return $result[0];
+
+        return false;
+    }
+
     public function insert_new_delivery($data)
     {
         $prefix = "FM-";
@@ -36,6 +71,5 @@ class DeliveryModel
         $this->insert($data);
 
         return $data["tracking_id"];
-        
     }
 }

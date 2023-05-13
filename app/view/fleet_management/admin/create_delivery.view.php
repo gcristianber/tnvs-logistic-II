@@ -96,12 +96,30 @@
                         <p>Pickup Address</p>
                       </label>
                       <textarea name="pickup_location" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
+                      <div class="mt-3 row">
+                        <div class="col-6 grid-margin">
+                          <select id="" name="pickup_country" class="form-select countries-select">
+                          </select>
+                        </div>
+                        <div class="col-6 grid-margin">
+                          <select id="" name="pickup_city" class="form-select cities-select"></select>
+                        </div>
+                      </div>
                     </div>
                     <div class="mb-3">
                       <label for="" class="form-label">
                         <p>Drop-off Address</p>
                       </label>
                       <textarea name="dropoff_location" class="form-control" id="" cols="30" rows="3" placeholder="Address"></textarea>
+                      <div class="mt-3 row">
+                        <div class="col-6 grid-margin">
+                          <select id="" name="dropoff_country" class="form-select countries-select">
+                          </select>
+                        </div>
+                        <div class="col-6 grid-margin">
+                          <select id="" name="dropoff_city" class="form-select cities-select"></select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="mt-4">
@@ -213,6 +231,7 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/country-dropdown.js"></script>
   <!-- End custom js for this page -->
 
   <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-delivery.js" type="module"></script>

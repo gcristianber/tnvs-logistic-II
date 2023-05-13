@@ -18,6 +18,10 @@ class Delivery_requests{
 
     public function navigate(){
         $data =[];
+
+        $Delivery = new DeliveryModel;
+        $data["delivery"] = $Delivery->fetch_delivery(["tracking_id"=>$_GET["tracking_id"]]);
+        // print_r($Delivery->fetch_delivery(["tracking_id"=>$_GET["tracking_id"]]));
         
         $this->view('partials/navbar');
         $this->view("fleet_management/admin/navigate_delivery", $data);

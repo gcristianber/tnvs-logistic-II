@@ -9,7 +9,7 @@
     <meta name="author" content="NobleUI">
     <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <title>Fleet Management | Create New</title>
+    <title>Fleet Management | Navigate</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,8 +75,6 @@
                                 <div id="map" class="rounded-2"></div>
                             </div>
                             <div class="col-md-4 grid-margin">
-
-
                                 <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Delivery Details</a>
@@ -87,32 +85,41 @@
                                 </ul>
                                 <div class="tab-content mt-3" id="lineTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <i data-feather="archive" class="icon-lg"></i>
+                                                <div>
+                                                    <p class="d-inline align-middle me-2"><?= $delivery->tracking_id ?></p><span class="badge bg-primary">In Transit</span>
+                                                    <small class="d-block text-muted">Foods and Beverages</small>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="mb-4">
                                             <div class="d-flex align-items-center gap-2">
                                                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                                                     <i data-feather="map-pin" class="icon-xl text-danger"></i>
                                                     <div>
-                                                        <p>416 Sta. Catalina</p>
-                                                        <small class="text-muted">Quezon City, Philippines</small>
+                                                        <p><?= $delivery->pickup_location ?></p>
+                                                        <small class="text-muted"><?= $delivery->pickup_city ?>, <?= $delivery->pickup_country ?></small>
                                                     </div>
                                                 </div>
                                                 <div class="ht-5 w-100 flex-grow-1 bg-gray-200 rounded-2"></div>
                                                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                                                     <i data-feather="map-pin" class="icon-xl text-success"></i>
                                                     <div>
-                                                        <p>005D Sto. Nino</p>
-                                                        <small class="text-muted">Quezon City, Philippines</small>
+                                                        <p><?= $delivery->dropoff_location ?></p>
+                                                        <small class="text-muted"><?= $delivery->dropoff_city ?>, <?= $delivery->dropoff_country ?></small>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex gap-2 mb-3">
-                                                <img src="https://via.placeholder.com/150x100" class="rounded-2" alt="">
+                                                <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $delivery->thumbnail_path ?>" style="height: 125px; width: 200px; object-fit: contain;" class="rounded-2" alt="">
                                                 <div class="d-flex flex-column justify-content-between w-100">
                                                     <div>
-                                                        <h5>LAMBORGHINI URUS</h5>
-                                                        <small class="text-muted">LUV-143 - Sedan</small>
+                                                        <h5 class="text-uppercase"><?= $delivery->make ?></h5>
+                                                        <small class="text-muted"><?= $delivery->plate ?></small>
                                                     </div>
                                                     <div class="d-flex justify-content-between ">
                                                         <div class="flex-shrink-0">
@@ -133,20 +140,20 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex align-items-center gap-2 mb-3">
-                                                <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
+                                                <img src="<?= ROOT . $delivery->avatar_thumbnail ?>" class="ht-40 wd-40 rounded-2 object-fit-cover" alt="">
                                                 <div>
-                                                    <p>Cristianber Gordora</p>
-                                                    <small class="text-muted">gcristianber@gmail.com</small>
+                                                    <p><?= $delivery->driver_name ?></p>
+                                                    <small class="text-muted"><?= $delivery->email_address ?></small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="" class="form-label">Category:</label>
-                                            <p>Foods and Beverages</p>
+                                            <label for="" class="form-label">Contact:</label>
+                                            <p><?= $delivery->contact_person ?> / <?= $delivery->phone_number ?></p>
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label">Notes for the driver:</label>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure veritatis odit fugit sint aut quam doloremque quaerat assumenda dolorem porro?</p>
+                                            <p><?= $delivery->notes_for_driver ?></p>
                                         </div>
                                         <div class="mb-3">
                                             <div class="table-responsive">
@@ -259,7 +266,7 @@
     <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
     <!-- End custom js for this page -->
 
-    <script src="<?= ROOT ?>assets/custom/js/map.js" type="module"></script>
+    <script src="<?= ROOT ?>assets/custom/js/fleet_management/navigate-delivery.js" type="module"></script>
     <script>
         // javascript
         var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');

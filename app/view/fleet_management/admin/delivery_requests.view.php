@@ -131,12 +131,12 @@
                             </div>
                             <div class="d-flex flex-column justify-content-between">
                               <div>
-                                <p>5 Mt Pleasant, Marikina</p>
-                                <small class="text-muted">Metro Manila Philippines</small>
+                                <p><?= $data->pickup_location ?></p>
+                                <small class="text-muted"><?= $data->pickup_city ?>, <?= $data->pickup_country ?></small>
                               </div>
                               <div>
-                                <p>Petunia Extension, Marikina</p>
-                                <small class="text-muted">Metro Manila Philippines</small>
+                                <p><?= $data->dropoff_location ?></p>
+                                <small class="text-muted"><?= $data->dropoff_city ?>, <?= $data->dropoff_country ?></small>
                               </div>
                             </div>
                           </div>
@@ -158,7 +158,7 @@
 
               </div>
               <div class="col-md-8 grid-margin">
-                <!-- <div id='map' class="rounded-2 mb-3" style='width: 100%; height: 100%;'></div> -->
+                <div id='map' class="rounded-2 mb-3" style='width: 100%; height: 100%;'></div>
               </div>
             </div>
 
