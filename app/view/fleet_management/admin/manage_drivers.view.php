@@ -219,7 +219,7 @@
                               <div class="d-flex gap-2">
                                 <img src="<?= ROOT . $data->avatar_thumbnail ?>" class="ht-100 wd-100 rounded-2 object-fit-cover" alt="">
                                 <div>
-                                  <p><?= $data->driver_name ?></p>
+                                  <p><?= $data->display_name ?></p>
                                   <small class="text-muted"><?= $data->email_address ?></small>
                                 </div>
                               </div>

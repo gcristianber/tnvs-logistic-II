@@ -143,7 +143,7 @@
                           <div class="d-flex align-items-center gap-2 mt-3">
                             <img src="<?= ROOT . $data->avatar_thumbnail ?>" class="ht-40 wd-40 rounded-2" alt="">
                             <div>
-                              <p><?= $data->driver_name ?></p>
+                              <p><?= $data->display_name ?></p>
                               <small class="text-muted"><?= $data->email_address ?></small>
                             </div>
                           </div>

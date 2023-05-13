@@ -32,28 +32,27 @@ class Login
         $this->view("auth/login", $data);
     }
 
-    public function authenticate()
+    public function driver()
     {
-        $arr["username"] = $_POST["username"];
-        $arr["password"] = $_POST["password"];
+        $data = [];
 
-        $Users = new AccountsModel;
-        $row = $Users->fetch_user($arr);
+        if (!empty($_POST)) {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $arr["username"] = $_POST["username"];
+                $arr["password"] = $_POST["password"];
 
-        if ($row && $row->password == $_POST["password"]) {
-            $_SESSION["user"] = $row;
+                $Users = new DriversModel;
+                $row = $Users->fetch_driver($arr);
 
-            // Construct dashboard URL using ROOT constant
-            $dashboardUrl = ROOT . "general/dashboard";
+                if ($row && $row->password == $_POST["password"]) {
+                    $_SESSION["user"] = $row;
 
-            // Send redirect response
-            header("Location: $dashboardUrl");
-            exit();
-        } else {
-            // Authentication failed, display error message
-            $response = array("status" => "error", "message" => "Authentication failed.");
-            header('Content-Type: application/json');
-            echo json_encode($response);
+                    redirect("general/dashboard");
+                    exit();
+                }
+            }
         }
+
+        $this->view("auth/driver_login", $data);
     }
 }

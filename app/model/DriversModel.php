@@ -10,18 +10,14 @@ class DriversModel
     protected function view_query()
     {
         $query = 'SELECT 
-        driver.driver_id,
-        driver.driver_name,
-        driver.email_address,
-        driver.username,
-        driver.password,
-        driver.last_active,
-        driver.date_created,
-        driver.avatar_thumbnail,
+        driver.*,
+        role.role_name as user_role,
         driver_status.status_name
         FROM log2_fm_drivers driver
         LEFT JOIN log2_fm_driver_status driver_status ON 
         driver.status_id = driver_status.driver_status_id
+        LEFT JOIN admin_um_roles role ON 
+        driver.role_id = role.role_id
         ';
         return $query;
     }
@@ -29,6 +25,40 @@ class DriversModel
     public function fetch_all_drivers()
     {
         return $this->query($this->view_query());
+    }
+
+    public function fetch_driver($data, $data_not = [])
+    {
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+        $query = 'SELECT 
+        driver.*,
+        role.role_name as user_role,
+        driver_status.status_name
+        FROM log2_fm_drivers driver
+        LEFT JOIN log2_fm_driver_status driver_status ON 
+        driver.status_id = driver_status.driver_status_id
+        LEFT JOIN admin_um_roles role ON 
+        driver.role_id = role.role_id
+        WHERE ';
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :" . $key . " && ";
+        }
+
+        foreach ($keys_not as $key) {
+            $query .= $key . " != :" . $key . " && ";
+        }
+
+        $query = trim($query, " && ");
+
+        $data = array_merge($data, $data_not);
+
+        $result = $this->query($query, $data);
+        if ($result)
+            return $result[0];
+
+        return false;
     }
 
     public function add_driver($data, $files)
@@ -90,6 +120,5 @@ class DriversModel
 
         $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('test.xlsx');
-
     }
 }

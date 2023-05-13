@@ -142,7 +142,7 @@
                                             <div class="d-flex align-items-center gap-2 mb-3">
                                                 <img src="<?= ROOT . $delivery->avatar_thumbnail ?>" class="ht-40 wd-40 rounded-2 object-fit-cover" alt="">
                                                 <div>
-                                                    <p><?= $delivery->driver_name ?></p>
+                                                    <p><?= $delivery->display_name ?></p>
                                                     <small class="text-muted"><?= $delivery->email_address ?></small>
                                                 </div>
                                             </div>

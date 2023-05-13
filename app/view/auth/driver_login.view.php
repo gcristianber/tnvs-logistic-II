@@ -49,7 +49,7 @@
                   <div class="text-center">
                     <img src="<?= ROOT ?>assets/images/favicon.png" class="ht-50 wd-50 mb-3" alt="">
                     <h4>Welcome Back!</h4>
-                    <p class="text-muted">Sign in to get started.</p>
+                    <p class="text-muted">for Drivers</p>
                   </div>
                 </div>
                 <form method="POST">
@@ -78,9 +78,9 @@
                     <button type="submit" class="btn btn-primary w-100 mb-2">
                       Sign in
                     </button>
-                    <a href="<?= ROOT ?>authentication/login/driver" class="btn btn-outline-primary btn-icon-text w-100">
-                    <i data-feather="truck" class="btn-icon-prepend"></i>
-                      For Drivers
+                    <a href="<?= ROOT ?>authentication/login" class="btn btn-outline-primary btn-icon-text w-100">
+                    <i data-feather="briefcase" class="btn-icon-prepend"></i>
+                      For Employee
                     </a>
                   </div>
                 </form>

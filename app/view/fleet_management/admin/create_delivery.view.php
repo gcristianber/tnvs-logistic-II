@@ -180,7 +180,7 @@
                       if (!empty($drivers)) :
                         foreach ($drivers as $data) :
                       ?>
-                          <option value="<?= $data->driver_id ?>"><?= $data->driver_name ?></option>
+                          <option value="<?= $data->driver_id ?>"><?= $data->display_name ?></option>
                       <?php
                         endforeach;
                       endif;
