@@ -34,26 +34,18 @@ const deliveryParam = urlParams.get('tracking_id');
 
 console.log(deliveryParam)
 
-const docRef = doc(geoRef, deliveryParam); // replace "document_id" with the actual ID of the document you want to update
-
-
-
 mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
 const map = new mapboxgl.Map({
     container: 'map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/melon-dev/clhitoc5v01dx01r03l23cxyn',
+    // center: [  121.0689706, 14.669254],
     zoom: 14
-});
-
-// Use the Geolocation API to get the user's current position
-navigator.geolocation.getCurrentPosition(position => {
-    // Update the center of the map with the user's current position
-    map.setCenter([position.coords.longitude, position.coords.latitude]);
 });
 
 const geoDocRef = doc(geoRef, deliveryParam);
 
+// * ROUTES
 getDoc(geoDocRef).then((doc) => {
     if (doc.exists()) {
         console.log("Document data:", doc.data().routes);
@@ -107,19 +99,17 @@ getDoc(geoDocRef).then((doc) => {
 
 let currentMarker = null;
 
-
 // !LISTENS EVERY CHANGES AND CHANGE THE MARKER's LOCATION
-onSnapshot(customGeoDocRef, (doc) => {
+onSnapshot(geoDocRef, (doc) => {
     if (doc.exists()) {
 
-        var latitude = doc.data().latitude;
-        var longitude = doc.data().longitude;
+        var latitude = doc.data().lat;
+        var longitude = doc.data().lng;
 
         console.log(`Latitude: ${latitude}`)
         console.log(`Longitude: ${longitude}`)
 
-        console.log("Document has been updated!")
-        console.log("Document has been get!")
+        console.log("Snapshot!!")
 
         if (currentMarker) {
             currentMarker.remove();
@@ -134,8 +124,6 @@ onSnapshot(customGeoDocRef, (doc) => {
         el.style.backgroundRepeat = 'no-repeat';
         el.style.width = '50px';
         el.style.height = '50px';
-
-
 
         currentMarker = new mapboxgl.Marker({
             element: el
