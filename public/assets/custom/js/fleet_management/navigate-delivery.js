@@ -36,26 +36,7 @@ console.log(deliveryParam)
 
 const docRef = doc(geoRef, deliveryParam); // replace "document_id" with the actual ID of the document you want to update
 
-// * UPDATE THE DOCUMENT
-// Call watchPosition to continuously track changes in the user's position
-const watchId = navigator.geolocation.watchPosition(
-    (position) => {
-        // Update the document in Firebase with the new position data
-        updateDoc(docRef, {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-        })
-            .then(() => {
-                console.log("Document successfully updated!");
-            })
-            .catch((error) => {
-                console.error("Error updating document: ", error);
-            });
-    },
-    (error) => {
-        console.error("Error getting geolocation: ", error);
-    }
-);
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
 const map = new mapboxgl.Map({
@@ -122,6 +103,60 @@ getDoc(geoDocRef).then((doc) => {
 }).catch((error) => {
     console.log("Error getting document:", error);
 });
+
+
+let currentMarker = null;
+
+
+// !LISTENS EVERY CHANGES AND CHANGE THE MARKER's LOCATION
+onSnapshot(customGeoDocRef, (doc) => {
+    if (doc.exists()) {
+
+        var latitude = doc.data().latitude;
+        var longitude = doc.data().longitude;
+
+        console.log(`Latitude: ${latitude}`)
+        console.log(`Longitude: ${longitude}`)
+
+        console.log("Document has been updated!")
+        console.log("Document has been get!")
+
+        if (currentMarker) {
+            currentMarker.remove();
+        }
+
+        var img_url = config.baseUrl + 'assets/images/aerial-view-truck.png';
+
+        var el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundImage = 'url(' + img_url + ')';
+        el.style.backgroundPosition = 'center';
+        el.style.backgroundRepeat = 'no-repeat';
+        el.style.width = '50px';
+        el.style.height = '50px';
+
+
+
+        currentMarker = new mapboxgl.Marker({
+            element: el
+        })
+            .setLngLat([longitude, latitude])
+            .addTo(map);
+
+        map.flyTo({
+            center: [longitude, latitude],
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+
+
+    } else {
+        console.log("No such document!");
+    }
+}, (error) => {
+    console.log("Error getting document:", error);
+});
+
+
 
 
 

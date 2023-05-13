@@ -61,8 +61,8 @@ let currentMarker = null;
 onSnapshot(customGeoDocRef, (doc) => {
     if (doc.exists()) {
 
-        var latitude = doc.data().latitude;
-        var longitude = doc.data().longitude;
+        var latitude = doc.data().lat;
+        var longitude = doc.data().lng;
 
         console.log(`Latitude: ${latitude}`)
         console.log(`Longitude: ${longitude}`)
@@ -83,8 +83,6 @@ onSnapshot(customGeoDocRef, (doc) => {
         el.style.backgroundRepeat = 'no-repeat';
         el.style.width = '50px';
         el.style.height = '50px';
-
-
 
         currentMarker = new mapboxgl.Marker({
             element: el
@@ -154,3 +152,26 @@ getDoc(customGeoDocRef).then((doc) => {
 }).catch((error) => {
     console.log("Error getting document:", error);
 });
+
+// * UPDATE THE DOCUMENT
+// Call watchPosition to continuously track changes in the user's position
+const watchId = navigator.geolocation.watchPosition(
+    (position) => {
+        // Update the document in Firebase with the new position data
+        updateDoc(customGeoDocRef, {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+        })
+            .then(() => {
+                console.log(position)
+
+                console.log("Document successfully updated!");
+            })
+            .catch((error) => {
+                console.error("Error updating document: ", error);
+            });
+    },
+    (error) => {
+        console.error("Error getting geolocation: ", error);
+    }
+);
