@@ -54,7 +54,7 @@
 
   .perfect-scrollbar-example {
     position: relative;
-    max-height: 1000px;
+    max-height: 100vh;
   }
 </style>
 
@@ -103,8 +103,9 @@
                     </select>
                   </div>
                 </div>
-                <div class="perfect-scrollbar-example">
-                  <div class="list-group ">
+
+                <div class="list-group ">
+                  <div class="perfect-scrollbar-example">
                     <?php
                     if (!empty($deliveries)) :
                       foreach ($deliveries as $data) :
@@ -156,6 +157,7 @@
                 </div>
 
 
+
               </div>
               <div class="col-md-8 grid-margin">
                 <div id='map' class="rounded-2 mb-3" style='width: 100%; height: 100%;'></div>
@@ -201,6 +203,7 @@
   <!-- End custom js for this page -->
 
   <script src="<?= ROOT ?>assets/custom/js/map.js" type="module"></script>
+  <script>var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');</script>
 </body>
 
 </html>

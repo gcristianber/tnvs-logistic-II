@@ -57,73 +57,48 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <div class="input-group">
-                    <div class="input-group-text" id="btnGroupAddon2">
-                      <i data-feather="search"></i>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Search vehicle" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                  </div>
-                </div>
-                <div class="mb-3">
                   <div class="mb-2">
                     <p class="fs-5">Categories</p>
                   </div>
                   <div class="mb-2">
                     <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Sedan</label>
+                      <label for="checkDefault" class="form-label">Office Supplies</label>
                     </div>
                   </div>
                   <div class="mb-2">
                     <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Van</label>
+                      <label for="checkDefault" class="form-label">Foods and Beverages</label>
                     </div>
                   </div>
                   <div class="mb-2">
                     <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Trucks</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <div class="mb-2">
-                    <p class="fs-5">Status Types</p>
-                  </div>
-                  <div class="mb-2">
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Available</label>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Reserved</label>
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Maintenance</label>
+                      <label for="checkDefault" class="form-label">Stationery</label>
                     </div>
                   </div>
                 </div>
                 <div class="mb-3">
                   <div class="mb-2">
-                    <p class="fs-5">Transmission</p>
+                    <p class="fs-5">Company Types</p>
                   </div>
                   <div class="mb-2">
                     <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Automatic</label>
+                      <label for="checkDefault" class="form-label">Public Company</label>
                     </div>
                   </div>
                   <div class="mb-2">
                     <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label for="checkDefault" class="form-label">Manual</label>
+                      <label for="checkDefault" class="form-label">Private Company (LTD)</label>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkDefault">
+                      <label for="checkDefault" class="form-label">Government Company</label>
                     </div>
                   </div>
                 </div>
@@ -139,8 +114,8 @@
                     </div>
 
                     <button class="btn btn-primary btn-icon-text  flex-shrink-0" disabled>
-                      <i data-feather="plus" class="btn-icon-prepend"></i>
-                      Create Message
+                      <i data-feather="send" class="btn-icon-prepend"></i>
+                      Send Message
                     </button>
 
                   </div>
@@ -151,12 +126,13 @@
                       <tr>
                         <th>contract name</th>
                         <th>vendor name</th>
+                        <th>company type</th>
                         <th>date awarded</th>
                         <th>status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr class="align-middle">
                         <td>
                           <p>Intel I5 Computer Supplies</p>
                           <small class="text-muted">Office Supplies</small>
@@ -170,6 +146,7 @@
                             </div>
                           </div>
                         </td>
+                        <td>Private Company (LTD)</td>
                         <td>
                           <p>01 May 2023</p>
                           <small class="text-muted">09:50 PM</small>

@@ -55,5 +55,51 @@ class VehiclesModel
         return $this->query($query);
     }
 
+    public function fetch_vehicle($data, $data_not = [])
+    {
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+        $query = 'SELECT
+        log2_fm_vehicles.vehicle_id,
+        log2_fm_vehicles.make,
+        log2_fm_vehicles.plate,
+        log2_fm_vehicles.description,
+        log2_fm_vehicles.number_of_seats,
+        log2_fm_vehicles.odometer,
+        log2_fm_vehicles.dimensions,
+        log2_fm_vehicles.thumbnail_path,
+        
+        log2_fm_vehicle_types.type_name as vehicle_type,
+        log2_fm_trans_types.type_name as trans_type,
+        log2_fm_vehicle_status.status_name as status_name
+        
+        FROM log2_fm_vehicles
+        
+        LEFT JOIN log2_fm_vehicle_types ON
+        log2_fm_vehicles.vehicle_type_id = log2_fm_vehicle_types.vehicle_type_id
+        LEFT JOIN log2_fm_trans_types ON
+        log2_fm_vehicles.trans_type_id = log2_fm_trans_types.trans_type_id
+        LEFT JOIN log2_fm_vehicle_status ON
+        log2_fm_vehicles.status_id = log2_fm_vehicle_status.status_id WHERE ';
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :" . $key . " && ";
+        }
+
+        foreach ($keys_not as $key) {
+            $query .= $key . " != :" . $key . " && ";
+        }
+
+        $query = trim($query, " && ");
+
+        $data = array_merge($data, $data_not);
+
+        $result = $this->query($query, $data);
+        if ($result)
+            return $result[0];
+
+        return false;
+    }
+
 
 }

@@ -294,24 +294,26 @@
         </nav>
         <div class="page-wrapper">
             <div class="page-content">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row h-100">
                             <div class="col-md-8">
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center gap-2">
                                             <i data-feather="feather" class="icon-lg"></i>
                                             <div>
-                                                <p class="d-inline align-middle me-2"><?= $report->report_id ?></p><span class="badge bg-danger">Issued</span>
+                                                <p class="d-inline align-middle me-2"><?= $report->report_id ?></p><?php $statusBadge = ($report->report_status_name === 'issued') ? '<span class="badge bg-danger">Issued</span>' : (($report->report_status_name === 'in progress') ? '<span class="badge bg-warning">In Progress</span>' : (($report->report_status_name === 'solved') ? '<span class="badge bg-success">Solved</span>' : ''));
+                                                                                                                    echo $statusBadge;
+                                                                                                                    ?>
                                                 <small class="d-block"><?= date("Y-m-d h:i A", strtotime($report->report_date)) ?> | <?= ucwords($report->category_name) ?> | <?= ucwords($report->location_name) ?></small>
                                             </div>
                                         </div>
                                         <div class="flex-shrink-0">
-                                            <button class="btn btn-success btn-icon-text">
-                                                <i data-feather="plus" class="btn-icon-prepend"></i>
-                                                Mark as Solved
-                                            </button>
+                                            <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/download_report?report_id=<?= $report->report_id ?>">
+                                                <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                                                Download Report
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -427,7 +429,7 @@
     <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
     <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
     <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-    <script src="<?= ROOT ?>assets/custom/js/vendor_portal/manage-tender.js"></script>
+    <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-reports.js"></script>
     <!-- End custom js for this page -->
 
 </body>

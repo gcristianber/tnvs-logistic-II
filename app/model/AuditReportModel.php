@@ -7,18 +7,22 @@ class AuditReportModel
 
     protected $table = 'log2_am_reports';
 
-    public function fetch_all_reports(){
+    public function fetch_all_reports()
+    {
         $query = 'SELECT reports.*,
         locations.location_name,
         locations.abc,
         locations.frequency_count,
         locations.frequency_count,
+        status.report_status_name,
         category.category_name
         FROM log2_am_reports reports
         LEFT JOIN log1_whs_locations locations ON
         reports.location_id = locations.location_id
         LEFT JOIN log1_whs_category category ON
         locations.product_category_id = category.category_id
+        LEFT JOIN log2_am_report_status status ON
+        reports.report_status_id = status.status_id
         ';
 
         return $this->query($query);
@@ -33,12 +37,15 @@ class AuditReportModel
         locations.abc,
         locations.frequency_count,
         locations.frequency_count,
+        status.report_status_name,
         category.category_name
         FROM log2_am_reports reports
         LEFT JOIN log1_whs_locations locations ON
         reports.location_id = locations.location_id
         LEFT JOIN log1_whs_category category ON
         locations.product_category_id = category.category_id
+        LEFT JOIN log2_am_report_status status ON
+        reports.report_status_id = status.status_id
         WHERE ';
 
         foreach ($keys as $key) {
@@ -62,7 +69,8 @@ class AuditReportModel
         return false;
     }
 
-    public function insert_report($data){
+    public function insert_report($data)
+    {
         $prefix = "AUDIT-";
         $date = date("ymd");
         $random_str = strtoupper(substr(str_shuffle(md5(microtime())), 0, 5));
@@ -72,10 +80,23 @@ class AuditReportModel
         unset($data["line_items"]);
 
         $this->insert($data);
-        
-        return $data["report_id"];
 
+        return $data["report_id"];
     }
 
-    
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'issued':
+                $this->update($id, ["report_status_id" => 1], 'report_id');
+                break;
+            case 'in progress':
+                $this->update($id, ["report_status_id" => 2], 'report_id');
+                break;
+            case 'solve':
+                $this->update($id, ["report_status_id" => 3], 'report_id');
+                break;
+        }
+    }
 }

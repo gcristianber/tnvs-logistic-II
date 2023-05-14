@@ -11,7 +11,8 @@ import {
     where,
     orderBy,
     getDoc,
-    setDoc
+    setDoc,
+    addDoc
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -145,7 +146,70 @@ onSnapshot(geoDocRef, (doc) => {
 });
 
 
+const chatBox = $("#messages");
+const chatRef = collection(db, "driver-chat");
+const querySnapshot = query(chatRef, where("tracking_id", "==", deliveryParam), orderBy("timestamp"));
 
+onSnapshot(querySnapshot, (snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+            const chatData = change.doc.data();
+            const chatMessage = chatData.message;
+            const chatTimestamp = chatData.timestamp.toDate();
+            const timeString = chatTimestamp.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+            });
+            const sender = chatData.sender;
+            const isMe = sender === "Fleet Manager";
+            const chatMessageClass = isMe
+                ? "d-flex justify-content-end align-items-center mb-3"
+                : "d-flex justify-content-start align-items-center mb-3";
+            const chatBubbleClass = isMe
+                ? "bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2"
+                : "bg-light d-inline-flex p-3 rounded-2 bg-opacity-10 me-2";
+            const chatMessageHTML = `
+        <div class="${chatMessageClass}" data-chat="${sender}">
+          <small class="text-muted">${timeString}</small>
+          <div class="${chatBubbleClass}">
+            ${chatMessage}
+          </div>
+        </div>
+      `;
+            chatBox.append(chatMessageHTML);
+
+            const messagesElement = document.getElementById("messages");
+            messagesElement.scrollTop =
+                messagesElement.scrollHeight - messagesElement.clientHeight;
+        }
+    });
+}, (error) => {
+    console.log(`Encountered error: ${error}`);
+});
+
+
+$("#chatForm").keypress(function (event) {
+    if (event.which == 13) {
+        event.preventDefault(); // prevent default form submit behavior
+        $('#sendMessage').click(); // trigger click event on send button
+    }
+});
+
+$("#sendMessage").on("click", function (e) {
+    const chatForm = $("#chatForm").val().trim();
+    if (!chatForm) {
+        return;
+    }
+    $("#chatForm").val("");
+    // Add chatForm value to the firebase
+    addDoc(chatRef, {
+        tracking_id: deliveryParam,
+        sender: "Fleet Manager",
+        message: chatForm,
+        timestamp: new Date(),
+    });
+});
 
 
 

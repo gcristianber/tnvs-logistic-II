@@ -56,6 +56,13 @@
         height: 400px;
         width: 100%;
     }
+
+    .perfect-scrollbar-example {
+        position: relative;
+        max-height: 500px;
+    }
+
+    </style
 </style>
 
 <body>
@@ -71,7 +78,7 @@
                                 <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Details</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Line Items</a>
+                                <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Messages<span class="badge bg-danger ms-2">4</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Documents</a>
@@ -107,11 +114,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab"></div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                                <div class="h-100">
+                                    <div id="messages" class=" flex-column gap-2 my-3 px-3 perfect-scrollbar-example">
+                                        <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
+                                            <small class="text-muted">03:13 PM</small>
+                                            <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
+                                                <!-- Append chat here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat-footer d-flex">
+                                        <form class="search-form flex-grow-1 me-2">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="chatForm" placeholder="Type a message">
+                                            </div>
+                                        </form>
+                                        <div>
+                                            <button type="button" id="sendMessage" class="btn btn-primary btn-icon">
+                                                <i data-feather="send"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
                             <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">...</div>
                         </div>
-
 
 
                         <div class="mt-3 ">
@@ -154,6 +183,10 @@
 
     <!-- <script src="<?= ROOT ?>assets/custom/js/fleet_management/navigate-delivery.js" type="module"></script> -->
     <script src="<?= ROOT ?>assets/custom/js/fleet_management/delivery-geo.js" type="module"></script>
+    <script>
+        // javascript
+        var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+    </script>
 </body>
 
 </html>

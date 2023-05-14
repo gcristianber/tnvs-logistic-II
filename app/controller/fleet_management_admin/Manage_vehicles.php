@@ -20,6 +20,17 @@ class Manage_vehicles
         $this->view("partials/sidebar");
     }
 
+    public function edit_vehicle(){
+        $data = [];
+        $Vehicles = new VehiclesModel;
+        $data["vehicle"] = $Vehicles->fetch_vehicle(["vehicle_id"=>$_GET["vehicle_id"]]);
+        
+
+        $this->view('partials/navbar');
+        $this->view("fleet_management/admin/edit_vehicle", $data);
+        $this->view("partials/sidebar");
+    }
+
     public function get_all_vehicles(){
         $Vehicles = new VehiclesModel;
         return $Vehicles->fetch_all_vehicles();
@@ -29,4 +40,6 @@ class Manage_vehicles
         $Vehicles = new VehiclesModel;
         $Vehicles->insert_vehicle($_POST, $_FILES);
     }
+
+
 }

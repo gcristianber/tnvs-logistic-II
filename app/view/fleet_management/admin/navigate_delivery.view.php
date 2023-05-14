@@ -80,7 +80,9 @@
                                         <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Delivery Details</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Message</a>
+                                        <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Message
+                                            
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="tab-content mt-3" id="lineTabContent">

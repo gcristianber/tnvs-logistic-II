@@ -51,4 +51,21 @@ class MaintenanceModel{
         return $this->query($query);
     }
 
+    
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'pending':
+                $this->update($id, ["status_id" => 1], 'maintenance_id');
+                break;
+            case 'in progress':
+                $this->update($id, ["status_id" => 2], 'maintenance_id');
+                break;
+            case 'completed':
+                $this->update($id, ["status_id" => 3], 'maintenance_id');
+                break;
+        }
+    }
+
 }

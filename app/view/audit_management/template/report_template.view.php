@@ -37,68 +37,41 @@ $img = 'data:image/' . pathinfo(ROOT . "assets/images/favicon.png", PATHINFO_EXT
     </div>
 
     <div style="text-align: center; margin-top: 1.6rem;">
-        <h4 style="margin: 0;">INVENTORY AUDIT FOR</h4>
-        <p style="margin: 0; font-size: 0.8rem;">RFN-761DHJA1</p>
-        <small style="margin: 0; font-size: 0.7rem;">03 Apr 2023</small>
+        <h4 style="margin: 0;"><?= $report->subject ?></h4>
+        <p style="margin: 0; font-size: 0.8rem;"><?= $report->report_id ?></p>
+        <small style="margin: 0; font-size: 0.7rem;"><?= date("Y/m/d h:i A", strtotime($report->report_date)) ?></small>
     </div>
 
     <div style="margin-top: 1.6rem; text-align: justify;">
-        <p>Dear Mr/Mrs. Dela Cruz,</p>
-        <p>
-            This is the report of your request Office Supplies as of April 04, 2023 there's no discrepancies found in this products. I also attached some additional files and evidences used during the audit, Thank you!.
-        </p>
+        <?= $report->remarks ?>
     </div>
 
     <div>
         <table style="table-layout: fixed; border-collapse: collapse; border: 1px black solid; width: 100%; margin-top: 1.6rem;">
             <thead>
                 <tr>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">#</th>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;">PRODUCT NAME</th>
+                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;">PRODUCT ID</th>
+                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">PRODUCT NAME</th>
                     <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">QUANTITY</th>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">UNIT COST</th>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">TOTAL</th>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;">ACTUAL COUNT</th>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">VARIANCE</th>
-                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">ACCURACY</th>
+                    <th style="font-size: 0.8rem; border: 1px black solid; text-transform: uppercase; padding: 10px 16px;white-space: nowrap;">ACTUAL COUNT</th>
                 </tr>
             </thead>
             <tbody>
+                <?php
+                    foreach($line_items as $item):
+                ?>
                 <tr style="border: 1px black solid; text-align: right;">
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">001</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">Chips</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">56</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">P 16.00</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">P 896.00</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">56</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">0</td>
-                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;">100%</td>
+                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;"><?= $item->product_id ?></td>
+                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;"><?= $item->product_name ?></td>
+                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;"><?= $item->quantity ?></td>
+                    <td style="font-size: 0.8rem; border: 1px black solid; padding: 10px 16px;"><?= $item->actual_count ?></td>
                 </tr>
+                <?php
+                endforeach;
+                ?>
             </tbody>
         </table>
     </div>
-
-
-    <div style="text-align: center; margin-top: 1.6rem;">
-        <p style="margin: 0; font-size: 0.8rem;">Overall Accuracy</p>
-        <h4 style="margin: 0;">100%</h4>
-    </div>
-
-    <div style="margin-top: 10rem;">
-        <table style="width: 100%; ">
-            <tbody>
-                <tr>
-                    <td style="border-top: 1px black solid; text-align: center;">Inventory Auditor</td>
-                    <td style="padding-left: 4rem; padding-right: 4rem;"></td>
-                    <td style="border-top: 1px black solid; text-align: center;">Inventory Auditor</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-
-
 
 </body>
 

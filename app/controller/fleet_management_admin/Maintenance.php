@@ -35,4 +35,19 @@ class Maintenance
         return $Vehicles->fetch_all_vehicles();
     }
     
+    public function update_status()
+    {
+        $Maintenace = new MaintenanceModel;
+        switch ($_POST["status"]) {
+            case 'pending':
+                $Maintenace->update_status($_POST["id"], 'pending');
+                break;
+            case 'in progress':
+                $Maintenace->update_status($_POST["id"], 'in progress');
+                break;
+            case 'completed':
+                $Maintenace->update_status($_POST["id"], 'completed');
+                break;
+        }
+    }
 }

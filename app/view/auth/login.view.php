@@ -78,10 +78,6 @@
                     <button type="submit" class="btn btn-primary w-100 mb-2">
                       Sign in
                     </button>
-                    <a href="<?= ROOT ?>authentication/login/driver" class="btn btn-outline-primary btn-icon-text w-100">
-                    <i data-feather="truck" class="btn-icon-prepend"></i>
-                      For Drivers
-                    </a>
                   </div>
                 </form>
               </div>

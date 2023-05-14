@@ -26,33 +26,20 @@ class Login
                     redirect("general/dashboard");
                     exit();
                 }
+
+                $Drivers = new DriversModel;
+                $driver = $Drivers->fetch_driver($arr);
+
+                if ($driver && $driver->password == $_POST["password"]) {
+                    $_SESSION["user"] = $driver;
+                    redirect("general/dashboard");
+                    exit();
+                }
+
+                
             }
         }
 
         $this->view("auth/login", $data);
-    }
-
-    public function driver()
-    {
-        $data = [];
-
-        if (!empty($_POST)) {
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $arr["username"] = $_POST["username"];
-                $arr["password"] = $_POST["password"];
-
-                $Users = new DriversModel;
-                $row = $Users->fetch_driver($arr);
-
-                if ($row && $row->password == $_POST["password"]) {
-                    $_SESSION["user"] = $row;
-
-                    redirect("general/dashboard");
-                    exit();
-                }
-            }
-        }
-
-        $this->view("auth/driver_login", $data);
     }
 }

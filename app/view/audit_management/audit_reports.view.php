@@ -73,7 +73,7 @@
                         Download as CSV
                       </button>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -85,24 +85,17 @@
                       </div>
                     </div>
                   </div>
+
+
                   <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                        Issued
-                        <span class="ms-1 badge rounded-pill bg-danger">
-                          3
-                          <span class="visually-hidden">unread messages</span>
-                        </span>
-                      </a>
+                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Issued</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">In Progress
-                      </a>
+                      <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">In Progress</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
-                        Solved
-                      </a>
+                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Solved</a>
                     </li>
                   </ul>
                   <div class="tab-content mt-3" id="lineTabContent">
@@ -122,37 +115,39 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <?php 
-                            if(!empty($reports)):
-                            foreach($reports as $data):
+                            <?php
+                            if (!empty($reports)) :
+                              foreach ($reports as $data) :
+                                if ($data->report_status_name == "issued") :
                             ?>
-                            <tr class="align-middle">
-                              <td>
-                                <input type="checkbox" name="" class="form-check-input" id="">
-                              </td>
-                              <td>
-                                <?= $data->report_id ?>
-                              </td>
-                              <td><?= $data->subject ?></td>
-                              <td><?= $data->location_name ?></td>
-                              <td><?= ucwords($data->category_name) ?></td>
-                              <td><?= date("d/m/Y h:i A",strtotime($data->report_date)) ?></td>
-                              <td>
-                                <span class="badge bg-danger">Issued</span>
-                              </td>
-                              <td>
-                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/view_report?report_id=<?= $data->report_id ?>">
-                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                  View Details
-                                </a>
-                                <button class="btn btn-success btn-icon-text">
-                                  <i data-feather="plus" class="btn-icon-prepend"></i>
-                                  Mark as solved
-                                </button>
-                              </td>
-                            </tr>
-                            <?php 
-                            endforeach;
+                                  <tr class="align-middle" data-id="<?= $data->report_id ?>">
+                                    <td>
+                                      <input type="checkbox" name="" class="form-check-input" id="">
+                                    </td>
+                                    <td>
+                                      <?= $data->report_id ?>
+                                    </td>
+                                    <td><?= $data->subject ?></td>
+                                    <td><?= $data->location_name ?></td>
+                                    <td><?= ucwords($data->category_name) ?></td>
+                                    <td><?= date("d/m/Y h:i A", strtotime($data->report_date)) ?></td>
+                                    <td>
+                                      <span class="badge bg-danger">Issued</span>
+                                    </td>
+                                    <td>
+                                      <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/view_report?report_id=<?= $data->report_id ?>">
+                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                        View Details
+                                      </a>
+                                      <button class="btn btn-success btn-icon-text solveReport">
+                                        <i data-feather="plus" class="btn-icon-prepend"></i>
+                                        Mark as solved
+                                      </button>
+                                    </td>
+                                  </tr>
+                            <?php
+                                endif;
+                              endforeach;
                             endif;
                             ?>
                           </tbody>
@@ -166,61 +161,45 @@
                           <thead>
                             <tr>
                               <th data-orderable="false"></th>
-                              <th>requestor</th>
-                              <th class="text-center">vehicle type</th>
-                              <th>request date</th>
-                              <th>vehicle</th>
+                              <th>report id</th>
+                              <th>subject</th>
+                              <th>location</th>
+                              <th>category</th>
+                              <th>audit date</th>
                               <th>status</th>
                               <th>action</th>
                             </tr>
                           </thead>
                           <tbody>
                             <?php
-                            if (!empty($reservations)) :
-                              foreach ($reservations as $data) :
-                                if ($data->reservation_status == "approved") :
+                            if (!empty($reports)) :
+                              foreach ($reports as $data) :
+                                if ($data->report_status_name == "in progress") :
                             ?>
-                                  <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <tr class="align-middle" data-id="<?= $data->report_id ?>">
                                     <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
+                                      <input type="checkbox" name="" class="form-check-input" id="">
                                     </td>
                                     <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
-                                        </div>
-                                      </div>
+                                      <?= $data->report_id ?>
                                     </td>
-                                    <td class="text-center">
-                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                    <td><?= $data->subject ?></td>
+                                    <td><?= $data->location_name ?></td>
+                                    <td><?= ucwords($data->category_name) ?></td>
+                                    <td><?= date("d/m/Y h:i A", strtotime($data->report_date)) ?></td>
+                                    <td>
+                                      <span class="badge bg-warning">In Progress</span>
                                     </td>
                                     <td>
-                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
-                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td><span class="badge bg-primary">Approved</span></td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/view_report?report_id=<?= $data->report_id ?>">
+                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
                                         View Details
-                                      </button>
-                                      <button class="btn btn-light btn-icon-text dispatchBtn">
+                                      </a>
+                                      <button class="btn btn-success btn-icon-text solveReport">
                                         <i data-feather="plus" class="btn-icon-prepend"></i>
-                                        Dispatch
+                                        Mark as solved
                                       </button>
                                     </td>
-
                                   </tr>
                             <?php
                                 endif;
@@ -238,129 +217,41 @@
                           <thead>
                             <tr>
                               <th data-orderable="false"></th>
-                              <th>requestor</th>
-                              <th class="text-center">vehicle type</th>
-                              <th>request date</th>
-                              <th>vehicle</th>
+                              <th>report id</th>
+                              <th>subject</th>
+                              <th>location</th>
+                              <th>category</th>
+                              <th>audit date</th>
                               <th>status</th>
                               <th>action</th>
                             </tr>
                           </thead>
                           <tbody>
                             <?php
-                            if (!empty($reservations)) :
-                              foreach ($reservations as $data) :
-                                if ($data->reservation_status == "declined") :
+                            if (!empty($reports)) :
+                              foreach ($reports as $data) :
+                                if ($data->report_status_name == "solved") :
                             ?>
-                                  <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                  <tr class="align-middle" data-id="<?= $data->report_id ?>">
                                     <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td class="text-center">
-                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                      <input type="checkbox" name="" class="form-check-input" id="">
                                     </td>
                                     <td>
-                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
-                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                      <?= $data->report_id ?>
+                                    </td>
+                                    <td><?= $data->subject ?></td>
+                                    <td><?= $data->location_name ?></td>
+                                    <td><?= ucwords($data->category_name) ?></td>
+                                    <td><?= date("d/m/Y h:i A", strtotime($data->report_date)) ?></td>
+                                    <td>
+                                      <span class="badge bg-success">Solved</span>
                                     </td>
                                     <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="edit" class="btn-icon-prepend"></i>
-                                        Edit Details
-                                      </button>
-                                    </td>
-
-                                  </tr>
-                            <?php
-                                endif;
-                              endforeach;
-                            endif;
-                            ?>
-                          </tbody>
-
-                        </table>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">
-                      <div class="table-responsive">
-                        <table class="table table-bordered dataTable">
-                          <thead>
-                            <tr>
-                              <th data-orderable="false"></th>
-                              <th>requestor</th>
-                              <th class="text-center">vehicle type</th>
-                              <th>request date</th>
-                              <th>vehicle</th>
-                              <th>status</th>
-                              <th>action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            if (!empty($reservations)) :
-                              foreach ($reservations as $data) :
-                                if ($data->reservation_status == "dispatched") :
-                            ?>
-                                  <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
-                                    <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td class="text-center">
-                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
-                                    </td>
-                                    <td>
-                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
-                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/view_report?report_id=<?= $data->report_id ?>">
+                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
                                         View Details
-                                      </button>
-                                      <button class="btn btn-light btn-icon-text returnBtn">
-                                        <i data-feather="plus" class="btn-icon-prepend"></i>
-                                        Return
-                                      </button>
+                                      </a>
                                     </td>
-
                                   </tr>
                             <?php
                                 endif;
@@ -372,129 +263,8 @@
                         </table>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="returned" role="tabpanel" aria-labelledby="returned-line-tab">
-                      <div class="table-responsive">
-                        <table class="table table-bordered dataTable">
-                          <thead>
-                            <tr>
-                              <th data-orderable="false"></th>
-                              <th>requestor</th>
-                              <th class="text-center">vehicle type</th>
-                              <th>request date</th>
-                              <th>vehicle</th>
-                              <th>status</th>
-                              <th>action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            if (!empty($reservations)) :
-                              foreach ($reservations as $data) :
-                                if ($data->reservation_status == "returned") :
-                            ?>
-                                  <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
-                                    <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td class="text-center">
-                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
-                                    </td>
-                                    <td>
-                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
-                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td><span class="badge bg-success">Returned</span></td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="feather" class="btn-icon-prepend"></i>
-                                        Make report
-                                      </button>
-                                      <button class="btn btn-light btn-icon-text " data-bs-toggle="modal" data-bs-target="#mnt_<?= $data->reservation_id ?>">
-                                        <i data-feather="tool" class="btn-icon-prepend"></i>
-                                        Maintenance
-                                      </button>
-                                      <div class="modal fade" id="mnt_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="mnt_<?= $data->reservation_id ?>Label" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                            </div>
-                                            <form id="maintenanceForm" data-vehicle="<?= $data->vehicle_id ?>">
-                                              <div class="modal-body">
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Subject:</label>
-                                                  <input type="text" class="form-control" name="subject">
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Maintenance Type:</label>
-                                                  <select name="maintenance_type_id" class="form-select" id="">
-                                                    <option value="">...</option>
-                                                    <option value="1">Cleaning</option>
-                                                    <option value="2">Change Oil</option>
-                                                  </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Schedule Date:</label>
-                                                  <div class="input-group flatpickr" id="flatpickr-date">
-                                                    <span class="input-group-text input-group-addon" data-toggle="">
-                                                      <i data-feather="calendar"></i>
-                                                    </span>
-                                                    <input type="text" name="date_schedule" id="" class="form-control date-input">
-                                                  </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Remarks:</label>
-                                                  <textarea name="remarks" class="form-control" id="" cols="30" rows="5" placeholder="Type something..."></textarea>
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="" class="form-label">Attachment/s:</label>
-                                                  <input type="file" name="attachment" id="" class="form-control">
-                                                </div>
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                              </div>
-                                            </form>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </td>
-
-                                  </tr>
-                            <?php
-                                endif;
-                              endforeach;
-                            endif;
-                            ?>
-                          </tbody>
-
-                        </table>
-                      </div>
-                    </div>
+                    <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">...</div>
                   </div>
-
-
-
 
 
                 </div>
@@ -532,7 +302,7 @@
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reports.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-reports.js"></script>
 </body>
 
 </html>
