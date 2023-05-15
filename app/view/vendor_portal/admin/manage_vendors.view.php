@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Maintenance</title>
+  <title>Vendor Portal | Manage Vendors</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,12 +146,10 @@
                           </div>
                           <input type="text" class="form-control" placeholder="Search Vendor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                         </div>
-
-                        <button class="btn btn-primary btn-icon-text  flex-shrink-0" disabled>
+                        <button class="btn btn-primary btn-icon-text  flex-shrink-0">
                           <i data-feather="plus" class="btn-icon-prepend"></i>
-                          Create Message
+                          Add Existing Vendor
                         </button>
-
                       </div>
                     </div>
                     <div class="">
@@ -169,11 +167,7 @@
                         <div class="flex-grow-1">
                           <label for="" class="form-label">Select Tender</label>
                           <select name="" class="form-select" id="">
-                            <option selected disabled>Select Tender</option>
-                            <option value="">Invitation to Bid</option>
-                            <option value="">Notification</option>
-                            <option value="">RFQ</option>
-                            <option value="">RFP</option>
+                            <option selected disabled>Select Tender</option>>
                           </select>
                         </div>
                       </div>
@@ -188,7 +182,7 @@
                       <div class="mb-3 text-end">
                         <button class="btn btn-primary btn-icon-text">
                           <i data-feather="send" class="btn-icon-prepend"></i>
-                          Send message
+                          Send Notification
                         </button>
                       </div>
                     </div>

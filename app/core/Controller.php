@@ -10,7 +10,7 @@ trait Controller
         'fleet manager'        => ['login', 'logout', 'dashboard', 'track_documents', 'browse_vehicles', 'my_reservations','manage_reservations','reservation_reports', 'manage_drivers', 'manage_vehicles','maintenance', 'delivery_requests', 'create_new', 'insert_new_delivery', 'insert_line_items', 'navigate'],
         'fleet driver'         => ['login', 'logout', 'dashboard', 'deliveries', 'view_delivery'],
         'vendor manager'       => ['login', 'logout', 'dashboard', 'track_documents', 'tenders', 'auctions', 'awardings', 'manage_vendors', 'portal_requests', 'manage_post', 'compare_bid', 'preview_tender'],
-        'vendor'               => ['login', 'logout', 'dashboard', 'tenders', 'auctions', 'awardings']
+        'vendor'               => ['login', 'logout', 'dashboard', 'tenders', 'auctions', 'awardings','otp_vendor']
     ];
 
     public function __construct()

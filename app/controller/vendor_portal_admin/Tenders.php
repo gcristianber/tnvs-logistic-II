@@ -12,11 +12,14 @@ class Tenders
 
         $data["tenders"] = $this->fetch_all_tenders();
 
+        print_r($data);
+
         // print_r($data["tenders"]);
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/tenders", $data);
         $this->view('partials/sidebar');
     }
+
 
 
     public function preview_tender()

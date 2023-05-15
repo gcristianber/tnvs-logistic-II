@@ -35,8 +35,6 @@ class Login
                     redirect("general/dashboard");
                     exit();
                 }
-
-                
             }
         }
 

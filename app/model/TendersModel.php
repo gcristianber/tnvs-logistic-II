@@ -10,14 +10,8 @@ class TendersModel
 
     public function fetch_all_tenders()
     {
-        $query = 'SELECT 
-        tenders.tender_id,
-        tenders.subject,
-        tenders.description,
+        $query = 'SELECT tenders.*,
         supply_category.supply_category_name,
-        tenders.date_created,
-        tenders.closing_date,
-        tenders.contract_budget,
         tender_status.tender_status_name
 
         FROM log2_vp_tenders tenders
@@ -71,6 +65,22 @@ class TendersModel
             return $result[0];
 
         return false;
+    }
+
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'pending':
+                $this->update($id, ["status_id" => 1], 'tender_id');
+                break;
+            case 'publish':
+                $this->update($id, ["status_id" => 2], 'tender_id');
+                break;
+            case 'awarded':
+                $this->update($id, ["status_id" => 3], 'tender_id');
+                break;
+        }
     }
 
 

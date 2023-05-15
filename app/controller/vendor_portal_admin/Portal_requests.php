@@ -10,8 +10,13 @@ class Portal_requests
     public function index()
     {
 
+        $TendersModel = new TendersModel;
+        $data["tenders"] = $TendersModel->fetch_all_tenders();
+
+        print_r($data);
+
         $this->view('partials/navbar');
-        $this->view("vendor_portal/admin/portal_requests");
+        $this->view("vendor_portal/admin/portal_requests", $data);
         $this->view("partials/sidebar");
     }
 
@@ -43,5 +48,21 @@ class Portal_requests
             $allBidData[] = $bidData;
         }
         echo json_encode($allBidData);
+    }
+
+    public function update_status()
+    {
+        $Tenders = new TendersModel;
+        switch ($_POST["status"]) {
+            case 'pending':
+                $Tenders->update_status($_POST["id"], 'pending');
+                break;
+            case 'publish':
+                $Tenders->update_status($_POST["id"], 'publish');
+                break;
+            case 'awarded':
+                $Tenders->update_status($_POST["id"], 'awarded');
+                break;
+        }
     }
 }

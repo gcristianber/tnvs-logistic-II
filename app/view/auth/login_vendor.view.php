@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Login</title>
+  <title>Vendor Login</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,40 +48,19 @@
                 <div class="mb-3">
                   <div class="text-center">
                     <img src="<?= ROOT ?>assets/images/favicon.png" class="ht-50 wd-50 mb-3" alt="">
-                    <h4>Welcome Back!</h4>
-                    <p class="text-muted">Sign in to get started.</p>
+                    <h4>Vendor Portal</h4>
+                    <p class="text-muted">Join Us, Bid to Supply!</p>
                   </div>
                 </div>
                 <form method="POST">
                   <div class="mb-3">
-                    <label for="" class="form-label">Username</label>
-                    <input type="text" name="username" id="" class="form-control" placeholder="Username" autofocus>
-                  </div>
-                  <div class="mb-3">
-                    <label for="" class="form-label">Password</label>
-                    <div class="input-group">
-                      <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                      <button type="button" class="btn btn-light btn-icon">
-                        <i data-feather="eye"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="checkDefault">
-                      <label class="form-check-label" for="checkDefault">
-                        Keep me signed in
-                      </label>
-                    </div>
+                    <label for="" class="form-label">Email Address</label>
+                    <input type="email" name="email_address" id="" class="form-control" placeholder="Email Address" autofocus>
                   </div>
                   <div>
                     <button type="submit" class="btn btn-primary w-100 mb-2">
-                      Sign in
+                      Sign in with Email
                     </button>
-
-                    <div class="text-center mt-3">
-                      <a href="<?= ROOT ?>authentication/vendor" class="link-primary">Are you a vendor?</a>
-                    </div>
                   </div>
                 </form>
               </div>
