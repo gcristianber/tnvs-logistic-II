@@ -1,9 +1,45 @@
 $(document).ready(() => {
     let btns = document.querySelectorAll(".rowAwardBtn");
 
+    const awardBtn = document.getElementById("awardedBtn")
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const tenderId = urlParams.get('tender_id');
+
+    awardBtn.addEventListener("click", () => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonClass: "me-2",
+            confirmButtonText: "Yes, continue!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: config.baseUrl + 'vendor_portal_admin/tenders/update_status',
+                    type: 'POST',
+                    data: {
+                        status: "awarded",
+                        id: tenderId
+                    },
+                    success: function (response) {
+                        console.log(response)
+                        location.href = config.baseUrl + "vendor_portal_admin/portal_requests"
+                    }
+                })
+            }
+        })
+
+    })
+
     btns.forEach(function (btn) {
         btn.addEventListener("click", function (event) {
-            var bid_id = $(this).closest('tr').data('id');
+            var row = event.target.closest("tr")
+            var dataId = row.getAttribute("data-id")
 
             Swal.fire({
                 title: "Are you sure?",
@@ -16,7 +52,8 @@ $(document).ready(() => {
                 reverseButtons: true,
             }).then((result) => {
                 if (result.value) {
-                    award_bid(bid_id)
+                    award_bid(dataId)
+                    location.reload()
                 }
             })
         });
@@ -31,6 +68,7 @@ $(document).ready(() => {
             },
             success: function (response) {
                 console.log(response)
+
             }
         })
     }
@@ -39,6 +77,10 @@ $(document).ready(() => {
     const compareSelectedBtn = document.getElementById("compare_selected")
 
     const comparedSelection = [];
+
+    if (comparedSelection.length >= 2) {
+        return;
+    }
 
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function (event) {
@@ -88,7 +130,7 @@ $(document).ready(() => {
         headerCell2.innerHTML = `
         <div class="d-flex align-items-center justify-content-between">
             <div>
-            <p>${jsonData[0][0].company_name}</p>
+            <p>${jsonData[0][0].display_name}</p>
             <small class="text-muted">${jsonData[0][0].email_address}</small>
             </div>
             <div>
@@ -107,7 +149,7 @@ $(document).ready(() => {
         headerCell3.innerHTML = `
         <div class="d-flex align-items-center justify-content-between">
             <div>
-            <p>${jsonData[1][0].company_name}</p>
+            <p>${jsonData[1][0].display_name}</p>
             <small class="text-muted">${jsonData[1][0].email_address}</small>
             </div>
             <div>

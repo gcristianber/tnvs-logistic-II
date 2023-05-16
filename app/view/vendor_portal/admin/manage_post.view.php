@@ -303,7 +303,7 @@
                                         <div class="d-flex align-items-center gap-2">
                                             <i data-feather="mail" class="icon-lg"></i>
                                             <div>
-                                                <p class="d-inline align-middle me-2">T123004124781</p><span class="badge bg-warning">Pending</span>
+                                                <p class="d-inline align-middle me-2"><?= $tender->tender_id ?></p><span class="badge bg-warning">Pending</span>
                                                 <small class="d-block">11/05/2023 - 08:35 PM | Goods and Services | Purchase Request</small>
                                             </div>
                                         </div>
@@ -312,16 +312,19 @@
                                                 <i data-feather="user-plus" class="btn-icon-prepend"></i>
                                                 Invite Vendor
                                             </button>
+                                            <button class="btn btn-success btn-icon-text " id="awardedBtn">
+                                                <i data-feather="plus" class="btn-icon-prepend"></i>
+                                                Mark as Awarded
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <div class="text-center mb-3">
-                                        <h6 class="mb-3"><i>Purchase Request</i></h6>
-                                        <h5>Procurement of Manpower Services for General Support and Janitorial Services for BCDA under a Three (3)-Year Service Contract</h5>
+                                        <h5><?= $tender->subject ?></h5>
                                     </div>
                                     <div class="mb-3 ">
-                                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero qui nam molestias non, ut, iusto cum nisi facilis amet dolor voluptatibus nihil odit eveniet quo. Cupiditate, nihil. Nostrum dolorum voluptatum maxime explicabo harum esse, dignissimos excepturi id deserunt, cupiditate porro iusto quis quod dicta. Perspiciatis voluptatibus eligendi sint repellat iure voluptas provident molestiae culpa laboriosam illum.</p>
+                                        <p class="text-justify"><?= $tender->description ?></p>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
@@ -333,11 +336,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Janitorial Service</td>
-                                                    <td class="text-end">26,002,677.84</td>
-                                                </tr>
+                                                <?php
+
+                                                if (!empty($line_items)) :
+                                                    foreach ($line_items as $data) :
+                                                ?>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td><?= $data->goods_services_name ?></td>
+                                                            <td class="text-end"><?= $data->amount ?></td>
+                                                        </tr>
+                                                <?php
+                                                    endforeach;
+                                                endif;
+                                                ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -418,7 +430,6 @@
                                                     <th>#</th>
                                                     <th>Vendor</th>
                                                     <th>bid offer</th>
-                                                    <th>quality</th>
                                                     <th>discount</th>
                                                     <th>delivery time</th>
                                                     <th>date submitted</th>
@@ -430,34 +441,39 @@
                                                 if (!empty($bids)) :
                                                     $row = 1;
                                                     foreach ($bids as $data) :
+                                                        if ($data->is_awarded == 0) :
                                                 ?>
-                                                        <tr class="align-middle" data-id="<?= $data->bid_id ?>">
-                                                            <td>
-                                                                <div class="form-check">
-                                                                    <input type="checkbox" class="checkboxes form-check-input" id="checkDefault" value="<?= $data->bid_id ?>">
-                                                                </div>
-                                                            </td>
-                                                            <td><?= $row++ ?></td>
-                                                            <td>
-                                                                <p><?= $data->company_name ?></p>
-                                                                <small class="text-muted"><?= $data->company_name ?></small>
-                                                            </td>
-                                                            <td>PHP <?= number_format($data->bid) ?></td>
-                                                            <td><?= $data->quality ?></td>
-                                                            <td><?= $data->discount ?></td>
-                                                            <td><?= $data->delivery_time ?></td>
-                                                            <td><?= date("d/m/Y", strtotime($data->date_submitted)) ?></td>
-                                                            <td>
-                                                                <button class="btn btn-primary btn-icon-text rowAwardBtn">
-                                                                    <i data-feather="plus" class="btn-icon-prepend"></i>
-                                                                    Award Bidder
-                                                                </button>
-                                                                <button class="btn btn-danger btn-icon">
-                                                                    <i data-feather="trash-2"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                            <tr class="align-middle" data-id="<?= $data->bid_id ?>">
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="checkboxes form-check-input" id="checkDefault" value="<?= $data->bid_id ?>">
+                                                                    </div>
+                                                                </td>
+                                                                <td><?= $row++ ?></td>
+                                                                <td>
+                                                                    <p><?= $data->display_name ?></p>
+                                                                    <small class="text-muted"><?= $data->email_address ?></small>
+                                                                </td>
+                                                                <td><?= $data->bid ?></td>
+                                                                <td><?= $data->discount ?>%</td>
+                                                                <td><?= $data->delivery_time ?></td>
+                                                                <td><?= date("d/m/Y", strtotime($data->date_submitted)) ?></td>
+                                                                <td>
+                                                                    <button class="btn btn-primary btn-icon-text">
+                                                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                                                        View Details
+                                                                    </button>
+                                                                    <button class="btn btn-success btn-icon-text rowAwardBtn">
+                                                                        <i data-feather="plus" class="btn-icon-prepend"></i>
+                                                                        Award Bidder
+                                                                    </button>
+                                                                    <button class="btn btn-danger btn-icon">
+                                                                        <i data-feather="trash-2"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
                                                 <?php
+                                                        endif;
                                                     endforeach;
                                                 endif;
                                                 ?>
@@ -471,7 +487,60 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">...</div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                                    <div class="table-responsive">
+                                        <table class="table mt-4 dataTable" id="">
+                                            <thead>
+                                                <tr>
+                                                    <th data-orderable="false"></th>
+                                                    <th>#</th>
+                                                    <th>Vendor</th>
+                                                    <th>bid offer</th>
+                                                    <th>discount</th>
+                                                    <th>delivery time</th>
+                                                    <th>date submitted</th>
+                                                    <th>action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                if (!empty($bids)) :
+                                                    $row = 1;
+                                                    foreach ($bids as $data) :
+                                                        if ($data->is_awarded == 1) :
+                                                ?>
+                                                            <tr class="align-middle" data-id="<?= $data->bid_id ?>">
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input type="checkbox" class="checkboxes form-check-input" id="checkDefault" value="<?= $data->bid_id ?>">
+                                                                    </div>
+                                                                </td>
+                                                                <td><?= $row++ ?></td>
+                                                                <td>
+                                                                    <p><?= $data->display_name ?></p>
+                                                                    <small class="text-muted"><?= $data->email_address ?></small>
+                                                                </td>
+                                                                <td><?= $data->bid ?></td>
+                                                                <td><?= $data->discount ?>%</td>
+                                                                <td><?= $data->delivery_time ?></td>
+                                                                <td><?= date("d/m/Y", strtotime($data->date_submitted)) ?></td>
+                                                                <td>
+                                                                    <button class="btn btn-primary btn-icon-text">
+                                                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                                                        View Details
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                <?php
+                                                        endif;
+                                                    endforeach;
+                                                endif;
+                                                ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
                                 <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">...</div>
                             </div>

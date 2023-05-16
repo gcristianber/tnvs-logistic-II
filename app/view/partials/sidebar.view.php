@@ -75,18 +75,6 @@
             <?php if (in_array($_SESSION["user"]->user_role, ['super admin', 'vendor manager'])) : ?>
                 <li class="nav-item nav-category">Vendor Portal</li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/tenders" class="nav-link">
-                        <i class="link-icon" data-feather="shopping-cart"></i>
-                        <span class="link-title">Tenders</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= ROOT ?>vendor_portal_admin/auctions" class="nav-link">
-                        <i class="link-icon" data-feather="tag"></i>
-                        <span class="link-title">Auctions</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="<?= ROOT ?>vendor_portal_admin/portal_requests" class="nav-link">
                         <i class="link-icon" data-feather="mail"></i>
                         <span class="link-title">Requests</span>
@@ -123,9 +111,9 @@
             <?php endif; ?>
 
             <?php if (in_array($_SESSION["user"]->user_role, ['super admin', 'fleet manager'])) : ?>
-                
+
                 <li class="nav-item nav-category">Fleet Management</li>
-                
+
                 <li class="nav-item">
                     <a href="<?= ROOT ?>fleet_management_admin/manage_drivers" class="nav-link">
                         <i class="link-icon" data-feather="users"></i>
@@ -178,10 +166,45 @@
                         <span class="link-title">Activity Logs</span>
                     </a>
                 </li>
-                
+
             <?php endif; ?>
 
-            
+            <?php if (in_array($_SESSION["user"]->user_role, ['vendor'])) : ?>
+                <li class="nav-item nav-category">Vendor Portal</li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/tenders" class="nav-link">
+                        <i class="link-icon" data-feather="shopping-cart"></i>
+                        <span class="link-title">Tenders</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>vendor_portal_admin/auctions" class="nav-link">
+                        <i class="link-icon" data-feather="tag"></i>
+                        <span class="link-title">Auctions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>driver/" class="nav-link">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Inbox</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">Messages</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="link-icon" data-feather="clock"></i>
+                        <span class="link-title">Activity Logs</span>
+                    </a>
+                </li>
+
+            <?php endif; ?>
+
+
         </ul>
 
     </div>

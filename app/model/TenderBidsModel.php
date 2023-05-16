@@ -15,11 +15,12 @@ class TenderBidsModel
         tender_bids.tender_id,
         tender_bids.vendor_id,
 
-        vendors.company_name,
+        vendors.display_name,
+        vendors.email_address,
         vendors.location,
 
         tender_bids.bid,
-        tender_bids.quality,
+        tender_bids.message,
         tender_bids.discount,
         tender_bids.delivery_time,
         tender_bids.date_submitted,
@@ -41,6 +42,20 @@ class TenderBidsModel
         $query = trim($query, " && ");
 
         return $this->query($query, $data);
+    }
+
+    public function submit_bid($data){
+
+        $prefix = "BID-";
+        $date = date("ymd");
+        $random_str = strtoupper(substr(str_shuffle(md5(microtime())), 0, 5));
+
+        $data["bid_id"] = $prefix . $date . $random_str;
+        $data["vendor_id"] = $_SESSION["user"]->vendor_id;
+
+        print_r($data);
+
+        $this->insert($data);
     }
 
 }

@@ -17,7 +17,7 @@ class VendorsModel
         vendor.display_name,
         vendor.location,
         vendor.otp,
-        vendor.role_name as user_role,
+        admin_um_roles.role_name as user_role,
 
         supply_category.supply_category_name,
         company_type.company_type_name,

@@ -124,37 +124,41 @@
                   <table class="table table-bordered dataTable">
                     <thead>
                       <tr>
-                        <th>contract name</th>
+                        <th>award name</th>
                         <th>vendor name</th>
                         <th>company type</th>
                         <th>date awarded</th>
-                        <th>status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="align-middle">
-                        <td>
-                          <p>Intel I5 Computer Supplies</p>
-                          <small class="text-muted">Office Supplies</small>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <img src="https://via.placeholder.com/50x50" class="wd-50 wd-50 rounded-2" alt="">
-                            <div>
-                              <p>ABC Company</p>
-                              <small class="text-muted">cristiangordora27@gmail.com</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td>Private Company (LTD)</td>
-                        <td>
-                          <p>01 May 2023</p>
-                          <small class="text-muted">09:50 PM</small>
-                        </td>
-                        <td>
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                      </tr>
+                      <?php
+                      if (!empty($awards)) :
+                        foreach ($awards as $data) :
+                      ?>
+                          <tr class="align-middle">
+                            <td>
+                              <p><?= $data->subject ?></p>
+                              <small class="text-muted"><?= ucwords($data->supply_category_name) ?></small>
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center gap-2">
+                                <img src="https://via.placeholder.com/50x50" class="wd-50 wd-50 rounded-2" alt="">
+                                <div>
+                                  <p><?= $data->display_name ?></p>
+                                  <small class="text-muted"><?= $data->email_address ?></small>
+                                </div>
+                              </div>
+                            </td>
+                            <td>Private Company (LTD)</td>
+                            <td>
+                              <p><?= date("d M Y", strtotime($data->date_awarded)) ?></p>
+                              <small class="text-muted"><?= date("h:i A", strtotime($data->date_awarded)) ?></small>
+                            </td>
+                          </tr>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
 

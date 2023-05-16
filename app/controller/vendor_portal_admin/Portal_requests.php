@@ -13,8 +13,6 @@ class Portal_requests
         $TendersModel = new TendersModel;
         $data["tenders"] = $TendersModel->fetch_all_tenders();
 
-        print_r($data);
-
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/portal_requests", $data);
         $this->view("partials/sidebar");
@@ -25,13 +23,14 @@ class Portal_requests
 
         $data = [];
 
-        $tender_id = "TND-488AFH1";
+        $tender_id = $_GET["tender_id"];
 
         $TendersModel = new TendersModel;
         $Bids = new TenderBidsModel;
-        $data["tenders"] = $TendersModel->fetch_all_tenders();
-
+        $LineItems = new TenderLinesModel;
+        $data["tender"] = $TendersModel->fetch_tender(["tender_id" => $tender_id]);
         $data["bids"] = $Bids->fetch_bids(["tender_id" => $tender_id]);
+        $data["line_items"] = $LineItems->where(["tender_id" => $tender_id]);
 
         $this->view('partials/navbar');
         $this->view("vendor_portal/admin/manage_post", $data);

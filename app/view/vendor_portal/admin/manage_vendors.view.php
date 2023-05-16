@@ -210,7 +210,7 @@
                                     <input type="checkbox" class="form-check-input" id="checkDefault" value="<?= $data->vendor_id ?>">
                                   </div>
                                 </td>
-                                <td><?= $data->company_name ?></td>
+                                <td><?= $data->display_name ?></td>
                                 <td><?= ucwords($data->supply_category_name) ?></td>
                                 <td><?= $data->location ?></td>
                                 <td>

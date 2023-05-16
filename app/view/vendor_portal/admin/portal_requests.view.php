@@ -292,113 +292,13 @@
                                                                             <p><?= ucwords($data->supply_category_name) ?></p>
                                                                         </td>
                                                                         <td>
-                                                                            <span class="badge bg-warning">Pending</span>
+                                                                            <span class="badge bg-primary">Published</span>
                                                                         </td>
                                                                         <td>
-                                                                            <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#<?= $data->tender_id ?>">
-                                                                                <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                                                                View Details
-                                                                            </button>
-
-                                                                            <div class="modal fade" id="<?= $data->tender_id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                                <div class="modal-dialog modal-xl">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                                                                        </div>
-                                                                                        <div class="modal-body">
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <div class="d-flex align-items-center justify-content-between">
-                                                                                                            <div class="d-flex align-items-center gap-2">
-                                                                                                                <i data-feather="mail" class="icon-lg"></i>
-                                                                                                                <div>
-                                                                                                                    <p class="d-inline align-middle me-2"><?= $data->tender_id ?></p><span class="badge bg-warning">Pending</span>
-                                                                                                                    <small class="d-block"><?= date("Y/m/d - h:i A", strtotime($data->date_created)) ?> | <?= ucwords($data->supply_category_name) ?> | Purchase Request</small>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="mb-3">
-                                                                                                        <div class="text-center mb-3">
-                                                                                                            <h6 class="mb-3"><i>Purchase Request</i></h6>
-                                                                                                            <h5 class="text-wrap"><?= $data->subject ?></h5>
-                                                                                                        </div>
-                                                                                                        <div class="mb-3 ">
-                                                                                                            <p class="text-wrap"><?= $data->description ?></p>
-                                                                                                        </div>
-                                                                                                        <div class="table-responsive">
-                                                                                                            <table class="table table-bordered">
-                                                                                                                <thead>
-                                                                                                                    <tr>
-                                                                                                                        <th>#</th>
-                                                                                                                        <th>goods/service</th>
-                                                                                                                        <th>amount (php)</th>
-                                                                                                                    </tr>
-                                                                                                                </thead>
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td>1</td>
-                                                                                                                        <td>Janitorial Service</td>
-                                                                                                                        <td class="text-end">26,002,677.84</td>
-                                                                                                                    </tr>
-                                                                                                                </tbody>
-                                                                                                                <tfoot>
-                                                                                                                    <tr>
-                                                                                                                        <td></td>
-                                                                                                                        <td class="text-end">
-                                                                                                                            <p class="fw-bold">TOTAL</p>
-                                                                                                                        </td>
-                                                                                                                        <td class="text-end">
-                                                                                                                            <p class="fw-bold">PHP 26,002,677.84</p>
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                </tfoot>
-                                                                                                            </table>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-12">
-                                                                                                    <div class="mb-3">
-                                                                                                        <label for="" class="form-label">Attachment/s</label>
-                                                                                                        <ul class="list-group">
-                                                                                                            <li class="list-group-item">
-                                                                                                                <div class="d-flex align-items-center justify-content-between">
-                                                                                                                    <div>
-                                                                                                                        <p>Purchase Request.docx</p>
-                                                                                                                        <small class="text-muted">200 KB</small>
-                                                                                                                    </div>
-                                                                                                                    <a href="" class="link-primary">Download</a>
-                                                                                                                </div>
-                                                                                                            </li>
-                                                                                                            <li class="list-group-item">
-                                                                                                                <div class="d-flex align-items-center justify-content-between">
-                                                                                                                    <div>
-                                                                                                                        <p>Purchase Request.docx</p>
-                                                                                                                        <small class="text-muted">200 KB</small>
-                                                                                                                    </div>
-                                                                                                                    <a href="" class="link-primary">Download</a>
-                                                                                                                </div>
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                    </div>
-
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                            <button type="button" class="btn btn-primary">Publish Post</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <button class="btn btn-success btn-icon-text publishBtn">
-                                                                                <i data-feather="plus" class="btn-icon-prepend"></i>
-                                                                                Publish
-                                                                            </button>
+                                                                            <a class="btn btn-primary btn-icon-text"  href="<?= ROOT ?>vendor_portal_admin/portal_requests/manage_post?tender_id=<?= $data->tender_id ?>">
+                                                                                <i data-feather="settings" class="btn-icon-prepend"></i>
+                                                                                Manage Bid
+                                                                            </a>
                                                                         </td>
                                                                     </tr>
                                                         <?php
@@ -417,57 +317,47 @@
                                                     <thead>
                                                         <tr>
                                                             <th data-orderable="false"></th>
-                                                            <th>requestor</th>
-                                                            <th class="text-center">vehicle type</th>
+                                                            <th>subject</th>
+                                                            <th>request type</th>
                                                             <th>request date</th>
-                                                            <th>vehicle</th>
+                                                            <th>category</th>
                                                             <th>status</th>
                                                             <th>action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($reservations)) :
-                                                            foreach ($reservations as $data) :
-                                                                if ($data->reservation_status == "declined") :
+                                                        if (!empty($tenders)) :
+                                                            foreach ($tenders as $data) :
+                                                                if ($data->tender_status_name == "awarded") :
                                                         ?>
-                                                                    <tr class="align-middle" data-id="<?= $data->reservation_id ?>">
+                                                                    <tr class="align-middle" data-id="<?= $data->tender_id ?>">
                                                                         <td>
-                                                                            <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
-                                                                        </td>
-                                                                        <td>
-                                                                            <div class="d-flex align-items-center gap-2">
-                                                                                <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                                                                <div>
-                                                                                    <p><?= $data->requestor_name ?></p>
-                                                                                    <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="text-center">
-                                                                            <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                                                            <p>
+                                                                                <input type="checkbox" name="" id="" class="form-check-input">
+                                                                            </p>
                                                                         </td>
                                                                         <td>
-                                                                            <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
-                                                                            <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                                                            <p class="text-wrap"><?= $data->subject ?></p>
                                                                         </td>
                                                                         <td>
-                                                                            <div class="d-flex align-items-center gap-2">
-                                                                                <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                                                                <div>
-                                                                                    <p>Honda Accord 2020</p>
-                                                                                    <small class="text-muted">QWE-223</small>
-                                                                                </div>
-                                                                            </div>
+                                                                            <p>Purchase Request</p>
                                                                         </td>
-                                                                        <td><span class="badge bg-danger">Declined</span></td>
                                                                         <td>
-                                                                            <button class="btn btn-primary btn-icon-text">
-                                                                                <i data-feather="edit" class="btn-icon-prepend"></i>
-                                                                                Edit Details
-                                                                            </button>
+                                                                            <p><?= date("Y/m/d - h:i A", strtotime($data->date_created)) ?></p>
                                                                         </td>
-
+                                                                        <td>
+                                                                            <p><?= ucwords($data->supply_category_name) ?></p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge bg-success">Awarded</span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>vendor_portal_admin/portal_requests/manage_post?tender_id=<?= $data->tender_id ?>">
+                                                                                <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                                                                View Details
+                                                                            </a>
+                                                                        </td>
                                                                     </tr>
                                                         <?php
                                                                 endif;
