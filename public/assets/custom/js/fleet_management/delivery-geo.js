@@ -219,7 +219,7 @@ onSnapshot(querySnapshot, (snapshot) => {
             const sender = chatData.sender;
             const isMe = sender === "Driver";
             const chatMessageClass = isMe
-                ? "d-flex justify-content-end align-items-center mb-3"
+                ? "d-flex justify-content-end align-items-center mb-3 "
                 : "d-flex justify-content-start align-items-center mb-3";
             const chatBubbleClass = isMe
                 ? "bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2"

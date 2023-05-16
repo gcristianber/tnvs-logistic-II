@@ -53,16 +53,15 @@
     }
 
     #map {
-        height: 400px;
+        height: 100%;
         width: 100%;
     }
 
     .perfect-scrollbar-example {
         position: relative;
-        max-height: 500px;
+        max-height: 100%;
     }
 
-    </style
 </style>
 
 <body>
@@ -70,86 +69,82 @@
 
         <div class="page-wrapper">
             <div class="page-content">
-                <div class="card">
-                    <div class="card-body">
-
-                        <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Details</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Messages<span class="badge bg-danger ms-2">4</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Documents</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content mt-3" id="lineTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                                <div id="map" class="rounded-2 mb-3"></div>
-                                <div class="mb-3">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <i data-feather="archive" class="icon-lg"></i>
-                                        <div>
-                                            <p class="d-inline align-middle me-2"><?= $delivery->tracking_id ?></p><span class="badge bg-primary">In Transit</span>
-                                            <small class="d-block text-muted">Foods and Beverages</small>
-                                        </div>
+                <div class="row chat-wrapper">
+                    <div class="col-md-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="row position-relative h-100">
+                                    <div class="col-12 col-lg-8 chat-aside border-end-lg">
+                                        <div id="map" class="rounded-2 mb-3 position-relative"></div>
                                     </div>
-                                </div>
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="text-center">
-                                        <i data-feather="map-pin" class="icon-lg text-danger"></i>
-                                        <div>
-                                            <p>416 Sta. Catalina</p>
-                                            <small class="text-muted">Quezon City, Philippines</small>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1 ht-5 bg-light rounded-pill"></div>
-                                    <div class="text-center">
-                                        <i data-feather="map-pin" class="icon-lg text-success"></i>
-                                        <div>
-                                            <p>416 Sta. Catalina</p>
-                                            <small class="text-muted">Quezon City, Philippines</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
-                                <div class="h-100">
-                                    <div id="messages" class=" flex-column gap-2 my-3 px-3 perfect-scrollbar-example">
-                                        <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
-                                            <small class="text-muted">03:13 PM</small>
-                                            <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
-                                                <!-- Append chat here -->
+                                    <div class="col-12 col-lg-4 chat-content">
+                                        <div class="chat-header border-bottom pb-2">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <i data-feather="corner-up-left" id="backToChatList" class="icon-lg me-2 ms-n2 text-muted d-lg-none"></i>
+                                                    <figure class="mb-0 me-2">
+                                                        <img src="https://via.placeholder.com/43x43" class="img-sm rounded-circle" alt="image">
+                                                        <div class="status online"></div>
+                                                        <div class="status online"></div>
+                                                    </figure>
+                                                    <div>
+                                                        <p>Mariana Zenha</p>
+                                                        <p class="text-muted tx-13">Front-end Developer</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center me-n1">
+                                                    <a href="#">
+                                                        <i data-feather="video" class="icon-lg text-muted me-3" data-bs-toggle="tooltip" title="Start video call"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i data-feather="phone-call" class="icon-lg text-muted me-0 me-sm-3" data-bs-toggle="tooltip" title="Start voice call"></i>
+                                                    </a>
+                                                    <a href="#" class="d-none d-sm-block">
+                                                        <i data-feather="user-plus" class="icon-lg text-muted" data-bs-toggle="tooltip" title="Add to contacts"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="chat-footer d-flex">
-                                        <form class="search-form flex-grow-1 me-2">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="chatForm" placeholder="Type a message">
+                                        <div class="chat-body">
+                                            <div id="messages" class=" flex-column gap-2 my-3 px-3 perfect-scrollbar-example">
+                                                <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
+                                                    <small class="text-muted">03:13 PM</small>
+                                                    <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
+                                                        <!-- Append chat here -->
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </form>
-                                        <div>
+                                        </div>
+                                        <div class="chat-footer d-flex">
+                                            <div>
+                                                <button type="button" class="btn border btn-icon rounded-circle me-2" data-bs-toggle="tooltip" title="Emoji">
+                                                    <i data-feather="smile" class="text-muted"></i>
+                                                </button>
+                                            </div>
+                                            <div class="d-none d-md-block">
+                                                <button type="button" class="btn border btn-icon rounded-circle me-2" data-bs-toggle="tooltip" title="Attatch files">
+                                                    <i data-feather="paperclip" class="text-muted"></i>
+                                                </button>
+                                            </div>
+                                            <div class="d-none d-md-block">
+                                                <button type="button" class="btn border btn-icon rounded-circle me-2" data-bs-toggle="tooltip" title="Record you voice">
+                                                    <i data-feather="mic" class="text-muted"></i>
+                                                </button>
+                                            </div>
+                                            <form class="search-form flex-grow-1 me-2">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="chatForm" placeholder="Type a message">
+                                                </div>
+                                            </form>
+                                            <div>
                                             <button type="button" id="sendMessage" class="btn btn-primary btn-icon">
                                                 <i data-feather="send"></i>
                                             </button>
                                         </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">...</div>
-                            <div class="tab-pane fade" id="disabled" role="tabpanel" aria-labelledby="disabled-line-tab">...</div>
-                        </div>
-
-
-                        <div class="mt-3 ">
-                            <button class="btn btn-primary w-100 mb-2">
-                                Start Delivery
-                            </button>
-                            <button class="btn btn-outline-primary w-100">
-                                Back
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -179,6 +174,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
     <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+    <script src="<?= ROOT ?>assets/js/chat.js"></script>
     <!-- End custom js for this page -->
 
     <!-- <script src="<?= ROOT ?>assets/custom/js/fleet_management/navigate-delivery.js" type="module"></script> -->
