@@ -101,5 +101,9 @@ class VehiclesModel
         return false;
     }
 
+    public function update_details($id, $data){
+        $this->update($id, $data, 'vehicle_id');
+    }
+
 
 }

@@ -95,6 +95,7 @@ class AuditReportModel
                 $this->update($id, ["report_status_id" => 2], 'report_id');
                 break;
             case 'solve':
+                echo "Hello world";
                 $this->update($id, ["report_status_id" => 3], 'report_id');
                 break;
         }

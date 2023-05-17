@@ -474,47 +474,49 @@
                                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                   </div>
-                                  <div class="modal-body">
-                                    <div class="mb-3">
-                                      <input type="file" id="" class="myDropify" data-default-file="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" />
-                                    </div>
-                                    <div class="mb-3">
-                                      <label for="" class="form-label">Vehicle Name</label>
-                                      <input type="text" name="" id="" class="form-control" value="<?= $data->make ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                      <label for="" class="form-label">Description</label>
-                                      <textarea name="" class="form-control" id="" cols="30" rows="10"><?= $data->description ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                      <div class="row">
-                                        <div class="col-md-3">
-                                          <label for="" class="form-label">Transmission</label>
-                                          <select name="" class="form-select" id="">
-                                            <option selected disabled>Select Type</option>
-                                            <option value="1">Automatic</option>
-                                            <option value="2">Manual</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                          <label for="" class="form-label">Number of seats</label>
-                                          <input type="number" class="form-control" value="<?= $data->number_of_seats ?>">
-                                        </div>
-                                        <div class="col-md-3">
-                                          <label for="" class="form-label">Odometer</label>
-                                          <input type="text" class="form-control" value="<?= $data->odometer ?>">
-                                        </div>
-                                        <div class="col-md-3">
-                                          <label for="" class="form-label">Dimensions</label>
-                                          <input type="text" class="form-control" value="<?= $data->dimensions ?>">
+                                  <form class="updateForm" data-id="<?= $data->vehicle_id?>">
+                                    <div class="modal-body">
+                                      <div class="mb-3">
+                                        <input type="file" name="thumbnail" class="myDropify" data-default-file="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" />
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="" class="form-label">Vehicle Name</label>
+                                        <input type="text" name="make" id="" class="form-control" value="<?= $data->make ?>">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="" class="form-label">Description</label>
+                                        <textarea name="description" class="form-control" id="" cols="30" rows="10"><?= $data->description ?></textarea>
+                                      </div>
+                                      <div class="mb-3">
+                                        <div class="row">
+                                          <div class="col-md-3">
+                                            <label for="" class="form-label">Transmission</label>
+                                            <select name="trans_type_id" class="form-select" id="">
+                                              <option selected disabled>Select Type</option>
+                                              <option value="1">Automatic</option>
+                                              <option value="2">Manual</option>
+                                            </select>
+                                          </div>
+                                          <div class="col-md-3">
+                                            <label for="" class="form-label">Number of seats</label>
+                                            <input type="number" class="form-control" name="number_of_seats" value="<?= $data->number_of_seats ?>">
+                                          </div>
+                                          <div class="col-md-3">
+                                            <label for="" class="form-label">Odometer</label>
+                                            <input type="text" name="odometer" class="form-control" value="<?= $data->odometer ?>">
+                                          </div>
+                                          <div class="col-md-3">
+                                            <label for="" class="form-label">Dimensions</label>
+                                            <input type="text" name="dimensions" class="form-control" value="<?= $data->dimensions ?>">
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                  </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </form>
                                 </div>
                               </div>
                             </div>
@@ -606,6 +608,7 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/vendors/dropify/dist/dropify.min.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-vehicle.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

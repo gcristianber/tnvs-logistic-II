@@ -20,26 +20,23 @@ class Manage_vehicles
         $this->view("partials/sidebar");
     }
 
-    public function edit_vehicle(){
-        $data = [];
+    public function update_details()
+    {
         $Vehicles = new VehiclesModel;
-        $data["vehicle"] = $Vehicles->fetch_vehicle(["vehicle_id"=>$_GET["vehicle_id"]]);
-        
-
-        $this->view('partials/navbar');
-        $this->view("fleet_management/admin/edit_vehicle", $data);
-        $this->view("partials/sidebar");
+        $id = $_POST["vehicle_id"];
+        unset($_POST["vehicle_id"]);
+        $Vehicles->update_details($id, $_POST);
     }
 
-    public function get_all_vehicles(){
+    public function get_all_vehicles()
+    {
         $Vehicles = new VehiclesModel;
         return $Vehicles->fetch_all_vehicles();
     }
 
-    public function put_vehicle(){
+    public function put_vehicle()
+    {
         $Vehicles = new VehiclesModel;
         $Vehicles->insert_vehicle($_POST, $_FILES);
     }
-
-
 }

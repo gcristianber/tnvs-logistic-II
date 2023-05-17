@@ -242,3 +242,37 @@ onSnapshot(querySnapshot, (snapshot) => {
 }, (error) => {
     console.log(`Encountered error: ${error}`);
 });
+
+
+const startBtn = document.getElementById("startDelivery")
+
+startBtn.addEventListener("click", event => {
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You are about to cancel your request!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonClass: "me-2",
+        confirmButtonText: "Yes, cancel my request!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: config.baseUrl + 'driver/deliveries/update_status',
+                type: 'POST',
+                data: {
+                    id: deliveryParam,
+                    status: "in transit"
+                },
+                success: function (response) {
+                    console.log(response)
+                    // location.reload()
+                }
+            })
+        }
+    })
+
+})
+

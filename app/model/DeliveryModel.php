@@ -72,4 +72,23 @@ class DeliveryModel
 
         return $data["tracking_id"];
     }
+
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'pending':
+                $this->update($id, ["status_id" => 1], 'tracking_id');
+                break;
+            case 'preparing':
+                $this->update($id, ["status_id" => 2], 'tracking_id');
+                break;
+            case 'in transit':
+                $this->update($id, ["status_id" => 3], 'tracking_id');
+                break;
+            case 'delivered':
+                $this->update($id, ["status_id" => 4], 'tracking_id');
+                break;
+        }
+    }
 }

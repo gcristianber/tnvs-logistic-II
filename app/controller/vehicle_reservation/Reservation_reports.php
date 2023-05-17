@@ -11,6 +11,9 @@ class Reservation_reports
     {
         $data = [];
 
+        $Reports = new ReservationReportModel;
+        $data["reports"] = $Reports->fetch_all_reports();
+
 
         $this->view('partials/navbar');
         $this->view("vehicle_reservation/reservation_reports", $data);
@@ -19,5 +22,21 @@ class Reservation_reports
 
     public function insert_report(){
         
+    }
+
+    public function update_status()
+    {
+        $Reports = new ReservationReportModel;
+        switch ($_POST["status"]) {
+            case 'issued':
+                $Reports->update_status($_POST["id"], 'issued');
+                break;
+            case 'in progress':
+                $Reports->update_status($_POST["id"], 'in progress');
+                break;
+            case 'solve':
+                $Reports->update_status($_POST["id"], 'solve');
+                break;
+        }
     }
 }

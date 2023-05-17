@@ -188,6 +188,21 @@
                     </select>
                   </div>
                   <div class="mt-4">
+                    <label for="" class="form-label">Select Vehicle</label>
+                    <select name="vehicle_id" class="form-select" id="">
+                      <option selected disabled>...</option>
+                      <?php
+                      if (!empty($vehicles)) :
+                        foreach ($vehicles as $data) :
+                      ?>
+                          <option value="<?= $data->vehicle_id ?>"> <?= $data->plate ?> - <?= $data->make ?></option>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
+                    </select>
+                  </div>
+                  <div class="mt-4">
                     <label for="" class="form-label">Additional File(s)</label>
                     <input type="file" name="shipping_document" id="" class="form-control">
                   </div>

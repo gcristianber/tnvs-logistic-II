@@ -32,6 +32,9 @@ class Delivery_requests{
 
         $Drivers = new DriversModel;
         $data["drivers"] = $Drivers->fetch_all_drivers();
+        $Vehicles = new VehiclesModel;
+        $data["vehicles"] = $Vehicles->fetch_all_vehicles();
+
 
         $this->view('partials/navbar');
         $this->view("fleet_management/admin/create_delivery", $data);
