@@ -149,7 +149,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?= ROOT ?>driver/messages" class="nav-link">
                         <i class="link-icon" data-feather="message-square"></i>
                         <span class="link-title">Messages</span>
                     </a>

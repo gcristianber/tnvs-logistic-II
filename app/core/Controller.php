@@ -8,7 +8,7 @@ trait Controller
         'staff'                => ['login', 'logout', 'dashboard', 'browse_vehicles', 'my_reservations', 'insert_reservation', 'track_documents'],
         'audit manager'        => ['login', 'logout', 'dashboard', 'track_documents', 'inventory', 'audit_reports', 'insert_report'],
         'fleet manager'        => ['login', 'logout', 'dashboard', 'track_documents', 'browse_vehicles', 'my_reservations','manage_reservations','reservation_reports', 'manage_drivers', 'manage_vehicles','maintenance', 'delivery_requests', 'create_new', 'insert_new_delivery', 'insert_line_items', 'navigate'],
-        'fleet driver'         => ['login', 'logout', 'dashboard', 'deliveries', 'view_delivery', 'update_status'],
+        'fleet driver'         => ['login', 'logout', 'dashboard', 'deliveries', 'view_delivery', 'update_status', 'messages'],
         'vendor manager'       => ['login', 'logout', 'dashboard', 'track_documents', 'tenders', 'auctions', 'awardings', 'manage_vendors', 'portal_requests', 'manage_post', 'compare_bid', 'preview_tender'],
         'vendor'               => ['login', 'logout', 'dashboard', 'tenders', 'auctions', 'awardings','otp_vendor', 'preview_tender', 'submit_bid']
     ];
