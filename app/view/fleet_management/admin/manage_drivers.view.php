@@ -66,6 +66,11 @@
   .dropify-wrapper .dropify-message span p {
     display: none;
   }
+
+  .perfect-scrollbar-example {
+        position: relative;
+        max-height: 300px;
+    }
 </style>
 
 <body>
@@ -106,7 +111,7 @@
                                 <div class="w-100">
                                   <div class="mb-3">
                                     <label for="" class="form-label">Driver Name:</label>
-                                    <input type="text" name="driver_name" id="" class="form-control">
+                                    <input type="text" name="display_name" id="" class="form-control">
                                   </div>
                                   <div class="">
                                     <label for="" class="form-label">Email Address:</label>
@@ -260,7 +265,7 @@
                                   <i data-feather="external-link" class="btn-icon-prepend"></i>
                                   Preview
                                 </button>
-                                <button class="btn btn-light btn-icon-text">
+                                <button class="btn btn-light btn-icon-text popupButton" data-driver-id="<?= $data->driver_id ?>">
                                   <i data-feather="message-square" class="btn-icon-prepend"></i>
                                   Message
                                 </button>
@@ -275,6 +280,41 @@
                     </tbody>
 
                   </table>
+                  <div id="popupCard" class="card wd-500" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+                    <div class="card-header">
+                      Driver ID: <span id="driverId"></span>
+                      <a href="javascript:;" class="link-primary float-end" id="closeButton">
+                        <i data-feather="x" class="icon-md"></i>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-2">
+
+                        <div class="w-100">
+                          <div id="messages" class=" flex-column gap-2 my-3 px-3 perfect-scrollbar-example">
+                            <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
+                              <small class="text-muted">03:13 PM</small>
+                              <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
+                                <!-- Append chat here -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="chat-footer d-flex">
+                            <form class="search-form flex-grow-1 me-2">
+                              <div class="input-group">
+                                <input type="text" class="form-control" id="chatForm" placeholder="Type a message">
+                              </div>
+                            </form>
+                            <div>
+                              <button type="button" id="sendMessage" class="btn btn-primary btn-icon">
+                                <i data-feather="send"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -310,7 +350,11 @@
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/fleet_management/chat-driver.js" type="module"></script>
   <script src="<?= ROOT ?>assets/custom/js/fleet_management/manage-drivers.js"></script>
+  <script>
+
+  </script>
 </body>
 
 </html>
