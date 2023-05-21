@@ -10,13 +10,11 @@ class DocumentsModel
     public function fetch_all_documents()
     {
         $query = 'SELECT 
-        documents.tracking_id,
-        documents.sent_date,
-        documents.remarks,
+        documents.*,
 
         sender.department_name as sender_dept,
         receiver.department_name as receiver_dept,
-        log2_dt_status.status_name as current_status
+        log2_dt_status.status_name
         
         FROM log2_dt_documents documents
         LEFT JOIN admin_um_departments sender ON
@@ -24,7 +22,7 @@ class DocumentsModel
         LEFT JOIN admin_um_departments receiver ON
         documents.send_to_dept_id = receiver.department_id
         LEFT JOIN log2_dt_status ON
-        documents.current_status_id = log2_dt_status.tracking_status_id';
+        documents.status_id = log2_dt_status.tracking_status_id';
 
         return $this->query($query);
     }
@@ -70,6 +68,31 @@ class DocumentsModel
             return $result[0];
 
         return false;
+    }
+
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'incoming':
+                $this->update($id, ["status_id" => 1], 'tracking_id');
+                break;
+            case 'outgoing':
+                $this->update($id, ["status_id" => 2], 'tracking_id');
+                break;
+            case 'pending':
+                $this->update($id, ["status_id" => 3], 'tracking_id');
+                break;
+            case 'received':
+                $this->update($id, ["status_id" => 4], 'tracking_id');
+                break;
+            case 'reviewed':
+                $this->update($id, ["status_id" => 5], 'tracking_id');
+                break;
+            case 'declined':
+                $this->update($id, ["status_id" => 6], 'tracking_id');
+                break;
+        }
     }
 
 

@@ -58,16 +58,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-4">
-                            <h3 class="mb-1">Manage Reports</h3>
+                            <h3 class="mb-1">Manage Documents</h3>
                             <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
                         </div>
 
                         <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cycle Count</a>
+                                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Incoming</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Transfers</a>
+                                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Outgoing</a>
                             </li>
                         </ul>
                         <div class="tab-content mt-3" id="lineTabContent">
@@ -77,7 +77,7 @@
                                     <div class="flex-shrink-0">
                                         <button class="btn btn-primary search">
                                             <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                            <p class="d-none d-sm-inline">Search Report</p>
+                                            <p class="d-none d-sm-inline">Search Document</p>
                                         </button>
                                     </div>
                                 </div>
@@ -95,35 +95,19 @@
                                     </div>
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by frequency
+                                            Sort by Department
                                         </label>
                                         <select name="" id="" class="form-select filter-select">
                                             <option value="">All</option>
-                                            <option value="Section A">Section A</option>
+                                            <option value="Logistic">Logistic</option>
+                                            <option value="Human Resource">Human Resource</option>
+                                            <option value="Administrative">Administrative</option>
+                                            <option value="Finance">Finance</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by frequency
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Weekly">Weekly</option>
-                                            <option value="Monthly">Monthly</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by category
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Office Supplies">Office Supplies</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by status
+                                            Sort by Response
                                         </label>
                                         <select name="" id="" class="form-select filter-select">
                                             <option value="">Select Status</option>
@@ -135,44 +119,43 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>report id</th>
+                                                <th>tracking id</th>
+                                                <th>document name</th>
                                                 <th>subject</th>
-                                                <th>category</th>
-                                                <th>location</th>
-                                                <th>frequency</th>
-                                                <th>date created</th>
-                                                <th>status</th>
+                                                <th>send to</th>
+                                                <th>send from</th>
+                                                <th>date sent</th>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if (!empty($cycle_count_reports)) :
-                                                $count = 1;
-                                                foreach ($cycle_count_reports as $data) :
+                                            if (!empty($documents)) :
+                                                $row = 1;
+                                                foreach ($documents as $data) :
+                                                    if ($data->status_name == "incoming") :
                                             ?>
-                                                    <tr class="align-middle">
-                                                        <td><?= $count++ ?></td>
-                                                        <td><?= $data->report_id ?></td>
-                                                        <td><?= $data->subject ?></td>
-                                                        <td><?= ucwords($data->category_name) ?></td>
-                                                        <td><?= $data->location_name ?></td>
-                                                        <td><?= ucwords($data->frequency_count) ?></td>
-                                                        <td><?= date("d/m/Y — h:i A", strtotime($data->report_date)) ?></td>
-                                                        <td><?= ($data->report_status_name == "completed") ? '<span class="badge bg-success">Completed</span>' : (($data->report_status_name == "request for adjustment") ? '<span class="badge bg-danger">Request for Adjustment</span>' : "") ?>
-                                                        </td>
-                                                        <td>
-                                                            <a class="btn btn-primary btn-icon-text"  href="<?= ROOT ?>audit_management/audit_reports/download_as_sheet">
-                                                                <i data-feather="external-link" class="btn-icon-prepend" ></i>
-                                                                View Details
-                                                            </a>
-                                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/download_report?report_id=<?=$data->report_id?>">
-                                                                <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                                                                Download
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                        <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                                            <td><?= $row++ ?></td>
+                                                            <td><?= $data->tracking_id ?></td>
+                                                            <td><?= $data->document_name ?></td>
+                                                            <td><?= $data->subject ?></td>
+                                                            <td><?= ucwords($data->receiver_dept) ?></td>
+                                                            <td><?= ucwords($data->sender_dept) ?></td>
+                                                            <td><?= date("d/m/Y — h:i A ", strtotime($data->sent_date)) ?></td>
+                                                            <td>
+                                                                <button class="btn btn-primary btn-icon-text">
+                                                                    <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                                                    View Details
+                                                                </button>
+                                                                <button class="btn btn-success btn-icon-text sendBtn">
+                                                                    <i data-feather="send" class="btn-icon-prepend"></i>
+                                                                    Send Document
+                                                                </button>
+                                                            </td>
+                                                        </tr>
                                             <?php
+                                                    endif;
                                                 endforeach;
                                             endif;
                                             ?>
@@ -186,14 +169,14 @@
                                     <div class="flex-shrink-0">
                                         <button class="btn btn-primary search">
                                             <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                            <p class="d-none d-sm-inline">Search Report</p>
+                                            <p class="d-none d-sm-inline">Search Document</p>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by date
+                                            Filter by date
                                         </label>
                                         <div class="input-group flatpickr" id="flatpickr-date">
                                             <span class="input-group-text input-group-addon" data-toggle="">
@@ -204,32 +187,22 @@
                                     </div>
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by Category
+                                            Sort by Department
                                         </label>
                                         <select name="" id="" class="form-select filter-select">
                                             <option value="">All</option>
-                                            <option value="Office Supplies">Office Supplies</option>
-                                            <option value="Foods and Beverages">Foods and Beverages</option>
+                                            <option value="Logistic">Logistic</option>
+                                            <option value="Human Resource">Human Resource</option>
+                                            <option value="Administrative">Administrative</option>
+                                            <option value="Finance">Finance</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by Status
+                                            Sort by Response
                                         </label>
                                         <select name="" id="" class="form-select filter-select">
                                             <option value="">Select Status</option>
-                                            <option value="Completed">Completed</option>
-                                            <option value="Request for Adjustment">Request for Adjustment</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by Type
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Inbound">Inbound</option>
-                                            <option value="Outbound">Outbound</option>
                                         </select>
                                     </div>
                                 </div>
@@ -238,45 +211,65 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>report id</th>
+                                                <th>tracking id</th>
+                                                <th>document name</th>
                                                 <th>subject</th>
-                                                <th>type</th>
-                                                <th>location</th>
-                                                <th>date created</th>
+                                                <th>send to</th>
+                                                <th>send from</th>
+                                                <th>date sent</th>
                                                 <th>status</th>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if (!empty($transfer_reports)) :
-                                                $count = 1;
-                                                foreach ($transfer_reports as $data) :
+                                            if (!empty($documents)) :
+                                                $row = 1;
+                                                foreach ($documents as $data) :
+                                                    if ($data->status_name != "incoming") :
                                             ?>
-                                                    <tr class="align-middle">
-                                                        <td><?= $count++ ?></td>
-                                                        <td><?= $data->report_id ?></td>
-                                                        <td><?= $data->subject ?></td>
-                                                        <td><?= ucwords($data->transfer_type_name) ?></td>
-                                                        <td><?= ucwords($data->location_name) ?></td>
-                                                        <td><?= date("d/m/Y — h:i A", strtotime($data->date_created)) ?></td>
-                                                        <td><?= ($data->report_status_name == "completed") ? '<span class="badge bg-success">Completed</span>' : (($data->report_status_name == "request for adjustment") ? '<span class="badge bg-danger">Request for Adjustment</span>' : "") ?></td>
-                                                        <td>
-                                                        <a class="btn btn-primary btn-icon-text">
-                                                                <i data-feather="external-link" class="btn-icon-prepend" ></i>
-                                                                View Details
-                                                            </a>
-                                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/download_as_sheet?report_id=<?= $data->report_id ?>">
-                                                                <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                                                                Download
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                        <tr class="align-middle">
+                                                            <td><?= $row++ ?></td>
+                                                            <td><?= $data->tracking_id ?></td>
+                                                            <td><?= $data->document_name ?></td>
+                                                            <td><?= $data->subject ?></td>
+                                                            <td><?= ucwords($data->receiver_dept) ?></td>
+                                                            <td><?= ucwords($data->sender_dept) ?></td>
+                                                            <td><?= date("d/m/Y — h:i A ", strtotime($data->sent_date)) ?></td>
+                                                            <td>
+                                                                <?php
+                                                                switch ($data->status_name) {
+                                                                    case "outgoing":
+                                                                        echo '<span class="badge bg-danger">Outgoing</span>';
+                                                                        break;
+                                                                    case "pending":
+                                                                        echo '<span class="badge bg-warning">Pending</span>';
+                                                                        break;
+                                                                    case "received":
+                                                                        echo '<span class="badge bg-success">Received</span>';
+                                                                        break;
+                                                                    case "reviewed":
+                                                                        echo '<span class="badge bg-success">Received</span>';
+                                                                        break;
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary btn-icon-text">
+                                                                    <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                                                    View Details
+                                                                </button>
+                                                                <a href="<?= ROOT . $data->file_path ?>" class="btn btn-outline-primary btn-icon-text">
+                                                                    <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                                                                    Download
+                                                                </a>
+                                                            </td>
+                                                        </tr>
                                             <?php
+                                                    endif;
                                                 endforeach;
                                             endif;
                                             ?>
-
                                         </tbody>
                                     </table>
                                 </div>

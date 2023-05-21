@@ -58,16 +58,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-4">
-                            <h3 class="mb-1">Manage Reports</h3>
+                            <h3 class="mb-1">Audit Requests</h3>
                             <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
                         </div>
 
                         <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cycle Count</a>
+                                <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Transfers</a>
+                                <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Completed</a>
                             </li>
                         </ul>
                         <div class="tab-content mt-3" id="lineTabContent">
@@ -77,7 +77,99 @@
                                     <div class="flex-shrink-0">
                                         <button class="btn btn-primary search">
                                             <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                            <p class="d-none d-sm-inline">Search Report</p>
+                                            <p class="d-none d-sm-inline">Search Document</p>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6 grid-margin">
+                                        <label for="" class="form-label">
+                                            Filter by date
+                                        </label>
+                                        <div class="input-group flatpickr" id="flatpickr-date">
+                                            <span class="input-group-text input-group-addon" data-toggle="">
+                                                <i data-feather="calendar"></i>
+                                            </span>
+                                            <input type="text" name="" id="" class="form-control filter-date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 grid-margin">
+                                        <label for="" class="form-label">
+                                            Sort by Status
+                                        </label>
+                                        <select name="" id="" class="form-select filter-select">
+                                            <option value="">All</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Audited">Audited</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>transfer id</th>
+                                                <th>location</th>
+                                                <th>subject</th>
+                                                <th>type</th>
+                                                <th>inbound date</th>
+                                                <th>author</th>
+                                                <th>status</th>
+                                                <th>action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            if (!empty($transfers)) :
+                                                $row = 1;
+                                                foreach ($transfers as $data) :
+                                                    if ($data->is_audited == 0) :
+                                            ?>
+                                                        <tr class="align-middle">
+                                                            <td><?= $row++ ?></td>
+                                                            <td><?= $data->transfer_id ?></td>
+                                                            <td><?= $data->location_name ?></td>
+                                                            <td><?= $data->subject ?></td>
+                                                            <td><?= ($data->transfer_type_id == 1) ? "Inbound" : (($data->transfer_type_id == 2) ? "Outbound" : "") ?></td>
+                                                            <td><?= date("d/m/Y", strtotime($data->date_created)) ?></td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-2" alt="">
+                                                                    <div>
+                                                                        <p><?= $data->author_name ?></p>
+                                                                        <small class="text-muted"><?= $data->author_username ?></small>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td><?= ($data->is_audited == 0) ? '<span class="badge bg-warning">Pending</span>' : (($data->is_audited == 1) ? '<span class="badge bg-success">Completed</span>' : "") ?></td>
+                                                            <td>
+                                                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_requests/create_report?transfer_id=<?= $data->transfer_id ?>">
+                                                                    <i data-feather="plus" class="btn-icon-prepend"></i>
+                                                                    Create Report
+                                                                </a>
+                                                                <button class="btn btn-outline-primary btn-icon-text">
+                                                                    <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                                                                    Download Sheet
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                            <?php
+                                                    endif;
+                                                endforeach;
+                                            endif;
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="text" name="" id="" class="form-control searchInput" placeholder="Search document">
+                                    <div class="flex-shrink-0">
+                                        <button class="btn btn-primary search">
+                                            <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                                            <p class="d-none d-sm-inline">Search Document</p>
                                         </button>
                                     </div>
                                 </div>
@@ -95,35 +187,19 @@
                                     </div>
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by frequency
+                                            Sort by Department
                                         </label>
                                         <select name="" id="" class="form-select filter-select">
                                             <option value="">All</option>
-                                            <option value="Section A">Section A</option>
+                                            <option value="Logistic">Logistic</option>
+                                            <option value="Human Resource">Human Resource</option>
+                                            <option value="Administrative">Administrative</option>
+                                            <option value="Finance">Finance</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 grid-margin">
                                         <label for="" class="form-label">
-                                            Sort by frequency
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Weekly">Weekly</option>
-                                            <option value="Monthly">Monthly</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by category
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Office Supplies">Office Supplies</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by status
+                                            Sort by Response
                                         </label>
                                         <select name="" id="" class="form-select filter-select">
                                             <option value="">Select Status</option>
@@ -135,148 +211,57 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>report id</th>
+                                                <th>tracking id</th>
+                                                <th>document name</th>
                                                 <th>subject</th>
-                                                <th>category</th>
-                                                <th>location</th>
-                                                <th>frequency</th>
-                                                <th>date created</th>
+                                                <th>send to</th>
+                                                <th>send from</th>
+                                                <th>date sent</th>
                                                 <th>status</th>
                                                 <th>action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if (!empty($cycle_count_reports)) :
-                                                $count = 1;
-                                                foreach ($cycle_count_reports as $data) :
+                                            if (!empty($transfers)) :
+                                                $row = 1;
+                                                foreach ($transfers as $data) :
+                                                    if ($data->is_audited == 1) :
                                             ?>
-                                                    <tr class="align-middle">
-                                                        <td><?= $count++ ?></td>
-                                                        <td><?= $data->report_id ?></td>
-                                                        <td><?= $data->subject ?></td>
-                                                        <td><?= ucwords($data->category_name) ?></td>
-                                                        <td><?= $data->location_name ?></td>
-                                                        <td><?= ucwords($data->frequency_count) ?></td>
-                                                        <td><?= date("d/m/Y — h:i A", strtotime($data->report_date)) ?></td>
-                                                        <td><?= ($data->report_status_name == "completed") ? '<span class="badge bg-success">Completed</span>' : (($data->report_status_name == "request for adjustment") ? '<span class="badge bg-danger">Request for Adjustment</span>' : "") ?>
-                                                        </td>
-                                                        <td>
-                                                            <a class="btn btn-primary btn-icon-text"  href="<?= ROOT ?>audit_management/audit_reports/download_as_sheet">
-                                                                <i data-feather="external-link" class="btn-icon-prepend" ></i>
-                                                                View Details
-                                                            </a>
-                                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/download_report?report_id=<?=$data->report_id?>">
-                                                                <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                                                                Download
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                        <tr class="align-middle">
+                                                            <td><?= $row++ ?></td>
+                                                            <td><?= $data->transfer_id ?></td>
+                                                            <td><?= $data->location_name ?></td>
+                                                            <td><?= $data->subject ?></td>
+                                                            <td><?= ($data->transfer_type_id == 1) ? "Inbound" : (($data->transfer_type_id == 2) ? "Outbound" : "") ?></td>
+                                                            <td><?= date("d/m/Y", strtotime($data->date_created)) ?></td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <img src="https://via.placeholder.com/40x40" class="ht-40 wd-40 rounded-2" alt="">
+                                                                    <div>
+                                                                        <p><?= $data->author_name ?></p>
+                                                                        <small class="text-muted"><?= $data->author_username ?></small>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td><?= ($data->is_audited == 0) ? '<span class="badge bg-warning">Pending</span>' : (($data->is_audited == 1) ? '<span class="badge bg-success">Completed</span>' : "") ?></td>
+                                                            <td>
+                                                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_requests/create_report?transfer_id=<?= $data->transfer_id ?>">
+                                                                    <i data-feather="plus" class="btn-icon-prepend"></i>
+                                                                    Create Report
+                                                                </a>
+                                                                <button class="btn btn-outline-primary btn-icon-text">
+                                                                    <i data-feather="download-cloud" class="btn-icon-prepend"></i>
+                                                                    Download Sheet
+                                                                </button>
+                                                            </td>
+                                                        </tr>
                                             <?php
+                                                    endif;
                                                 endforeach;
                                             endif;
                                             ?>
                                         </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">
-                                <div class="d-flex align-items-center gap-2">
-                                    <input type="text" name="" id="" class="form-control searchInput" placeholder="Search document">
-                                    <div class="flex-shrink-0">
-                                        <button class="btn btn-primary search">
-                                            <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                            <p class="d-none d-sm-inline">Search Report</p>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by date
-                                        </label>
-                                        <div class="input-group flatpickr" id="flatpickr-date">
-                                            <span class="input-group-text input-group-addon" data-toggle="">
-                                                <i data-feather="calendar"></i>
-                                            </span>
-                                            <input type="text" name="" id="" class="form-control filter-date">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by Category
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Office Supplies">Office Supplies</option>
-                                            <option value="Foods and Beverages">Foods and Beverages</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by Status
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">Select Status</option>
-                                            <option value="Completed">Completed</option>
-                                            <option value="Request for Adjustment">Request for Adjustment</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 grid-margin">
-                                        <label for="" class="form-label">
-                                            Sort by Type
-                                        </label>
-                                        <select name="" id="" class="form-select filter-select">
-                                            <option value="">All</option>
-                                            <option value="Inbound">Inbound</option>
-                                            <option value="Outbound">Outbound</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>report id</th>
-                                                <th>subject</th>
-                                                <th>type</th>
-                                                <th>location</th>
-                                                <th>date created</th>
-                                                <th>status</th>
-                                                <th>action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            if (!empty($transfer_reports)) :
-                                                $count = 1;
-                                                foreach ($transfer_reports as $data) :
-                                            ?>
-                                                    <tr class="align-middle">
-                                                        <td><?= $count++ ?></td>
-                                                        <td><?= $data->report_id ?></td>
-                                                        <td><?= $data->subject ?></td>
-                                                        <td><?= ucwords($data->transfer_type_name) ?></td>
-                                                        <td><?= ucwords($data->location_name) ?></td>
-                                                        <td><?= date("d/m/Y — h:i A", strtotime($data->date_created)) ?></td>
-                                                        <td><?= ($data->report_status_name == "completed") ? '<span class="badge bg-success">Completed</span>' : (($data->report_status_name == "request for adjustment") ? '<span class="badge bg-danger">Request for Adjustment</span>' : "") ?></td>
-                                                        <td>
-                                                        <a class="btn btn-primary btn-icon-text">
-                                                                <i data-feather="external-link" class="btn-icon-prepend" ></i>
-                                                                View Details
-                                                            </a>
-                                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= ROOT ?>audit_management/audit_reports/download_as_sheet?report_id=<?= $data->report_id ?>">
-                                                                <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                                                                Download
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                            <?php
-                                                endforeach;
-                                            endif;
-                                            ?>
-
                                         </tbody>
                                     </table>
                                 </div>

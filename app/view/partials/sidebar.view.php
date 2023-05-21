@@ -28,6 +28,12 @@
                         <span class="link-title">Track Document</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>document_tracking/manage_documents" class="nav-link">
+                        <i class="link-icon" data-feather="tool"></i>
+                        <span class="link-title">Manage Documents</span>
+                    </a>
+                </li>
             <?php endif; ?>
 
             <?php if (in_array($_SESSION["user"]->user_role, ['super admin', 'fleet manager'])) : ?>
@@ -103,8 +109,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= ROOT ?>audit_management/audit_requests" class="nav-link">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Audit Requests</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= ROOT ?>audit_management/audit_reports" class="nav-link">
-                        <i class="link-icon" data-feather="flag"></i>
+                        <i class="link-icon" data-feather="mail"></i>
                         <span class="link-title">Manage Reports</span>
                     </a>
                 </li>

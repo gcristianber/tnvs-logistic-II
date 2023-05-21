@@ -18,7 +18,7 @@ License: For each use you must have a valid license purchased only from above li
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+  <title>Logistic 2 | Dashboard</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,12 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
   <!-- End plugin css for this page -->
 
   <!-- inject:css -->
@@ -45,33 +50,90 @@ License: For each use you must have a valid license purchased only from above li
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 </head>
+<style>
+  .dataTables_filter {
+    display: none;
+  }
+
+  thead.header-none>* {
+    display: none;
+  }
+
+  .perfect-scrollbar-example {
+    position: relative;
+    max-height: 300px;
+  }
+</style>
 
 <body>
   <div class="main-wrapper">
 
     <div class="page-wrapper">
       <div class="page-content">
-
-        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
-          <div>
-            <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
-          </div>
-          <div class="d-flex align-items-center flex-wrap text-nowrap">
-            <div class="input-group date datepicker wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
-              <span class="input-group-text input-group-addon bg-transparent border-primary"><i data-feather="calendar" class=" text-primary"></i></span>
-              <input type="text" class="form-control border-primary bg-transparent">
+        <div class="row">
+          <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-2">
+                  <h6 class="card-title mb-0">Monthly Deliveries</h6>
+                  <div class="dropdown mb-2">
+                    <button class="btn p-0" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-muted">Track your monthly deliveries of goods.</p>
+                <div id="monthlySalesChart"></div>
+              </div>
             </div>
-            <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
-              <i class="btn-icon-prepend" data-feather="printer"></i>
-              Print
-            </button>
-            <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
-              <i class="btn-icon-prepend" data-feather="download-cloud"></i>
-              Download Report
-            </button>
+          </div>
+          <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline">
+                  <h6 class="card-title mb-0">Cloud storage</h6>
+                  <div class="dropdown mb-2">
+                    <button class="btn p-0" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div id="storageChart"></div>
+                <div class="row mb-3">
+                  <div class="col-6 d-flex justify-content-end">
+                    <div>
+                      <label class="d-flex align-items-center justify-content-end tx-10 text-uppercase fw-bolder">Total storage <span class="p-1 ms-1 rounded-circle bg-secondary"></span></label>
+                      <h5 class="fw-bolder mb-0 text-end">8TB</h5>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div>
+                      <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span class="p-1 me-1 rounded-circle bg-primary"></span> Used storage</label>
+                      <h5 class="fw-bolder mb-0">~5TB</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-grid">
+                  <button class="btn btn-primary">Upgrade storage</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col-12 col-xl-12 stretch-card">
             <div class="row flex-grow-1">
@@ -79,7 +141,7 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
-                      <h6 class="card-title mb-0">New Customers</h6>
+                      <h6 class="card-title mb-0">New Deliveries</h6>
                       <div class="dropdown mb-2">
                         <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -182,250 +244,344 @@ License: For each use you must have a valid license purchased only from above li
               </div>
             </div>
           </div>
-        </div> <!-- row -->
-
-        <div class="row">
-          <div class="col-12 col-xl-12 grid-margin stretch-card">
-            <div class="card overflow-hidden">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
-                  <h6 class="card-title mb-0">Revenue</h6>
-                  <div class="dropdown">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-5 border-end">
+                <div class="d-flex align-items-center gap-2">
+                  <input type="text" name="" id="" class="form-control searchInput" placeholder="Search delivery">
+                  <div class="flex-shrink-0">
+                    <button class="btn btn-primary search">
+                      <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                      <p class="d-none d-sm-inline">Search</p>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
                   </div>
                 </div>
-                <div class="row align-items-start">
-                  <div class="col-md-7">
-                    <p class="text-muted tx-13 mb-3 mb-md-0">Revenue is the income that a business has from its normal business activities, usually from the sale of goods and services to customers.</p>
+                <div class="row mt-2">
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">
+                      Sort by Category
+                    </label>
+                    <select name="" id="" class="form-select filter-select">
+                      <option value="">All</option>
+                      <option value="Foods and Beverages">Foods and Beverages</option>
+                    </select>
                   </div>
-                  <div class="col-md-5 d-flex justify-content-md-end">
-                    <div class="btn-group mb-3 mb-md-0" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-primary">Today</button>
-                      <button type="button" class="btn btn-outline-primary d-none d-md-block">Week</button>
-                      <button type="button" class="btn btn-primary">Month</button>
-                      <button type="button" class="btn btn-outline-primary">Year</button>
-                    </div>
-                  </div>
-                </div>
-                <div id="revenueChart"></div>
-              </div>
-            </div>
-          </div>
-        </div> <!-- row -->
-
-        <div class="row">
-          <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline mb-2">
-                  <h6 class="card-title mb-0">Monthly sales</h6>
-                  <div class="dropdown mb-2">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
+                  <div class="col-md-6 grid-margin">
+                    <label for="" class="form-label">
+                      Sort by Status
+                    </label>
+                    <select name="" id="" class="form-select filter-select">
+                      <option value="">All</option>
+                      <option value="In Transit">In Transit</option>
+                      <option value="Delivered">Delivered</option>
+                    </select>
                   </div>
                 </div>
-                <p class="text-muted">Sales are activities related to selling or the number of goods or services sold in a given time period.</p>
-                <div id="monthlySalesChart"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline">
-                  <h6 class="card-title mb-0">Cloud storage</h6>
-                  <div class="dropdown mb-2">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div id="storageChart"></div>
-                <div class="row mb-3">
-                  <div class="col-6 d-flex justify-content-end">
-                    <div>
-                      <label class="d-flex align-items-center justify-content-end tx-10 text-uppercase fw-bolder">Total storage <span class="p-1 ms-1 rounded-circle bg-secondary"></span></label>
-                      <h5 class="fw-bolder mb-0 text-end">8TB</h5>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div>
-                      <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span class="p-1 me-1 rounded-circle bg-primary"></span> Used storage</label>
-                      <h5 class="fw-bolder mb-0">~5TB</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-grid">
-                  <button class="btn btn-primary">Upgrade storage</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> <!-- row -->
-
-        <div class="row">
-          <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline mb-2">
-                  <h6 class="card-title mb-0">Inbox</h6>
-                  <div class="dropdown mb-2">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex flex-column">
-                  <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
-                    <div class="me-3">
-                      <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                    </div>
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="text-body mb-2">Leonardo Payne</h6>
-                        <p class="text-muted tx-12">12.30 PM</p>
-                      </div>
-                      <p class="text-muted tx-13">Hey! there I'm available...</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                    <div class="me-3">
-                      <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                    </div>
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="text-body mb-2">Carl Henson</h6>
-                        <p class="text-muted tx-12">02.14 AM</p>
-                      </div>
-                      <p class="text-muted tx-13">I've finished it! See you so..</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                    <div class="me-3">
-                      <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                    </div>
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="text-body mb-2">Jensen Combs</h6>
-                        <p class="text-muted tx-12">08.22 PM</p>
-                      </div>
-                      <p class="text-muted tx-13">This template is awesome!</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                    <div class="me-3">
-                      <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                    </div>
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="text-body mb-2">Amiah Burton</h6>
-                        <p class="text-muted tx-12">05.49 AM</p>
-                      </div>
-                      <p class="text-muted tx-13">Nice to meet you</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
-                    <div class="me-3">
-                      <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35" alt="user">
-                    </div>
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="text-body mb-2">Yaretzi Mayo</h6>
-                        <p class="text-muted tx-12">01.19 AM</p>
-                      </div>
-                      <p class="text-muted tx-13">Hey! there I'm available...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7 col-xl-8 stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline mb-2">
-                  <h6 class="card-title mb-0">Track Documents</h6>
-                  <div class="dropdown mb-2">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="table-responsive">
-                  <table class="table table-hover mb-0">
-                    <thead>
+                <div class="table-responsive perfect-scrollbar-example">
+                  <table class="table table-borderless dataTable">
+                    <thead class="header-none">
                       <tr>
-                        <th class="pt-0">#</th>
-                        <th class="pt-0">Subject</th>
-                        <th class="pt-0">Sent by</th>
-                        <th class="pt-0">Send to</th>
-                        <th class="pt-0">Date created</th>
-                        <th class="pt-0">Status</th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Contract of Service</td>
-                        <td>Logistic</td>
-                        <td>Administrative</td>
-                        <td>26/04/2022</td>
-                        <td><span class="badge bg-primary">Sent</span></td>
+                      <tr class="border-bottom align-middle">
+                        <td>
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <div class="mb-2">
+                                <i data-feather="archive" class="icon-md text-primary"></i>
+                                <small>D123004571</small>
+                                <span class="badge bg-primary ms-2 d-inline">In Transit</span>
+                              </div>
+                              <div class="mb-3">
+                                <p> Quezon City → Caloocan City</p>
+                                <small class="text-muted">Foods and Beverages</small>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="position-relative">
+                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
+                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <p>Cristianber Gordora</p>
+                                  <small class="text-muted">gcristianber@logistic_driver</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column gap-2">
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                              Navigate Delivery
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon-text">
+                              <i data-feather="message-square" class="btn-icon-prepend"></i>
+                              Message Driver
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <td>
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <div class="mb-2">
+                                <i data-feather="archive" class="icon-md text-primary"></i>
+                                <small>D123004571</small>
+                                <span class="badge bg-success ms-2 d-inline">Delivered</span>
+                              </div>
+                              <div class="mb-3">
+                                <p> Quezon City → Caloocan City</p>
+                                <small class="text-muted">Office Supplies</small>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="position-relative">
+                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
+                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <p>Cristianber Gordora</p>
+                                  <small class="text-muted">gcristianber@logistic_driver</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column gap-2">
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                              Navigate Delivery
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon-text">
+                              <i data-feather="message-square" class="btn-icon-prepend"></i>
+                              Message Driver
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <td>
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <div class="mb-2">
+                                <i data-feather="archive" class="icon-md text-primary"></i>
+                                <small>D123004571</small>
+                                <span class="badge bg-warning ms-2">Preparing</span>
+                              </div>
+                              <div class="mb-3">
+                                <p> Quezon City → Manila</p>
+                                <small class="text-muted">Office Supplies</small>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="position-relative">
+                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
+                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <p>Cristianber Gordora</p>
+                                  <small class="text-muted">gcristianber@logistic_driver</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column gap-2">
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                              Navigate Delivery
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon-text">
+                              <i data-feather="message-square" class="btn-icon-prepend"></i>
+                              Message Driver
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <td>
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <div class="mb-2">
+                                <i data-feather="archive" class="icon-md text-primary"></i>
+                                <small>D123004571</small>
+                                <span class="badge bg-warning ms-2">Preparing</span>
+                              </div>
+                              <div class="mb-3">
+                                <p> Quezon City → Manila</p>
+                                <small class="text-muted">Office Supplies</small>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="position-relative">
+                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
+                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <p>Cristianber Gordora</p>
+                                  <small class="text-muted">gcristianber@logistic_driver</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column gap-2">
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                              Navigate Delivery
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon-text">
+                              <i data-feather="message-square" class="btn-icon-prepend"></i>
+                              Message Driver
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <td>
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <div class="mb-2">
+                                <i data-feather="archive" class="icon-md text-primary"></i>
+                                <small>D123004571</small>
+                                <span class="badge bg-warning ms-2">Preparing</span>
+                              </div>
+                              <div class="mb-3">
+                                <p> Quezon City → Manila</p>
+                                <small class="text-muted">Office Supplies</small>
+                              </div>
+                              <div class="d-flex align-items-center gap-2">
+                                <div class="position-relative">
+                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
+                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                  </span>
+                                </div>
+                                <div>
+                                  <p>Cristianber Gordora</p>
+                                  <small class="text-muted">gcristianber@logistic_driver</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column gap-2">
+                            <button class="btn btn-primary btn-icon-text">
+                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                              Navigate Delivery
+                            </button>
+                            <button class="btn btn-outline-primary btn-icon-text">
+                              <i data-feather="message-square" class="btn-icon-prepend"></i>
+                              Message Driver
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
+              <div class="col-md-7">
+                <div id='map' class="rounded-2 mb-3" style='width: 100%; height: 100%;'></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-12 col-xl-12 stretch-card">
+            <div class="row flex-grow-1">
+
+              <div class="col-md-5 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center gap-2">
+                      <input type="text" name="" id="" class="form-control searchInput" placeholder="Search delivery">
+                      <div class="flex-shrink-0">
+                        <button class="btn btn-primary search">
+                          <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                          <p class="d-none d-sm-inline">Search</p>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6 grid-margin">
+                        <label for="" class="form-label">
+                          Sort by Department
+                        </label>
+                        <select name="" id="" class="form-select filter-select">
+                          <option value="">All</option>
+                          <option value="Administrative">Administrative</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 grid-margin">
+                        <label for="" class="form-label">
+                          Sort by Status
+                        </label>
+                        <select name="" id="" class="form-select filter-select">
+                          <option value="">All</option>
+                          <option value="Outgoing">Outgoing</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="table-responsive mt-3">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th>tracking id</th>
+                            <th>subject</th>
+                            <th>sent by</th>
+                            <th>status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>D012367123456</td>
+                            <td>Purchase Order</td>
+                            <td>Administrative</td>
+                            <td><span class="badge bg-danger">Outgoing</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div> <!-- row -->
+        </div>
+
+
+
+
 
       </div>
-
-      <!-- partial:partials/_footer.html -->
-      <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-        <p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="https://www.nobleui.com" target="_blank">NobleUI</a>.</p>
-        <p class="text-muted">Handcrafted With <i class="mb-1 text-primary ms-1 icon-sm" data-feather="heart"></i></p>
-      </footer>
-      <!-- partial -->
 
     </div>
   </div>
@@ -435,6 +591,8 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Plugin js for this page -->
+  <script src="<?= ROOT ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="<?= ROOT ?>assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
   <script src="<?= ROOT ?>assets/vendors/chartjs/Chart.min.js"></script>
   <script src="<?= ROOT ?>assets/vendors/jquery.flot/jquery.flot.js"></script>
   <script src="<?= ROOT ?>assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
@@ -448,11 +606,19 @@ License: For each use you must have a valid license purchased only from above li
   <!-- endinject -->
 
   <!-- Custom js for this page -->
-  <script src="<?= ROOT ?>assets/js/dashboard-light.js"></script>
+  <!-- <script src="<?= ROOT ?>assets/js/dashboard-light.js"></script> -->
   <script src="<?= ROOT ?>assets/js/datepicker.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/main.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/bar-chart.js"></script>
+
+  <script src="<?= ROOT ?>assets/custom/js/map.js" type="module"></script>
   <!-- End custom js for this page -->
+
+  <script>
+    var scrollbarExample = new PerfectScrollbar('.perfect-scrollbar-example');
+  </script>
 
 </body>
 

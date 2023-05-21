@@ -7,7 +7,7 @@ class DriversModel
 
     protected $table = 'log2_fm_drivers';
 
-    protected function view_query()
+    public function fetch_all_drivers()
     {
         $query = 'SELECT 
         driver.*,
@@ -19,13 +19,46 @@ class DriversModel
         LEFT JOIN admin_um_roles role ON 
         driver.role_id = role.role_id
         ';
-        return $query;
+        return $this->query($query);
     }
 
-    public function fetch_all_drivers()
+    private function findDriverWithLeastActivity($drivers)
     {
-        return $this->query($this->view_query());
+        $leastDriver = null;
+        $leastActivity = PHP_INT_MAX;
+
+        foreach ($drivers as $driver) {
+            $activityTimestamp = strtotime($driver->last_active);
+
+            if ($activityTimestamp < $leastActivity) {
+                $leastActivity = $activityTimestamp;
+                $leastDriver = $driver;
+            }
+        }
+
+        return $leastDriver;
     }
+
+    public function assignDriver()
+    {
+        $query = 'SELECT 
+        driver.*,
+        role.role_name as user_role,
+        driver_status.status_name
+        FROM log2_fm_drivers driver
+        LEFT JOIN log2_fm_driver_status driver_status ON 
+        driver.status_id = driver_status.driver_status_id
+        LEFT JOIN admin_um_roles role ON 
+        driver.role_id = role.role_id
+        ';
+        $drivers = $this->query($query);
+
+        // Find the driver with the least activity
+        $leastDriver = $this->findDriverWithLeastActivity($drivers);
+
+        return $leastDriver;
+    }
+
 
     public function fetch_driver($data, $data_not = [])
     {
@@ -61,6 +94,8 @@ class DriversModel
         return false;
     }
 
+
+
     public function add_driver($data, $files)
     {
         $data["driver_id"] = strtoupper('FMD-' . substr(uniqid(), 0, 8));
@@ -89,6 +124,7 @@ class DriversModel
         // print_r($files["attachments"]["tmp_name"]);
 
     }
+
 
     public function export_csv()
     {

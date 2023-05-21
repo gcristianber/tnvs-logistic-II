@@ -257,7 +257,7 @@
     const myInput = document.querySelectorAll(".date-input");
     const flatpickrInstance = flatpickr(myInput, {
       enableTime: true,
-      dateFormat: "Y-m-d H:i",
+      dateFormat: "Y-m-d",
       defaultDate: new Date(),
       minDate: "today",
       allowInput: true

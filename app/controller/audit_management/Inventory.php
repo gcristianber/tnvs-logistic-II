@@ -36,14 +36,7 @@ class Inventory{
             $frequency_count = $data[0]->frequency_count;
             $Location->update_next_count($_POST["location_id"], $frequency_count);
         }
-
-
-
         print_r($_POST);
-
-
-
-
 
     }
 

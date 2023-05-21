@@ -33,15 +33,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //* Get a reference to the "geo" collection in the database
-const geoRef = collection(db, "geo");
-const chatRef = collection(db, "driver-chat");
+const geoRef = collection(db, "deliveries");
 
-// !TARGET THE ID TO FIREBASE
-const customGeoDocRef = doc(geoRef, "delivery-001");
-
-// TODO: IF THE ID DOESN'T EXIST THEN INSERT A NEW ID
-
-//* Mapbox Initialization
 mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -49,96 +42,73 @@ const map = new mapboxgl.Map({
     zoom: 17, // starting zoom
 });
 
-// Use the Geolocation API to get the user's current position
-navigator.geolocation.getCurrentPosition(position => {
-    // Update the center of the map with the user's current position
-    map.setCenter([position.coords.longitude, position.coords.latitude]);
-  });
-
-//* Create a default Marker and add it to the map.
 let currentMarker = null;
 
-//* Listens every changes and change the marker's location.
-onSnapshot(customGeoDocRef, (doc) => {
-    if (doc.exists()) {
+function addMarkerToMap(latitude, longitude, trackingId) {
+    const marker = new mapboxgl.Marker()
+        .setLngLat([longitude, latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${trackingId}</h3>`))
+        .addTo(map);
 
-        var latitude = doc.data().latitude;
-        var longitude = doc.data().longitude;
+    return marker;
+}
 
-        console.log(`Latitude: ${latitude}`)
-        console.log(`Longitude: ${longitude}`)
+function updateMarkerPosition(marker, latitude, longitude) {
+    marker.setLngLat([longitude, latitude]);
+}
 
-        console.log("Document has been updated!")
-        console.log("Document has been get!")
+function retrieveDocumentsAndAddMarkers() {
+    getDocs(geoRef)
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const latitude = data.lat;
+                const longitude = data.lng;
+                const trackingId = doc.id;
 
-        if (currentMarker) {
-            currentMarker.remove();
-        }
+                const marker = addMarkerToMap(latitude, longitude, trackingId);
 
-        currentMarker = new mapboxgl.Marker()
-            .setLngLat([longitude, latitude])
-            .addTo(map);
-
-        map.flyTo({
-            center: [longitude, latitude],
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
-        });
-
-
-    } else {
-        console.log("No such document!");
-    }
-}, (error) => {
-    console.log("Error getting document:", error);
-});
-
-
-
-const querySnapshot = query(chatRef, orderBy("timestamp"));
-// const querySnapshot = query(chatRef, where("recipient", "==", "001"), orderBy("timestamp"));
-
-const chatBox = $("#messages");
-onSnapshot(querySnapshot, (snapshot) => {
-    snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
-            // console.log(`New message: ${change.doc.data().message}`); 
-            const chatTimestamp = change.doc.data().timestamp
-            const date = chatTimestamp.toDate();
-            const timeString = date.toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
+                if (trackingId === "YOUR_CURRENT_TRACKING_ID") {
+                    currentMarker = marker;
+                }
             });
-            const chatMessage = change.doc.data().message
-            const chatMessageHTML = `
-      <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
-        <small class="text-muted">${timeString}</small>
-        <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
-          ${chatMessage}
-        </div>
-      </div>
-    `;
+        })
+        .catch((error) => {
+            console.log('Error retrieving documents:', error);
+        });
+}
 
-            chatBox.append(chatMessageHTML);
+function listenForChanges() {
+    onSnapshot(geoRef, (snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+            const data = change.doc.data();
+            const latitude = data.lat;
+            const longitude = data.lng;
+            const trackingId = change.doc.id;
+            console.log("Snapshot")
 
-            const messagesElement = document.getElementById('messages');
-            messagesElement.scrollTop = messagesElement.scrollHeight - messagesElement.clientHeight;
-        }
+            if (change.type === "added") {
+                const marker = addMarkerToMap(latitude, longitude, trackingId);
+
+                if (trackingId === "YOUR_CURRENT_TRACKING_ID") {
+                    currentMarker = marker;
+                }
+            } else if (change.type === "modified") {
+                if (trackingId === "YOUR_CURRENT_TRACKING_ID") {
+                    updateMarkerPosition(currentMarker, latitude, longitude);
+                }
+            } else if (change.type === "removed") {
+                // Handle marker removal if needed
+            }
+        });
     });
-}, (error) => {
-    console.log(`Encountered error: ${error}`);
+}
+
+navigator.geolocation.getCurrentPosition((position) => {
+    const { latitude, longitude } = position.coords;
+
+    map.flyTo({ center: [longitude, latitude], zoom: 17 });
+
+    retrieveDocumentsAndAddMarkers();
+    listenForChanges();
 });
-
-$("#sendMessage").on("click", function () {
-    var recipient = "001"
-    var chatForm = $("#chatForm").val()
-
-    $("#chatForm").val("")
-
-    // Add chatForm value to the firebase
-    addDoc(chatRef, {
-        recipient: recipient,
-        message: chatForm,
-        timestamp: new Date()
-    })
-})

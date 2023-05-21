@@ -1,11 +1,13 @@
 $(document).ready(()=>{
-    // $(window).on("beforeunload", ()=>{
-    //     alert("hello")
-    //     console.log("hello")
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: config.baseUrl + 'authentication/logout',
-    //         async: false
-    //     })
-    // })
+    
+    function checkSession(){
+        $.ajax({
+            url: config.baseUrl + 'authentication/check_session',
+            type: "GET",
+            success: function(response){
+                
+            }
+        })
+    }
+
 })
