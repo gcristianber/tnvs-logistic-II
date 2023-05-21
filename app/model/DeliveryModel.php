@@ -13,7 +13,8 @@ class DeliveryModel
         $query = 'SELECT delivery.*,
         driver.*,
         vehicle.*,
-        delivery_type.delivery_type_name
+        delivery_type.delivery_type_name,
+        status.delivery_status_name
         FROM log2_fm_delivery delivery
         LEFT JOIN log2_fm_delivery_type delivery_type ON
         delivery.delivery_type_id = delivery_type.delivery_type_id
@@ -21,6 +22,8 @@ class DeliveryModel
         delivery.driver_id = driver.driver_id
         LEFT JOIN log2_fm_vehicles vehicle ON
         delivery.vehicle_id = vehicle.vehicle_id
+        LEFT JOIN log2_fm_delivery_status status ON
+        delivery.status_id = status.status_id
         ';
 
         return $this->query($query);

@@ -68,9 +68,9 @@
   }
 
   .perfect-scrollbar-example {
-        position: relative;
-        max-height: 300px;
-    }
+    position: relative;
+    max-height: 300px;
+  }
 </style>
 
 <body>

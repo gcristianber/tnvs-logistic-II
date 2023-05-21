@@ -134,6 +134,7 @@ License: For each use you must have a valid license purchased only from above li
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-12 col-xl-12 stretch-card">
             <div class="row flex-grow-1">
@@ -245,6 +246,7 @@ License: For each use you must have a valid license purchased only from above li
             </div>
           </div>
         </div>
+
         <div class="card mb-3">
           <div class="card-body">
             <div class="row">
@@ -614,6 +616,7 @@ License: For each use you must have a valid license purchased only from above li
   <script src="<?= ROOT ?>assets/custom/js/bar-chart.js"></script>
 
   <script src="<?= ROOT ?>assets/custom/js/map.js" type="module"></script>
+  
   <!-- End custom js for this page -->
 
   <script>
