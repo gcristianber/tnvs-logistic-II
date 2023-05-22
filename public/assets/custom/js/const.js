@@ -1,3 +1,3 @@
 const config = {
-    baseUrl: 'http://localhost/ASADASDASDA/TNVS-LOGISTIC2/public/'
+    baseUrl: 'http://localhost/TNVS-LOGISTIC2/public/'
 };

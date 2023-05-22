@@ -97,6 +97,7 @@ License: For each use you must have a valid license purchased only from above li
           <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
+              
                 <div class="d-flex justify-content-between align-items-baseline">
                   <h6 class="card-title mb-0">Cloud storage</h6>
                   <div class="dropdown mb-2">
@@ -112,24 +113,7 @@ License: For each use you must have a valid license purchased only from above li
                     </div>
                   </div>
                 </div>
-                <div id="storageChart"></div>
-                <div class="row mb-3">
-                  <div class="col-6 d-flex justify-content-end">
-                    <div>
-                      <label class="d-flex align-items-center justify-content-end tx-10 text-uppercase fw-bolder">Total storage <span class="p-1 ms-1 rounded-circle bg-secondary"></span></label>
-                      <h5 class="fw-bolder mb-0 text-end">8TB</h5>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div>
-                      <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span class="p-1 me-1 rounded-circle bg-primary"></span> Used storage</label>
-                      <h5 class="fw-bolder mb-0">~5TB</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-grid">
-                  <button class="btn btn-primary">Upgrade storage</button>
-                </div>
+                <div id="apexDonut"></div>
               </div>
             </div>
           </div>

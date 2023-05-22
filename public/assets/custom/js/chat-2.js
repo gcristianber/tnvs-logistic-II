@@ -4,14 +4,10 @@ import {
 import {
     getFirestore,
     collection,
-    doc,
     onSnapshot,
-    updateDoc,
     query,
     where,
     orderBy,
-    getDoc,
-    setDoc,
     addDoc
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
@@ -31,7 +27,7 @@ const db = getFirestore(app);
 // Get all the buttons with class "popupButton"
 const chatBox = $("#messages");
 const chatRef = collection(db, "driver-chat");
-let chatId = "FMD-64650643"; // Variable to store the current driver ID
+let chatId = ""; // Variable to store the current driver ID
 let unsubscribe = null; // Variable to store the unsubscribe function
 
 // Function to fetch and display chat messages for a specific chat_id
@@ -59,18 +55,20 @@ const fetchChatMessages = (chatId) => {
             const sender = chatData.is_manager;
             const isMe = sender === 1;
             const chatMessageClass = isMe
-                ? "d-flex justify-content-end align-items-center mb-3"
-                : "d-flex justify-content-start align-items-center mb-3";
-            const chatBubbleClass = isMe
-                ? "bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2"
-                : "bg-light d-inline-flex p-3 rounded-2 bg-opacity-10 me-2";
+                ? "message-item me"
+                : "message-item friend";
             const chatMessageHTML = `
-                <div class="${chatMessageClass}" data-chat="${sender}">
-                    <small class="text-muted">${timeString}</small>
-                    <div class="${chatBubbleClass}">
-                        ${chatMessage}
+                <li class="${chatMessageClass}" data-chat="${sender}">
+                    <img src="https://via.placeholder.com/36x36" class="img-xs rounded-circle" alt="avatar">
+                    <div class="content">
+                        <div class="message">
+                            <div class="bubble">
+                                <p>${chatMessage}</p>
+                            </div>
+                            <span>${timeString}</span>
+                        </div>
                     </div>
-                </div>
+                </li>
             `;
             chatBox.append(chatMessageHTML);
         });
