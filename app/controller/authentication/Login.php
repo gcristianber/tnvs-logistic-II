@@ -32,6 +32,18 @@ class Login
 
                 if ($driver && $driver->password == $_POST["password"]) {
                     $_SESSION["user"] = $driver;
+
+                    $DriverLogs = new DriverLogsModel;
+                    $logDetails = array(
+                        "log_id" => uniqid(),
+                        "activity" => "You logged in",
+                        "ip_address" => $_SERVER['REMOTE_ADDR'],
+                        "user_agent" => $_SERVER['HTTP_USER_AGENT'],
+                        "driver_id" => $_SESSION["user"]->driver_id
+                    );
+
+                    $DriverLogs->insert($logDetails);
+
                     redirect("general/dashboard");
                     exit();
                 }

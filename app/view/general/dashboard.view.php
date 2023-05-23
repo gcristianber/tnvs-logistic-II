@@ -70,164 +70,19 @@ License: For each use you must have a valid license purchased only from above li
 
     <div class="page-wrapper">
       <div class="page-content">
-        <div class="row">
-          <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline mb-2">
-                  <h6 class="card-title mb-0">Monthly Deliveries</h6>
-                  <div class="dropdown mb-2">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-muted">Track your monthly deliveries of goods.</p>
-                <div id="monthlySalesChart"></div>
-              </div>
-            </div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+          <div>
+            <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
           </div>
-          <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-              
-                <div class="d-flex justify-content-between align-items-baseline">
-                  <h6 class="card-title mb-0">Cloud storage</h6>
-                  <div class="dropdown mb-2">
-                    <button class="btn p-0" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
-                </div>
-                <div id="apexDonut"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12 col-xl-12 stretch-card">
-            <div class="row flex-grow-1">
-              <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-baseline">
-                      <h6 class="card-title mb-0">New Deliveries</h6>
-                      <div class="dropdown mb-2">
-                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">3,897</h3>
-                        <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span>+3.3%</span>
-                            <i data-feather="arrow-up" class="icon-sm mb-1"></i>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-6 col-md-12 col-xl-7">
-                        <div id="customersChart" class="mt-md-3 mt-xl-0"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-baseline">
-                      <h6 class="card-title mb-0">New Orders</h6>
-                      <div class="dropdown mb-2">
-                        <button class="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">35,084</h3>
-                        <div class="d-flex align-items-baseline">
-                          <p class="text-danger">
-                            <span>-2.8%</span>
-                            <i data-feather="arrow-down" class="icon-sm mb-1"></i>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-6 col-md-12 col-xl-7">
-                        <div id="ordersChart" class="mt-md-3 mt-xl-0"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-baseline">
-                      <h6 class="card-title mb-0">Growth</h6>
-                      <div class="dropdown mb-2">
-                        <button class="btn p-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">89.87%</h3>
-                        <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span>+2.8%</span>
-                            <i data-feather="arrow-up" class="icon-sm mb-1"></i>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-6 col-md-12 col-xl-7">
-                        <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="d-flex align-items-center flex-wrap text-nowrap">
+            <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+              <i class="btn-icon-prepend" data-feather="printer"></i>
+              Print
+            </button>
+            <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+              <i class="btn-icon-prepend" data-feather="download-cloud"></i>
+              Download Report
+            </button>
           </div>
         </div>
 
@@ -274,211 +129,70 @@ License: For each use you must have a valid license purchased only from above li
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-bottom align-middle">
-                        <td>
-                          <div class="d-flex justify-content-between">
-                            <div>
-                              <div class="mb-2">
-                                <i data-feather="archive" class="icon-md text-primary"></i>
-                                <small>D123004571</small>
-                                <span class="badge bg-primary ms-2 d-inline">In Transit</span>
-                              </div>
-                              <div class="mb-3">
-                                <p> Quezon City → Caloocan City</p>
-                                <small class="text-muted">Foods and Beverages</small>
-                              </div>
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="position-relative">
-                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
-                                  </span>
-                                </div>
+                      <?php
+                      if (!empty($deliveries)) :
+                        foreach ($deliveries as $data) :
+                      ?>
+                          <tr class="border-bottom align-middle">
+                            <td>
+                              <div class="d-flex justify-content-between">
                                 <div>
-                                  <p>Cristianber Gordora</p>
-                                  <small class="text-muted">gcristianber@logistic_driver</small>
+                                  <div class="mb-2">
+                                    <i data-feather="archive" class="icon-md text-primary"></i>
+                                    <small><?= $data->tracking_id ?></small>
+                                    <?php
+                                    switch ($data->delivery_status_name) {
+                                      case "pending":
+                                        echo '<span class="badge bg-warning ms-2 d-inline">Pending</span>';
+                                        break;
+                                      case "preparing":
+                                        echo '<span class="badge bg-info ms-2 d-inline">Preparing</span>';
+                                        break;
+                                      case "in transit":
+                                        echo '<span class="badge bg-primary ms-2 d-inline">In Transit</span>';
+                                        break;
+                                      case "delivered":
+                                        echo '<span class="badge bg-success ms-2 d-inline">Delivered</span>';
+                                        break;
+                                    }
+                                    ?>
+                                  </div>
+                                  <div class="mb-3">
+                                    <p> <?= $data->pickup_city ?> → <?= $data->dropoff_city ?></p>
+                                    <small class="text-muted">Foods and Beverages</small>
+                                  </div>
+                                  <div class="d-flex align-items-center gap-2">
+                                    <div class="position-relative">
+                                      <img src="<?= ROOT . $data->avatar_thumbnail ?>" class="rounded-2" alt="">
+                                      <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                      </span>
+                                    </div>
+                                    <div>
+                                      <p><?= $data->display_name ?></p>
+                                      <small class="text-muted"><?= $data->email_address ?></small>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="d-flex flex-column gap-2">
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
-                              Navigate Delivery
-                            </button>
-                            <button class="btn btn-outline-primary btn-icon-text">
-                              <i data-feather="message-square" class="btn-icon-prepend"></i>
-                              Message Driver
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <td>
-                          <div class="d-flex justify-content-between">
-                            <div>
-                              <div class="mb-2">
-                                <i data-feather="archive" class="icon-md text-primary"></i>
-                                <small>D123004571</small>
-                                <span class="badge bg-success ms-2 d-inline">Delivered</span>
+                            </td>
+                            <td>
+                              <div class="d-flex flex-column gap-2">
+                                <a class="btn btn-primary btn-icon-text" href="<?= ROOT ?>fleet_management_admin/delivery_requests/navigate?tracking_id=<?= $data->tracking_id ?>">
+                                  <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                                  Navigate Delivery
+                                </a>
+                                <button class="btn btn-outline-primary btn-icon-text popupButton" data-driver-id="<?= $data->driver_id ?>">
+                                  <i data-feather="message-square" class="btn-icon-prepend"></i>
+                                  Message Driver
+                                </button>
                               </div>
-                              <div class="mb-3">
-                                <p> Quezon City → Caloocan City</p>
-                                <small class="text-muted">Office Supplies</small>
-                              </div>
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="position-relative">
-                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
-                                  </span>
-                                </div>
-                                <div>
-                                  <p>Cristianber Gordora</p>
-                                  <small class="text-muted">gcristianber@logistic_driver</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="d-flex flex-column gap-2">
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
-                              Navigate Delivery
-                            </button>
-                            <button class="btn btn-outline-primary btn-icon-text">
-                              <i data-feather="message-square" class="btn-icon-prepend"></i>
-                              Message Driver
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <td>
-                          <div class="d-flex justify-content-between">
-                            <div>
-                              <div class="mb-2">
-                                <i data-feather="archive" class="icon-md text-primary"></i>
-                                <small>D123004571</small>
-                                <span class="badge bg-warning ms-2">Preparing</span>
-                              </div>
-                              <div class="mb-3">
-                                <p> Quezon City → Manila</p>
-                                <small class="text-muted">Office Supplies</small>
-                              </div>
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="position-relative">
-                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
-                                  </span>
-                                </div>
-                                <div>
-                                  <p>Cristianber Gordora</p>
-                                  <small class="text-muted">gcristianber@logistic_driver</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="d-flex flex-column gap-2">
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
-                              Navigate Delivery
-                            </button>
-                            <button class="btn btn-outline-primary btn-icon-text">
-                              <i data-feather="message-square" class="btn-icon-prepend"></i>
-                              Message Driver
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <td>
-                          <div class="d-flex justify-content-between">
-                            <div>
-                              <div class="mb-2">
-                                <i data-feather="archive" class="icon-md text-primary"></i>
-                                <small>D123004571</small>
-                                <span class="badge bg-warning ms-2">Preparing</span>
-                              </div>
-                              <div class="mb-3">
-                                <p> Quezon City → Manila</p>
-                                <small class="text-muted">Office Supplies</small>
-                              </div>
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="position-relative">
-                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
-                                  </span>
-                                </div>
-                                <div>
-                                  <p>Cristianber Gordora</p>
-                                  <small class="text-muted">gcristianber@logistic_driver</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="d-flex flex-column gap-2">
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
-                              Navigate Delivery
-                            </button>
-                            <button class="btn btn-outline-primary btn-icon-text">
-                              <i data-feather="message-square" class="btn-icon-prepend"></i>
-                              Message Driver
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <td>
-                          <div class="d-flex justify-content-between">
-                            <div>
-                              <div class="mb-2">
-                                <i data-feather="archive" class="icon-md text-primary"></i>
-                                <small>D123004571</small>
-                                <span class="badge bg-warning ms-2">Preparing</span>
-                              </div>
-                              <div class="mb-3">
-                                <p> Quezon City → Manila</p>
-                                <small class="text-muted">Office Supplies</small>
-                              </div>
-                              <div class="d-flex align-items-center gap-2">
-                                <div class="position-relative">
-                                  <img src="https://via.placeholder.com/40x40" class="rounded-2" alt="">
-                                  <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-white border-2 rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
-                                  </span>
-                                </div>
-                                <div>
-                                  <p>Cristianber Gordora</p>
-                                  <small class="text-muted">gcristianber@logistic_driver</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="d-flex flex-column gap-2">
-                            <button class="btn btn-primary btn-icon-text">
-                              <i data-feather="navigation-2" class="btn-icon-prepend"></i>
-                              Navigate Delivery
-                            </button>
-                            <button class="btn btn-outline-primary btn-icon-text">
-                              <i data-feather="message-square" class="btn-icon-prepend"></i>
-                              Message Driver
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+                            </td>
+                          </tr>
+                      <?php
+                        endforeach;
+                      endif;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -491,7 +205,54 @@ License: For each use you must have a valid license purchased only from above li
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-2">
+                  <h6 class="card-title mb-0">Monthly Deliveries</h6>
+                  <div class="dropdown mb-2">
+                    <button class="btn p-0" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-muted">Track your monthly deliveries of goods.</p>
+                <div id="monthlySalesChart"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
 
+                <div class="d-flex justify-content-between align-items-baseline">
+                  <h6 class="card-title mb-0">DELIVERY GRAPH</h6>
+                  <div class="dropdown mb-2">
+                    <button class="btn p-0" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div id="apexDonut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-12 col-xl-12 stretch-card">
@@ -500,15 +261,8 @@ License: For each use you must have a valid license purchased only from above li
               <div class="col-md-5 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-7 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
                     <div class="d-flex align-items-center gap-2">
-                      <input type="text" name="" id="" class="form-control searchInput" placeholder="Search delivery">
+                      <input type="text" name="" id="" class="form-control searchInput" placeholder="Search document">
                       <div class="flex-shrink-0">
                         <button class="btn btn-primary search">
                           <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
@@ -536,23 +290,155 @@ License: For each use you must have a valid license purchased only from above li
                         </select>
                       </div>
                     </div>
-                    <div class="table-responsive mt-3">
+                    <div class="table-responsive">
                       <table class="table table-bordered dataTable">
                         <thead>
                           <tr>
-                            <th>tracking id</th>
+                            <th>#</th>
+                            <th>driver name</th>
+                            <th class="text-center">status</th>
+                            <th class="text-center">action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+
+                          if (!empty($drivers)) :
+                            $row = 1;
+                            foreach ($drivers as $data) :
+
+                          ?>
+                              <tr class="align-middle">
+                                <td><?= $row++ ?></td>
+                                <td>
+                                  <div class="d-flex gap-2">
+                                    <img src="<?= ROOT . $data->avatar_thumbnail ?>" class="ht-100 wd-100 rounded-2 object-fit-cover" alt="">
+                                    <div>
+                                      <p><?= $data->display_name ?></p>
+                                      <small class="text-muted"><?= $data->email_address ?></small>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td class="text-center">
+                                  <?php
+
+                                  switch ($data->status_name) {
+                                    case 'active':
+                                      echo '<span class="badge bg-success">Active</span>';
+                                      break;
+                                    case 'inactive':
+                                      echo '<span class="badge bg-danger">Inactive</span>';
+                                      break;
+                                    case 'idle':
+                                      echo '<span class="badge bg-warning">Idle</span>';
+                                      break;
+                                  }
+
+                                  ?>
+                                </td>
+                                <td class="text-center">
+                                  <div>
+                                    <button class="btn btn-light btn-icon-text popupButton" data-driver-id="<?= $data->driver_id ?>">
+                                      <i data-feather="message-square" class="btn-icon-prepend"></i>
+                                      Message
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+
+                          <?php
+                            endforeach;
+                          endif;
+                          ?>
+                        </tbody>
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center gap-2">
+                      <input type="text" name="" id="" class="form-control searchInput" placeholder="Search document">
+                      <div class="flex-shrink-0">
+                        <button class="btn btn-primary search">
+                          <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                          <p class="d-none d-sm-inline">Search</p>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6 grid-margin">
+                        <label for="" class="form-label">
+                          Sort by Department
+                        </label>
+                        <select name="" id="" class="form-select filter-select">
+                          <option value="">All</option>
+                          <option value="Administrative">Administrative</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 grid-margin">
+                        <label for="" class="form-label">
+                          Sort by Status
+                        </label>
+                        <select name="" id="" class="form-select filter-select">
+                          <option value="">All</option>
+                          <option value="Outgoing">Outgoing</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-bordered dataTable">
+                        <thead>
+                          <tr>
+                            <th>#</th>
                             <th>subject</th>
-                            <th>sent by</th>
+                            <th>send to</th>
+                            <th>send from</th>
+                            <th>date sent</th>
                             <th>status</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>D012367123456</td>
-                            <td>Purchase Order</td>
-                            <td>Administrative</td>
-                            <td><span class="badge bg-danger">Outgoing</span></td>
-                          </tr>
+                          <?php
+                          if (!empty($documents)) :
+                            $row = 1;
+                            foreach ($documents as $data) :
+                          ?>
+                              <tr class="align-middle" data-id="<?= $data->tracking_id ?>">
+                                <td><?= $row++ ?></td>
+                                <td><?= $data->subject ?></td>
+                                <td><?= ucwords($data->receiver_dept) ?></td>
+                                <td><?= ucwords($data->sender_dept) ?></td>
+                                <td><?= date("d/m/Y — h:i A ", strtotime($data->sent_date)) ?></td>
+                                <td>
+                                  <?php
+                                  switch ($data->status_name) {
+                                    case "incoming":
+                                      echo '<span class="badge bg-primary">Incoming</span>';
+                                      break;
+                                    case "outgoing":
+                                      echo '<span class="badge bg-danger">Outgoing</span>';
+                                      break;
+                                    case "pending":
+                                      echo '<span class="badge bg-warning">Pending</span>';
+                                      break;
+                                    case "received":
+                                      echo '<span class="badge bg-success">Received</span>';
+                                      break;
+                                    case "reviewed":
+                                      echo '<span class="badge bg-success">Received</span>';
+                                      break;
+                                  }
+                                  ?>
+                                </td>
+                              </tr>
+                          <?php
+                            endforeach;
+                          endif;
+                          ?>
                         </tbody>
                       </table>
                     </div>
@@ -600,7 +486,7 @@ License: For each use you must have a valid license purchased only from above li
   <script src="<?= ROOT ?>assets/custom/js/bar-chart.js"></script>
 
   <script src="<?= ROOT ?>assets/custom/js/map.js" type="module"></script>
-  
+
   <!-- End custom js for this page -->
 
   <script>

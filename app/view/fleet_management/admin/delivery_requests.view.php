@@ -51,7 +51,7 @@
 
   .perfect-scrollbar-example {
     position: relative;
-    max-height: 300px;
+    max-height: 100%;
   }
 </style>
 
@@ -73,6 +73,10 @@
                       <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
                       <p class="d-none d-sm-inline">Search</p>
                     </button>
+                    <a class="btn btn-primary search" href="<?= ROOT ?>fleet_management_admin/delivery_requests/create_new">
+                      <i data-feather="plus" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                      <p class="d-none d-sm-inline">Create Delivery</p>
+                    </a>
                   </div>
                 </div>
                 <div class="row mt-2">

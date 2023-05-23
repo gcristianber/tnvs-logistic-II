@@ -89,6 +89,7 @@
                       <?php
                       if (!empty($documents)) :
                         foreach ($documents as $data) :
+                          if($data->status_name != 'incoming'):
                       ?>
                           <tr class="align-middle" data-status="scheduled">
                             <td>
@@ -106,33 +107,27 @@
                             <td>
                               <?php
                               switch ($data->status_name) {
-                                case 'sent':
-                                  echo '<span class="badge bg-primary">Sent</span>';
+                                case 'outgoing':
+                                  echo '<span class="badge bg-danger">Outgoing</span>';
+                                  break;
+                                case 'pending':
+                                  echo '<span class="badge bg-warning">Pending</span>';
                                   break;
                                 case 'received':
-                                  echo '<span class="badge bg-info">Received</span>';
-                                  break;
-                                case 'forwarded':
-                                  echo '<span class="badge bg-dark">Forwarded</span>';
-                                  break;
-                                case 'on hold':
-                                  echo '<span class="badge bg-secondary">On Hold</span>';
+                                  echo '<span class="badge bg-success">Received</span>';
                                   break;
                                 case 'reviewed':
-                                  echo '<span class="badge bg-warning">Reviewed</span>';
+                                  echo '<span class="badge bg-success">Reviewed</span>';
                                   break;
-                                case 'completed':
-                                  echo '<span class="badge bg-success">Completed</span>';
-                                  break;
-                                case 'archived':
-                                  echo '<span class="badge bg-danger">Archived</span>';
+                                case 'declined':
+                                  echo '<span class="badge bg-success">Declined</span>';
                                   break;
                               }
                               ?>
                             </td>
                             <td>
-                              <p>Cristianber Gordora</p>
-                              <small class="text-muted">Super Admin</small>
+                              <p><?= $data->author_name ?></p>
+                              <small class="text-muted"><?= $data->author_username ?></small>
                             </td>
                             <td>
                               <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>document_tracking/track_documents/track/<?= $data->tracking_id ?>">
@@ -142,6 +137,7 @@
                             </td>
                           </tr>
                       <?php
+                          endif;
                         endforeach;
                       endif;
                       ?>

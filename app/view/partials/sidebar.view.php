@@ -155,12 +155,6 @@
             <?php if (in_array($_SESSION["user"]->user_role, ['fleet driver'])) : ?>
                 <li class="nav-item nav-category">fleet driver</li>
                 <li class="nav-item">
-                    <a href="<?= ROOT ?>driver/" class="nav-link">
-                        <i class="link-icon" data-feather="mail"></i>
-                        <span class="link-title">Inbox</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="<?= ROOT ?>driver/messages" class="nav-link">
                         <i class="link-icon" data-feather="message-square"></i>
                         <span class="link-title">Messages</span>
@@ -173,7 +167,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?= ROOT ?>driver/activity_logs" class="nav-link">
                         <i class="link-icon" data-feather="clock"></i>
                         <span class="link-title">Activity Logs</span>
                     </a>

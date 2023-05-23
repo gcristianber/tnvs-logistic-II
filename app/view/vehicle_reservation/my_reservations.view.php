@@ -87,10 +87,7 @@
                   <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending
-                        <span class="ms-1 badge rounded-pill bg-danger">
-                          3
-                          <span class="visually-hidden">unread messages</span>
-                        </span>
+                        
                       </a>
                     </li>
                     <li class="nav-item">

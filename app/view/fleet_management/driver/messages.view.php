@@ -380,312 +380,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="card">
                             <div class="card-body">
                                 <div class="row position-relative">
-                                    <div class="col-lg-4 chat-aside border-end-lg">
-                                        <div class="aside-content">
-                                            <div class="aside-header">
-                                                <div class="d-flex justify-content-between align-items-center pb-2 mb-2">
-                                                    <div class="d-flex align-items-center">
-                                                        <figure class="me-2 mb-0">
-                                                            <img src="https://via.placeholder.com/43x43" class="img-sm rounded-circle" alt="profile">
-                                                            <div class="status online"></div>
-                                                        </figure>
-                                                        <div>
-                                                            <h6>Amiah Burton</h6>
-                                                            <p class="text-muted tx-13">Software Developer</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="icon-lg text-muted pb-3px" data-feather="settings" data-bs-toggle="tooltip" title="Settings"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View Profile</span></a>
-                                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit Profile</span></a>
-                                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="aperture" class="icon-sm me-2"></i> <span class="">Add status</span></a>
-                                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="settings" class="icon-sm me-2"></i> <span class="">Settings</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <form class="search-form">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">
-                                                            <i data-feather="search" class="cursor-pointer"></i>
-                                                        </span>
-                                                        <input type="text" class="form-control" id="searchForm" placeholder="Search here...">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="aside-body">
-                                                <ul class="nav nav-tabs nav-fill mt-3" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="chats-tab" data-bs-toggle="tab" data-bs-target="#chats" role="tab" aria-controls="chats" aria-selected="true">
-                                                            <div class="d-flex flex-row flex-lg-column flex-xl-row align-items-center justify-content-center">
-                                                                <i data-feather="message-square" class="icon-sm me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                                                <p class="d-none d-sm-block">Chats</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="calls-tab" data-bs-toggle="tab" data-bs-target="#calls" role="tab" aria-controls="calls" aria-selected="false">
-                                                            <div class="d-flex flex-row flex-lg-column flex-xl-row align-items-center justify-content-center">
-                                                                <i data-feather="phone-call" class="icon-sm me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                                                <p class="d-none d-sm-block">Calls</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="contacts-tab" data-bs-toggle="tab" data-bs-target="#contacts" role="tab" aria-controls="contacts" aria-selected="false">
-                                                            <div class="d-flex flex-row flex-lg-column flex-xl-row align-items-center justify-content-center">
-                                                                <i data-feather="users" class="icon-sm me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
-                                                                <p class="d-none d-sm-block">Contacts</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <div class="tab-content mt-3">
-                                                    <div class="tab-pane fade show active" id="chats" role="tabpanel" aria-labelledby="chats-tab">
-                                                        <div>
-                                                            <p class="text-muted mb-1">Recent chats</p>
-                                                            <ul class="list-unstyled chat-list px-1">
-                                                                <li class="chat-item pe-1" data-id="001">
-                                                                    <a href="javascript:;" class="d-flex align-items-center">
-                                                                        <figure class="mb-0 me-2">
-                                                                            <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                            <div class="status offline"></div>
-                                                                        </figure>
-                                                                        <div class="d-flex justify-content-between flex-grow-1 border-bottom">
-                                                                            <div>
-                                                                                <p class="text-body">John Doe</p>
-                                                                                <p class="text-muted tx-13">Hi, How are you?</p>
-                                                                            </div>
-                                                                            <div class="d-flex flex-column align-items-end">
-                                                                                <p class="text-muted tx-13 mb-1">Yesterday</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="calls" role="tabpanel" aria-labelledby="calls-tab">
-                                                        <p class="text-muted mb-1">Recent calls</p>
-                                                        <ul class="list-unstyled chat-list px-1">
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status online"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">Jensen Combs</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <i data-feather="arrow-up-right" class="icon-sm text-success me-1"></i>
-                                                                                <p class="text-muted tx-13">Today, 03:11 AM</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex flex-column align-items-end">
-                                                                            <i data-feather="phone-call" class="text-primary icon-md"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status offline"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">Leonardo Payne</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <i data-feather="arrow-down-left" class="icon-sm text-success me-1"></i>
-                                                                                <p class="text-muted tx-13">Today, 11:41 AM</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex flex-column align-items-end">
-                                                                            <i data-feather="video" class="text-primary icon-md"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status offline"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">Carl Henson</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <i data-feather="arrow-down-left" class="icon-sm text-danger me-1"></i>
-                                                                                <p class="text-muted tx-13">Today, 04:24 PM</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex flex-column align-items-end">
-                                                                            <i data-feather="phone-call" class="text-primary icon-md"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status online"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">Jensen Combs</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <i data-feather="arrow-down-left" class="icon-sm text-danger me-1"></i>
-                                                                                <p class="text-muted tx-13">Today, 12:53 AM</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex flex-column align-items-end">
-                                                                            <i data-feather="video" class="text-primary icon-md"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status online"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">John Doe</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <i data-feather="arrow-down-left" class="icon-sm text-success me-1"></i>
-                                                                                <p class="text-muted tx-13">Today, 01:42 AM</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex flex-column align-items-end">
-                                                                            <i data-feather="video" class="text-primary icon-md"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status offline"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">John Doe</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <i data-feather="arrow-up-right" class="icon-sm text-success me-1"></i>
-                                                                                <p class="text-muted tx-13">Today, 12:01 AM</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex flex-column align-items-end">
-                                                                            <i data-feather="phone-call" class="text-primary icon-md"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                                                        <p class="text-muted mb-1">Contacts</p>
-                                                        <ul class="list-unstyled chat-list px-1">
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status offline"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">Amiah Burton</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <p class="text-muted tx-13">Front-end Developer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex align-items-end text-body">
-                                                                            <i data-feather="message-square" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="phone-call" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="video" class="icon-md text-primary"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status online"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">John Doe</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <p class="text-muted tx-13">Back-end Developer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex align-items-end text-body">
-                                                                            <i data-feather="message-square" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="phone-call" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="video" class="icon-md text-primary"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status offline"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">Yaretzi Mayo</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <p class="text-muted tx-13">Fullstack Developer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex align-items-end text-body">
-                                                                            <i data-feather="message-square" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="phone-call" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="video" class="icon-md text-primary"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="chat-item pe-1">
-                                                                <a href="javascript:;" class="d-flex align-items-center">
-                                                                    <figure class="mb-0 me-2">
-                                                                        <img src="https://via.placeholder.com/37x37" class="img-xs rounded-circle" alt="user">
-                                                                        <div class="status offline"></div>
-                                                                    </figure>
-                                                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 border-bottom">
-                                                                        <div>
-                                                                            <p class="text-body">John Doe</p>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <p class="text-muted tx-13">Front-end Developer</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="d-flex align-items-end text-body">
-                                                                            <i data-feather="message-square" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="phone-call" class="icon-md text-primary me-2"></i>
-                                                                            <i data-feather="video" class="icon-md text-primary"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 chat-content">
+                                    <div class="col-lg-12 chat-content">
                                         <div class="chat-header border-bottom pb-2">
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-flex align-items-center">
@@ -700,52 +395,25 @@ License: For each use you must have a valid license purchased only from above li
                                                         <p class="text-muted tx-13">Front-end Developer</p>
                                                     </div>
                                                 </div>
-                                                <div class="d-flex align-items-center me-n1">
-                                                    <a href="#">
-                                                        <i data-feather="video" class="icon-lg text-muted me-3" data-bs-toggle="tooltip" title="Start video call"></i>
-                                                    </a>
-                                                    <a href="#">
-                                                        <i data-feather="phone-call" class="icon-lg text-muted me-0 me-sm-3" data-bs-toggle="tooltip" title="Start voice call"></i>
-                                                    </a>
-                                                    <a href="#" class="d-none d-sm-block">
-                                                        <i data-feather="user-plus" class="icon-lg text-muted" data-bs-toggle="tooltip" title="Add to contacts"></i>
-                                                    </a>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="chat-body">
-                                            <div id="messages" class=" flex-column gap-2 my-3 px-3 perfect-scrollbar-example">
-                                                <div class="d-flex justify-content-end align-items-center mb-3" data-chat="me">
-                                                    <small class="text-muted">03:13 PM</small>
-                                                    <div class="bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2">
-                                                        <!-- Append chat here -->
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <ul class="messages">
+                                            </ul>
                                         </div>
                                         <div class="chat-footer d-flex">
-                                            <div>
-                                                <button type="button" class="btn border btn-icon rounded-circle me-2" data-bs-toggle="tooltip" title="Emoji">
-                                                    <i data-feather="smile" class="text-muted"></i>
-                                                </button>
-                                            </div>
                                             <div class="d-none d-md-block">
                                                 <button type="button" class="btn border btn-icon rounded-circle me-2" data-bs-toggle="tooltip" title="Attatch files">
                                                     <i data-feather="paperclip" class="text-muted"></i>
                                                 </button>
                                             </div>
-                                            <div class="d-none d-md-block">
-                                                <button type="button" class="btn border btn-icon rounded-circle me-2" data-bs-toggle="tooltip" title="Record you voice">
-                                                    <i data-feather="mic" class="text-muted"></i>
-                                                </button>
-                                            </div>
                                             <form class="search-form flex-grow-1 me-2">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="chatForm" placeholder="Type a message">
+                                                    <input type="text" class="form-control rounded-pill" id="chatForm" placeholder="Type a message">
                                                 </div>
                                             </form>
                                             <div>
-                                                <button type="button" id="sendMessage" class="btn btn-primary btn-icon">
+                                                <button type="button" id="sendMessage" class="btn btn-primary btn-icon rounded-circle">
                                                     <i data-feather="send"></i>
                                                 </button>
                                             </div>
@@ -807,28 +475,16 @@ License: For each use you must have a valid license purchased only from above li
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        const chatId = "001";
 
-        // Get all the buttons with class "popupButton"
-        const chatBox = $("#messages");
+        const messagesList = $(".messages");
         const chatRef = collection(db, "driver-chat");
-        let chatId = ""; // Variable to store the current driver ID
-        let unsubscribe = null; // Variable to store the unsubscribe function
+        const querySnapshot = query(chatRef, where("chat_id", "==", chatId), orderBy("timestamp"));
 
-        // Function to fetch and display chat messages for a specific chat_id
-        const fetchChatMessages = (chatId) => {
-            // Create a query to retrieve chat messages for the given chat_id
-            const querySnapshot = query(
-                chatRef,
-                where("chat_id", "==", chatId),
-                orderBy("timestamp")
-            );
-
-            // Subscribe to the query snapshot to listen for real-time updates
-            unsubscribe = onSnapshot(querySnapshot, (snapshot) => {
-                chatBox.empty(); // Clear previous chat messages
-
-                snapshot.forEach((doc) => {
-                    const chatData = doc.data();
+        onSnapshot(querySnapshot, (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "added") {
+                    const chatData = change.doc.data();
                     const chatMessage = chatData.message;
                     const chatTimestamp = chatData.timestamp.toDate();
                     const timeString = chatTimestamp.toLocaleTimeString([], {
@@ -836,31 +492,29 @@ License: For each use you must have a valid license purchased only from above li
                         minute: "2-digit",
                         hour12: true,
                     });
-                    const sender = chatData.is_manager;
+                    const sender = chatData.is_me;
                     const isMe = sender === 1;
-                    const chatMessageClass = isMe ?
-                        "d-flex justify-content-end align-items-center mb-3" :
-                        "d-flex justify-content-start align-items-center mb-3";
-                    const chatBubbleClass = isMe ?
-                        "bg-primary d-inline-flex p-3 rounded-2 bg-opacity-10 ms-2" :
-                        "bg-light d-inline-flex p-3 rounded-2 bg-opacity-10 me-2";
+                    const messageItemClass = isMe ? "message-item me" : "message-item friend";
                     const chatMessageHTML = `
-                <div class="${chatMessageClass}" data-chat="${sender}">
-                    <small class="text-muted">${timeString}</small>
-                    <div class="${chatBubbleClass}">
-                        ${chatMessage}
-                    </div>
-                </div>
-            `;
-                    chatBox.append(chatMessageHTML);
-                });
+                    <li class="${messageItemClass}">
+                          <img src="https://via.placeholder.com/36x36" class="img-xs rounded-circle" alt="avatar">
+                          <div class="content">
+                            <div class="message">
+                              <div class="bubble">
+                                <p>${chatMessage}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </li>`;
+                    messagesList.append(chatMessageHTML);
 
-                // Scroll to the bottom of the chat box
-                chatBox.scrollTop(chatBox[0].scrollHeight);
-            }, (error) => {
-                console.log(`Encountered error: ${error}`);
+                    messagesList.scrollTop(messagesList[0].scrollHeight);
+                }
             });
-        };
+        }, (error) => {
+            console.log(`Encountered error: ${error}`);
+        });
+
 
         $("#chatForm").keypress(function(event) {
             if (event.which == 13) {
@@ -878,8 +532,7 @@ License: For each use you must have a valid license purchased only from above li
             // Add chatForm value to the firebase
             addDoc(chatRef, {
                 chat_id: chatId,
-                is_manager: 1,
-                is_driver: 0,
+                is_me: 1,
                 message: chatForm,
                 timestamp: new Date(),
             });

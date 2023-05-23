@@ -14,7 +14,9 @@ class DocumentsModel
 
         sender.department_name as sender_dept,
         receiver.department_name as receiver_dept,
-        log2_dt_status.status_name
+        log2_dt_status.status_name,
+        admin_um_accounts.display_name as author_name,
+        admin_um_accounts.username as author_username
         
         FROM log2_dt_documents documents
         LEFT JOIN admin_um_departments sender ON
@@ -22,7 +24,9 @@ class DocumentsModel
         LEFT JOIN admin_um_departments receiver ON
         documents.send_to_dept_id = receiver.department_id
         LEFT JOIN log2_dt_status ON
-        documents.status_id = log2_dt_status.tracking_status_id';
+        documents.status_id = log2_dt_status.tracking_status_id
+        LEFT JOIN admin_um_accounts ON
+        documents.author_id = admin_um_accounts.user_id';
 
         return $this->query($query);
     }

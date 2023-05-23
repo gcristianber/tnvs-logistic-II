@@ -54,90 +54,103 @@
     <div class="page-wrapper">
 
       <div class="page-content">
-        
+
         <div class="card">
           <div class="card-body">
-            <div class="mb-3">
-              <div class="d-flex align-items-center gap-2">
-                <div class="flex-grow-1">
-                  <input type="text" name="" placeholder="Search" id="" class="form-control">
-                </div>
-                <div class="flex-shrink-0">
-                  <button class="btn btn-primary btn-icon-text">
-                    <i data-feather="plus" class="btn-icon-prepend"></i>
-                    Create new
-                  </button>
-                </div>
+            <div class="d-flex align-items-center gap-2">
+              <input type="text" name="" id="" class="form-control searchInput" placeholder="Search delivery">
+              <div class="flex-shrink-0">
+                <button class="btn btn-primary search">
+                  <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                  <p class="d-none d-sm-inline">Search</p>
+                </button>
               </div>
             </div>
-            <div class="mb-3">
-              <div class="row">
-                <div class="col-md-6 grid-margin">
-                  <label for="" class="form-label">Status Type</label>
-                  <select name="" class="form-select" id="">
-                    <option value="1" selected>All</option>
-                    <option value="2">Assigned</option>
-                    <option value="3">Completed</option>
-                  </select>
-                </div>
-                <div class="col-md-6 grid-margin">
-                  <label for="" class="form-label">Delivery Type</label>
-                  <select name="" class="form-select" id="">
-                    <option value="1" selected>All</option>
-                    <option value="2">Delivery</option>
-                    <option value="3">Pickup</option>
-                  </select>
-                </div>
+            <div class="row mt-2">
+              <div class="col-md-6 grid-margin">
+                <label for="" class="form-label">
+                  Sort by Category
+                </label>
+                <select name="" id="" class="form-select filter-select">
+                  <option value="">All</option>
+                  <option value="Foods and Beverages">Foods and Beverages</option>
+                </select>
+              </div>
+              <div class="col-md-6 grid-margin">
+                <label for="" class="form-label">
+                  Sort by Status
+                </label>
+                <select name="" id="" class="form-select filter-select">
+                  <option value="">All</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Preparing">Preparing</option>
+                  <option value="In Transit">In Transit</option>
+                  <option value="Delivered">Delivered</option>
+                </select>
               </div>
             </div>
 
-
-            <div class="list-group ">
-              <div class="row">
-                <?php
-                if (!empty($deliveries)) :
-                  foreach ($deliveries as $data) :
-                ?>
-                    <div class="col-md-6 grid-margin">
-                      <a href="<?= ROOT ?>driver/deliveries/view_delivery?tracking_id=<?= $data->tracking_id ?>" class="list-group-item list-group-item-action">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                          <div>
-                            <i data-feather="package" class="icon-md"></i>
-                            <p class="d-inline align-middle"><?= $data->tracking_id ?></p>
-                          </div>
-                          <div>
-                            <span class="badge bg-primary">Delivery</span>
-                          </div>
-                        </div>
-                        <div class="d-flex gap-2 pb-2">
-                          <div class="d-flex flex-column align-items-center gap-2">
-                            <div>
-                              <i data-feather="map-pin" class="icon-lg text-danger"></i>
+            <div class="table-responsive perfect-scrollbar-example">
+              <table class="table table-borderless dataTable">
+                <thead class="header-none">
+                  <tr>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  if (!empty($deliveries)) :
+                    foreach ($deliveries as $data) :
+                      if ($data->driver_id == $_SESSION["user"]->driver_id) :
+                  ?>
+                        <tr class="border-bottom" data-id="<?= $data->tracking_id ?>">
+                          <td>
+                            <div class="d-flex justify-content-between">
+                              <div>
+                                <div class="mb-2">
+                                  <i data-feather="archive" class="icon-md text-primary"></i>
+                                  <small><?= $data->tracking_id ?></small>
+                                  <?php
+                                  switch ($data->delivery_status_name) {
+                                    case "pending":
+                                      echo '<span class="badge bg-warning ms-2 d-inline">Pending</span>';
+                                      break;
+                                    case "preparing":
+                                      echo '<span class="badge bg-info ms-2 d-inline">Preparing</span>';
+                                      break;
+                                    case "in transit":
+                                      echo '<span class="badge bg-primary ms-2 d-inline">In Transit</span>';
+                                      break;
+                                    case "delivered":
+                                      echo '<span class="badge bg-success ms-2 d-inline">Delivered</span>';
+                                      break;
+                                  }
+                                  ?>
+                                </div>
+                                <div class="mb-3">
+                                  <p> <?= $data->pickup_city ?> → <?= $data->dropoff_city ?></p>
+                                  <small class="text-muted">Foods and Beverages</small>
+                                </div>
+                              </div>
                             </div>
-                            <div class="flex-grow-1 wd-5 ht-50 bg-light rounded-pill"></div>
-                            <div>
-                              <i data-feather="map-pin" class="icon-lg text-success"></i>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column gap-2">
+                              <button class="btn btn-primary btn-icon-text startDelivery">
+                                <i data-feather="navigation-2" class="btn-icon-prepend"></i>
+                                Start Delivery
+                              </button>
                             </div>
-                          </div>
-                          <div class="d-flex flex-column justify-content-between">
-                            <div>
-                              <p><?= $data->pickup_location ?></p>
-                              <small class="text-muted"><?= $data->pickup_city ?>, <?= $data->pickup_country ?></small>
-                            </div>
-                            <div>
-                              <p><?= $data->dropoff_location ?></p>
-                              <small class="text-muted"><?= $data->dropoff_city ?>, <?= $data->dropoff_country ?></small>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                <?php
-                  endforeach;
-                endif;
-                ?>
-              </div>
-
+                          </td>
+                        </tr>
+                  <?php
+                      endif;
+                    endforeach;
+                  endif;
+                  ?>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -167,7 +180,8 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- End custom js for this page -->
   <!-- Flat Picker -->
@@ -180,71 +194,38 @@
       minDate: "today",
       allowInput: true
     });
-  </script>
-  <script>
-    $(document).ready(function() {
-      var table = $('#request_tbl').DataTable({
-        lengthChange: false, // Disable length menu
-        bInfo: false, // Disable "Showing X of Y entries" label
 
-      });
-
-      $('#search').on('keyup', function(event) {
-        if (event.keyCode === 13) { // Check if "Enter" key is pressed
-          var query = $('#search').val();
-          table.search(query).draw();
-        }
-      });
-
-      $('#customSearchBtn').on('click', function() {
-        var query = $('#search').val();
-        table.search(query).draw();
-      });
-
-      var rows = $('table tbody tr');
-
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
-
-        // hide all rows by default
-        rows.hide();
-
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
-      });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'approved': 0,
-        'declined': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-
-
-
+    const startDeliveryBtns = document.querySelectorAll(".startDelivery");
+    startDeliveryBtns.forEach(btn => {
+      btn.addEventListener("click", e => {
+        var id = e.target.closest("tr").getAttribute("data-id");
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You are about to cancel your request!",
+          icon: "info",
+          showCancelButton: true,
+          confirmButtonClass: "me-2",
+          confirmButtonText: "Yes, cancel my request!",
+          cancelButtonText: "No, cancel!",
+          reverseButtons: true,
+        }).then((result) => {
+          if (result.value) {
+            console.log("Hello");
+            $.ajax({
+              url: config.baseUrl + 'driver/deliveries/update_status',
+              type: 'POST',
+              data: {
+                id: id,
+                status: 'in transit'
+              },
+              success: function (response){
+                location.href = config.baseUrl + 'driver/deliveries/view_delivery?tracking_id=' + id
+                console.log(response);
+              }
+            })
+          }
+        })
+      })
     });
   </script>
 </body>

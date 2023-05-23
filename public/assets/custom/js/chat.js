@@ -1,7 +1,3 @@
-
-
-
-
 $(function () {
   "use strict";
   
@@ -26,6 +22,7 @@ $(function () {
   if ($(".chat-content .chat-body").length) {
     const sidebarBodyScroll = new PerfectScrollbar(".chat-content .chat-body");
   }
+
 
   var idArray = [];
 

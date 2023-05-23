@@ -29,6 +29,7 @@ class DeliveryModel
         return $this->query($query);
     }
 
+
     public function fetch_delivery($data, $data_not = [])
     {
         $keys = array_keys($data);

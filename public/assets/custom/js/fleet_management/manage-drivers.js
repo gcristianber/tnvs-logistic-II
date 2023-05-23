@@ -10,7 +10,6 @@ $(document).ready(() => {
         var formData = new FormData(form)
         add_driver(formData)
 
-
     })
 
     const exportCSVBtn = document.getElementById("exportCSV")
@@ -47,6 +46,7 @@ $(document).ready(() => {
                     data: data,
                     success: function (response) {
                         console.log(response)
+                        location.reload();
                     }
                 })
             }

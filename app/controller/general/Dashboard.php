@@ -11,6 +11,15 @@ class Dashboard{
 
         $this->checkAccess();
 
+        $Delivery = new DeliveryModel;
+        $data["deliveries"] = $Delivery->fetch_all_delivery();
+
+        $Documents = new DocumentsModel;
+        $data["documents"] = $Documents->fetch_all_documents();
+
+        $Drivers = new DriversModel;
+        $data["drivers"] = $Drivers->fetch_all_drivers();
+
         // print_r($this->get_all_deliveries());
         
         $this->view('partials/navbar');
