@@ -22,6 +22,7 @@ class ReservationsModel
         
         log2_fm_vehicles.make,
         log2_fm_vehicles.plate,
+        log2_fm_vehicles.thumbnail_path,
         log2_vr_reserve_status.status_name reservation_status,
         log2_fm_vehicle_types.type_name as vehicle_type,
         

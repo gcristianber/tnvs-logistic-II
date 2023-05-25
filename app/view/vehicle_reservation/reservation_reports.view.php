@@ -145,8 +145,8 @@
                                       <div class="d-flex align-items-center gap-2">
                                         <img src="https://via.placeholder.com/40x40" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p><?= $data->requestor_name  ?></p>
-                                          <small class="text-muted"><?= $data->requestor_name  ?></small>
+                                          <p><?= $data->full_name  ?></p>
+                                          <small class="text-muted"><?= $data->email_address  ?></small>
                                         </div>
                                       </div>
                                     </td>

@@ -146,44 +146,6 @@
                           </div>
                           <input type="text" class="form-control" placeholder="Search Vendor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
                         </div>
-                        <button class="btn btn-primary btn-icon-text  flex-shrink-0">
-                          <i data-feather="plus" class="btn-icon-prepend"></i>
-                          Add Existing Vendor
-                        </button>
-                      </div>
-                    </div>
-                    <div class="">
-                      <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
-                        <div class="flex-grow-1">
-                          <label for="" class="form-label">Choose message template</label>
-                          <select name="" class="form-select" id="">
-                            <option selected disabled>Select template</option>
-                            <option value="">Invitation to Bid</option>
-                            <option value="">Notification</option>
-                            <option value="">RFQ</option>
-                            <option value="">RFP</option>
-                          </select>
-                        </div>
-                        <div class="flex-grow-1">
-                          <label for="" class="form-label">Select Tender</label>
-                          <select name="" class="form-select" id="">
-                            <option selected disabled>Select Tender</option>>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="form-label">Subject</label>
-                        <input type="text" name="" id="" class="form-control">
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="form-label">Message</label>
-                        <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
-                      </div>
-                      <div class="mb-3 text-end">
-                        <button class="btn btn-primary btn-icon-text">
-                          <i data-feather="send" class="btn-icon-prepend"></i>
-                          Send Notification
-                        </button>
                       </div>
                     </div>
                     <div class="table-responsive">
@@ -235,8 +197,8 @@
                                 </td>
                                 <td>
                                   <button class="btn btn-primary btn-icon-text">
-                                    <i data-feather="eye" class="btn-icon-prepend"></i>
-                                    Preview
+                                    <i data-feather="settings" class="btn-icon-prepend"></i>
+                                    Manage Account
                                   </button>
                                 </td>
                               </tr>

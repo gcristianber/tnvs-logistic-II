@@ -36,170 +36,46 @@
 
   <link rel="shortcut icon" href="<?= ROOT ?>assets/images/favicon.png" />
 
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 </head>
 
 <body>
   <div class="main-wrapper">
 
     <div class="page-wrapper">
-      <nav class="navbar">
-        <a href="#" class="sidebar-toggler">
-          <i data-feather="menu"></i>
-        </a>
-        <div class="navbar-content">
-          <form class="search-form">
-            <div class="input-group">
-              <div class="input-group-text">
-                <i data-feather="search"></i>
-              </div>
-              <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-            </div>
-          </form>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="mail"></i>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="messageDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>9 New Messages</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Leonardo Payne</p>
-                        <p class="tx-12 text-muted">Project status</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Carl Henson</p>
-                        <p class="tx-12 text-muted">Client meeting</p>
-                      </div>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Jensen Combs</p>
-                        <p class="tx-12 text-muted">Project updates</p>
-                      </div>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Amiah Burton</p>
-                        <p class="tx-12 text-muted">Project deatline</p>
-                      </div>
-                      <p class="tx-12 text-muted">2 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="d-flex justify-content-between flex-grow-1">
-                      <div class="me-4">
-                        <p>Yaretzi Mayo</p>
-                        <p class="tx-12 text-muted">New record</p>
-                      </div>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="bell"></i>
-                <div class="indicator">
-                  <div class="circle"></div>
-                </div>
-              </a>
-              <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                  <p>6 New Notifications</p>
-                  <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="gift"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New Order Recieved</p>
-                      <p class="tx-12 text-muted">30 min ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="alert-circle"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Server Limit Reached!</p>
-                      <p class="tx-12 text-muted">1 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <img class="wd-30 ht-30 rounded-circle" src="https://via.placeholder.com/30x30" alt="userr">
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>New customer registered</p>
-                      <p class="tx-12 text-muted">2 sec ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="layers"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Apps are ready for update</p>
-                      <p class="tx-12 text-muted">5 hrs ago</p>
-                    </div>
-                  </a>
-                  <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                      <i class="icon-sm text-white" data-feather="download"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                      <p>Download completed</p>
-                      <p class="tx-12 text-muted">6 hrs ago</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                  <a href="javascript:;">View all</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
       <div class="page-content">
+
+
+
+        <div class="card grid-margin h-100">
+          <div class="card-body position-relative">
+
+            <div id="map" class="w-100 position-absolute top-0 start-0 rounded-top" style="height: 650px;">
+
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <div class="position-absolute bottom-0">
+
+                <div class="text-center py-3">
+                  <img src="<?= ROOT . $_SESSION["user"]->avatar_thumbnail ?>" class="ht-75 wd-75 rounded-circle border border-5 border-white" alt="">
+                  <div>
+                    <span class=" badge bg-success">Active</span>
+                  </div>
+                  <div class="mt-4">
+                    <h3 class="text-uppercase"><?= $_SESSION["user"]->display_name ?></h3>
+                    <p class="text-muted"><?= $_SESSION["user"]->email_address ?></p>
+                  </div>
+                </div>
+                <div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
 
@@ -220,6 +96,22 @@
 
   <!-- Custom js for this page -->
   <!-- End custom js for this page -->
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWVsb24tZGV2IiwiYSI6ImNsYTRrMnYwMjA0NnM0MHJ2a3R4ZjU5aHgifQ.EGko1-iUxIzdjVqKzp8ZmA';
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-77.01866, 38.888],
+      pitch: 75,
+      zoom: 16
+    });
+
+    navigator.geolocation.watchPosition(position => {
+      console.log(position)
+      // Update the center of the map with the user's current position
+    });
+  </script>
 
 </body>
 

@@ -381,24 +381,8 @@ License: For each use you must have a valid license purchased only from above li
                             <div class="card-body">
                                 <div class="row position-relative">
                                     <div class="col-lg-12 chat-content">
-                                        <div class="chat-header border-bottom pb-2">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <i data-feather="corner-up-left" id="backToChatList" class="icon-lg me-2 ms-n2 text-muted d-lg-none"></i>
-                                                    <figure class="mb-0 me-2">
-                                                        <img src="https://via.placeholder.com/43x43" class="img-sm rounded-circle" alt="image">
-                                                        <div class="status online"></div>
-                                                        <div class="status online"></div>
-                                                    </figure>
-                                                    <div>
-                                                        <p>Mariana Zenha</p>
-                                                        <p class="text-muted tx-13">Front-end Developer</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="chat-body">
-                                            <ul class="messages">
+                                            <ul class="messages" data-id="<?= $_SESSION["user"]->driver_id ?>">
                                             </ul>
                                         </div>
                                         <div class="chat-footer d-flex">
@@ -475,7 +459,9 @@ License: For each use you must have a valid license purchased only from above li
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        const chatId = "001";
+        const chatId = $(".messages").attr("data-id")
+
+        console.log(chatId)
 
         const messagesList = $(".messages");
         const chatRef = collection(db, "driver-chat");
@@ -494,6 +480,7 @@ License: For each use you must have a valid license purchased only from above li
                     });
                     const sender = chatData.is_me;
                     const isMe = sender === 1;
+                    const isSender = sender === 0;
                     const messageItemClass = isMe ? "message-item me" : "message-item friend";
                     const chatMessageHTML = `
                     <li class="${messageItemClass}">
@@ -506,6 +493,7 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                           </div>
                         </li>`;
+                
                     messagesList.append(chatMessageHTML);
 
                     messagesList.scrollTop(messagesList[0].scrollHeight);

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Dashboard{
 
     use Controller;
@@ -7,8 +9,9 @@ class Dashboard{
     public function index(){
 
         
-        $this->view("fleet_management/driver/partials/sidebar");
+        $this->view('partials/navbar');
         $this->view("fleet_management/driver/dashboard");
+        $this->view('partials/sidebar');
     }
 
 

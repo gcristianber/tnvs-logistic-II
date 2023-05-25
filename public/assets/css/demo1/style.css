@@ -24467,7 +24467,8 @@ div.tox .btn-group-lg > .btn-icon-text.tox-button .btn-icon-append,
   padding-top: 11px;
   padding-bottom: 11px;
 }
-@media (max-width: 991px) {
+/* *Basta */
+/* @media (max-width: 991px) {
   .chat-wrapper .chat-content {
     position: absolute;
     background: #fff;
@@ -24480,7 +24481,7 @@ div.tox .btn-group-lg > .btn-icon-text.tox-button .btn-icon-append,
   .chat-wrapper .chat-content.show {
     display: block;
   }
-}
+} */
 .chat-wrapper .chat-content .chat-header {
   padding: 0 10px;
 }

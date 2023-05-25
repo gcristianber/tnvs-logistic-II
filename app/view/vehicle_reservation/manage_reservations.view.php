@@ -90,7 +90,7 @@
                   <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending
-                        
+
                       </a>
                     </li>
                     <li class="nav-item">
@@ -139,8 +139,8 @@
                                       <div class="d-flex align-items-center gap-2">
                                         <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                          <p><?= $data->full_name ?></p>
+                                          <small class="text-muted"><?= $data->email_address ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -153,10 +153,10 @@
                                     </td>
                                     <td>
                                       <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -177,13 +177,13 @@
                                               <div class="mb-3">
                                                 <label for="" class="form-label">Full Name:</label>
                                                 <div class="form-control">
-                                                  Cristianber Gordora
+                                                  <?= $data->full_name ?>
                                                 </div>
                                               </div>
                                               <div class="mb-3">
                                                 <label for="" class="form-label">Email Address:</label>
                                                 <div class="form-control">
-                                                  gcristianber@gmail.com
+                                                  <?= $data->email_address ?>
                                                 </div>
                                               </div>
                                               <div class="mb-3">
@@ -195,7 +195,7 @@
                                                         <i data-feather="calendar"></i>
                                                       </div>
                                                       <div class="form-control">
-                                                        05 May 2023
+                                                        <?= date("d/m/Y", strtotime($data->pickup_date)) ?>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -205,7 +205,7 @@
                                                         <i data-feather="calendar"></i>
                                                       </div>
                                                       <div class="form-control">
-                                                        05 May 2023
+                                                        <?= date("d/m/Y", strtotime($data->return_date)) ?>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -215,7 +215,7 @@
                                                 <label for="" class="form-label">Message:</label>
                                                 <div class="form-control">
                                                   <p class="text-wrap">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum velit repellendus facilis expedita officiis sunt vero similique consequatur iste debitis?
+                                                    <?= $data->reason ?>
                                                   </p>
                                                 </div>
                                               </div>
@@ -225,10 +225,9 @@
                                                   <div class="list-group-item">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                       <div>
-                                                        <p>Dummy_File.pdf</p>
-                                                        <small class="text-muted">1.2 MB</small>
+                                                        <p><?= $data->file_path ?></p>
                                                       </div>
-                                                      <a href="" class="link-primary">Download</a>
+                                                      <a href="<?= ROOT ?>uploads/documents/vehicle_reservation/<?= $data->file_path ?>" class="link-primary">Download</a>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -286,8 +285,8 @@
                                       <div class="d-flex align-items-center gap-2">
                                         <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                          <p><?= $data->full_name ?></p>
+                                          <small class="text-muted"><?= $data->email_address ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -300,10 +299,10 @@
                                     </td>
                                     <td>
                                       <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -359,7 +358,7 @@
                                         <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
                                           <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                          <small class="text-muted"><?= $data->email_address ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -372,10 +371,10 @@
                                     </td>
                                     <td>
                                       <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -426,8 +425,8 @@
                                       <div class="d-flex align-items-center gap-2">
                                         <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                          <p><?= $data->full_name ?></p>
+                                          <small class="text-muted"><?= $data->email_address ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -440,14 +439,14 @@
                                     </td>
                                     <td>
                                       <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>
-                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td><span class="badge bg-secondary">Dispatched</span></td>
                                     <td>
                                       <button class="btn btn-primary btn-icon-text">
                                         <i data-feather="edit" class="btn-icon-prepend"></i>
@@ -498,8 +497,8 @@
                                       <div class="d-flex align-items-center gap-2">
                                         <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                          <p><?= $data->full_name ?></p>
+                                          <small class="text-muted"><?= $data->email_address ?></small>
                                         </div>
                                       </div>
                                     </td>
@@ -512,10 +511,10 @@
                                     </td>
                                     <td>
                                       <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <img src="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" alt="">
                                         <div>
-                                          <p>Honda Accord 2020</p>
-                                          <small class="text-muted">QWE-223</small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>

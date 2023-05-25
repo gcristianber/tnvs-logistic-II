@@ -13,12 +13,24 @@
     <div class="sidebar-body">
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
-            <li class="nav-item">
-                <a href="<?= ROOT ?>general/dashboard" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Dashboard</span>
-                </a>
-            </li>
+            <?php if ($_SESSION["user"]->user_role != "fleet driver") :  ?>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>general/dashboard" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Dashboard</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <?php if ($_SESSION["user"]->user_role == "fleet driver") :  ?>
+                <li class="nav-item">
+                    <a href="<?= ROOT ?>driver/dashboard" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Dashboard</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
 
             <?php if (in_array($_SESSION["user"]->user_role, ['super admin', 'staff', 'audit manager', 'fleet manager', 'vendor manager'])) : ?>
                 <li class="nav-item nav-category">Document Tracking</li>
