@@ -44,7 +44,7 @@ class Login
 
                     $DriverLogs->insert($logDetails);
 
-                    redirect("general/dashboard");
+                    redirect("driver/dashboard");
                     exit();
                 }
             }
