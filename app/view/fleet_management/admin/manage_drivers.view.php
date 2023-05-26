@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Maintenance</title>
+  <title>Fleet Management | Manage Drivers</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,6 +90,98 @@
                       <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
                       <p class="d-none d-sm-inline">Search Driver</p>
                     </button>
+                    <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <i data-feather="plus" class="btn-icon-prepend"></i>
+                      Add Entry
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Driver</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                          </div>
+                          <form id="addDriverForm">
+                            <div class="modal-body">
+                              <div class="d-flex gap-2 mb-3">
+                                <div class="">
+                                  <input type="file" name="avatar_thumbnail" id="myDropify" />
+                                </div>
+                                <div class="w-100">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Driver Name:</label>
+                                    <input type="text" name="display_name" id="" class="form-control">
+                                  </div>
+                                  <div class="">
+                                    <label for="" class="form-label">Email Address:</label>
+                                    <input type="email" name="email_address" id="" class="form-control">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
+                                <li class="nav-item">
+                                  <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Account</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Attachments</a>
+                                </li>
+                              </ul>
+                              <div class="tab-content mt-3" id="lineTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Username</label>
+                                    <input type="text" name="username" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Password</label>
+                                    <input type="password" name="password" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Confirm Password</label>
+                                    <input type="password" name="confirm_password" id="" class="form-control">
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Phone Number</label>
+                                    <input type="text" name="phone_number" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Emergency Number</label>
+                                    <input type="text" name="emergency_number" id="" class="form-control">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Address</label>
+                                    <textarea name="address" class="form-control" id="" cols="30" rows="5"></textarea>
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">
+                                  <div class="mb-3">
+                                    <input type="file" name="attachments[]" class="form-control" multiple>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="userAgreement">
+                                <label class="form-check-label" for="checkDefault">
+                                  By creating the account, you understand and agree to the Fleet Management System Services <a href="" class="link-primary">Terms of Conditions</a> and <a href="" class="link-primary">Policy Statement</a>.
+                                </label>
+                              </div>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row mt-2">
@@ -179,6 +271,9 @@
                                   break;
                                 case 'idle':
                                   echo '<span class="badge bg-warning">Idle</span>';
+                                  break;
+                                case 'on road':
+                                  echo '<span class="badge bg-primary">On Road</span>';
                                   break;
                               }
 

@@ -49,32 +49,19 @@
 
 
         <div class="card grid-margin h-100">
-          <div class="card-body position-relative">
-
-            <div id="map" class="w-100 position-absolute top-0 start-0 rounded-top" style="height: 650px;">
-
+          <div class="card-body">
+            <div class="position-relative">
+              <div id="map" class="w-100 rounded-top" style="height: 650px;"></div>
+              <img src="<?= ROOT . $_SESSION["user"]->avatar_thumbnail ?>" class="ht-100 wd-100 rounded-circle border border-5 border-white position-absolute top-90 start-50 translate-middle-x" style="object-fit: cover; z-index: 1;" alt="">
             </div>
 
-            <div class="d-flex justify-content-center">
-              <div class="position-absolute bottom-0">
-
-                <div class="text-center py-3">
-                  <img src="<?= ROOT . $_SESSION["user"]->avatar_thumbnail ?>" class="ht-75 wd-75 rounded-circle border border-5 border-white" alt="">
-                  <div>
-                    <span class=" badge bg-success">Active</span>
-                  </div>
-                  <div class="mt-4">
-                    <h3 class="text-uppercase"><?= $_SESSION["user"]->display_name ?></h3>
-                    <p class="text-muted"><?= $_SESSION["user"]->email_address ?></p>
-                  </div>
-                </div>
-                <div>
-
-                </div>
-              </div>
+            <div class="mt-5 text-center">
+              <h4>CRISTIANBER GORDORA</h4>
+              <small class="text-muted">gcristianber@logistic_driver</small>
             </div>
           </div>
         </div>
+
 
       </div>
 

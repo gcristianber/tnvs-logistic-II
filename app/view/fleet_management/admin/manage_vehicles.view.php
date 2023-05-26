@@ -477,7 +477,7 @@
                                   <form class="updateForm" data-id="<?= $data->vehicle_id?>">
                                     <div class="modal-body">
                                       <div class="mb-3">
-                                        <input type="file" name="thumbnail" class="myDropify" data-default-file="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" />
+                                        <input type="file" name="thumbnail_path" class="myDropify" data-default-file="<?= ROOT ?>uploads/images/thumbnails/<?= $data->thumbnail_path ?>" />
                                       </div>
                                       <div class="mb-3">
                                         <label for="" class="form-label">Vehicle Name</label>

@@ -32,6 +32,7 @@ const db = getFirestore(app);
 const chatBox = $("#messages");
 const chatRef = collection(db, "driver-chat"); // Variable to store the current driver ID
 let unsubscribe = null; // Variable to store the unsubscribe function
+let chatId;
 
 // Function to fetch and display chat messages for a specific chat_id
 const fetchChatMessages = (chatId) => {
@@ -109,8 +110,12 @@ var popupButtons = document.querySelectorAll('.popupButton');
 
 popupButtons.forEach(function (button) {
     button.addEventListener('click', function (event) {
-        // Retrieve the chat_id from the clicked button
+
+        console.log("Hello")
+        // // Retrieve the chat_id from the clicked button
         chatId = event.target.getAttribute('data-driver-id');
+
+        console.log(chatId)
 
         // Display the chat_id in the pop-up card
         document.getElementById('popupCard').style.display = 'block';

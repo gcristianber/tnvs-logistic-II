@@ -125,6 +125,25 @@ class DriversModel
 
     }
 
+    public function update_status($id, $status)
+    {
+
+        switch ($status) {
+            case 'active':
+                $this->update($id, ["status_id" => 1], 'driver_id');
+                break;
+            case 'inactive':
+                $this->update($id, ["status_id" => 2], 'driver_id');
+                break;
+            case 'idle':
+                $this->update($id, ["status_id" => 3], 'driver_id');
+                break;
+            case 'on road':
+                $this->update($id, ["status_id" => 4], 'driver_id');
+                break;
+        }
+    }
+
 
     public function export_csv()
     {
