@@ -251,10 +251,6 @@
                                         <i data-feather="external-link" class="btn-icon-prepend"></i>
                                         View Details
                                       </a>
-                                      <button class="btn btn-success btn-icon-text progressBtn">
-                                        <i data-feather="plus" class="btn-icon-prepend"></i>
-                                        Mark as solved
-                                      </button>
                                     </td>
                                   </tr>
                             <?php
