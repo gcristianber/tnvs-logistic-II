@@ -47,6 +47,8 @@ class Login
                     redirect("driver/dashboard");
                     exit();
                 }
+
+                $_SESSION["attempts"]++;
             }
         }
 

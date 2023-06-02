@@ -34,7 +34,6 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
   <!-- Layout styles -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/css/demo1/style.css">
   <!-- End layout styles -->
@@ -62,21 +61,59 @@
                   <h3 class="mb-1">Track Document</h3>
                   <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
                 </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <div class="btn-group w-100" role="group" aria-label="Basic example">
-                      <input type="text" tabindex="1" autofocus name="" id="search" class="form-control" placeholder="Search tracking id">
-                      <button type="button" class="btn btn-outline-primary" id="customSearchBtn">Search</button>
+
+                <div class="d-flex align-items-center gap-2">
+                  <input type="text" name="" id="" class="form-control searchInput" placeholder="Search document">
+                  <div class="flex-shrink-0">
+                    <button class="btn btn-primary search">
+                      <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                      <p class="d-none d-sm-inline">Search Document</p>
+                    </button>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-4 grid-margin">
+                    <label for="" class="form-label">
+                      Filter by date
+                    </label>
+                    <div class="input-group flatpickr" id="flatpickr-date">
+                      <span class="input-group-text input-group-addon" data-toggle="">
+                        <i data-feather="calendar"></i>
+                      </span>
+                      <input type="text" name="" id="" class="form-control filter-date">
                     </div>
+                  </div>
+                  <div class="col-md-4 grid-margin">
+                    <label for="" class="form-label">
+                      Sort by Department
+                    </label>
+                    <select name="" id="" class="form-select filter-select">
+                      <option value="">All</option>
+                      <option value="Logistic">Logistic</option>
+                      <option value="Human Resource">Human Resource</option>
+                      <option value="Administrative">Administrative</option>
+                      <option value="Finance">Finance</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 grid-margin">
+                    <label for="" class="form-label">
+                      Sort by Response
+                    </label>
+                    <select name="" id="" class="form-select filter-select">
+                      <option value="">Select Status</option>
+                      <option value="Outgoing">Outgoing</option>
+                      <option value="Received">Received</option>
+                    </select>
                   </div>
                 </div>
 
                 <div class="table-responsive">
-                  <table id="request_tbl" class="table display">
+                  <table class="table table-bordered dataTable">
                     <thead>
                       <tr>
                         <th data-orderable="false"></th>
                         <th>tracking id</th>
+                        <th>subject</th>
                         <th>to</th>
                         <th>from</th>
                         <th>date/time</th>
@@ -89,53 +126,54 @@
                       <?php
                       if (!empty($documents)) :
                         foreach ($documents as $data) :
-                          if($data->status_name != 'incoming'):
+                          if ($data->status_name != 'incoming') :
                       ?>
-                          <tr class="align-middle" data-status="scheduled">
-                            <td>
-                              <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkDefault">
-                              </div>
-                            </td>
-                            <td><?= $data->tracking_id ?></td>
-                            <td><?= ucwords($data->sender_dept) ?></td>
-                            <td><?= ucwords($data->receiver_dept) ?></td>
-                            <td>
-                              <p><?= date("d M Y", strtotime($data->sent_date)) ?></p>
-                              <small class="text-muted"><?= date("h:i A", strtotime($data->sent_date)) ?></small>
-                            </td>
-                            <td>
-                              <?php
-                              switch ($data->status_name) {
-                                case 'outgoing':
-                                  echo '<span class="badge bg-danger">Outgoing</span>';
-                                  break;
-                                case 'pending':
-                                  echo '<span class="badge bg-warning">Pending</span>';
-                                  break;
-                                case 'received':
-                                  echo '<span class="badge bg-success">Received</span>';
-                                  break;
-                                case 'reviewed':
-                                  echo '<span class="badge bg-success">Reviewed</span>';
-                                  break;
-                                case 'declined':
-                                  echo '<span class="badge bg-success">Declined</span>';
-                                  break;
-                              }
-                              ?>
-                            </td>
-                            <td>
-                              <p><?= $data->author_name ?></p>
-                              <small class="text-muted"><?= $data->author_username ?></small>
-                            </td>
-                            <td>
-                              <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>document_tracking/track_documents/track/<?= $data->tracking_id ?>">
-                                <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                Preview
-                              </a>
-                            </td>
-                          </tr>
+                            <tr class="align-middle" data-status="scheduled">
+                              <td>
+                                <div class="form-check">
+                                  <input type="checkbox" class="form-check-input" id="checkDefault">
+                                </div>
+                              </td>
+                              <td><?= $data->tracking_id ?></td>
+                              <td><?= $data->subject ?></td>
+                              <td><?= ucwords($data->sender_dept) ?></td>
+                              <td><?= ucwords($data->receiver_dept) ?></td>
+                              <td>
+                                <p><?= date("d M Y", strtotime($data->sent_date)) ?></p>
+                                <small class="text-muted"><?= date("h:i A", strtotime($data->sent_date)) ?></small>
+                              </td>
+                              <td>
+                                <?php
+                                switch ($data->status_name) {
+                                  case 'outgoing':
+                                    echo '<span class="badge bg-danger">Outgoing</span>';
+                                    break;
+                                  case 'pending':
+                                    echo '<span class="badge bg-warning">Pending</span>';
+                                    break;
+                                  case 'received':
+                                    echo '<span class="badge bg-success">Received</span>';
+                                    break;
+                                  case 'reviewed':
+                                    echo '<span class="badge bg-success">Reviewed</span>';
+                                    break;
+                                  case 'declined':
+                                    echo '<span class="badge bg-success">Declined</span>';
+                                    break;
+                                }
+                                ?>
+                              </td>
+                              <td>
+                                <p><?= $data->author_name ?></p>
+                                <small class="text-muted"><?= $data->author_username ?></small>
+                              </td>
+                              <td>
+                                <a class="btn btn-light btn-icon-text" href="<?= ROOT ?>document_tracking/track_documents/track/<?= $data->tracking_id ?>">
+                                  <i data-feather="external-link" class="btn-icon-prepend"></i>
+                                  Preview
+                                </a>
+                              </td>
+                            </tr>
                       <?php
                           endif;
                         endforeach;
@@ -175,88 +213,12 @@
   <!-- Custom js for this page -->
   <script src="<?= ROOT ?>assets/js/dropify.js"></script>
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/audit_management/manage-requests.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="<?= ROOT ?>assets/custom/js/flatpickr.js"></script>
   <!-- End custom js for this page -->
   <!-- Flat Picker -->
-  <script>
-    const myInput = document.querySelectorAll(".date-input");
-    const flatpickrInstance = flatpickr(myInput, {
-      enableTime: true,
-      dateFormat: "d M Y",
-      defaultDate: new Date(),
-      minDate: "today",
-      allowInput: true
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      var table = $('#request_tbl').DataTable({
-        lengthChange: false, // Disable length menu
-        bInfo: false, // Disable "Showing X of Y entries" label
-      });
-
-      $('#search').on('keyup', function(event) {
-        if (event.keyCode === 13) { // Check if "Enter" key is pressed
-          var query = $('#search').val();
-          table.search(query).draw();
-        }
-      });
-
-      $('#customSearchBtn').on('click', function() {
-        var query = $('#search').val();
-        table.search(query).draw();
-      });
-
-      var rows = $('table tbody tr');
-
-      // listen for changes to the radio buttons
-      $('input[name="btnradio"]').on('change', function() {
-        // get the value of the selected radio button
-        var value = $(this).val();
-
-        // hide all rows by default
-        rows.hide();
-
-        // show the rows that match the selected status
-        if (value === 'all') {
-          rows.show();
-        } else {
-          rows.filter('[data-status="' + value + '"]').show();
-        }
-      });
-
-      var statusCounts = {
-        'all': rows.length,
-        'pending': 0,
-        'in progress': 0,
-        'scheduled': 0,
-        'completed': 0,
-        'cancelled': 0,
-        'delayed': 0
-      };
-
-      rows.each(function() {
-        var status = $(this).data('status');
-        statusCounts[status]++;
-      });
-
-      $('input[type=radio][name=btnradio]').each(function() {
-        var status = $(this).val();
-        if (status !== 'all') {
-          var count = statusCounts[status];
-          $(this).next('label').text(capitalize(status) + ' (' + count + ')');
-        }
-      });
-
-      function capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      }
-
-
-
-    });
-  </script>
 </body>
 
 </html>

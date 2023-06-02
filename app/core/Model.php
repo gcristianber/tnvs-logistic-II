@@ -141,5 +141,7 @@ Trait Model
 		return $this->query($query);
 	}
 
+
+
 	
 }
