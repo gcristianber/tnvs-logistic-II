@@ -130,7 +130,7 @@
                                                 <th>status</th>
                                                 <th>department</th>
                                                 <th>action by</th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -175,7 +175,7 @@
                                                             <small class="text-muted"><?= $data->username ?></small>
                                                         </div>
                                                     </td>
-                                                    
+
                                                 </tr>
                                             <?php
                                             endforeach;
@@ -217,9 +217,17 @@
     <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
     <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="<?= ROOT ?>assets/custom/js/flatpickr.js"></script>
     <!-- End custom js for this page -->
     <!-- Flat Picker -->
+    <script>
+        const filter_date = document.querySelectorAll(".filter-date");
+        const flatpickrInstance = flatpickr(filter_date, {
+            enableTime: true,
+            dateFormat: "d M Y",
+            defaultDate: new Date(),
+            allowInput: true
+        });
+    </script>
 </body>
 
 </html>

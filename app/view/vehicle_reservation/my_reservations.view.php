@@ -56,38 +56,16 @@
         <div class="row h-100">
           <div class="card">
             <div class="card-body">
-              <div class="mb-3">
-                <div class="d-flex align-items-center justify-content-between">
-                  <div>
-                    <h3>
-                      <i data-feather="mail" class="d-inline text-primary"></i>
-                      My Requests
-                    </h3>
-                    <small class="text-secondary">Manage your received vehicle reservation requests.</small>
-                  </div>
-                  <div class="d-flex align-items-center gap-2">
-                    <div class="flex-shrink-0">
-                      <button class="btn btn-primary btn-icon-text">
-                        <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                        Download as CSV
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="d-flex align-items-center gap-2 mb-3">
-                    <div class="flex-grow-1">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Id, Name, Date or Requestor" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                      </div>
-                    </div>
+                  <div class="mb-4">
+                    <h3 class="mb-1">My Reservations</h3>
+                    <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
                   </div>
                   <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending
-                        
+
                       </a>
                     </li>
                     <li class="nav-item">
@@ -113,15 +91,57 @@
                   </ul>
                   <div class="tab-content mt-3" id="lineTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
+                      <div class="d-flex align-items-center gap-2">
+                        <input type="text" name="" id="" class="form-control searchInput" placeholder="Search document">
+                        <div class="flex-shrink-0">
+                          <button class="btn btn-primary search">
+                            <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                            <p class="d-none d-sm-inline">Search Document</p>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="row mt-2">
+                        <div class="col-md-4 grid-margin">
+                          <label for="" class="form-label">
+                            Filter by date
+                          </label>
+                          <div class="input-group flatpickr" id="flatpickr-date">
+                            <span class="input-group-text input-group-addon" data-toggle="">
+                              <i data-feather="calendar"></i>
+                            </span>
+                            <input type="text" name="" id="" class="form-control filter-date">
+                          </div>
+                        </div>
+                        <div class="col-md-4 grid-margin">
+                          <label for="" class="form-label">
+                            Sort by Vehicle Type
+                          </label>
+                          <select name="" id="" class="form-select filter-select">
+                            <option value="">All</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Van">Van</option>
+                            <option value="Truck">Truck</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4 grid-margin">
+                          <label for="" class="form-label">
+                            Sort by Response
+                          </label>
+                          <select name="" id="" class="form-select filter-select">
+                            <option value="">Select Status</option>
+                          </select>
+                        </div>
+                      </div>
                       <div class="table-responsive">
                         <table class="table table-bordered dataTable">
                           <thead>
                             <tr>
                               <th data-orderable="false"></th>
-                              <th>requestor</th>
-                              <th class="text-center">vehicle type</th>
                               <th>request date</th>
                               <th>vehicle</th>
+                              <th>vehicle type</th>
+                              <th>pickup date</th>
+                              <th>return date</th>
                               <th>status</th>
                               <th>action</th>
                             </tr>
@@ -137,29 +157,28 @@
                                       <input type="checkbox" name="" class="form-check-input" id="" value="<?= $data->reservation_id ?>">
                                     </td>
                                     <td>
+                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
+                                    </td>
+                                    <td>
                                       <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                        <img src="<?= ROOT . 'uploads/images/thumbnails/' . $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: contain;" alt="">
                                         <div>
-                                          <p><?= $data->requestor_name ?></p>
-                                          <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
+                                          <p><?= $data->make ?></p>
+                                          <small class="text-muted"><?= $data->plate ?></small>
                                         </div>
                                       </div>
                                     </td>
-                                    <td class="text-center">
-                                      <span class="badge rounded-pill border border-primary text-primary">Sedan</span>
+                                    <td>
+                                      <?= ($data->vehicle_type == 'sedan' ? '<span class="badge bg-primary">Sedan</span>' : ($data->vehicle_type == 'van' ? '<span class="badge bg-danger">Van</span>' : ($data->vehicle_type == 'truck' ? '<span class="badge bg-warning">Truck</span>' : null))) ?>
                                     </td>
                                     <td>
                                       <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
                                       <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
                                     </td>
                                     <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->make ?></p>
-                                          <small class="text-muted"><?= $data->plate ?></small>
-                                        </div>
-                                      </div>
+                                      <p><?= date("d/m/Y", strtotime($data->date_requested)) ?></p>
+                                      <small class="text-muted"><?= date("h:i A", strtotime($data->date_requested)) ?></small>
                                     </td>
                                     <td><span class="badge bg-warning">Pending</span></td>
                                     <td>
@@ -196,7 +215,7 @@
                                                       </div>
                                                     </div>
                                                     <div class="col">
-                                                    <div class="input-group flatpickr" id="flatpickr-date">
+                                                      <div class="input-group flatpickr" id="flatpickr-date">
                                                         <span class="input-group-text input-group-addon" data-toggle="">
                                                           <i data-feather="calendar"></i>
                                                         </span>
@@ -274,7 +293,7 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . $data->avatar_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: cover;" alt="">
                                       <div>
                                         <p><?= $data->requestor_name ?></p>
                                         <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
@@ -290,17 +309,17 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . 'uploads/images/thumbnails/' . $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: contain;" alt="">
                                       <div>
-                                        <p>Honda Accord 2020</p>
-                                        <small class="text-muted">QWE-223</small>
+                                        <p><?= $data->make ?></p>
+                                        <small class="text-muted"><?= $data->plate ?></small>
                                       </div>
                                     </div>
                                   </td>
-                                  <td><span class="badge bg-primary">Approved</span></td>
+                                  <td><span class="badge bg-success">Approved</span></td>
                                   <td>
                                     <button class="btn btn-primary btn-icon-text">
-                                      <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      <i data-feather="external-link" class="btn-icon-prepend"></i>
                                       View Details
                                     </button>
                                     <button class="btn btn-danger btn-icon-text cancelBtn">
@@ -344,7 +363,7 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . $data->avatar_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: cover;" alt="">
                                       <div>
                                         <p><?= $data->requestor_name ?></p>
                                         <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
@@ -360,19 +379,84 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . 'uploads/images/thumbnails/' . $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: contain;" alt="">
                                       <div>
-                                        <p>Honda Accord 2020</p>
-                                        <small class="text-muted">QWE-223</small>
+                                        <p><?= $data->make ?></p>
+                                        <small class="text-muted"><?= $data->plate ?></small>
                                       </div>
                                     </div>
                                   </td>
-                                  <td><span class="badge bg-warning">Pending</span></td>
+                                  <td><span class="badge bg-danger">Declined</span></td>
                                   <td>
-                                    <button class="btn btn-primary btn-icon-text">
+                                    <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#view_<?= $data->reservation_id ?>">
                                       <i data-feather="edit" class="btn-icon-prepend"></i>
-                                      View Details
+                                      Edit Details
                                     </button>
+                                    <div class="modal fade" id="view_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="view_<?= $data->reservation_id ?>Label" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <form class="updateForm">
+                                            <div class="modal-body">
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Full Name:</label>
+                                                <input type="text" name="full_name" id="" class="form-control" value="<?= $data->full_name ?>">
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Email Address:</label>
+                                                <input type="text" name="email_address" id="" class="form-control" value="<?= $data->email_address ?>">
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Pickup & Return Date:</label>
+                                                <div class="row">
+                                                  <div class="col">
+                                                    <div class="input-group flatpickr" id="flatpickr-date">
+                                                      <span class="input-group-text input-group-addon" data-toggle="">
+                                                        <i data-feather="calendar"></i>
+                                                      </span>
+                                                      <input type="text" name="pickup_date" id="" class="form-control date-input" value="<?= date("d M Y", strtotime($data->pickup_date)) ?>">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="input-group flatpickr" id="flatpickr-date">
+                                                      <span class="input-group-text input-group-addon" data-toggle="">
+                                                        <i data-feather="calendar"></i>
+                                                      </span>
+                                                      <input type="text" name="pickup_date" id="" class="form-control date-input" value="<?= date("d M Y", strtotime($data->return_date)) ?>">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Message:</label>
+                                                <textarea class="form-control" name="reason" id="" cols="30" rows="5"><?= $data->reason ?></textarea>
+                                              </div>
+                                              <div>
+                                                <label for="" class="form-label">Attachment/s:</label>
+                                                <div class="list-group">
+                                                  <div class="list-group-item">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                      <div>
+                                                        <p>Dummy_File.pdf</p>
+                                                        <small class="text-muted">1.2 MB</small>
+                                                      </div>
+                                                      <a href="" class="link-primary">Download</a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </td>
 
                                 </tr>
@@ -395,7 +479,6 @@
                             <th>request date</th>
                             <th>vehicle</th>
                             <th>status</th>
-                            <th>action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -410,7 +493,7 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . $data->avatar_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: cover;" alt="">
                                       <div>
                                         <p><?= $data->requestor_name ?></p>
                                         <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
@@ -426,24 +509,14 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . 'uploads/images/thumbnails/' . $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: contain;" alt="">
                                       <div>
-                                        <p>Honda Accord 2020</p>
-                                        <small class="text-muted">QWE-223</small>
+                                        <p><?= $data->make ?></p>
+                                        <small class="text-muted"><?= $data->plate ?></small>
                                       </div>
                                     </div>
                                   </td>
-                                  <td><span class="badge bg-warning">Pending</span></td>
-                                  <td>
-                                    <button class="btn btn-primary btn-icon-text">
-                                      <i data-feather="edit" class="btn-icon-prepend"></i>
-                                      View Details
-                                    </button>
-                                    <button class="btn btn-danger btn-icon-text reportBtn">
-                                      <i data-feather="flag" class="btn-icon-prepend"></i>
-                                      Report an Issue
-                                    </button>
-                                  </td>
+                                  <td><span class="badge bg-info">Dispatched</span></td>
 
                                 </tr>
                           <?php
@@ -480,7 +553,7 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . $data->avatar_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: cover;" alt="">
                                       <div>
                                         <p><?= $data->requestor_name ?></p>
                                         <small class="text-muted"><?= ucwords($data->requestor_role) ?></small>
@@ -496,18 +569,87 @@
                                   </td>
                                   <td>
                                     <div class="d-flex align-items-center gap-2">
-                                      <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                                      <img src="<?= ROOT . 'uploads/images/thumbnails/' . $data->thumbnail_path ?>" class="ht-50 wd-50 rounded-2" style="object-fit: contain;" alt="">
                                       <div>
-                                        <p>Honda Accord 2020</p>
-                                        <small class="text-muted">QWE-223</small>
+                                        <p><?= $data->make ?></p>
+                                        <small class="text-muted"><?= $data->plate ?></small>
                                       </div>
                                     </div>
                                   </td>
-                                  <td><span class="badge bg-success">Returned</span></td>
+                                  <td><span class="badge bg-primary">Returned</span></td>
                                   <td>
-                                    <button class="btn btn-primary btn-icon-text">
-                                      <i data-feather="star" class="btn-icon-prepend"></i>
-                                      Add Review
+                                    <button class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#view_<?= $data->reservation_id ?>">
+                                      <i data-feather="edit" class="btn-icon-prepend"></i>
+                                      Edit Details
+                                    </button>
+                                    <div class="modal fade" id="view_<?= $data->reservation_id ?>" tabindex="-1" aria-labelledby="view_<?= $data->reservation_id ?>Label" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                          </div>
+                                          <form class="updateForm">
+                                            <div class="modal-body">
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Full Name:</label>
+                                                <input type="text" name="full_name" id="" class="form-control" value="<?= $data->full_name ?>">
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Email Address:</label>
+                                                <input type="text" name="email_address" id="" class="form-control" value="<?= $data->email_address ?>">
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Pickup & Return Date:</label>
+                                                <div class="row">
+                                                  <div class="col">
+                                                    <div class="input-group flatpickr" id="flatpickr-date">
+                                                      <span class="input-group-text input-group-addon" data-toggle="">
+                                                        <i data-feather="calendar"></i>
+                                                      </span>
+                                                      <input type="text" name="pickup_date" id="" class="form-control date-input" value="<?= date("d M Y", strtotime($data->pickup_date)) ?>">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col">
+                                                    <div class="input-group flatpickr" id="flatpickr-date">
+                                                      <span class="input-group-text input-group-addon" data-toggle="">
+                                                        <i data-feather="calendar"></i>
+                                                      </span>
+                                                      <input type="text" name="pickup_date" id="" class="form-control date-input" value="<?= date("d M Y", strtotime($data->return_date)) ?>">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="" class="form-label">Message:</label>
+                                                <textarea class="form-control" name="reason" id="" cols="30" rows="5"><?= $data->reason ?></textarea>
+                                              </div>
+                                              <div>
+                                                <label for="" class="form-label">Attachment/s:</label>
+                                                <div class="list-group">
+                                                  <div class="list-group-item">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                      <div>
+                                                        <p>Dummy_File.pdf</p>
+                                                        <small class="text-muted">1.2 MB</small>
+                                                      </div>
+                                                      <a href="" class="link-primary">Download</a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-danger btn-icon-text cancelBtn">
+                                      <i data-feather="trash-2" class="btn-icon-prepend"></i>
+                                      Cancel Request
                                     </button>
                                   </td>
 

@@ -21,6 +21,7 @@ class AccountsModel
         admin_um_accounts.display_name,
         admin_um_accounts.username,
         admin_um_accounts.password,
+        admin_um_accounts.avatar_path,
         
         admin_um_roles.role_name as user_role,
         admin_um_departments.department_name as user_department,

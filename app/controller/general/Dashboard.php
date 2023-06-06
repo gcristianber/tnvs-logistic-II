@@ -8,7 +8,6 @@ class Dashboard{
 
     public function index(){
         $data = [];
-
         $this->checkAccess();
 
         $Delivery = new DeliveryModel;
