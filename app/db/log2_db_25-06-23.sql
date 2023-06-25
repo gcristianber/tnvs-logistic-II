@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 05:59 AM
+-- Generation Time: Jun 25, 2023 at 05:21 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,8 +43,8 @@ CREATE TABLE `admin_um_accounts` (
 --
 
 INSERT INTO `admin_um_accounts` (`user_id`, `display_name`, `username`, `password`, `avatar_path`, `role_id`, `department_id`, `status_id`) VALUES
-('001', 'Super Admin - Logistic', 'super_admin@logistic', 'l0gistic@!', '', 1, 1, 1),
-('L001', 'Staff', 'staff@logistic', 'l0gistic@staff!', '', 3, 1, 1),
+('001', 'Super Admin - Logistic', 'super_admin@logistic', 'l0gistic@!', 'uploads\\users\\001\\avatar\\avatar.jpg', 1, 1, 1),
+('L001', 'Staff', 'staff@logistic', 'l0gistic@staff!', 'uploads\\users\\L001\\avatar\\avatar.jpg', 3, 1, 1),
 ('L002', 'Audit Manager', 'audit.manager@logistic', 'l0gistic@manager!', '', 4, 1, 1),
 ('L003', 'Fleet Manager', 'fleet.manager@logistic', 'l0gistic@manager!', '', 5, 1, 1),
 ('L004', 'Vendor Manager', 'vendor.manager@logistic', 'l0gistic@manager!', '', 6, 1, 1),
@@ -457,6 +457,20 @@ INSERT INTO `log2_dt_documents` (`tracking_id`, `document_name`, `file_path`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log2_dt_files`
+--
+
+CREATE TABLE `log2_dt_files` (
+  `file_id` varchar(50) NOT NULL,
+  `tracking_id` varchar(50) NOT NULL,
+  `file_name` text NOT NULL,
+  `file_size` varchar(50) NOT NULL,
+  `file_path` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `log2_dt_status`
 --
 
@@ -489,10 +503,18 @@ CREATE TABLE `log2_dt_track` (
   `action_by_dept_id` int(11) NOT NULL,
   `action_date` datetime NOT NULL DEFAULT current_timestamp(),
   `remarks` text NOT NULL,
-  `status_id` int(11) NOT NULL DEFAULT 1,
-  `user_agent` text NOT NULL,
-  `ip_address` varchar(30) NOT NULL
+  `ip_address` varchar(30) NOT NULL,
+  `status_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log2_dt_track`
+--
+
+INSERT INTO `log2_dt_track` (`tracking_id`, `action_by_id`, `action_by_dept_id`, `action_date`, `remarks`, `ip_address`, `status_id`) VALUES
+('D012367123456', '001', 1, '2023-06-02 01:08:24', 'Document is ready set to Incoming ', '127.1.1.0', 1),
+('D012367123456', '001', 1, '2023-06-02 01:16:04', 'Document has been set to Outgoing', '127.1.1.0', 2),
+('D012367123456', 'L001', 5, '2023-06-02 01:17:25', 'Document has been received by Finance Department', '127.1.1.1', 4);
 
 -- --------------------------------------------------------
 
@@ -803,7 +825,7 @@ CREATE TABLE `log2_fm_vehicles` (
 --
 
 INSERT INTO `log2_fm_vehicles` (`vehicle_id`, `make`, `plate`, `vehicle_type_id`, `description`, `trans_type_id`, `number_of_seats`, `odometer`, `dimensions`, `thumbnail_path`, `status_id`) VALUES
-('FM-230420A1816', 'Honda Civic', '123', 1, 'Test description', 2, 4, 5000, '1.58ht, 2.81mm', 'hondacivic_blue.jpg', 1),
+('FM-230420A1816', 'Honda Civic', '123', 1, 'Test description', 2, 4, 5000, '1.58ht, 2.82mm', 'hondacivic_blue.jpg', 1),
 ('FM-2305110D227', 'Lamborghini Urus', 'LUV-143', 1, 'Lamborghini Urus is awesome <3', 1, 2, 5000, '1.58ht, 2.81mm', 'lambo-urus.jpeg', 1),
 ('FM2304200C300', 'Silver Sedan', 'test', 1, 'Just try this brand new sedan', 1, 5, 2000, '1.58ht, 2.81mm', '2020-honda-accord-main-1569324384.jpg', 1),
 ('FM230420D806C', 'Large Van', 'test-1', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing', 1, 10, 2000, '1415mm 1799mm 4515mm', '2022-express-1wt-gan-colorizer.jpg', 1),
@@ -1131,6 +1153,25 @@ INSERT INTO `log2_vp_vendors` (`vendor_id`, `email_address`, `password`, `fullna
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log2_vr_issues`
+--
+
+CREATE TABLE `log2_vr_issues` (
+  `issue_id` int(11) NOT NULL,
+  `issue_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log2_vr_issues`
+--
+
+INSERT INTO `log2_vr_issues` (`issue_id`, `issue_name`) VALUES
+(1, 'break malfunction'),
+(2, 'fuel issue');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `log2_vr_reports`
 --
 
@@ -1142,18 +1183,6 @@ CREATE TABLE `log2_vr_reports` (
   `report_date` datetime NOT NULL DEFAULT current_timestamp(),
   `report_status_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `log2_vr_reports`
---
-
-INSERT INTO `log2_vr_reports` (`report_id`, `reservation_id`, `subject`, `remarks`, `report_date`, `report_status_id`) VALUES
-('REPORT-001', 'VR-230421FC155', 'Test', 'Test', '2023-05-17 22:31:12', 3),
-('REPORT-230517156DC', 'VR-23050569296', 'test', 'test', '2023-05-18 00:11:32', 3),
-('REPORT-230520E981A', 'VR-23050569296', 'test123', 'test123', '2023-05-20 14:01:48', 1),
-('REPORT-230523355F3', 'VR-23051163237', 'test1', 'test1', '2023-05-23 07:01:37', 1),
-('REPORT-23052341498', 'VR-23050569296', 'Test', 'test', '2023-05-23 10:29:05', 1),
-('REPORT-23052382370', 'VR-2305235AEC3', 'Test Report', 'Test remarks', '2023-05-23 12:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -1200,23 +1229,7 @@ CREATE TABLE `log2_vr_reservations` (
 --
 
 INSERT INTO `log2_vr_reservations` (`reservation_id`, `vehicle_id`, `full_name`, `email_address`, `reason`, `pickup_date`, `return_date`, `date_requested`, `file_path`, `requestor_id`, `status_id`) VALUES
-('VR-230421322CA', 'FM-230420A1816', 'Cristianber Gordora', 'gcristianber@gmail.com', 'test696943hahaha', '0000-00-00 00:00:00', '2023-04-21 17:44:00', '2023-04-21 17:45:16', 'the_new_logi_db(4).sql', '001', 6),
-('VR-230421FC155', 'FM2304200C300', 'test', 'gcristianber@gmail.com', 'Ano kasi hahaha', '0000-00-00 00:00:00', '2023-04-21 18:03:00', '2023-04-21 18:03:33', 'administrative-5.sql', '001', 6),
-('VR-230503CA378', 'FMV-001', 'Christian Aliwate', 'christian.aliwate@gmail.com', 'AHAHAHHA', '2023-05-03 21:32:00', '2023-05-03 21:32:00', '2023-05-03 21:33:05', 'undraw_Choose_re_7d5a.png', '001', 6),
-('VR-23050569296', 'FM-230420A1816', 'Aldion Belo', 'jayjayjeyjey09@gmail.com', 'test', '2023-05-05 20:43:00', '2023-05-05 20:43:00', '2023-05-05 20:44:26', 'the_new_logi_db(2).sql', '001', 4),
-('VR-230505DCD2E', 'FM-230420A1816', 'Cristianber Gordora', 'gcristianber@gmail.com', 'testing lang po', '2023-05-05 22:44:00', '2023-05-05 22:44:00', '2023-05-05 22:45:10', '', '001', 4),
-('VR-23050619C81', 'FMV-644151af4ebe2', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Uhmm... Wala lang? HAHAHAH', '2023-05-06 20:43:00', '2023-05-06 20:43:00', '2023-05-06 20:43:33', 'BSIT-Lacra-N.F.-et-al.-Research-Abstract.docx', '001', 4),
-('VR-2305068C287', 'FMV-001', 'Cristianber Gordora', 'gcristianber@gmail.com', 'test', '2023-05-07 00:50:00', '2023-05-10 00:50:00', '2023-05-07 00:50:23', 'undraw_Choose_re_7d5a.png', '001', 4),
-('VR-230507F75D0', 'FMV-001', 'Nick Bryan Domingo', 'cristiangordora27@gmail.com', 'Hello nyark', '0000-00-00 00:00:00', '2023-05-17 12:11:00', '2023-05-07 12:12:17', 'Screen Shot 2023-05-07 at 01.37.23.png', '001', 6),
-('VR-23051163237', 'FM-230420A1816', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Test', '2023-05-11 16:18:00', '2023-05-11 16:18:00', '2023-05-11 16:18:46', 'Mga-gagawin-pi.docx', 'L001', 4),
-('VR-230522F87BF', 'FM-230420A1816', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something like that...', '2023-05-24 18:56:00', '2023-05-25 18:56:00', '2023-05-22 18:57:09', 'Product-Backlog-Updated-April.xlsx', '001', 3),
-('VR-2305235AEC3', 'FM230420D806C', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something important.', '2023-05-23 11:58:00', '2023-05-31 11:58:00', '2023-05-23 11:58:57', 'file-1.docx', '001', 4),
-('VR-2305235D7DA', 'FM-2305110D227', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something...', '2023-05-23 10:27:00', '2023-05-23 10:27:00', '2023-05-23 10:28:15', 'AUDIT-230521F1CB3.xlsx', '001', 2),
-('VR-23052373E79', 'FM-2305110D227', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something important!', '2023-05-23 11:06:00', '2023-05-25 11:06:00', '2023-05-23 11:07:46', 'file-1.docx', '001', 4),
-('VR-230523740D1', 'FM-2305110D227', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something important!', '2023-05-23 11:49:00', '2023-05-25 11:49:00', '2023-05-23 11:49:41', 'file-1.docx', '001', 4),
-('VR-2305237574F', 'FM-230420A1816', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something important!', '2023-05-23 11:05:00', '2023-05-27 11:05:00', '2023-05-23 11:05:50', 'file-1.docx', '001', 1),
-('VR-230523778FE', 'FM-2305110D227', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something important!', '2023-05-23 11:55:00', '2023-05-26 11:55:00', '2023-05-23 11:55:27', 'file-1.docx', '001', 1),
-('VR-230523AA554', 'FM-230420A1816', 'Cristianber Gordora', 'gcristianber@gmail.com', 'Something important', '2023-05-23 11:38:00', '2023-05-24 11:38:00', '2023-05-23 11:39:09', 'file-1.docx', '001', 1);
+('VR-23062428901', 'FM-230420A1816', 'Cristianber Gordora', 'test@gmail.com', 'test', '2023-06-24 15:45:00', '2023-06-29 15:45:00', '2023-06-24 15:45:59', 'GORDORA, CRISTIANBER - OJT DOCU - 1.docx', '001', 1);
 
 -- --------------------------------------------------------
 
@@ -1240,6 +1253,26 @@ INSERT INTO `log2_vr_reserve_status` (`reserve_status_id`, `status_name`) VALUES
 (4, 'returned'),
 (5, 'declined'),
 (6, 'cancelled');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log2_vr_tags`
+--
+
+CREATE TABLE `log2_vr_tags` (
+  `tag_id` int(11) NOT NULL,
+  `tag_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log2_vr_tags`
+--
+
+INSERT INTO `log2_vr_tags` (`tag_id`, `tag_name`) VALUES
+(1, 'important'),
+(2, 'convinient'),
+(3, 'not important');
 
 --
 -- Indexes for dumped tables
@@ -1368,6 +1401,12 @@ ALTER TABLE `log2_dt_documents`
   ADD KEY `fk_log2_dt_documents_admin_um_departments_send_to_dept` (`send_to_dept_id`),
   ADD KEY `fk_log2_dt_documents_log2_dt_status_current_status_id` (`status_id`),
   ADD KEY `fk_log2_dt_documents_admin_um_accounts_author_id` (`author_id`);
+
+--
+-- Indexes for table `log2_dt_files`
+--
+ALTER TABLE `log2_dt_files`
+  ADD KEY `FK_log2_dt_files_tracking_id_log2_dt_documents` (`tracking_id`);
 
 --
 -- Indexes for table `log2_dt_status`
@@ -1577,6 +1616,12 @@ ALTER TABLE `log2_vp_vendors`
   ADD KEY `fk_log2_vp_vendors_role_id_admin_um_roles` (`role_id`);
 
 --
+-- Indexes for table `log2_vr_issues`
+--
+ALTER TABLE `log2_vr_issues`
+  ADD PRIMARY KEY (`issue_id`);
+
+--
 -- Indexes for table `log2_vr_reports`
 --
 ALTER TABLE `log2_vr_reports`
@@ -1604,6 +1649,12 @@ ALTER TABLE `log2_vr_reservations`
 --
 ALTER TABLE `log2_vr_reserve_status`
   ADD PRIMARY KEY (`reserve_status_id`);
+
+--
+-- Indexes for table `log2_vr_tags`
+--
+ALTER TABLE `log2_vr_tags`
+  ADD PRIMARY KEY (`tag_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1754,6 +1805,12 @@ ALTER TABLE `log2_vp_user_status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `log2_vr_issues`
+--
+ALTER TABLE `log2_vr_issues`
+  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `log2_vr_report_status`
 --
 ALTER TABLE `log2_vr_report_status`
@@ -1764,6 +1821,12 @@ ALTER TABLE `log2_vr_report_status`
 --
 ALTER TABLE `log2_vr_reserve_status`
   MODIFY `reserve_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `log2_vr_tags`
+--
+ALTER TABLE `log2_vr_tags`
+  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -1835,6 +1898,12 @@ ALTER TABLE `log2_dt_documents`
   ADD CONSTRAINT `fk_log2_dt_documents_admin_um_departments_send_to_dept` FOREIGN KEY (`send_to_dept_id`) REFERENCES `admin_um_departments` (`department_id`),
   ADD CONSTRAINT `fk_log2_dt_documents_admin_um_departments_sent_by_dept` FOREIGN KEY (`sent_by_dept_id`) REFERENCES `admin_um_departments` (`department_id`),
   ADD CONSTRAINT `fk_log2_dt_documents_log2_dt_status_current_status_id` FOREIGN KEY (`status_id`) REFERENCES `log2_dt_status` (`tracking_status_id`);
+
+--
+-- Constraints for table `log2_dt_files`
+--
+ALTER TABLE `log2_dt_files`
+  ADD CONSTRAINT `FK_log2_dt_files_tracking_id_log2_dt_documents` FOREIGN KEY (`tracking_id`) REFERENCES `log2_dt_documents` (`tracking_id`);
 
 --
 -- Constraints for table `log2_dt_track`

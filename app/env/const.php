@@ -16,6 +16,7 @@ const DB_NAME = "the_new_logi_db";
 
 // const ROOT = "http://localhost/TNVS-LOGISTIC2/public/";
 const ROOT = "http://localhost/ASADASDASDA/TNVS-LOGISTIC2/public/";
+const WEB_UPLOADS = "http://localhost/ASADASDASDA/TNVS-LOGISTIC2/public/uploads/";
 
 
 //Server settings                                       //Send using SMTP

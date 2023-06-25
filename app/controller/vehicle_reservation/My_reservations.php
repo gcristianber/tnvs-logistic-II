@@ -13,6 +13,8 @@ class My_reservations
 
         $data["userReservations"] = $this->getUserReservations();
 
+        // print_r($data["userReservations"]);
+
         $this->view('partials/navbar');
         $this->view("vehicle_reservation/my_reservations", $data);
         $this->view("partials/sidebar");

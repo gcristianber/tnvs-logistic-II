@@ -9,7 +9,7 @@
   <meta name="author" content="NobleUI">
   <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-  <title>Vehicle Reservation | Reports</title>
+  <title>Vehicle Reservation | Manage Reservations</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,6 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= ROOT ?>assets/fonts/feather-font/css/iconfont.css">
   <link rel="stylesheet" href="<?= ROOT ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- endinject -->
 
@@ -57,269 +56,102 @@
         <div class="row h-100">
           <div class="card">
             <div class="card-body">
-              <div class="mb-3">
-                <div class="d-flex align-items-center justify-content-between">
-                  <div>
-                    <h3>
-                      <i data-feather="flag" class="d-inline text-danger"></i>
-                      Reports
-                    </h3>
-                    <small class="text-secondary">Manage your received vehicle reservation requests.</small>
-                  </div>
-                  <div class="d-flex align-items-center gap-2">
-                    <div class="flex-shrink-0">
-                      <button class="btn btn-primary btn-icon-text">
-                        <i data-feather="download-cloud" class="btn-icon-prepend"></i>
-                        Download as CSV
-                      </button>
-                    </div>
+              <div class="mb-4">
+                <h3 class="mb-1">Reports</h3>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate temporibus, fugiat fuga magni nisi.</p>
+              </div>
+
+              <div>
+                <div class="d-flex align-items-center gap-2">
+                  <input type="text" name="" id="" class="form-control searchInput" placeholder="Search id">
+                  <div class="flex-shrink-0">
+                    <button class="btn btn-primary search">
+                      <i data-feather="search" class="icon-lg me-sm-2 me-lg-0 me-xl-2 mb-md-1 mb-xl-0"></i>
+                      <p class="d-none d-sm-inline">Search Reservation</p>
+                    </button>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="d-flex align-items-center gap-2 mb-3">
-                    <div class="flex-grow-1">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search report id, date and vehicle" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                      </div>
+                <div class="row mt-2">
+                  <div class="col-md-4 grid-margin">
+                    <label for="" class="form-label">
+                      Filter by date
+                    </label>
+                    <div class="input-group flatpickr" id="flatpickr-date">
+                      <span class="input-group-text input-group-addon" data-toggle="">
+                        <i data-feather="calendar"></i>
+                      </span>
+                      <input type="text" name="" id="" class="form-control filter-date">
                     </div>
                   </div>
-                  <ul class="nav nav-tabs nav-tabs-line" id="lineTab" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="home-line-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
-                        Issued
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="profile-line-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">In Progress
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="contact-line-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
-                        Solved
-                      </a>
-                    </li>
-                  </ul>
-                  <div class="tab-content mt-3" id="lineTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-line-tab">
-                      <div class="table-responsive">
-                        <table class="table table-bordered dataTable">
-                          <thead>
-                            <tr>
-                              <th data-orderable="false"></th>
-                              <th>report id</th>
-                              <th>vehicle</th>
-                              <th>report date</th>
-                              <th>last user</th>
-                              <th>status</th>
-                              <th>action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            if (!empty($reports)) :
-                              foreach ($reports as $data) :
-                                if ($data->report_status_name == "issued") :
-                            ?>
-                                  <tr class="align-middle" data-id="<?= $data->report_id  ?>">
-                                    <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="">
-                                    </td>
-                                    <td>
-                                      <?= $data->report_id  ?>
-                                    </td>
-                                    <td>
-                                      <div>
-                                        <p><?= $data->make  ?></p>
-                                        <small class="text-muted"><?= $data->plate  ?></small>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div>
-                                        <p><?= date("d M Y", strtotime($data->report_date))  ?></p>
-                                        <small class="text-muted"><?= date("h:i A", strtotime($data->report_date))  ?></small>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/40x40" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->full_name  ?></p>
-                                          <small class="text-muted"><?= $data->email_address  ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <span class="badge bg-danger">Issued</span>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                        View Details
-                                      </button>
-                                      <button class="btn btn-success btn-icon-text progressBtn">
-                                        <i data-feather="plus" class="btn-icon-prepend"></i>
-                                        Mark as In Progress
-                                      </button>
-                                    </td>
-                                  </tr>
-                            <?php
-                                endif;
-                              endforeach;
-                            endif;
-                            ?>
-                          </tbody>
-
-                        </table>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-line-tab">
-                      <div class="table-responsive">
-                        <table class="table table-bordered dataTable">
-                          <thead>
-                            <tr>
-                              <th data-orderable="false"></th>
-                              <th>report id</th>
-                              <th>vehicle</th>
-                              <th>report date</th>
-                              <th>last user</th>
-                              <th>status</th>
-                              <th>action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            if (!empty($reports)) :
-                              foreach ($reports as $data) :
-                                if ($data->report_status_name == "in progress") :
-                            ?>
-                                  <tr class="align-middle" data-id="<?= $data->report_id  ?>">
-                                    <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="">
-                                    </td>
-                                    <td>
-                                      <?= $data->report_id  ?>
-                                    </td>
-                                    <td>
-                                      <div>
-                                        <p><?= $data->make  ?></p>
-                                        <small class="text-muted"><?= $data->plate  ?></small>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div>
-                                        <p><?= date("d M Y", strtotime($data->report_date))  ?></p>
-                                        <small class="text-muted"><?= date("h:i A", strtotime($data->report_date))  ?></small>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/40x40" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->requestor_name  ?></p>
-                                          <small class="text-muted"><?= $data->requestor_name  ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <span class="badge bg-secondary">In Progress</span>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                        View Details
-                                      </button>
-                                      <button class="btn btn-success btn-icon-text solveBtn">
-                                        <i data-feather="plus" class="btn-icon-prepend"></i>
-                                        Mark as solved
-                                      </button>
-                                    </td>
-                                  </tr>
-                            <?php
-                                endif;
-                              endforeach;
-                            endif;
-                            ?>
-                          </tbody>
-
-                        </table>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-line-tab">
-                      <div class="table-responsive">
-                        <table class="table table-bordered dataTable">
-                          <thead>
-                            <tr>
-                              <th data-orderable="false"></th>
-                              <th>report id</th>
-                              <th>vehicle</th>
-                              <th>report date</th>
-                              <th>last user</th>
-                              <th>status</th>
-                              <th>action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            if (!empty($reports)) :
-                              foreach ($reports as $data) :
-                                if ($data->report_status_name == "solved") :
-                            ?>
-                                  <tr class="align-middle" data-id="<?= $data->report_id  ?>">
-                                    <td>
-                                      <input type="checkbox" name="" class="form-check-input" id="">
-                                    </td>
-                                    <td>
-                                      <?= $data->report_id  ?>
-                                    </td>
-                                    <td>
-                                      <div>
-                                        <p><?= $data->make  ?></p>
-                                        <small class="text-muted"><?= $data->plate  ?></small>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div>
-                                        <p><?= date("d M Y", strtotime($data->report_date))  ?></p>
-                                        <small class="text-muted"><?= date("h:i A", strtotime($data->report_date))  ?></small>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex align-items-center gap-2">
-                                        <img src="https://via.placeholder.com/40x40" class="ht-50 wd-50 rounded-2" alt="">
-                                        <div>
-                                          <p><?= $data->requestor_name  ?></p>
-                                          <small class="text-muted"><?= $data->requestor_name  ?></small>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <span class="badge bg-danger">Issued</span>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-primary btn-icon-text">
-                                        <i data-feather="external-link" class="btn-icon-prepend"></i>
-                                        View Details
-                                      </button>
-                                    </td>
-                                  </tr>
-                            <?php
-                                endif;
-                              endforeach;
-                            endif;
-                            ?>
-                          </tbody>
-
-                        </table>
-                      </div>
-                    </div>
+                  <div class="col-md-4 grid-margin">
+                    <label for="" class="form-label">
+                      Sort by Tags
+                    </label>
+                    <select name="" id="" class="form-select filter-select">
+                      <option value="">All</option>
+                      <option value="Important">Important</option>
+                      <option value="Convinient">Convinient</option>
+                      <option value="Convinient">Not Important</option>
+                    </select>
                   </div>
-
-
-
-
-
+                  <div class="col-md-4 grid-margin">
+                    <label for="" class="form-label">
+                      Sort by Response
+                    </label>
+                    <select name="" id="" class="form-select filter-select">
+                      <option value="" selected>All</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Approved">Approved</option>
+                      <option value="Dispatched">Dispatched</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table dataTable">
+                    <thead>
+                      <tr>
+                        <th>ticket no.</th>
+                        <th>issue</th>
+                        <th>user</th>
+                        <th>date submitted</th>
+                        <th>status</th>
+                        <th>action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="align-middle">
+                        <td class="wd-50">322814016225</td>
+                        <td>
+                          <p>Break Malfunction</p>
+                        </td>
+                        <td class="d-flex align-items-center gap-2">
+                          <img src="https://via.placeholder.com/50x50" class="ht-50 wd-50 rounded-2" alt="">
+                          <div>
+                            <p>Cristianber Gordora</p>
+                            <small class="text-muted">gcristianber@gmail.com</small>
+                          </div>
+                        </td>
+                        <td class="wd-150">
+                          <p>03 Jun 2023</p>
+                          <small class="text-muted">10:24 PM</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-success">Solved</span>
+                        </td>
+                        <td class="wd-50">
+                          <button class="btn p-0" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
+                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="check-circle" class="icon-sm me-2"></i> <span class="">Solve</span></a>
+                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
+                            
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -355,7 +187,11 @@
   <script src="<?= ROOT ?>assets/js/sweet-alert.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/const.js"></script>
   <script src="<?= ROOT ?>assets/custom/js/data-table.js"></script>
-  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reports.js"></script>
+  <script src="<?= ROOT ?>assets/custom/js/vehicle_reservation/manage-reservations.js"></script>
+  <!-- End custom js for this page -->
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="<?= ROOT ?>assets/custom/js/flatpickr.js"></script>
 </body>
 
 </html>
