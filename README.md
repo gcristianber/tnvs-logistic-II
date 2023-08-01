@@ -1,6 +1,6 @@
 # Transport Network Vehicle Service : Logistic II 🚚
 
-An ERP web-based system that is responsible for managing deliveries, vehicles, documents and inventory audit.
+An ERP web-based system that is responsible for managing deliveries, vehicles, documents, vendors and inventory audit.
 
 🚀 Features
 - Feature 1: Real Time GPS Vehicle Tracking
