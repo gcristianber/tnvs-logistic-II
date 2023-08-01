@@ -1,6 +1,6 @@
 # Transport Network Vehicle Service : Logistic II 🚚
 
-Welcome to my awesome project! This project does something amazing and aims to make your life easier.
+An ERP web-based system that is responsible for managing deliveries, vehicles, documents and inventory audit.
 
 🚀 Features
 - Feature 1: Real Time GPS Vehicle Tracking
