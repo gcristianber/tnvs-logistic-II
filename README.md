@@ -22,9 +22,9 @@ To use this project, follow these instructions:
 Special thanks to these amazing contributors who made this project possible.
 
 - [Cristianber B. Gordora](https://www.linkedin.com/in/gcristianber/) - `Programmer`
-- [Richelyn Villasor](https://www.facebook.com/richelyn.villasor) - `Scrum Master`
+- [Richelyn Villasor](https://www.facebook.com/richelyn.villasor) - `Project Manager`
 - [Lisly Dela Cruz](https://www.facebook.com/lislydc) - `Document Specialist`
-- [Jeffrey Tatoy](https://www.facebook.com/profile.php?id=100088767007657) - `Document Specialist`
+- [Jeffrey Tatoy](https://www.facebook.com/profile.php?id=100088767007657) - `System Analyst`
 - [Leandro Quisado](https://www.facebook.com/badotq) - `Business Analyst`
 
 📧 Contact
