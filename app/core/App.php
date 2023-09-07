@@ -56,8 +56,6 @@ class App
             $this->params = array_values($url);
         }
 
-
-        // var_dump($controller);
         call_user_func_array([$controller, $this->method], $this->params);
     }
 

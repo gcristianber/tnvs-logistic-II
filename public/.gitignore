@@ -1,0 +1,6 @@
+uploads/**
+!uploads/audit_management
+!uploads/documents
+!uploads/fleet_management
+!uploads/images
+!uploads/users
